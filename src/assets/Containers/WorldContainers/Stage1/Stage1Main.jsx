@@ -17,7 +17,7 @@ function Stage1Main(props){
 
   return  <div className='Stage1Main'>
             <SelectCreaturesButton />
-            <ArenaButton enemyId='goblinCaptain' difficulty='easy' />
+            <ArenaButton enemyId='Acolite1' difficulty='normal' />
             <button onClick={onClickTest}>Test</button>
           </div>
 }
