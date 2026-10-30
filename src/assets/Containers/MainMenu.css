@@ -1,0 +1,20 @@
+#MainMenu {
+  background-color: rgb(141, 57, 1);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PlayButton {
+  padding: 0.35rem 0.6rem;
+  border-radius: 5px;
+  border: none;
+  scale: 1.2;
+}
+
+.PlayButton:hover {
+  cursor: pointer;
+  background-color: gray;
+}

@@ -1,0 +1,15 @@
+.TableSlot {
+  margin: 2px 10px;
+}
+
+.Attacker {
+  background-color: violet;
+}
+
+.PotentialTarget {
+  background-color: lightcoral;
+}
+
+.Target {
+  background-color: red;
+}

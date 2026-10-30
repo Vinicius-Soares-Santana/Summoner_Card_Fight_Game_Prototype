@@ -1,0 +1,298 @@
+.SelectCreatureScreen {
+  /* Paleta: carvão quente, pedra e areia desbotada. */
+  --sc-background: #211f1b;
+  --sc-panel: #2b2822;
+  --sc-tile: #343027;
+  --sc-text: #eee5d6;
+  --sc-muted: #c0b39e;
+  --sc-sand: #d3b481;
+  --sc-line: #655844;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: clamp(18px, 3vw, 36px);
+  color: var(--sc-text);
+  background:
+    radial-gradient(ellipse at top left, #b68c4a12, transparent 65%),
+    var(--sc-background);
+  border: 1px solid var(--sc-line);
+  border-radius: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color-scheme: dark;
+}
+
+.SelectCreatureScreen *,
+.SelectCreatureScreen *::before,
+.SelectCreatureScreen *::after {
+  box-sizing: border-box;
+}
+
+/* Cabeçalho decorativo. Labels principais podem virar títulos no JSX depois. */
+.SelectCreatureScreen::before {
+  content: 'Creature selection';
+  display: block;
+  margin-bottom: 22px;
+  color: var(--sc-sand);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Equipe: três grupos no topo. */
+.SelectCreatureScreen .SelectedTeam {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--sc-line);
+}
+
+.SelectCreatureScreen .selected {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
+  padding: 14px;
+  background: #ffffff03;
+  border: 1px dashed var(--sc-line);
+  border-radius: 6px;
+}
+
+.SelectCreatureScreen .selected::before {
+  color: var(--sc-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.SelectCreatureScreen .tier1::before { content: 'Tier I · up to 4'; }
+.SelectCreatureScreen .tier2::before { content: 'Tier II · up to 3'; }
+.SelectCreatureScreen .tier3::before { content: 'Tier III · up to 2'; }
+
+.SelectCreatureScreen .selected:empty::after {
+  content: 'No creatures selected';
+  padding: 12px 0;
+  color: var(--sc-muted);
+  font-size: 13px;
+}
+
+/* Coleção + ficha: o Grid faz o posicionamento. */
+.SelectCreatureScreen .BrowseSection {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.SelectCreatureScreen .CreatureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.SelectCreatureScreen .CreatureGrid::before {
+  content: 'Available creatures';
+  grid-column: 1 / -1;
+  margin-bottom: 2px;
+  color: var(--sc-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.SelectCreatureScreen .CreatureGrid:empty::after {
+  content: 'No creatures available yet.';
+  grid-column: 1 / -1;
+  padding: 24px 12px;
+  color: var(--sc-muted);
+  border: 1px dashed var(--sc-line);
+  border-radius: 6px;
+}
+
+/* Base comum para os botões, sem afetar outras telas. */
+.SelectCreatureScreen button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: var(--sc-text);
+  background: var(--sc-tile);
+  border: 1px solid var(--sc-line);
+  border-radius: 5px;
+  font: inherit;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.SelectCreatureScreen button:hover:not(:disabled) {
+  background: #40382b;
+  border-color: var(--sc-sand);
+}
+
+.SelectCreatureScreen button:focus-visible {
+  outline: 2px solid var(--sc-sand);
+  outline-offset: 4px;
+}
+
+.SelectCreatureScreen button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.SelectCreatureScreen .creatureGridButton {
+  min-height: 108px;
+  padding: 18px 14px;
+  font-weight: 600;
+  background:
+    linear-gradient(155deg, #ffffff04, transparent 65%),
+    var(--sc-panel);
+}
+
+.SelectCreatureScreen .creatureSelectedButton {
+  background: #3b3327;
+  border-left: 3px solid var(--sc-sand);
+  font-size: 13px;
+}
+
+/* Opcional: funciona ao adicionar aria-pressed={...} aos botões no JSX. */
+.SelectCreatureScreen button[aria-pressed='true'] {
+  background: #493c29;
+  border-color: var(--sc-sand);
+  box-shadow: inset 0 0 0 1px var(--sc-sand);
+}
+
+/* Ficha: textos longos quebram linha e aumentam a altura naturalmente. */
+.SelectCreatureScreen .CreatureDetailsDisplay {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
+  padding: clamp(16px, 2vw, 24px);
+  background: var(--sc-panel);
+  border: 1px solid var(--sc-line);
+  border-top: 2px solid var(--sc-sand);
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .Title {
+  grid-column: 1 / -1;
+  margin: 0 0 4px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .Title:empty::before {
+  content: 'Inspect a creature';
+  color: var(--sc-muted);
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay p {
+  min-width: 0;
+  margin: 0;
+  padding: 8px 10px;
+  background: #00000014;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .groupes {
+  grid-column: 1 / -1;
+  padding: 0 0 12px;
+  color: var(--sc-muted);
+  background: transparent;
+  border-bottom: 1px solid var(--sc-line);
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .SkillsTitle {
+  grid-column: 1 / -1;
+  margin: 12px 0 0;
+  padding-top: 16px;
+  color: var(--sc-sand);
+  border-top: 1px solid var(--sc-line);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay h6 {
+  grid-column: 1 / -1;
+  margin: 6px 0 0;
+  color: var(--sc-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .EffectDescription {
+  grid-column: 1 / -1;
+  padding: 0 0 8px;
+  background: transparent;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.SelectCreatureScreen .addToSelection,
+.SelectCreatureScreen .removeFromSelection {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.SelectCreatureScreen .addToSelection {
+  color: #211b12;
+  background: var(--sc-sand);
+  border-color: var(--sc-sand);
+}
+
+.SelectCreatureScreen .addToSelection:hover:not(:disabled) {
+  background: #e3c99f;
+}
+
+.SelectCreatureScreen .removeFromSelection {
+  color: #eed0bd;
+  background: #48362d;
+  border-color: #9d7861;
+}
+
+/* Mobile: coleção e ficha ficam uma abaixo da outra. */
+@media (max-width: 720px) {
+  .SelectCreatureScreen {
+    margin: 12px auto;
+  }
+
+  .SelectCreatureScreen .BrowseSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 440px) {
+  .SelectCreatureScreen .SelectedTeam {
+    grid-template-columns: 1fr;
+  }
+
+  .SelectCreatureScreen .CreatureGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .SelectCreatureScreen button {
+    transition: none;
+  }
+}

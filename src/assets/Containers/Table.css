@@ -1,0 +1,24 @@
+#Table {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    'Player2side'
+    'Player1side';
+}
+
+#Table #Player1TableSide {
+  grid-area: Player1side;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-self: center;
+}
+
+#Table #Player2TableSide {
+  grid-area: Player2side;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-self: center;
+}

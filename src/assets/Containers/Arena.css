@@ -1,0 +1,42 @@
+#Arena {
+  box-sizing: border-box;
+  background-color: rgb(73, 48, 1);
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 2fr 7fr 2fr;
+  grid-template-areas:
+    'summon2 cards2 stats2'
+    'tableArea tableArea tableArea'
+    'stats1 cards1 summon1';
+  padding: 7vh 5vw;
+}
+
+.SummonRelic.player2hand {
+  grid-area: summon2;
+}
+
+.SummonRelic.player1hand {
+  grid-area: summon1;
+}
+
+.CardHand.player2hand {
+  grid-area: cards2;
+}
+
+.CardHand.player1hand {
+  grid-area: cards1;
+}
+
+.PlayerStatsUI.player1 {
+  grid-area: stats1;
+}
+
+.PlayerStatsUI.player2 {
+  grid-area: stats2;
+}
+
+#Table {
+  grid-area: tableArea;
+}
