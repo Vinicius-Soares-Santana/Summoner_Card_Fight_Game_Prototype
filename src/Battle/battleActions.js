@@ -69,6 +69,7 @@ function removeKilledCreature(dispatch, getState, id, killerId) {
   const state = getState();
   const creature = state.creatureCard[id];
   const playerId = state.table.player1side.includes(id) ? 'player1' : 'player2';
+  const position = state.table[sideOf(playerId)].indexOf(id);
   if (!creature || position < 0) return;
   emit(dispatch, creature, playerId, position, true, {
     id, KillerId: killerId, ownerFullData: copy(creature),
