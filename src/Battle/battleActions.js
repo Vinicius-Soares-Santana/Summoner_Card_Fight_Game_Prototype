@@ -28,7 +28,7 @@ export const startBattle = (config) => (dispatch) => {
       return { ok: false, error: `verify the life and team of ${id}. Limits: 4 /3/ 2; And the minimum of 1 T1.` };
     }
     if(!['human', 'ai'].includes(p.controller?.type) || 
-        (p.controller.type === 'ai' && (!EnemiesList[p.controller.enemyId] || !DifficultyPresets[p.controller.dificulty]))) {
+        (p.controller.type === 'ai' && (!EnemiesList[p.controller.enemyId] || !DifficultyPresets[p.controller.difficulty]))) {
       return { ok: false, error: `Invalid control for ${id}.` };
     }
   }
