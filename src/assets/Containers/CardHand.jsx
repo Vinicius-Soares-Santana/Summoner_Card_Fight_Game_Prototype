@@ -9,7 +9,7 @@ function CardHand(props) {
   return (
     <div className={`CardHand ${props.handToShow}`}>
       {currentHand?.map((card) => {
-        return <HandZone Creature={card} handToShow={props.handToShow} />;
+        return <HandZone Creature={card} handToShow={props.handToShow} key={card} />;
       })}
     </div>
   );

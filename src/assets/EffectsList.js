@@ -1853,7 +1853,7 @@ export const EffectsList = {
       );
     },
     description:
-      "If Fenrir survive 7 turns of it's owner, he will kill the player with the smallest amount of HP and finish the game, a tie kills the opponent.",
+      "If Fenrir survive 5 turns of it's owner, he will kill the player with the smallest amount of HP and finish the game, a tie kills the opponent.",
   },
 
   EndOfTheWorld: {

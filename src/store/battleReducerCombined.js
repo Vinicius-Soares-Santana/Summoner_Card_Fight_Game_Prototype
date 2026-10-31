@@ -63,7 +63,7 @@ export function withBattleReducer(existingReducers){
       };
 
       if(state.battle.mode === 'campaign' && state.playerWorld) {
-        next = { ...next, payerWorld: {
+        next = { ...next, playerWorld: {
           ...state.playerWorld, Health: Math.max(1, state.player.player1.health),
         } };
       }

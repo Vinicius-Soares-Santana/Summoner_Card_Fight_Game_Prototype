@@ -4,10 +4,10 @@ export const EnemiesList = {
     name: 'Acolite',
     health: 100,
     difficulty: 'normal',
-    preferredGroups: ['Swarm, Scaling'],
+    preferredGroups: ['Swarm', 'Scaling'],
     team: {
       tier1: ['Goblin', 'Slime', 'Gnome', 'Fluffy'],
-      tier2: ['Fairy', 'Traitor', 'Troll'],
+      tier2: ['Fairy', 'Basilisk', 'Troll'],
       tier3: ['DragonKing', 'SoulEater'],
     },
   },

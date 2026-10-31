@@ -58,6 +58,15 @@ export function validateAction(state, playerId, action){
       const attacker = state.creatureCard[action.attackerId];
       if(!attacker || !state.table[sideOf(playerId)].includes(action.attackerId) || ['paralised', 'paralysed'].includes(attacker.status)) return false;
 
+      if (action.direct === true) {
+        const enemyTable = state.table[sideOf(otherPlayer(playerId))];
+      
+        return enemyTable.every((id) => id === null) &&
+          state.turn.turnCount > 2 * state.turn.allStages.length &&
+          Array.isArray(action.targetIds) &&
+          action.targetIds.length === 0;
+      }
+      
       const ids = action.targetIds;
       if(!Array.isArray(ids) || ids.length === 0 || ids.length > attacker.simultaneousAttackMax || new Set(ids).size !== ids.length) return false;
       const legal = availableTargets(state, playerId, action.attackerId);

@@ -15,13 +15,17 @@ import { handActions } from '../../store/HandSlice';
 import { cardAttackCursorActions } from '../../store/CardAttackCursor';
 import { TurnActions } from '../../store/TurnSlice';
 import { stopBattle } from '../../Battle/battleActions';
+import { cemeteryActions } from '../../store/CemeterySlice';
+import { effectsActions } from '../../store/EffectsSlice';
 import './Arena.css';
 
 function Arena(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const battleType = useSelector((state) => state.battle.mode);
-  const battleResultWinner = useSelector((state) => state.winner);
+  const battleResultWinner = useSelector(
+    (state) => state.battle.winner
+  );
   const PlayersState = useSelector((state) => state.player);
 
   const { mana: player1Mana, health: player1Health } = PlayersState.player1;
@@ -115,7 +119,7 @@ function Arena(props) {
           <CardHand handToShow="player1hand" />
           <SummonRelic handToShow="player1hand" playerId="player1" />
           <PlayerStatsUI className="player1" />
-          <EffectManager />
+          <AIController />
         </div>
       );
 

@@ -10,8 +10,9 @@ function HandZone(props) {
   const dispatch = useDispatch();
   const CardSelected = useSelector((state) => state.cardslotcursor.selected);
   const Turn = useSelector((state) => state.turn);
-  const canControl = useSelector((state) => canHumanControl(state, props.playerId));
   const playerId = props.handToShow.replace('hand', '');
+  const canControl = useSelector((state) => canHumanControl(state, playerId));
+  
 
   let zoneSelectedOrNot;
 

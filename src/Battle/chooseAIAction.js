@@ -18,11 +18,11 @@ function scoreAction(state, playerId, action, enemy, profile) {
     let score = 5 + c.cardAttack + c.cardLife * c.cardDefense / 6 - c.manaCost / 5;
     score += preference * profile.groupBonus;
     if (c.name === 'Goblin') score += allies.filter((a) => a?.name === 'Goblin').length * 8;
-    if (c.name === 'Paladin') score += allies.filter((a) => a && a.cardDeffense < 3).length * 5;
+    if (c.name === 'Paladin') score += allies.filter((a) => a && a.cardDefense < 3).length * 5;
     if (c.name === 'Fairy') score += allies.filter((a) => a?.status === 'normal').length * 3;
     if (c.name === 'KingOfSpades') {
       score += (mine.health + mine.mana - c.manaCost) / 2;
-      if (enemies.some((e) => e && e.cardAttack / c.cardDeffense >= c.cardLife)) score -= 35;
+      if (enemies.some((e) => e && e.cardAttack / c.cardDefense >= c.cardLife)) score -= 35;
     }
     if (c.name === 'Fenrir') score += mine.health >= enemyHP ? 15 : -15;
     return score;
@@ -36,7 +36,7 @@ function scoreAction(state, playerId, action, enemy, profile) {
     const right = allies[pos + 1];
     const front = enemies[pos];
     for (const neighbor of [left, right].filter(Boolean)) {
-      if (neighbor.name === 'Paladin' && c.cardDeffense < 3) score += 12;
+      if (neighbor.name === 'Paladin' && c.cardDefense < 3) score += 12;
       if (c.name === 'Paladin' && neighbor.cardDefense < 3) score += 12;
       if (c.name === 'Fairy' && neighbor.status === 'normal') score += 8;
       if (c.name === 'Traitor' && neighbor.status == 'normal') score -= 10;

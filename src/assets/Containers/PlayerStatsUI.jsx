@@ -12,7 +12,7 @@ function PlayerStatsUI(props) {
   const mana = useSelector((state) => state.player[props.className].mana);
   const tier = useSelector((state) => state.player[props.className].manaTier);
   const Turn = useSelector((state) => state.turn);
-  const canControl = useSelector((state) => canHumanControl(state, props.playerId));
+  const canControl = useSelector((state) => canHumanControl(state, props.className));
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
