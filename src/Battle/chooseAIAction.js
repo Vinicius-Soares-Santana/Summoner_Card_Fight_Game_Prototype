@@ -101,7 +101,7 @@ export function chooseAIAction(state, playerId, rng = Math.random) {
       let increasedActions = [];
       actions.forEach((actionOnList) => {
         const score = scoreAction(state, playerId, actionOnList, enemy, profile);
-        let numOfCopies = Math.min(50, Math.max(Math.ceil((score/10)), 1));
+        let numOfCopies = Math.min((100 - (profile.mistakeChance * 10)), Math.max(Math.ceil((score/10)), 1));
         for (let cop=0; cop < numOfCopies; cop++){
           increasedActions.push(actionOnList);
         }
