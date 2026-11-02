@@ -11,8 +11,10 @@ function PlayerUDI(props){
             <Outlet />
             <div className="PlayerUDIBar" >
                 <img src="/" alt="PlayerImage" />
-                <h4 id="UDIHealth">HP: {playerInfo.Health}</h4>
-                <h4 id="UDIGold">Gold: {playerInfo.Gold}</h4>
+                <div id="UDIBasicStats">
+                    <h4 id="UDIHealth">HP: {playerInfo.Health}</h4>
+                    <h4 id="UDIGold">Gold: {playerInfo.Gold}</h4>
+                </div>
                 <div className="UDITeam" >
                     <h4 id="UDITeamTitle">Current Team:</h4>
                     {Object.keys(playerInfo.selectedCreatures).map((tier) => {

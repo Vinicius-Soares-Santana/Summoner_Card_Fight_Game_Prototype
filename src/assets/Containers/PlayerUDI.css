@@ -3,4 +3,15 @@
     bottom: 16px;
     left: 16px;
     z-index: 100;
+    display: flex;
+    flex-direction: row;
+}
+
+.UDITeam{
+    display: flex;
+    flex-direction: row;
+}
+
+.PlayerUDIBar * {
+    margin: auto 1px auto 1px;
 }
