@@ -17,7 +17,7 @@ function ArenaButton({ enemyId = 'goblinCaptain', difficulty }){
   }
 
   return <>
-    <button onClick={start}>Entrar na arena</button>
+    <button onClick={start}>Arena</button>
     {error && <p role="alert">{error}</p>}
   </>;
 }
