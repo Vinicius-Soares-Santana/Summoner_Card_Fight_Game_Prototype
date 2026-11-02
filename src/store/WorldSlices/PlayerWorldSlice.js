@@ -69,7 +69,7 @@ const PlayerWorldSlice = createSlice({
       state.availableCreatures.push(action.payload.creatureName);
     },
     changeDialog: (state, action) => {
-      if(action.payload !== null){
+      if(action.payload != null){
         state.dialogScreen = { image: action.payload.image, title: action.payload.title, message: action.payload.message };
       } else {
         state.dialogScreen = { image: '', title: '', message: '' };
