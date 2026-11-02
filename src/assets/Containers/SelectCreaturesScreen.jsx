@@ -75,7 +75,7 @@ function SelectCreaturesScreen(props){
 
             </section>
 
-            <button className="returnSelect" onClick={() => {navigate("/")}}>Return</button>
+            <button className="returnSelect" onClick={() => {navigate("/game/stage1main")}}>Return</button>
 
           </div>);
 }
