@@ -33,7 +33,7 @@ const WorldStateSlice = createSlice({
             }
             if(optionChosenNow){
                 const currentEventStep = state.worldEvents[eventName]?.eventStep;
-                state.worldEvents[eventName].optionsChosen = {...state.worldEvents[eventName]?.optionsChosen, currentEventStep: optionChosenNow };
+                state.worldEvents[eventName].optionsChosen = {...state.worldEvents[eventName]?.optionsChosen, [currentEventStep]: optionChosenNow };
             }
 
             state.worldEvents[eventName].eventStep += 1;
