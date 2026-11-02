@@ -9,6 +9,7 @@ function scoreAction(state, playerId, action, enemy, profile) {
   const enemyHP = state.player[opponent].health;
   const allies = state.table[sideOf(playerId)].map((id) => state.creatureCard[id]);
   const enemies = state.table[sideOf(opponent)].map((id) => state.creatureCard[id]);
+  const myTable = state.table[sideOf(opponent)];
   if (action.type === 'PASS') return 0;
   if(action.type === 'CHARGE') return action.amount * 0.5 + 2;
 
@@ -35,6 +36,9 @@ function scoreAction(state, playerId, action, enemy, profile) {
     const left = allies[pos - 1];
     const right = allies[pos + 1];
     const front = enemies[pos];
+    
+    if (!myTable.some((spaceValue => spaceValue !== null))) score += 20 + (100/c.manaCost);
+
     for (const neighbor of [left, right].filter(Boolean)) {
       if (neighbor.name === 'Paladin' && c.cardDefense < 3) score += 12;
       if (c.name === 'Paladin' && neighbor.cardDefense < 3) score += 12;
