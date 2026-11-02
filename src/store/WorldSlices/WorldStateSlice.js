@@ -11,3 +11,7 @@ const WorldStateSlice = createSlice({
         },
     },
 });
+
+export const worldStateActions = WorldStateSlice.actions;
+
+export default WorldStateSlice.reducer;

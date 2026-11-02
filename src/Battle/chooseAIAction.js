@@ -1,6 +1,6 @@
 import { CardsList } from './ActionConnections';
 import { EnemiesList, DifficultyPresets } from '../assets/EnemiesList';
-import { getLegalActions, validateAction, sideOf, otherPlayer, teamNames } from './battleRules';
+import { getLegalActions, validateAction, sideOf, handOf, otherPlayer, teamNames } from './battleRules';
 import { playAction } from './battleActions';
 
 function scoreAction(state, playerId, action, enemy, profile) {
@@ -9,9 +9,11 @@ function scoreAction(state, playerId, action, enemy, profile) {
   const enemyHP = state.player[opponent].health;
   const allies = state.table[sideOf(playerId)].map((id) => state.creatureCard[id]);
   const enemies = state.table[sideOf(opponent)].map((id) => state.creatureCard[id]);
-  const myTable = state.table[sideOf(opponent)];
+  const myTable = state.table[sideOf(playerId)];
+  const myHand = state.hand[handOf(playerId)];
   if (action.type === 'PASS') return 0;
   if(action.type === 'CHARGE') return action.amount * 0.5 + 2;
+  if(action.type === 'CHARGE' && !myTable.some((spaceValue) => spaceValue !== null) && !myHand.some((spaceValue) => spaceValue !== null)) return action.amount * 10 + (100 - action.amount) * 10;
 
   if (action.type === 'SUMMON') {
     const c = CardsList[action.name];
@@ -37,7 +39,7 @@ function scoreAction(state, playerId, action, enemy, profile) {
     const right = allies[pos + 1];
     const front = enemies[pos];
 
-    if (!myTable.some((spaceValue => spaceValue !== null))) score += 200 + (1000/c.manaCost);
+    if (!myTable.some((spaceValue) => spaceValue !== null)) score += 200 + (1000/c.manaCost);
 
     for (const neighbor of [left, right].filter(Boolean)) {
       if (neighbor.name === 'Paladin' && c.cardDefense < 3) score += 12;
