@@ -16,7 +16,7 @@ function PlayerUDI(props){
                     <h4 id="UDIGold">Gold: {playerInfo.Gold}</h4>
                 </div>
                 <div className="dialogBox">
-                    <img src={playerInfo.dialogScreen.image} />
+                    <img src={playerInfo.dialogScreen.image} alt="Character Profile" />
                     <h4>{playerInfo.dialogScreen.title}</h4>
                     <p>{playerInfo.dialogScreen.message}</p>
                 </div>
