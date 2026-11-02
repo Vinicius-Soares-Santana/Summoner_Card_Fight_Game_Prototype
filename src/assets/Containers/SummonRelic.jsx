@@ -20,6 +20,10 @@ function SummonRelic(props) {
   const Turn = useSelector((state) => state.turn);
   const canControl = useSelector((state) => canHumanControl(state, props.playerId));
 
+  const currentSelection = useSelector(
+    (state) => state.battle.participants[props.playerId]?.team
+  );
+
   function chargeMana(event) {
     event.preventDefault();
     dispatch(playAction(props.playerId, { type: 'CHARGE', amount: Number(manaAmount) }));
@@ -35,32 +39,67 @@ function SummonRelic(props) {
     setCreatureName('');
   }
 
-  return (
-    <div className={`SummonRelic ${props.handToShow}`}>
-      <h2>{`${props.handToShow}`}</h2>
-      <form className="summonForm" onSubmit={handleSubmit}>
-        <label htmlFor={`nameField${props.playerId}`}>Summon Creature</label>
-        <input
-          id={`nameField${props.playerId}`}
-          type="text"
-          value={creatureName}
-          onChange={(e) => setCreatureName(e.target.value)}
-        />
-        <button type="submit" disabled={!canControl}>Summon</button>
-      </form>
+  if(canControl){
+    return (
+      <div className={`SummonRelic ${props.handToShow}`}>
+        <h2>{`${props.handToShow}`}</h2>
+        <form className="summonForm" onSubmit={handleSubmit}>
+          <p>Summon Creature</p>
 
-      <form className="chargeManaForm" onSubmit={chargeMana}>
-        <label htmlFor={`chargeManaAmount${props.playerId}`}>Charge Mana</label>
-        <input
-          id={`chargeManaAmount${props.playerId}`}
-          type="number"
-          value={manaAmount}
-          onChange={(e) => setManaAmount(Number(e.target.value))}
-        />
-        <button type="submit" disabled={!canControl}>Charge</button>
-      </form>
-    </div>
-  );
+          <div className='SelectedTeamSummon' >
+              {Object.keys(currentSelection ?? {}).map(
+                (tier) => <div className={`selectedSummon ${tier}`} key={tier} >
+                  {currentSelection[tier].map(
+                    (creatureNameMap) => 
+                      {return <button type="button" aria-pressed={creatureName === creatureNameMap} className='creatureSelectedSummonButton' key={creatureNameMap} onClick={() => setCreatureName(creatureNameMap)} >
+                          {creatureNameMap}
+                        </button>})}
+                      </div>)}
+            </div>
+          <button type="submit" disabled={!canControl || !creatureName}>Summon</button>
+        </form>
+  
+        <form className="chargeManaForm" onSubmit={chargeMana}>
+          <label htmlFor={`chargeManaAmount${props.playerId}`}>Charge Mana</label>
+          <input
+            id={`chargeManaAmount${props.playerId}`}
+            type="number"
+            value={manaAmount}
+            onChange={(e) => setManaAmount(Number(e.target.value))}
+          />
+          <button type="submit" disabled={!canControl}>Charge</button>
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className={`SummonRelic ${props.handToShow}`}>
+        <h2>{`${props.handToShow}`}</h2>
+        <form className="summonForm" onSubmit={handleSubmit}>
+          <label htmlFor={`nameField${props.playerId}`}>Summon Creature</label>
+          <input
+            id={`nameField${props.playerId}`}
+            type="text"
+            value={creatureName}
+            onChange={(e) => setCreatureName(e.target.value)}
+          />
+          <button type="submit" disabled={!canControl}>Summon</button>
+        </form>
+  
+        <form className="chargeManaForm" onSubmit={chargeMana}>
+          <label htmlFor={`chargeManaAmount${props.playerId}`}>Charge Mana</label>
+          <input
+            id={`chargeManaAmount${props.playerId}`}
+            type="number"
+            value={manaAmount}
+            onChange={(e) => setManaAmount(Number(e.target.value))}
+          />
+          <button type="submit" disabled={!canControl}>Charge</button>
+        </form>
+      </div>
+    );
+  }
+
 }
 
 export default SummonRelic;
