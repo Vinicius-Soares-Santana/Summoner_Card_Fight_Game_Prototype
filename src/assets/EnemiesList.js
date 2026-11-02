@@ -3,7 +3,7 @@ export const EnemiesList = {
     id: 'Acolite1',
     name: 'Acolite',
     health: 100,
-    difficulty: 'normal',
+    difficulty: 'stupid',
     preferredGroups: ['Swarm', 'Scaling'],
     team: {
       tier1: ['Goblin', 'Slime', 'Gnome', 'Fluffy'],
