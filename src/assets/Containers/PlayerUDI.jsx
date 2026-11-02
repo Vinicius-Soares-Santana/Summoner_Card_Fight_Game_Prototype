@@ -12,7 +12,7 @@ function PlayerUDI(props){
 
     function showOptionsButtons(eventName, options){
         if(options != '' && options != null){
-            return options.map((optionAvailable) => {
+            return options.map((optionAvailable) => (
                  <button key={optionAvailable} onClick={() => 
                     {
                         dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable }));
@@ -21,7 +21,7 @@ function PlayerUDI(props){
                 }>
                     {optionAvailable}
                 </button>
-            })
+            ))
         }
     }
 

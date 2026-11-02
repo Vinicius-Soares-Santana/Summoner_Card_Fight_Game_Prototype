@@ -29,15 +29,15 @@ const WorldStateSlice = createSlice({
 
             if(!state.worldEvents[eventName]) return;
             if(newStatus){
-                state.worldEvents[eventName]?.eventStatus = newStatus;
+                state.worldEvents[eventName].eventStatus = newStatus;
             }
             if(optionChosenNow){
                 const currentEventStep = state.worldEvents[eventName]?.eventStep;
-                state.worldEvents[eventName]?.optionsChosen = {...state.worldEvents[eventName]?.optionsChosen, currentEventStep: optionChosenNow };
+                state.worldEvents[eventName].optionsChosen = {...state.worldEvents[eventName]?.optionsChosen, currentEventStep: optionChosenNow };
             }
 
             state.worldEvents[eventName].eventStep += 1;
-            
+
         },
     },
 });
