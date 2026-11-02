@@ -4,7 +4,7 @@ const initialState = {Health: 100,
                       Gold: 0,
                       availableCreatures: [],
                       selectedCreatures:{tier1:[], tier2:[], tier3:[]},
-                      dialogScreen: {image: '', title: '', message:''},
+                      dialogScreen: {image: '', title: '', message:'', eventName:'', options:[]},
                     };
 
 const PlayerWorldSlice = createSlice({
@@ -70,9 +70,17 @@ const PlayerWorldSlice = createSlice({
     },
     changeDialog: (state, action) => {
       if(action.payload != null){
-        state.dialogScreen = { image: action.payload.image, title: action.payload.title, message: action.payload.message };
+        
+        state.dialogScreen = { 
+          image: action.payload.image,
+          title: action.payload.title, 
+          message: action.payload.message, 
+          eventName: action.payload.eventName, 
+          options: action.payload.options
+        };
+
       } else {
-        state.dialogScreen = { image: '', title: '', message: '' };
+        state.dialogScreen = { image: '', title: '', message: '', eventName:'', options: [] };
       }
     }
   },

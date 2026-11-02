@@ -1,10 +1,37 @@
 import react from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 import './PlayerUDI.css';
 
 function PlayerUDI(props){
     const playerInfo = useSelector((state) => state.playerWorld);
+    const messageBoxInfo = playerInfo.dialogScreen;
+    const dispatch = useDispatch();
+
+    function showOptionsButtons(eventName, options){
+        if(options != '' && options != null){
+            options.map((optionAvailable) => {
+                <button key={optionAvailable} onClick={() => dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable }))}>
+                    {optionAvailable}
+                </button>
+            })
+        }
+    }
+
+
+
+    function dialogBoxCreator(messageBox){
+        if(messageBox.title != '' && messageBox.title != null){
+            return  <div className="dialogBox">
+                        <img src={playerInfo.dialogScreen.image} alt="Character Profile" />
+                        <h4>{playerInfo.dialogScreen.title}</h4>
+                        <p>{playerInfo.dialogScreen.message}</p>
+                        {showOptionsButtons(messageBox.eventName, eventName.options)}
+                    </div>
+        }
+
+    }
 
     return(
         <div className="PlayerUDILayer">
@@ -15,11 +42,7 @@ function PlayerUDI(props){
                     <h4 id="UDIHealth">HP: {playerInfo.Health}</h4>
                     <h4 id="UDIGold">Gold: {playerInfo.Gold}</h4>
                 </div>
-                <div className="dialogBox">
-                    <img src={playerInfo.dialogScreen.image} alt="Character Profile" />
-                    <h4>{playerInfo.dialogScreen.title}</h4>
-                    <p>{playerInfo.dialogScreen.message}</p>
-                </div>
+                {dialogBoxCreator(messageBoxInfo)}
                 <div className="UDITeam" >
                     <h4 id="UDITeamTitle">Current Team:</h4>
                     {Object.keys(playerInfo.selectedCreatures).map((tier) => {
