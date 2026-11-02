@@ -22,7 +22,6 @@ function EffectManager(props) {
 
   //Verify and applies effects when the exist
   if (effectsActive.effectsLine.length > 0) {
-    console.log(JSON.stringify(effectsActive));
     effectsActive.effectsLine.forEach((effectInLine) => {
       const currentState = Store.getState();
       const CardEffectOwnerId = effectInLine.body.OwnerId;

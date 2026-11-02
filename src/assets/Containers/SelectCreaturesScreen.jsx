@@ -1,6 +1,7 @@
 import react from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
 import { CardsList } from '../CardsList';
 import { EffectsList } from '../EffectsList';
@@ -13,6 +14,7 @@ function SelectCreaturesScreen(props){
   const currentSelection = useSelector((state) => state.playerWorld.selectedCreatures);
   const availableCreatures = useSelector((state) => state.playerWorld.availableCreatures);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   function SkillsDisplayer(creatureEffectData){
@@ -72,6 +74,8 @@ function SelectCreaturesScreen(props){
               </div>
 
             </section>
+
+            <button className="returnSelect" onClick={() => {navigate("/")}}>Return</button>
 
           </div>);
 }

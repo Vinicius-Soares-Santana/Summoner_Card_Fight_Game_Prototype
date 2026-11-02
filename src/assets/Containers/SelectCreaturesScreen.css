@@ -1,25 +1,38 @@
+/* ===== Tela e cores ===== */
+
 .SelectCreatureScreen {
-  /* Paleta: carvão quente, pedra e areia desbotada. */
-  --sc-background: #211f1b;
-  --sc-panel: #2b2822;
-  --sc-tile: #343027;
+  --sc-background: #121313;
+  --sc-panel: #1c1c1b;
+  --sc-tile: #272521;
   --sc-text: #eee5d6;
-  --sc-muted: #c0b39e;
-  --sc-sand: #d3b481;
-  --sc-line: #655844;
+  --sc-muted: #b9ad9b;
+  --sc-gold: #dfb766;
+  --sc-line: #534838;
+  --sc-copper: #d2946c;
+  --sc-silver: #b5c8db;
 
   box-sizing: border-box;
-  width: 100%;
-  max-width: 1200px;
+  width: min(1200px, calc(100% - 32px));
   margin: 24px auto;
-  padding: clamp(18px, 3vw, 36px);
+  padding: clamp(16px, 3vw, 36px);
+
   color: var(--sc-text);
   background:
-    radial-gradient(ellipse at top left, #b68c4a12, transparent 65%),
-    var(--sc-background);
+    radial-gradient(
+      ellipse at top left,
+      #b7722920,
+      transparent 55%
+    ),
+    linear-gradient(145deg, #1e1d19, var(--sc-background));
+
   border: 1px solid var(--sc-line);
   border-radius: 10px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  box-shadow:
+    0 20px 55px #00000070,
+    inset 0 0 0 4px #ffffff03;
+
+  font-family: system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.6;
   color-scheme: dark;
@@ -31,23 +44,69 @@
   box-sizing: border-box;
 }
 
-/* Cabeçalho decorativo. Labels principais podem virar títulos no JSX depois. */
 .SelectCreatureScreen::before {
-  content: 'Creature selection';
+  content: "Creature selection";
   display: block;
-  margin-bottom: 22px;
-  color: var(--sc-sand);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  margin-bottom: 24px;
+
+  color: var(--sc-gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 4vw, 34px);
+  letter-spacing: 0.04em;
 }
 
-/* Equipe: três grupos no topo. */
+
+/* ===== Botões: estilo compartilhado ===== */
+
+.SelectCreatureScreen button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 14px;
+
+  color: var(--sc-text);
+  background: var(--sc-tile);
+  border: 1px solid var(--sc-line);
+  border-radius: 5px;
+
+  font: inherit;
+  text-align: left;
+  overflow-wrap: anywhere;
+
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.SelectCreatureScreen button:hover:not(:disabled) {
+  background-color: #373025;
+  border-color: var(--sc-gold);
+}
+
+.SelectCreatureScreen button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.SelectCreatureScreen button:focus-visible {
+  outline: 2px solid var(--sc-gold);
+  outline-offset: 4px;
+}
+
+.SelectCreatureScreen button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
+/* ===== Equipe selecionada ===== */
+
 .SelectCreatureScreen .SelectedTeam {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+
   margin-bottom: 28px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--sc-line);
@@ -58,172 +117,238 @@
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
+
   min-width: 0;
   padding: 14px;
-  background: #ffffff03;
-  border: 1px dashed var(--sc-line);
+
+  background: #00000026;
+  border: 1px solid var(--sc-line);
+  border-top: 2px solid var(--tier-color);
   border-radius: 6px;
 }
 
+.SelectCreatureScreen .selected.tier1 {
+  --tier-color: var(--sc-copper);
+}
+
+.SelectCreatureScreen .selected.tier2 {
+  --tier-color: var(--sc-silver);
+}
+
+.SelectCreatureScreen .selected.tier3 {
+  --tier-color: var(--sc-gold);
+}
+
 .SelectCreatureScreen .selected::before {
-  color: var(--sc-muted);
+  margin-bottom: 4px;
+  color: var(--tier-color);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.SelectCreatureScreen .tier1::before { content: 'Tier I · up to 4'; }
-.SelectCreatureScreen .tier2::before { content: 'Tier II · up to 3'; }
-.SelectCreatureScreen .tier3::before { content: 'Tier III · up to 2'; }
+.SelectCreatureScreen .selected.tier1::before {
+  content: "Tier I · up to 4";
+}
+
+.SelectCreatureScreen .selected.tier2::before {
+  content: "Tier II · up to 3";
+}
+
+.SelectCreatureScreen .selected.tier3::before {
+  content: "Tier III · up to 2";
+}
 
 .SelectCreatureScreen .selected:empty::after {
-  content: 'No creatures selected';
-  padding: 12px 0;
+  content: "No creatures selected";
+  padding: 14px 0;
   color: var(--sc-muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.SelectCreatureScreen .creatureSelectedButton {
+  background: #24231f;
+  border-left: 3px solid var(--tier-color);
   font-size: 13px;
 }
 
-/* Coleção + ficha: o Grid faz o posicionamento. */
+
+/* ===== Coleção e ficha ===== */
+
 .SelectCreatureScreen .BrowseSection {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   align-items: start;
   gap: 24px;
+  min-width: 0;
 }
 
 .SelectCreatureScreen .CreatureGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(140px, 100%), 1fr));
   align-content: start;
   gap: 12px;
   min-width: 0;
 }
 
 .SelectCreatureScreen .CreatureGrid::before {
-  content: 'Available creatures';
+  content: "Available creatures";
   grid-column: 1 / -1;
-  margin-bottom: 2px;
+
+  margin-bottom: 4px;
   color: var(--sc-muted);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .SelectCreatureScreen .CreatureGrid:empty::after {
-  content: 'No creatures available yet.';
+  content: "No creatures available yet.";
   grid-column: 1 / -1;
-  padding: 24px 12px;
+
+  padding: 28px 16px;
   color: var(--sc-muted);
   border: 1px dashed var(--sc-line);
   border-radius: 6px;
 }
 
-/* Base comum para os botões, sem afetar outras telas. */
-.SelectCreatureScreen button {
-  min-width: 0;
-  min-height: 44px;
-  padding: 10px 14px;
-  color: var(--sc-text);
-  background: var(--sc-tile);
-  border: 1px solid var(--sc-line);
-  border-radius: 5px;
-  font: inherit;
-  text-align: left;
-  overflow-wrap: anywhere;
-  cursor: pointer;
-  transition: background-color 160ms ease, border-color 160ms ease;
-}
-
-.SelectCreatureScreen button:hover:not(:disabled) {
-  background: #40382b;
-  border-color: var(--sc-sand);
-}
-
-.SelectCreatureScreen button:focus-visible {
-  outline: 2px solid var(--sc-sand);
-  outline-offset: 4px;
-}
-
-.SelectCreatureScreen button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .SelectCreatureScreen .creatureGridButton {
-  min-height: 108px;
-  padding: 18px 14px;
-  font-weight: 600;
+  position: relative;
+  min-height: 112px;
+  padding: 22px 14px;
+
   background:
-    linear-gradient(155deg, #ffffff04, transparent 65%),
-    var(--sc-panel);
+    radial-gradient(ellipse at bottom, #b87d3320, transparent 80%),
+    linear-gradient(145deg, #292720, #181919);
+
+  border: 1px solid #706047;
+
+  box-shadow:
+    inset 0 0 0 3px #00000035,
+    0 4px 10px #00000030;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  text-align: center;
 }
 
-.SelectCreatureScreen .creatureSelectedButton {
-  background: #3b3327;
-  border-left: 3px solid var(--sc-sand);
-  font-size: 13px;
+.SelectCreatureScreen .creatureGridButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    inset 0 0 0 3px #00000035,
+    0 6px 16px #00000050;
 }
 
-/* Opcional: funciona ao adicionar aria-pressed={...} aos botões no JSX. */
-.SelectCreatureScreen button[aria-pressed='true'] {
-  background: #493c29;
-  border-color: var(--sc-sand);
-  box-shadow: inset 0 0 0 1px var(--sc-sand);
+/* Marca qual criatura está sendo inspecionada. */
+
+.SelectCreatureScreen button[aria-pressed="true"] {
+  color: #fff0cf;
+  background: #453722;
+  border-color: var(--sc-gold);
+
+  box-shadow:
+    inset 0 0 0 1px var(--sc-gold),
+    0 0 14px #dfb76618;
 }
 
-/* Ficha: textos longos quebram linha e aumentam a altura naturalmente. */
+
+/* ===== Ficha da criatura ===== */
+
 .SelectCreatureScreen .CreatureDetailsDisplay {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+
   min-width: 0;
   padding: clamp(16px, 2vw, 24px);
-  background: var(--sc-panel);
+
+  background:
+    linear-gradient(160deg, #ffffff03, transparent 45%),
+    var(--sc-panel);
+
   border: 1px solid var(--sc-line);
-  border-top: 2px solid var(--sc-sand);
+  border-top: 2px solid var(--sc-gold);
   border-radius: 6px;
+
+  box-shadow: 0 8px 24px #00000030;
   overflow-wrap: anywhere;
 }
 
 .SelectCreatureScreen .CreatureDetailsDisplay .Title {
   grid-column: 1 / -1;
-  margin: 0 0 4px;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(24px, 3vw, 32px);
+  margin: 0 0 6px;
+
+  color: #f1dfb9;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 3vw, 34px);
   font-weight: 400;
   line-height: 1.2;
 }
 
 .SelectCreatureScreen .CreatureDetailsDisplay .Title:empty::before {
-  content: 'Inspect a creature';
+  content: "Inspect a creature";
   color: var(--sc-muted);
 }
 
 .SelectCreatureScreen .CreatureDetailsDisplay p {
   min-width: 0;
   margin: 0;
-  padding: 8px 10px;
-  background: #00000014;
+  padding: 9px 10px;
+
+  background: #00000024;
+  border: 1px solid #ffffff05;
   border-radius: 3px;
+
   font-size: 14px;
 }
 
 .SelectCreatureScreen .CreatureDetailsDisplay .groupes {
   grid-column: 1 / -1;
-  padding: 0 0 12px;
+  margin-bottom: 4px;
+  padding: 0 0 14px;
+
   color: var(--sc-muted);
   background: transparent;
+  border: 0;
   border-bottom: 1px solid var(--sc-line);
 }
 
+.SelectCreatureScreen .CreatureDetailsDisplay .HP {
+  color: #e6b1a8;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .Defense {
+  color: #b5c8db;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .Attack {
+  color: #efc28b;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .ManaCost {
+  color: #c3b5e5;
+}
+
+.SelectCreatureScreen .CreatureDetailsDisplay .Max {
+  grid-column: 1 / -1;
+}
+
+
+/* ===== Habilidades ===== */
+
 .SelectCreatureScreen .CreatureDetailsDisplay .SkillsTitle {
   grid-column: 1 / -1;
-  margin: 12px 0 0;
-  padding-top: 16px;
-  color: var(--sc-sand);
+  margin: 10px 0 0;
+  padding-top: 18px;
+
+  color: var(--sc-gold);
   border-top: 1px solid var(--sc-line);
+
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -232,6 +357,7 @@
 .SelectCreatureScreen .CreatureDetailsDisplay h6 {
   grid-column: 1 / -1;
   margin: 6px 0 0;
+
   color: var(--sc-muted);
   font-size: 13px;
   font-weight: 600;
@@ -239,49 +365,92 @@
 
 .SelectCreatureScreen .CreatureDetailsDisplay .EffectDescription {
   grid-column: 1 / -1;
-  padding: 0 0 8px;
+  padding: 0 0 10px;
+
+  color: #ded6c8;
   background: transparent;
+  border: 0;
+
   line-height: 1.8;
   white-space: pre-line;
 }
+
+
+/* ===== Adicionar e remover ===== */
 
 .SelectCreatureScreen .addToSelection,
 .SelectCreatureScreen .removeFromSelection {
   grid-column: 1 / -1;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 14px;
+
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .SelectCreatureScreen .addToSelection {
-  color: #211b12;
-  background: var(--sc-sand);
-  border-color: var(--sc-sand);
+  color: #21190e;
+  background: #d7b16b;
+  border-color: #efd298;
 }
 
 .SelectCreatureScreen .addToSelection:hover:not(:disabled) {
-  background: #e3c99f;
+  color: #21190e;
+  background: #edcb8c;
+  border-color: #ffe3ad;
 }
 
 .SelectCreatureScreen .removeFromSelection {
-  color: #eed0bd;
-  background: #48362d;
-  border-color: #9d7861;
+  color: #f0c3b5;
+  background: #422923;
+  border-color: #915c49;
 }
 
-/* Mobile: coleção e ficha ficam uma abaixo da outra. */
-@media (max-width: 720px) {
+.SelectCreatureScreen .removeFromSelection:hover:not(:disabled) {
+  background: #593229;
+  border-color: #d08b6e;
+}
+
+
+/* ===== Voltar ===== */
+
+.SelectCreatureScreen .returnSelect {
+  display: block;
+  min-width: 140px;
+  margin-top: 28px;
+
+  color: var(--sc-muted);
+  background: #181918;
+  text-align: center;
+}
+
+.SelectCreatureScreen .returnSelect:hover:not(:disabled) {
+  color: var(--sc-text);
+}
+
+
+/* ===== Celulares e telas menores ===== */
+
+@media (max-width: 760px) {
   .SelectCreatureScreen {
+    width: calc(100% - 24px);
     margin: 12px auto;
   }
 
   .SelectCreatureScreen .BrowseSection {
     grid-template-columns: 1fr;
   }
+
+  .SelectCreatureScreen .SelectedTeam {
+    gap: 8px;
+  }
+
+  .SelectCreatureScreen .selected {
+    padding: 10px;
+  }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 480px) {
   .SelectCreatureScreen .SelectedTeam {
     grid-template-columns: 1fr;
   }
@@ -289,10 +458,25 @@
   .SelectCreatureScreen .CreatureGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .SelectCreatureScreen .creatureGridButton {
+    min-height: 90px;
+    padding: 16px 10px;
+    font-size: 15px;
+  }
+
+  .SelectCreatureScreen .returnSelect {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .SelectCreatureScreen button {
     transition: none;
+  }
+
+  .SelectCreatureScreen button:hover:not(:disabled),
+  .SelectCreatureScreen button:active:not(:disabled) {
+    transform: none;
   }
 }
