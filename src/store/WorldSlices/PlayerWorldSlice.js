@@ -68,6 +68,13 @@ const PlayerWorldSlice = createSlice({
     addAvailableCreature: (state, action) => {
       state.availableCreatures.push(action.payload.creatureName);
     },
+    changeDialog: (state, action) => {
+      if(action.payload !== null){
+        return {...state, image: action.payload.image, title: action.payload.title, message: action.payload.message };
+      } else {
+        return {...state, image: '', title: '', message: '' };
+      }
+    }
   },
 });
 
