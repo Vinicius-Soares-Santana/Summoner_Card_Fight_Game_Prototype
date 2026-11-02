@@ -10,6 +10,7 @@ import effectsReducer from './EffectsSlice';
 import cemeteryReducer from './CemeterySlice';
 import battleReducer from './BattleSlice';
 import playerWorldReducer from './WorldSlices/PlayerWorldSlice';
+import WorldStateReducer from './WorldSlices/WorldStateSlice';
 import { withBattleReducer } from './battleReducerCombined';
 
 export const Store = configureStore({
@@ -25,5 +26,6 @@ export const Store = configureStore({
     cemetery: cemeteryReducer,
     playerWorld: playerWorldReducer,
     battle: battleReducer,
+    worldState: WorldStateReducer,
   }),
 });
