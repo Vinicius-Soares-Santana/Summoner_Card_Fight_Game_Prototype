@@ -70,9 +70,9 @@ const PlayerWorldSlice = createSlice({
     },
     changeDialog: (state, action) => {
       if(action.payload !== null){
-        return {...state, image: action.payload.image, title: action.payload.title, message: action.payload.message };
+        state.dialogScreen = { image: action.payload.image, title: action.payload.title, message: action.payload.message };
       } else {
-        return {...state, image: '', title: '', message: '' };
+        state.dialogScreen = { image: '', title: '', message: '' };
       }
     }
   },
