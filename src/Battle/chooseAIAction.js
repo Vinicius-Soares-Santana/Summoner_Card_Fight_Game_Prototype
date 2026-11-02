@@ -37,7 +37,7 @@ function scoreAction(state, playerId, action, enemy, profile) {
     const right = allies[pos + 1];
     const front = enemies[pos];
 
-    if (!myTable.some((spaceValue => spaceValue !== null))) score += 20 + (100/c.manaCost);
+    if (!myTable.some((spaceValue => spaceValue !== null))) score += 200 + (1000/c.manaCost);
 
     for (const neighbor of [left, right].filter(Boolean)) {
       if (neighbor.name === 'Paladin' && c.cardDefense < 3) score += 12;
