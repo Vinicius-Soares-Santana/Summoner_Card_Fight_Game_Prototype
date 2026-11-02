@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {currentWorldStage: 'beggining',};
+const initialState = {
+    currentWorldStage: 'beggining',
+};
 
 const WorldStateSlice = createSlice({
     name: 'worldState',
