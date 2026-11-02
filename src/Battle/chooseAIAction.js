@@ -36,7 +36,7 @@ function scoreAction(state, playerId, action, enemy, profile) {
     const left = allies[pos - 1];
     const right = allies[pos + 1];
     const front = enemies[pos];
-    
+
     if (!myTable.some((spaceValue => spaceValue !== null))) score += 20 + (100/c.manaCost);
 
     for (const neighbor of [left, right].filter(Boolean)) {
@@ -97,7 +97,22 @@ export function chooseAIAction(state, playerId, rng = Math.random) {
     }
   }
 
-  if (rng() < profile.mistakeChance) return actions[Math.floor(rng() * actions.length)];
+  if (rng() < profile.mistakeChance && myTable.some((spaceValue => spaceValue !== null))){
+      let increasedActions = [];
+      actions.forEach((actionOnList) => {
+        const score = scoreAction(state, playerId, actionOnList, enemy, profile);
+        let numOfCopies = Math.min(50, Math.max(Math.ceil((score/10)), 1));
+        for (let cop=0; cop < numOfCopies; cop++){
+          increasedActions.push(actionOnList);
+        }
+      })
+      if(increasedActions.length > 0){
+        return increasedActions[Math.floor(rng() * increasedActions.length)]
+      } else {
+        return actions[Math.floor(rng() * actions.length)]
+      }
+      
+    };
   let best = actions[0];
   let bestScore = -Infinity;
   for (const action of actions){
