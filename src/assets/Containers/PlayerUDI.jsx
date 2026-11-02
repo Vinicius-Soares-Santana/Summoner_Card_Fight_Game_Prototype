@@ -21,7 +21,9 @@ function PlayerUDI(props){
                         return  <div className={`UDI${tier}`} key={`UDI${tier}`}>
                                     <h5>{tier}</h5>
                                     <ul>
-                                        {playerInfo.selectedCreatures[tier]?.map((creatureInList) => <li className="listedCreature" key={`UDI${creatureInList}`}>{creatureInList}</li>)}
+                                        {playerInfo.selectedCreatures[tier]?.map(
+                                            (creatureInList) => <li className="listedCreature" key={`UDI${creatureInList}`}>{creatureInList}</li>
+                                            )}
                                     </ul>
                                 </div>
                     })}
