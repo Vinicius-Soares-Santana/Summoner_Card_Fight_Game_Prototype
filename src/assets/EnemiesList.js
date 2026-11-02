@@ -41,6 +41,6 @@ export const DifficultyPresets = {
   stupid:   { mistakeChance: 0.40, groupBonus: 1, minimumHealth: 40, delay: 900 },
   easy:   { mistakeChance: 0.30, groupBonus: 1, minimumHealth: 40, delay: 900 },
   normal: { mistakeChance: 0.15, groupBonus: 3, minimumHealth: 30, delay: 700 },
-  average: { mistakeChance: 0.07, groupBonus: 3, minimumHealth: 30, delay: 700 },
-  hard:   { mistakeChance: 0,    groupBonus: 3, minimumHealth: 25, delay: 500 },
+  hard: { mistakeChance: 0.1, groupBonus: 3, minimumHealth: 30, delay: 700 },
+  nightmare:   { mistakeChance: 0.01,    groupBonus: 3, minimumHealth: 25, delay: 500 },
 };
