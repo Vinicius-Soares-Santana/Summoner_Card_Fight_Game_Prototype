@@ -2,6 +2,7 @@ import react from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
+import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
 import './PlayerUDI.css';
 
 function PlayerUDI(props){
@@ -12,7 +13,12 @@ function PlayerUDI(props){
     function showOptionsButtons(eventName, options){
         if(options != '' && options != null){
             return options.map((optionAvailable) => {
-                 <button key={optionAvailable} onClick={() => dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable }))}>
+                 <button key={optionAvailable} onClick={() => 
+                    {
+                        dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable }));
+                        dispatch(playerWorldActions.changeDialog(null));
+                    }
+                }>
                     {optionAvailable}
                 </button>
             })
@@ -27,7 +33,7 @@ function PlayerUDI(props){
                         <img src={playerInfo.dialogScreen.image} alt="Character Profile" />
                         <h4>{playerInfo.dialogScreen.title}</h4>
                         <p>{playerInfo.dialogScreen.message}</p>
-                        {showOptionsButtons(messageBox.eventName, eventName.options)}
+                        {showOptionsButtons(messageBox.eventName, messageBox.options)}
                     </div>
         }
 
