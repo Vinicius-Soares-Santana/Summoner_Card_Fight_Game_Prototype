@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {Health: 100,
                       Gold: 0,
                       availableCreatures: [],
-                      selectedCreatures:{tier1:[], tier2:[], tier3:[]}
+                      selectedCreatures:{tier1:[], tier2:[], tier3:[]},
+                      dialogScreen: {image: '', title: '', message:''},
                     };
 
 const PlayerWorldSlice = createSlice({

@@ -19,6 +19,6 @@ export default function AIController() {
   }, [dispatch, battle.id, battle.revision, battle.status, battle.resolving,
     controller?.type, delay]);
 
-  if (battle.error) return <p role="alert">Combate pausado: {battle.error}</p>;
+  if (battle.error) return <p role="alert">Fight Stopped, error: {battle.error}</p>;
   return null;
 }

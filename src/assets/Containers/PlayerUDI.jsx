@@ -15,6 +15,11 @@ function PlayerUDI(props){
                     <h4 id="UDIHealth">HP: {playerInfo.Health}</h4>
                     <h4 id="UDIGold">Gold: {playerInfo.Gold}</h4>
                 </div>
+                <div className="dialogBox">
+                    <img src={playerInfo.dialogScreen.image} />
+                    <h4>{playerInfo.dialogScreen.title}</h4>
+                    <p>{playerInfo.dialogScreen.message}</p>
+                </div>
                 <div className="UDITeam" >
                     <h4 id="UDITeamTitle">Current Team:</h4>
                     {Object.keys(playerInfo.selectedCreatures).map((tier) => {
