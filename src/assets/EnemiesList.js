@@ -10,6 +10,8 @@ export const EnemiesList = {
       tier2: ['Fairy', 'Basilisk', 'Troll'],
       tier3: ['DragonKing', 'SoulEater'],
     },
+    goldLoot: 10,
+    itemLoot: [],
   },
   goblinCaptain: {
     id: 'goblinCaptain',
@@ -22,6 +24,8 @@ export const EnemiesList = {
       tier2: ['Dragon', 'Fairy', 'Troll'],
       tier3: ['Hydra', 'DragonKing'],
     },
+    goldLoot: 30,
+    itemLoot: [],
   },
   ragnarokKeeper: {
     id: 'ragnarokKeeper',
@@ -34,6 +38,8 @@ export const EnemiesList = {
       tier2: ['Fairy', 'Basilisk', 'AncientDragon'],
       tier3: ['Fenrir', 'HolyKnight'],
     },
+    goldLoot: 50,
+    itemLoot: [],
   },
 }
 

@@ -9,13 +9,16 @@ import { effectsActions } from '../store/EffectsSlice';
 import { cemeteryActions } from '../store/CemeterySlice';
 import { cardSlotCursorActions } from '../store/CardSlotCursor';
 import { cardAttackCursorActions } from '../store/CardAttackCursor';
+import { playerWorldActions } from '../store/WorldSlices/PlayerWorldSlice';
+import { worldStateActions } from '../store/WorldSlices/WorldStateSlice';
 import { battleActions } from '../store/BattleSlice';
  
 export { CardsList, EffectsList };
 
 export const AllActions = { 
   playerActions, creatureCardActions, tableActions, handActions, TurnActions, 
-  effectsActions, cemeteryActions, cardSlotCursorActions, cardAttackCursorActions, battleActions
+  effectsActions, cemeteryActions, cardSlotCursorActions, cardAttackCursorActions, battleActions,
+  playerWorldActions, worldStateActions
 };
 
 

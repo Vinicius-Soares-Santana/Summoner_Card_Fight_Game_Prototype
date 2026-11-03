@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {Health: 100,
                       Gold: 0,
+                      Items: [],
                       availableCreatures: [],
                       selectedCreatures:{tier1:[], tier2:[], tier3:[]},
                       dialogScreen: {image: '', title: '', message:'', eventName:'', options:[], status: '', proceedStep: false, },
@@ -67,6 +68,29 @@ const PlayerWorldSlice = createSlice({
     },
     addAvailableCreature: (state, action) => {
       state.availableCreatures.push(action.payload.creatureName);
+    },
+    gainGold: (state, action) => {
+      const goldEarned = action.payload;
+
+      state.Gold += goldEarned;
+    },
+    spendGold: (state, action) => {
+      const goldSpent = action.payload;
+      if(state.Gold - goldSpent >= 0){
+        state.Gold -= goldSpent;
+      }
+    },
+    gainItem: (state, action) => {
+      const ItemGained = action.payload;
+
+      state.Items.push(ItemGained);
+    },
+    useItem: (state, action) => {
+      const ItemIndex = state.Items.indexOf(action.payload);
+
+      if(ItemIndex !== -1){
+        state.Items.splice(ItemIndex, 1);
+      }
     },
     changeDialog: (state, action) => {
       if(action.payload != null){

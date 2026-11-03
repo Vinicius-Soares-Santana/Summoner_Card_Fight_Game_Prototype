@@ -84,11 +84,19 @@ function removeKilledCreature(dispatch, getState, id, killerId) {
 }
 
 function finishIfNeeded(dispatch, getState) {
-  const { player } = getState();
+  const { player, battle } = getState();
   if (player.player1.health > 0 && player.player2.health > 0) return false;
   const winner = player.player1.health <= 0 && player.player2.health <= 0 ? 'draw' :
     player.player1.health > 0 ? 'player1' : 'player2';
   dispatch({ type: 'battle/finish', payload: winner });
+  if(battle.mode == 'campaign' && winner == 'player1'){
+    const enemyId = battle.participants.player2.controller.enemyId;
+    const enemyData = EnemiesList[enemyId];
+    dispatch(A.playerWorldActions.gainGold(enemyData.goldLoot));
+    for(const itemToGain in enemyData.itemLoot){
+      dispatch(A.playerWorldActions.gainItem(itemToGain));
+    }
+  }
   return true;
 }
 
