@@ -10,12 +10,12 @@ function PlayerUDI(props){
     const messageBoxInfo = playerInfo.dialogScreen;
     const dispatch = useDispatch();
 
-    function showOptionsButtons(eventName, options, proceedStepChoice){
+    function showOptionsButtons(eventName, options, nextStatus, proceedStepChoice){
         if(options != '' && options != null){
             return options.map((optionAvailable) => (
                  <button key={optionAvailable} onClick={() => 
                     {
-                        dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable, proceedStep: proceedStepChoice, }));
+                        dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable, newStatus: nextStatus, proceedStep: proceedStepChoice, }));
                         dispatch(playerWorldActions.changeDialog(null));
                     }
                 }>
@@ -33,7 +33,7 @@ function PlayerUDI(props){
                         <img src={playerInfo.dialogScreen.image} alt="Character Profile" />
                         <h4>{playerInfo.dialogScreen.title}</h4>
                         <p>{playerInfo.dialogScreen.message}</p>
-                        {showOptionsButtons(messageBox.eventName, messageBox.options, messageBox.proceedStep)}
+                        {showOptionsButtons(messageBox.eventName, messageBox.options, messageBox.status, messageBox.proceedStep)}
                     </div>
         }
 

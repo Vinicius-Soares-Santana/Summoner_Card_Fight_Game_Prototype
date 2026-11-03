@@ -28,7 +28,7 @@ function DialogManager(props){
         3:{
             ramification: true, 
             'Yes': { message: 'Potato', status: 'idle', options:[], proceedStep: true, }, 
-            'No': { message: 'Cool', status: 'idle', options:['Yes', 'No'], proceedStep: true, }
+            'No': { message: 'Cool', status: 'idle', options:[], proceedStep: true, }
         }, 
     }
     
@@ -40,14 +40,15 @@ function DialogManager(props){
         dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog1', proceedStep: true, }));
     } else if (dialogBoxCurrent.message == '' && eventStatus == 'idle') {
         const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
-            dispatch(playerWorldActions.changeDialog({
-                image: '',
-                title: propsCharacName, 
-                message: messageObj[previousAnswer]?.message, 
-                eventName: propsEventName, 
-                options: messageObj[previousAnswer]?.options,
-                proceedStep: messageObj[previousAnswer]?.proceedStep,
-            }));
+        dispatch(playerWorldActions.changeDialog({
+            image: '',
+            title: propsCharacName, 
+            message: messageObj[previousAnswer]?.message, 
+            eventName: propsEventName, 
+            options: messageObj[previousAnswer]?.options,
+            status: messageObj[previousAnswer]?.status,
+            proceedStep: messageObj[previousAnswer]?.proceedStep,
+        }));
     }
 
     
@@ -61,15 +62,31 @@ function DialogManager(props){
         console.log(stepOfEvent);
         const messageObj = propsCharacterStoryLine[stepOfEvent] ?? {};
 
-        const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
+        if(stepOfEvent > 1){
+            const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
             dispatch(playerWorldActions.changeDialog({
                 image: '',
                 title: propsCharacName, 
                 message: messageObj[previousAnswer]?.message, 
                 eventName: propsEventName, 
                 options: messageObj[previousAnswer]?.options,
+                status: messageObj[previousAnswer]?.status,
                 proceedStep: messageObj[previousAnswer]?.proceedStep,
             }));
+        } else {
+            const previousAnswer = 'Ok';
+            dispatch(playerWorldActions.changeDialog({
+                image: '',
+                title: propsCharacName, 
+                message: messageObj[previousAnswer]?.message, 
+                eventName: propsEventName, 
+                options: messageObj[previousAnswer]?.options,
+                status: messageObj[previousAnswer]?.status,
+                proceedStep: messageObj[previousAnswer]?.proceedStep,
+            }));
+        }
+
+
 
 
 
