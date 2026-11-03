@@ -70,13 +70,15 @@ const PlayerWorldSlice = createSlice({
     },
     changeDialog: (state, action) => {
       if(action.payload != null){
+        let optionsArray = action.payload.options ?? [];
+        if(optionsArray.length < 1) optionsArray = ['Ok'];
         
         state.dialogScreen = { 
           image: action.payload.image,
           title: action.payload.title, 
           message: action.payload.message, 
           eventName: action.payload.eventName, 
-          options: action.payload.options,
+          options: optionsArray,
           proceedStep: action.payload.proceedStep,
         };
 

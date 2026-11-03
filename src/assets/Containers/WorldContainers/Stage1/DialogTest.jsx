@@ -68,7 +68,6 @@ function DialogManager(props){
                         title: 'Misterius Guy', 
                         message: 'Potato', 
                         eventName: 'Test', 
-                        options: ['Ok'],
                         proceedStep: false,
                     }));
 
@@ -80,8 +79,7 @@ function DialogManager(props){
                         image: '',
                         title: 'Misterius Guy', 
                         message: 'Cool', 
-                        eventName: 'Test', 
-                        options: ['Ok'],
+                        eventName: 'Test',
                         proceedStep: false,
                     }));
 
