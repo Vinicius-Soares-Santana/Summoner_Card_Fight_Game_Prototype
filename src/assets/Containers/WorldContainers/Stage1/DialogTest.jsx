@@ -17,7 +17,7 @@ function DialogTest(props){
     if(!thisEvent && dialogBoxCurrent.message == ''){
         console.log('Event Added')
         dispatch(worldStateActions.addEvent({eventName: 'Test'}));
-        dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'talking' }));
+        dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog1' }));
     }
 
     console.log(JSON.stringify(thisEvent));
@@ -25,12 +25,14 @@ function DialogTest(props){
   }
 
   useEffect(() => {
-    if(eventStatus == 'talking'){
+
+    if(thisEvent?.status == 'dialog1'){
         let stepOfEvent = thisEvent.eventStep;
+        console.log(stepOfEvent);
 
         switch(stepOfEvent){
 
-            case stepOfEvent == 1:
+            case 1:
                 dispatch(playerWorldActions.changeDialog({
                     image: '',
                     title: 'Misterius Guy', 
@@ -41,7 +43,7 @@ function DialogTest(props){
                 console.log('Hello World');
                 break;
 
-            case stepOfEvent == 2:
+            case 2:
                 dispatch(playerWorldActions.changeDialog({
                     image: '',
                     title: 'Misterius Guy', 
@@ -52,8 +54,8 @@ function DialogTest(props){
                 console.log('Would you help me?');
                 break;
 
-            case stepOfEvent == 3:
-                const answer = thisEvent.optionsChosen[3];
+            case 3:
+                const answer = thisEvent.optionsChosen[2];
                 if(answer && answer == 'Yes'){
                     dispatch(playerWorldActions.changeDialog({
                         image: '',
@@ -77,7 +79,6 @@ function DialogTest(props){
                 break;
             
         }
-        console.log('EndOfIf');
         
     }
   }, [eventStatus, thisEvent])
