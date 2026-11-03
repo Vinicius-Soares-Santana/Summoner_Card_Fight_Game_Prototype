@@ -27,8 +27,8 @@ function DialogManager(props){
         }, 
         3:{
             ramification: true, 
-            'Yes': { message: 'Potato', status: 'idle', options:[], proceedStep: true, }, 
-            'No': { message: 'Cool', status: 'idle', options:[], proceedStep: true, }
+            'Yes': { message: 'Potato', status: 'idle', options:[], proceedStep: false, }, 
+            'No': { message: 'Cool', status: 'idle', options:[], proceedStep: false, }
         },
     }
     
