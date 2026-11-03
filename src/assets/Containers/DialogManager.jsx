@@ -2,10 +2,10 @@ import react from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { CardsList } from '../../../CardsList';
+import { CardsList } from '../CardsList';
 
-import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
-import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
+import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
+import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 
 function DialogManager(props){
     const dispatch = useDispatch();
