@@ -29,7 +29,7 @@ const WorldStateSlice = createSlice({
 
             if(!state.worldEvents[eventName]) return;
             if(newStatus){
-                state.worldEvents[eventName].eventStatus = newStatus;
+                state.worldEvents[eventName].status = newStatus;
             }
             if(optionChosenNow){
                 const currentEventStep = state.worldEvents[eventName]?.eventStep;

@@ -9,15 +9,18 @@ import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice
 
 function DialogTest(props){
     const dispatch = useDispatch();
-    const thisEvent = useSelector((state) => state.WorldStateReducer.worldEvents['Test']);
-    const dialogBoxCurrent = useSelector((state) => state.playerWorldReducer.dialogScreen);
+    const thisEvent = useSelector((state) => state.worldState.worldEvents['Test']);
+    const dialogBoxCurrent = useSelector((state) => state.playerWorld.dialogScreen);
     let eventStatus = thisEvent?.status;
 
   function onClickTest(e){
     if(!thisEvent && dialogBoxCurrent.message == ''){
+        console.log('Event Added')
         dispatch(worldStateActions.addEvent({eventName: 'Test'}));
         dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'talking' }));
     }
+
+    console.log(JSON.stringify(thisEvent));
     
   }
 
@@ -34,7 +37,8 @@ function DialogTest(props){
                     message: 'Hello World', 
                     eventName: 'Test', 
                     options: ['Ok']
-                }))
+                }));
+                console.log('Hello World');
                 break;
 
             case stepOfEvent == 2:
@@ -44,7 +48,8 @@ function DialogTest(props){
                     message: 'Would you help me?', 
                     eventName: 'Test', 
                     options: ['Yes', 'No']
-                }))
+                }));
+                console.log('Would you help me?');
                 break;
 
             case stepOfEvent == 3:
@@ -72,6 +77,7 @@ function DialogTest(props){
                 break;
             
         }
+        console.log('EndOfIf');
         
     }
   }, [eventStatus, thisEvent])
