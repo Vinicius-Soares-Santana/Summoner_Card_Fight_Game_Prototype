@@ -13,12 +13,18 @@ function DialogManager(props){
     const dialogBoxCurrent = useSelector((state) => state.playerWorld.dialogScreen);
     let eventStatus = thisEvent?.status;
 
+    const propsCharacImage = './'
+    const propsCharacName = "Misterious Guy"
+    const propsEventName = 'Test'
+    const propsCharacterStoryLine = {1:{ramification: false, 'Ok': {message: '', status: '', options:[],  }}}
+    
+
   function onClickTest(e){
     if(!thisEvent && dialogBoxCurrent.message == ''){
         console.log('Event Added')
         dispatch(worldStateActions.addEvent({eventName: 'Test'}));
         dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog1', proceedStep: true, }));
-    } else if (dialogBoxCurrent.message == '') {
+    } else if (dialogBoxCurrent.message == '' && eventStatus == 'idle') {
 
     }
 
