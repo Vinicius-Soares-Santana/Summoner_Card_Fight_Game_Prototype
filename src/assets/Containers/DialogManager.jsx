@@ -17,6 +17,8 @@ function DialogManager(props){
     const propsCharacName = "Misterious Guy"
     const propsEventName = 'Test'
     const propsCharacterStoryLine = {
+        branch: 'standard',
+        startstep: 1,
         1:{
             ramification: false, 
             'Ok': { message: 'Hello World', status: 'dialog1', options:[], proceedStep: true, }
