@@ -25,12 +25,20 @@ function PlayerUDI(props){
         }
     }
 
+    function showProfileImage(imageLink){
+        if(imageLink !== '' && imageLink !== null){
+            return <img src={imageLink} alt="Character Profile" />;
+        } else {
+            return <div className="ImageReplacer"></div>;
+        }
+    }
+
 
 
     function dialogBoxCreator(messageBox){
         if(messageBox.title != '' && messageBox.title != null){
             return  <div className="dialogBox">
-                        <img src={playerInfo.dialogScreen.image} alt="Character Profile" />
+                        {showProfileImage(playerInfo.dialogScreen.image)}
                         <h4>{playerInfo.dialogScreen.title}</h4>
                         <p>{playerInfo.dialogScreen.message}</p>
                         {showOptionsButtons(messageBox.eventName, messageBox.options, messageBox.status, messageBox.proceedStep)}
