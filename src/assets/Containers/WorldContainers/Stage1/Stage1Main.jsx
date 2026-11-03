@@ -5,7 +5,7 @@ import { CardsList } from '../../../CardsList';
 import ArenaButton from '../../ArenaButton';
 import SelectCreaturesButton from '../../../Presentational/SelectCreaturesButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
-import DialogManager from './DialogTest';
+import DialogManager from './DialogManager';
 import './Stage1Main.css';
 
 function Stage1Main(props){
