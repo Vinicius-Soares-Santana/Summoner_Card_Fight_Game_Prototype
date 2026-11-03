@@ -1,7 +1,7 @@
 import react from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { CardsList } from '../../../CardsList';
+import { CardsList } from '../../CardsList';
 import ArenaButton from '../../ArenaButton';
 import SelectCreaturesButton from '../../../Presentational/SelectCreaturesButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
