@@ -7,7 +7,7 @@ import { CardsList } from '../../../CardsList';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
 
-function DialogTest(props){
+function DialogManager(props){
     const dispatch = useDispatch();
     const thisEvent = useSelector((state) => state.worldState.worldEvents['Test']);
     const dialogBoxCurrent = useSelector((state) => state.playerWorld.dialogScreen);
@@ -17,10 +17,12 @@ function DialogTest(props){
     if(!thisEvent && dialogBoxCurrent.message == ''){
         console.log('Event Added')
         dispatch(worldStateActions.addEvent({eventName: 'Test'}));
-        dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog1' }));
+        dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog1', proceedStep: true, }));
+    } else if (dialogBoxCurrent.message == '') {
+
     }
 
-    console.log(JSON.stringify(thisEvent));
+    
     
   }
 
@@ -38,9 +40,10 @@ function DialogTest(props){
                     title: 'Misterius Guy', 
                     message: 'Hello World', 
                     eventName: 'Test', 
-                    options: ['Ok']
+                    options: ['Ok'],
+                    proceedStep: true,
                 }));
-                console.log('Hello World');
+
                 break;
 
             case 2:
@@ -49,36 +52,49 @@ function DialogTest(props){
                     title: 'Misterius Guy', 
                     message: 'Would you help me?', 
                     eventName: 'Test', 
-                    options: ['Yes', 'No']
+                    options: ['Yes', 'No'],
+                    proceedStep: true,
                 }));
-                console.log('Would you help me?');
+                
                 break;
 
             case 3:
                 const answer = thisEvent.optionsChosen[2];
+
                 if(answer && answer == 'Yes'){
+
                     dispatch(playerWorldActions.changeDialog({
                         image: '',
                         title: 'Misterius Guy', 
                         message: 'Potato', 
                         eventName: 'Test', 
-                        options: ['Ok']
-                    }))
+                        options: ['Ok'],
+                        proceedStep: false,
+                    }));
+
                     dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'action' }));
+
                 } else if (answer && answer == 'No') {
+
                     dispatch(playerWorldActions.changeDialog({
                         image: '',
                         title: 'Misterius Guy', 
                         message: 'Cool', 
                         eventName: 'Test', 
-                        options: ['Ok']
-                    }))
+                        options: ['Ok'],
+                        proceedStep: false,
+                    }));
+
                     dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'action' }));
+
                 }
                 
                 break;
             
         }
+
+        console.log(JSON.stringify(thisEvent));
+        console.log(JSON.stringify(dialogBoxCurrent));
         
     }
   }, [eventStatus, thisEvent])
@@ -86,4 +102,4 @@ function DialogTest(props){
   return <button onClick={onClickTest}>Test Dialog Event</button>
 }
 
-export default DialogTest;
+export default DialogManager;

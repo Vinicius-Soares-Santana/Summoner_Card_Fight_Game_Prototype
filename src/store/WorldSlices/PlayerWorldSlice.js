@@ -76,11 +76,12 @@ const PlayerWorldSlice = createSlice({
           title: action.payload.title, 
           message: action.payload.message, 
           eventName: action.payload.eventName, 
-          options: action.payload.options
+          options: action.payload.options,
+          proceedStep: action.payload.proceedStep,
         };
 
       } else {
-        state.dialogScreen = { image: '', title: '', message: '', eventName:'', options: [] };
+        state.dialogScreen = { image: '', title: '', message: '', eventName:'', options: [], proceedStep: false};
       }
     }
   },

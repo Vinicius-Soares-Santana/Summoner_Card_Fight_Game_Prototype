@@ -5,7 +5,7 @@ import { CardsList } from '../../../CardsList';
 import ArenaButton from '../../ArenaButton';
 import SelectCreaturesButton from '../../../Presentational/SelectCreaturesButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
-import DialogTest from './DialogTest';
+import DialogManager from './DialogTest';
 import './Stage1Main.css';
 
 function Stage1Main(props){
@@ -19,7 +19,7 @@ function Stage1Main(props){
   return  <div className='Stage1Main'>
             <SelectCreaturesButton />
             <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
-            <DialogTest />
+            <DialogManager />
             <button onClick={onClickTest}>Test</button>
           </div>
 }
