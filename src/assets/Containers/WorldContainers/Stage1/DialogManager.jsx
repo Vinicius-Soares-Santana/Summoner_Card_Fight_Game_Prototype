@@ -29,7 +29,7 @@ function DialogManager(props){
             ramification: true, 
             'Yes': { message: 'Potato', status: 'idle', options:[], proceedStep: true, }, 
             'No': { message: 'Cool', status: 'idle', options:[], proceedStep: true, }
-        }, 
+        },
     }
     
 
@@ -39,7 +39,16 @@ function DialogManager(props){
         dispatch(worldStateActions.addEvent({eventName: 'Test'}));
         dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog1', proceedStep: true, }));
     } else if (dialogBoxCurrent.message == '' && eventStatus == 'idle') {
+
+        let stepOfEvent = thisEvent.eventStep;
         const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
+        const messageObj = propsCharacterStoryLine[stepOfEvent] ?? {};
+
+        console.log(JSON.stringify(thisEvent));
+        console.log(JSON.stringify(stepOfEvent));
+        console.log(JSON.stringify(previousAnswer));
+        console.log(JSON.stringify(messageObj));
+
         dispatch(playerWorldActions.changeDialog({
             image: '',
             title: propsCharacName, 
@@ -49,17 +58,14 @@ function DialogManager(props){
             status: messageObj[previousAnswer]?.status,
             proceedStep: messageObj[previousAnswer]?.proceedStep,
         }));
-    }
 
-    
-    
+    }
   }
 
   useEffect(() => {
 
     if(thisEvent?.status == 'dialog1'){
         let stepOfEvent = thisEvent.eventStep;
-        console.log(stepOfEvent);
         const messageObj = propsCharacterStoryLine[stepOfEvent] ?? {};
 
         if(stepOfEvent > 1){
