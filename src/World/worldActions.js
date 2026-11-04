@@ -1,22 +1,17 @@
 import { CardsList, ItemsList, EffectsList, AllActions as A } from '../Battle/ActionConnections';
 import { EnemiesList, DifficultyPresets } from '../assets/EnemiesList';
 
-export function buyItem(item, itemType){
+export function buyItem(item){
     return function (dispatch, getState){
         const state = getState();
         const playerGold = state.playerWorld.Gold;
         const shopAvailableItems = state.shop.itemsAvailable;
-        let itemData = null;
+        let itemData = CardsList[item] ?? ItemsList[item];
 
-        if(itemType == null || itemType == '' ) return;
+        if(itemData == null || itemData == '' ) return;
         if(!shopAvailableItems.includes(item)) return;
 
-        if(itemType == 'creature'){
-            itemData = CardsList[item];
-        }
-        if(itemType == 'item'){
-            itemData = ItemsList[item];
-        }
+        let itemType = itemData.type;
 
         if(itemData?.price == null) return
 
@@ -51,26 +46,24 @@ export function upgradeShop(level){
     }
 }
 
-export function useItem(item, itemType){
+export function useItem(item){
     return function (dispatch, getState) {
         if(item == null || item == '') return
-        if(itemType == null || itemType == '') return
 
         const state = getState();
         const playerCurrentItems = state.playerWorld.Items;
-        let itemData = null;
+        itemData = ItemsList[item] ?? null;
 
+        if(itemData == null || itemData == '' ) return;
         if(!playerCurrentItems.includes(item)) return
 
-        if(itemType == 'item'){
-            itemData = ItemsList[item];
-            const effectName = itemData?.effect;
-            const effectToUse = EffectsList[effectName];
+        
+        const effectName = itemData?.effect;
+        const effectToUse = EffectsList[effectName];
 
-            if (effectToUse == null) return;
-            effectToUse.effect(A, dispatch, state);
+        if (effectToUse == null) return;
+        effectToUse.effect(A, dispatch, state);
 
-            dispatch(A.playerWorldActions.useItem(item));
-        }
+        dispatch(A.playerWorldActions.useItem(item));
     }
 }
