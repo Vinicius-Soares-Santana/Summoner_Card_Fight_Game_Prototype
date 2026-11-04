@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
 import { CardsList } from '../CardsList';
 import { EffectsList } from '../EffectsList';
+import { ItemsList } from '../ItemsList';
+import { useItem } from '../../World/worldActions';
 import './SelectCreaturesScreen.css';
 
 function SelectCreaturesScreen(props){
@@ -42,6 +44,16 @@ function SelectCreaturesScreen(props){
   }
 
 
+  const ownedItems = useSelector((state) => state.playerWorld.Items);
+  const itemCounts = {};
+
+  for (const itemId of ownedItems) {
+      itemCounts[itemId] = (itemCounts[itemId] ?? 0) + 1;
+  }
+
+  const inventoryIds = Object.keys(itemCounts);
+
+
   
   return  (<div className='SelectCreatureScreen' >
 
@@ -73,6 +85,55 @@ function SelectCreaturesScreen(props){
                 {AddRemoveButtonCreator(currentSelection, creatureInDisplay, creatureToDisplayData)}
               </div>
 
+            </section>
+
+            <section className="CreatureInventory">
+                <h3>Inventory</h3>
+
+                {inventoryIds.length === 0 ? (
+                    <p className="InventoryEmpty">Your bag is empty.</p>
+                ) : (
+                    <ul className="InventoryList">
+                        {inventoryIds.map((itemId) => {
+                            const item = ItemsList[itemId];
+                            const effect = EffectsList[item?.effect];
+                            const canUse =
+                                item?.effect !== 'NoEffect' &&
+                                typeof effect?.effect === 'function';
+
+                            return (
+                                <li className="InventoryRow" key={itemId}>
+                                    <div>
+                                        <strong>{item?.name ?? itemId}</strong>
+                                        <span className="InventoryQuantity">
+                                            ×{itemCounts[itemId]}
+                                        </span>
+
+                                        {canUse && effect.description && (
+                                            <p className="InventoryDescription">
+                                                {effect.description}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {canUse ? (
+                                        <button
+                                            type="button"
+                                            className="InventoryUseButton"
+                                            onClick={() => dispatch(useItem(itemId))}
+                                        >
+                                            Use
+                                        </button>
+                                    ) : (
+                                        <span className="InventoryNote">
+                                            No usable effect
+                                        </span>
+                                    )}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )}
             </section>
 
             <button className="returnSelect" onClick={() => {navigate("/game/stage1main")}}>Return</button>

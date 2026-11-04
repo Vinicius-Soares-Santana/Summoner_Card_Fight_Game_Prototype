@@ -1987,17 +1987,17 @@ export const EffectsList = {
       dispatch,
       currentState
     ) {
-      const maxHealth = state.playerWorld.MaxHealth;
-      const currentHealth = state.playerWorld.Health;
+      const maxHealth = currentState.playerWorld.MaxHealth;
+      const currentHealth = currentState.playerWorld.Health;
       const healAmount = 10;
       const newHealth = currentHealth + healAmount;
 
       if(newHealth <= maxHealth){
         dispatch(AllActions.playerWorldActions.heal(healAmount))
-        dispatch(AllActions.playerWorldActions.removeItem('potion'))
+        return true;
       } else if (maxHealth - newHealth > 0) {
         dispatch(AllActions.playerWorldActions.heal(maxHealth - newHealth))
-        dispatch(AllActions.playerWorldActions.removeItem('potion'))
+        return true;
       }
     },
     description: 'Heals 10 HP',

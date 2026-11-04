@@ -67,8 +67,8 @@ export function useItem(item){
         const effectToUse = EffectsList[effectName];
 
         if (effectToUse == null) return;
-        effectToUse.effect(A, dispatch, state);
+        const resultOfEffect = effectToUse.effect(A, dispatch, state);
 
-        dispatch(A.playerWorldActions.removeItem(item));
+        if (resultOfEffect) dispatch(A.playerWorldActions.removeItem(item));
     }
 }

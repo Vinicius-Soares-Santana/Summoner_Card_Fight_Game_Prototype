@@ -480,3 +480,59 @@
     transform: none;
   }
 }
+
+.SelectCreatureScreen .CreatureInventory {
+  margin-top: 28px;
+  padding: 16px;
+  background: var(--sc-panel, #1c1c1b);
+  border: 1px solid var(--sc-line, #655844);
+  border-radius: 6px;
+}
+
+.SelectCreatureScreen .CreatureInventory h3 {
+  margin: 0 0 12px;
+  color: var(--sc-gold, #dfb766);
+  font-family: Georgia, serif;
+}
+
+.SelectCreatureScreen .InventoryList {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.SelectCreatureScreen .InventoryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 10px 12px;
+  background: var(--sc-tile, #272521);
+  border: 1px solid var(--sc-line, #655844);
+  border-radius: 5px;
+  overflow-wrap: anywhere;
+}
+
+.SelectCreatureScreen .InventoryQuantity {
+  margin-left: 8px;
+  color: var(--sc-gold, #dfb766);
+}
+
+.SelectCreatureScreen .InventoryEmpty,
+.SelectCreatureScreen .InventoryNote,
+.SelectCreatureScreen .InventoryDescription {
+  color: var(--sc-muted, #b9ad9b);
+  font-size: 13px;
+}
+
+.SelectCreatureScreen .InventoryDescription {
+  margin: 4px 0 0;
+}
+
+.SelectCreatureScreen .InventoryUseButton {
+  min-width: 76px;
+  text-align: center;
+}
