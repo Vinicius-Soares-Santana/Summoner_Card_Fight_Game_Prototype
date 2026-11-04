@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {Health: 100,
+const initialState = {Health: 50,
+                      MaxHealth: 70,
                       Gold: 0,
                       Items: [],
                       availableCreatures: ['BabyDragon', 'Fluffy', 'Slime'],
@@ -85,12 +86,27 @@ const PlayerWorldSlice = createSlice({
 
       state.Items.push(ItemGained);
     },
-    useItem: (state, action) => {
+    removeItem: (state, action) => {
       const ItemIndex = state.Items.indexOf(action.payload);
 
       if(ItemIndex !== -1){
         state.Items.splice(ItemIndex, 1);
       }
+    },
+    heal: (state, action) => {
+      const healAmount = action.payload;
+
+      state.Health += healAmount;
+    },
+    takeDamage: (state, action) => {
+      const damageAmount = action.payload;
+
+      state.Health -= damageAmount;
+    },
+    increaseMaxHealth: (state, action) => {
+      const increaseAmount = action.payload;
+
+      state.MaxHealth += increaseAmount;
     },
     changeDialog: (state, action) => {
       if(action.payload != null){

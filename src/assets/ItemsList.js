@@ -1,8 +1,8 @@
 export const ItemsList = {
-    potion: {
+    Potion: {
         name: 'Potion',
         type: 'item',
         price: 5,
-        effect: '',
+        effect: 'potionHeal',
     }
 }

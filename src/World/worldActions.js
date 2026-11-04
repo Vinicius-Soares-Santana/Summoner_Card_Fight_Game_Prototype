@@ -20,7 +20,7 @@ export function buyItem(item){
                 state.playerWorld.availableCreatures.includes(item)) {
                 return;
             }
-            
+
             dispatch(A.playerWorldActions.spendGold(itemData.price));
             if(itemType == 'item'){
                 dispatch(A.playerWorldActions.gainItem(item));
@@ -69,6 +69,6 @@ export function useItem(item){
         if (effectToUse == null) return;
         effectToUse.effect(A, dispatch, state);
 
-        dispatch(A.playerWorldActions.useItem(item));
+        dispatch(A.playerWorldActions.removeItem(item));
     }
 }

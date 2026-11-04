@@ -10,6 +10,7 @@ import MainMenu from './assets/Containers/MainMenu';
 import Arena from './assets/Containers/Arena';
 import Stage1Main from './assets/Containers/WorldContainers/Stage1/Stage1Main';
 import SelectCreaturesScreen from './assets/Containers/SelectCreaturesScreen';
+import Shop from './assets/Containers/Shop';
 import PlayerUDI from './assets/Containers/PlayerUDI';
 import './App.css';
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="arena" element={<Arena />} />
       <Route path="selectcreatures" element={<SelectCreaturesScreen />} />
+      <Route path="shop" element={<Shop />} />
     </Route>
   )
 );

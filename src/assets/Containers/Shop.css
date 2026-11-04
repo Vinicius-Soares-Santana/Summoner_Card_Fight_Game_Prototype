@@ -1,0 +1,65 @@
+.ShopScreen {
+    max-width: 960px;
+    margin: 24px auto;
+    padding: 20px;
+    color: #eee5d6;
+    background: #1c1c1b;
+    border: 1px solid #655844;
+    border-radius: 8px;
+}
+
+.ShopScreen .ShopHeader,
+.ShopScreen .ShopRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ShopScreen .ShopPortrait {
+    display: grid;
+    place-items: center;
+    width: 104px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-align: center;
+    background: #28241e;
+    border: 1px solid #b89457;
+    border-radius: 6px;
+}
+
+.ShopScreen .ShopPortrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ShopScreen .ShopColumns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.ShopScreen .ShopPanel {
+    padding: 16px;
+    background: #25221d;
+    border: 1px solid #655844;
+    border-radius: 6px;
+}
+
+.ShopScreen .ShopPanel h3 {
+    color: #dfb766;
+}
+
+.ShopScreen .ShopRow {
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #534838;
+}
+
+@media (max-width: 640px) {
+    .ShopScreen .ShopColumns {
+        grid-template-columns: 1fr;
+    }
+}

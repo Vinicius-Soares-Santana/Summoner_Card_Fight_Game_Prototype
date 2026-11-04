@@ -1981,4 +1981,25 @@ export const EffectsList = {
     },
     description: 'King Of Spades receives the sum of the players mana and HP as attack and mana cost',
   },
+  potionHeal: {
+    effect(
+      AllActions,
+      dispatch,
+      currentState
+    ) {
+      const maxHealth = state.playerWorld.MaxHealth;
+      const currentHealth = state.playerWorld.Health;
+      const healAmount = 10;
+      const newHealth = currentHealth + healAmount;
+
+      if(newHealth <= maxHealth){
+        dispatch(AllActions.playerWorldActions.heal(healAmount))
+        dispatch(AllActions.playerWorldActions.removeItem('potion'))
+      } else if (maxHealth - newHealth > 0) {
+        dispatch(AllActions.playerWorldActions.heal(maxHealth - newHealth))
+        dispatch(AllActions.playerWorldActions.removeItem('potion'))
+      }
+    },
+    description: 'Heals 10 HP',
+  },
 };
