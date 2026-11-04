@@ -52,7 +52,7 @@ function DialogManager(props){
         console.log(JSON.stringify(messageObj));
 
         dispatch(playerWorldActions.changeDialog({
-            image: '',
+            image: propsCharacImage,
             title: propsCharacName, 
             message: messageObj[previousAnswer]?.message, 
             eventName: propsEventName, 
@@ -73,7 +73,7 @@ function DialogManager(props){
         if(stepOfEvent > 1){
             const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
             dispatch(playerWorldActions.changeDialog({
-                image: '',
+                image: propsCharacImage,
                 title: propsCharacName, 
                 message: messageObj[previousAnswer]?.message, 
                 eventName: propsEventName, 
@@ -84,7 +84,7 @@ function DialogManager(props){
         } else {
             const previousAnswer = 'Ok';
             dispatch(playerWorldActions.changeDialog({
-                image: '',
+                image: propsCharacImage,
                 title: propsCharacName, 
                 message: messageObj[previousAnswer]?.message, 
                 eventName: propsEventName, 
