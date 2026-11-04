@@ -1995,8 +1995,8 @@ export const EffectsList = {
       if(newHealth <= maxHealth){
         dispatch(AllActions.playerWorldActions.heal(healAmount))
         return true;
-      } else if (maxHealth - newHealth > 0) {
-        dispatch(AllActions.playerWorldActions.heal(maxHealth - newHealth))
+      } else if (maxHealth - currentHealth > 0 && maxHealth - currentHealth < healAmount) {
+        dispatch(AllActions.playerWorldActions.heal(maxHealth - currentHealth))
         return true;
       }
     },
