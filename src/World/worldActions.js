@@ -16,6 +16,11 @@ export function buyItem(item){
         if(itemData?.price == null) return
 
         if(playerGold - itemData.price >= 0){
+            if (itemType === 'creature' &&
+                state.playerWorld.availableCreatures.includes(item)) {
+                return;
+            }
+            
             dispatch(A.playerWorldActions.spendGold(itemData.price));
             if(itemType == 'item'){
                 dispatch(A.playerWorldActions.gainItem(item));
@@ -52,7 +57,7 @@ export function useItem(item){
 
         const state = getState();
         const playerCurrentItems = state.playerWorld.Items;
-        itemData = ItemsList[item] ?? null;
+        let itemData = ItemsList[item] ?? null;
 
         if(itemData == null || itemData == '' ) return;
         if(!playerCurrentItems.includes(item)) return
