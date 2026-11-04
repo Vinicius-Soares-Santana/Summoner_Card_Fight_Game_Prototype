@@ -1,4 +1,5 @@
 import { CardsList } from '../assets/CardsList';
+import { ItemsList } from '../assets/ItemsList';
 import { EffectsList } from '../assets/EffectsList';
 import { playerActions } from '../store/PlayerSlice';
 import { creatureCardActions } from '../store/CreatureCardSlice';
@@ -11,14 +12,15 @@ import { cardSlotCursorActions } from '../store/CardSlotCursor';
 import { cardAttackCursorActions } from '../store/CardAttackCursor';
 import { playerWorldActions } from '../store/WorldSlices/PlayerWorldSlice';
 import { worldStateActions } from '../store/WorldSlices/WorldStateSlice';
+import { ShopActions } from '../store/WorldSlices/ShopWorldSlice';
 import { battleActions } from '../store/BattleSlice';
  
-export { CardsList, EffectsList };
+export { CardsList, ItemsList, EffectsList };
 
 export const AllActions = { 
   playerActions, creatureCardActions, tableActions, handActions, TurnActions, 
   effectsActions, cemeteryActions, cardSlotCursorActions, cardAttackCursorActions, battleActions,
-  playerWorldActions, worldStateActions
+  playerWorldActions, worldStateActions, ShopActions
 };
 
 

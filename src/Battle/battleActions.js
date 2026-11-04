@@ -1,4 +1,4 @@
-import { CardsList, EffectsList, AllActions as A } from './ActionConnections';
+import { CardsList, ItemsList, EffectsList, AllActions as A } from './ActionConnections';
 import { EnemiesList, DifficultyPresets } from '../assets/EnemiesList';
 import { otherPlayer, sideOf, handOf, validateAction, teamNames } from './battleRules'
 

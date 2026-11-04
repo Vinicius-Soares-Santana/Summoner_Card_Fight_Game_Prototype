@@ -11,6 +11,7 @@ import cemeteryReducer from './CemeterySlice';
 import battleReducer from './BattleSlice';
 import playerWorldReducer from './WorldSlices/PlayerWorldSlice';
 import WorldStateReducer from './WorldSlices/WorldStateSlice';
+import ShopReducer from './WorldSlices/ShopWorldSlice';
 import { withBattleReducer } from './battleReducerCombined';
 
 export const Store = configureStore({
@@ -27,5 +28,6 @@ export const Store = configureStore({
     playerWorld: playerWorldReducer,
     battle: battleReducer,
     worldState: WorldStateReducer,
+    shop: ShopReducer,
   }),
 });

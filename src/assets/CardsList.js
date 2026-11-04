@@ -2,6 +2,7 @@ export const CardsList = {
   Slime: {
     name: 'Slime',
     type: 'creature',
+    price: 5,
     group: ['Swarm', 'DeathValue', 'Graveyard'],
     tier: 1,
     status: 'normal',
@@ -56,6 +57,7 @@ export const CardsList = {
   Fluffy: {
     name: 'Fluffy',
     type: 'creature',
+    price: 5,
     group: ['Scaling', 'ManaEngine', 'DeathValue'],
     tier: 1,
     status: 'normal',
@@ -110,6 +112,7 @@ export const CardsList = {
   Minion: {
     name: 'Minion',
     type: 'creature',
+    price: 5,
     group: ['Aggressive'],
     tier: 1,
     status: 'normal',
@@ -137,6 +140,7 @@ export const CardsList = {
   Raider: {
     name: 'Raider',
     type: 'creature',
+    price: 5,
     group: ['ManaEngine', 'Positioning'],
     tier: 1,
     status: 'normal',
@@ -164,6 +168,7 @@ export const CardsList = {
   Goblin: {
     name: 'Goblin',
     type: 'creature',
+    price: 5,
     group: ['Swarm', 'Scaling', 'Fortress'],
     tier: 1,
     status: 'normal',
@@ -191,6 +196,7 @@ export const CardsList = {
   Archer: {
     name: 'Archer',
     type: 'creature',
+    price: 5,
     group: ['Aggressive', 'Positioning'],
     tier: 1,
     status: 'normal',
@@ -218,6 +224,7 @@ export const CardsList = {
   Lich: {
     name: 'Lich',
     type: 'creature',
+    price: 5,
     group: ['Graveyard', 'DeathValue', 'Swarm'],
     tier: 1,
     status: 'normal',
@@ -245,6 +252,7 @@ export const CardsList = {
   Traitor: {
     name: 'Traitor',
     type: 'creature',
+    price: 5,
     group: ['Graveyard', 'ManaEngine', 'DeathValue'],
     tier: 1,
     status: 'normal',
@@ -272,6 +280,7 @@ export const CardsList = {
   Paladin: {
     name: 'Paladin',
     type: 'creature',
+    price: 5,
     group: ['Sustain', 'Fortress', 'Positioning'],
     tier: 1,
     status: 'normal',
@@ -299,6 +308,7 @@ export const CardsList = {
   Gnome: {
     name: 'Gnome',
     type: 'creature',
+    price: 5,
     group: ['ManaEngine'],
     tier: 1,
     status: 'normal',
@@ -326,6 +336,7 @@ export const CardsList = {
   BabyDragon: {
     name: 'BabyDragon',
     type: 'creature',
+    price: 5,
     group: ['Aggressive'],
     tier: 1,
     status: 'normal',
@@ -353,6 +364,7 @@ export const CardsList = {
   Mimic: {
     name: 'Mimic',
     type: 'creature',
+    price: 5,
     group: ['Adaptive', 'Positioning', 'Scaling'],
     tier: 1,
     status: 'normal',
