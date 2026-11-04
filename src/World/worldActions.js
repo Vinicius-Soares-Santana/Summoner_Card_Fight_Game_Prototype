@@ -15,7 +15,7 @@ export function buyItem(item, itemType){
             itemData = CardsList[item];
         }
         if(itemType == 'item'){
-            itemData = CardsList[item];
+            itemData = ItemsList[item];
         }
 
         if(itemData.price == null) return
@@ -45,6 +45,7 @@ export function upgradeShop(level){
                 for(const itemInList of itemsToAdd){
                     dispatch(A.ShopActions.addItem(itemInList));
                 }
+                dispatch(A.ShopActions.upgradeLevel());
             }
         }
     }
@@ -62,10 +63,14 @@ export function useItem(item, itemType){
         if(!playerCurrentItems.includes(item)) return
 
         if(itemType == 'item'){
-            itemData = CardsList[item];
+            itemData = ItemsList[item];
+            const effectName = itemData.effect;
+            const effectToUse = EffectsList[effectName];
+
+            if (effectToUse == null) return;
+            effectToUse.effect(A, dispatch, state);
+
+            dispatch(A.playerWorldActions.useItem(item));
         }
-
-        
-
     }
 }
