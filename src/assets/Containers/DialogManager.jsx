@@ -12,26 +12,28 @@ function DialogManager(props){
     const thisEvent = useSelector((state) => state.worldState.worldEvents['Test']);
     const dialogBoxCurrent = useSelector((state) => state.playerWorld.dialogScreen);
     let eventStatus = thisEvent?.status;
+    let branch = thisEvent?.branch;
 
     const propsCharacImage = './'
     const propsCharacName = "Misterious Guy"
     const propsEventName = 'Test'
     const propsCharacterStoryLine = {
-        branch: 'standard',
-        startstep: 1,
-        1:{
-            ramification: false, 
-            'Ok': { message: 'Hello World', status: 'dialog1', options:[], proceedStep: true, }
-        }, 
-        2:{
-            ramification: false, 
-            'Ok': { message: 'Would you help me?', status: 'dialog1', options:['Yes', 'No'], proceedStep: true, }
-        }, 
-        3:{
-            ramification: true, 
-            'Yes': { message: 'Potato', status: 'idle', options:[], proceedStep: false, }, 
-            'No': { message: 'Cool', status: 'idle', options:[], proceedStep: false, }
-        },
+        'standard':{
+            startstep: 1,
+            1:{
+                ramification: false, 
+                'Ok': { message: 'Hello World', status: 'dialog', options:[], proceedStep: true, }
+            }, 
+            2:{
+                ramification: false, 
+                'Ok': { message: 'Would you help me?', status: 'dialog', options:['Yes', 'No'], proceedStep: true, }
+            }, 
+            3:{
+                ramification: true, 
+                'Yes': { message: 'Potato', status: 'idle', options:[], proceedStep: false, }, 
+                'No': { message: 'Cool', status: 'idle', options:[], proceedStep: false, }
+            },
+        }
     }
     
 
@@ -39,12 +41,12 @@ function DialogManager(props){
     if(!thisEvent && dialogBoxCurrent.message == ''){
         console.log('Event Added')
         dispatch(worldStateActions.addEvent({eventName: 'Test'}));
-        dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog1', proceedStep: true, }));
+        dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog', proceedStep: true, }));
     } else if (dialogBoxCurrent.message == '' && eventStatus == 'idle') {
 
         let stepOfEvent = thisEvent.eventStep;
         const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
-        const messageObj = propsCharacterStoryLine[stepOfEvent] ?? {};
+        const messageObj = propsCharacterStoryLine[branch][stepOfEvent] ?? {};
 
         console.log(JSON.stringify(thisEvent));
         console.log(JSON.stringify(stepOfEvent));
@@ -66,9 +68,9 @@ function DialogManager(props){
 
   useEffect(() => {
 
-    if(thisEvent?.status == 'dialog1'){
+    if(thisEvent?.status == 'dialog'){
         let stepOfEvent = thisEvent.eventStep;
-        const messageObj = propsCharacterStoryLine[stepOfEvent] ?? {};
+        const messageObj = propsCharacterStoryLine[branch][stepOfEvent] ?? {};
 
         if(stepOfEvent > 1){
             const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];

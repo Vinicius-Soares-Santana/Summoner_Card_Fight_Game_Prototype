@@ -7,8 +7,10 @@ const initialState = {
             status: '',
             optionsChosen:{step: 'choice'},
             eventStep: 0,
+            branch: '',
         },
     },
+    quests: {'QuestTest': 'active',},
 };
 
 const WorldStateSlice = createSlice({
