@@ -2,11 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { 
     ShopLevel: 1,
-    itemsAvailable: [],
+    itemsAvailable: ['Goblin', 'Traitor', 'Lich'],
     itemsToAddPerLevel: {
-        1:[],
-        2:[],
-        3:[]
+        2:['Minion', 'Mimic', 'Paladin'],
+        3:['Archer', 'Raider', 'Gnome']
     },
 };
 

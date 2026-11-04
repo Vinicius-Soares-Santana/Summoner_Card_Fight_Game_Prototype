@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {Health: 100,
                       Gold: 0,
                       Items: [],
-                      availableCreatures: [],
+                      availableCreatures: ['BabyDragon', 'Fluffy', 'Slime'],
                       selectedCreatures:{tier1:[], tier2:[], tier3:[]},
                       dialogScreen: {image: '', title: '', message:'', eventName:'', options:[], status: '', proceedStep: false, },
                     };
