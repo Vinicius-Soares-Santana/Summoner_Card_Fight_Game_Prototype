@@ -18,7 +18,7 @@ export function buyItem(item, itemType){
             itemData = ItemsList[item];
         }
 
-        if(itemData.price == null) return
+        if(itemData?.price == null) return
 
         if(playerGold - itemData.price >= 0){
             dispatch(A.playerWorldActions.spendGold(itemData.price));
@@ -39,7 +39,7 @@ export function upgradeShop(level){
         const state = getState();
         const shopCurrentLevel = state.shop.ShopLevel;
 
-        if(level > shopCurrentLevel){
+        if(level === shopCurrentLevel + 1){
             const itemsToAdd = state.shop.itemsToAddPerLevel[level];
             if(itemsToAdd != null && itemsToAdd != []){
                 for(const itemInList of itemsToAdd){
@@ -64,7 +64,7 @@ export function useItem(item, itemType){
 
         if(itemType == 'item'){
             itemData = ItemsList[item];
-            const effectName = itemData.effect;
+            const effectName = itemData?.effect;
             const effectToUse = EffectsList[effectName];
 
             if (effectToUse == null) return;
