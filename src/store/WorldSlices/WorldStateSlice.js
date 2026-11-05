@@ -54,6 +54,8 @@ const WorldStateSlice = createSlice({
             const questName = action.payload.questName;
             const curentObjective = action.payload.currentObjective;
 
+            if(Object.keys(state.quests).includes(questName)) return;
+
             state.quests = {...state.quests, [questName]: {name: questName, questStatus: 'active', currentObjective: curentObjective,}, }
         },
         changeQuestStatus: (state, action) => {
