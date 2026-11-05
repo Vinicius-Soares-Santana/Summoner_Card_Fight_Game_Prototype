@@ -1,3 +1,80 @@
+.PlayerUDIBar {
+    --bar-height: 64px;
+    --portrait-width: 104px;
+
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    box-sizing: border-box;
+    width: min(700px, calc(100% - 32px));
+    height: var(--bar-height);
+    padding: 8px 12px 8px calc(var(--portrait-width) + 12px);
+
+    color: #eee5d6;
+    background: #211e19;
+    border: 1px solid #655844;
+    border-radius: 8px;
+}
+
+/* Retrato do jogador, que é o primeiro filho direto da barra. */
+.PlayerUDIBar > img:first-child {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: var(--portrait-width);
+    height: calc(var(--bar-height) * 2);
+
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.PlayerUDIBar #UDIBasicStats {
+    flex-shrink: 0;
+}
+
+.PlayerUDIBar #UDIBasicStats h4,
+.PlayerUDIBar .UDITeam h4,
+.PlayerUDIBar .UDITeam h5 {
+    margin: 0;
+}
+
+.PlayerUDIBar #UDIHealth {
+    color: #eca9a0;
+}
+
+.PlayerUDIBar #UDIGold {
+    color: #dfb766;
+}
+
+.PlayerUDIBar .UDITeam {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    min-width: 0;
+    max-height: 100%;
+    overflow: auto;
+    font-size: 12px;
+}
+
+.PlayerUDIBar .UDITeam > * {
+    flex-shrink: 0;
+}
+
+.PlayerUDIBar .UDITeam ul {
+    margin: 2px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* A conversa abre acima da HUD e fica fora da fileira de stats. */
 .PlayerUDIBar > .dialogBox {
     position: fixed;
     left: 50%;
