@@ -26,13 +26,14 @@ function QuestManager(props) {
     useEffect(()=>{
         const questsAvailableNames = Object.keys(questsAvailableNow);
 
+        if (dialogInfo?.status !== 'dialog') return;
         for (const questName of Object.keys(allQuests)){
             if(!questsAvailableNames.includes(questName)){
                 if(allQuests[questName].startCondition){
                     dispatch(worldStateActions.addQuest({questName: questName, currentObjective: allQuests[questName].initialObjective }));
                 }
             } else {
-                if(allQuests[questName].endCondition){
+                if(allQuests[questName].endCondition && allQuests[questName].questStatus === 'active'){
                     dispatch(worldStateActions.changeQuestStatus({questName: questName, newQuestStatus: 'complete' }));
                     if(allQuests[questName].reward != '' && allQuests[questName].reward != null){
                         dispatch(gainItemQuest(allQuests[questName].reward));
