@@ -8,12 +8,6 @@ import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 
 function DialogManager(props){
-    const dispatch = useDispatch();
-    const thisEvent = useSelector((state) => state.worldState.worldEvents['Test']);
-    const dialogBoxCurrent = useSelector((state) => state.playerWorld.dialogScreen);
-    let eventStatus = thisEvent?.status;
-    let branch = thisEvent?.branch;
-
     const propsCharacImage = './'
     const propsCharacName = "Misterious Guy"
     const propsEventName = 'Test'
@@ -46,47 +40,35 @@ function DialogManager(props){
             }, 
         }
     }
+
+    const dispatch = useDispatch();
+    const thisEvent = useSelector((state) => state.worldState.worldEvents[propsEventName]);
+    const dialogBoxCurrent = useSelector((state) => state.playerWorld.dialogScreen);
+    let eventStatus = thisEvent?.status;
+    let branch = thisEvent?.branch;
+
+    console.log(`Event right now: ${JSON.stringify(thisEvent)}`);
     
 
   function onClickTest(e){
-    
+
     if(!thisEvent && dialogBoxCurrent.message == ''){
 
-        console.log('Event Added')
-        dispatch(worldStateActions.addEvent({eventName: 'Test'}));
-        dispatch(worldStateActions.changeEventStep({eventName: 'Test', newStatus: 'dialog', proceedStep: true, }));
+        console.log('Event Added');
+        dispatch(worldStateActions.addEvent({eventName: propsEventName}));
+        dispatch(worldStateActions.changeEventStep({eventName: propsEventName, newStatus: 'dialog', proceedStep: true, branch: thisEvent?.branch }));
 
     } else if (dialogBoxCurrent.message == '' && eventStatus == 'continue') {
 
-        let stepOfEvent = thisEvent.eventStep;
-        const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
-        const messageObj = propsCharacterStoryLine[branch][stepOfEvent] ?? {};
-
-        console.log(JSON.stringify(thisEvent));
-        console.log(JSON.stringify(stepOfEvent));
-        console.log(JSON.stringify(previousAnswer));
-        console.log(JSON.stringify(messageObj));
-
-        dispatch(playerWorldActions.changeDialog({
-            image: propsCharacImage,
-            title: propsCharacName, 
-            message: messageObj[previousAnswer]?.message, 
-            eventName: propsEventName, 
-            options: messageObj[previousAnswer]?.options,
-            status: messageObj[previousAnswer]?.status,
-            proceedStep: messageObj[previousAnswer]?.proceedStep,
-        }));
+        dispatch(worldStateActions.changeEventStep({eventName: propsEventName, newStatus: 'dialog', proceedStep: true, }));
 
     } else if (dialogBoxCurrent.message == '' && eventStatus == 'idle') {
 
         let stepOfEvent = thisEvent.eventStep;
-        const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
+        const previousAnswer = thisEvent.optionsChosen[Object.keys(thisEvent.optionsChosen)[Object.keys(thisEvent.optionsChosen).length - 1]];
         const messageObj = propsCharacterStoryLine[branch][stepOfEvent] ?? {};
 
-        console.log(JSON.stringify(thisEvent));
-        console.log(JSON.stringify(stepOfEvent));
-        console.log(JSON.stringify(previousAnswer));
-        console.log(JSON.stringify(messageObj));
+        console.log(`optionsChosen: ${JSON.stringify(thisEvent.optionsChosen)}`);
 
         dispatch(playerWorldActions.changeDialog({
             image: propsCharacImage,
@@ -94,8 +76,8 @@ function DialogManager(props){
             message: messageObj[previousAnswer]?.message, 
             eventName: propsEventName, 
             options: messageObj[previousAnswer]?.options,
-            status: messageObj[previousAnswer]?.status,
             proceedStep: messageObj[previousAnswer]?.proceedStep,
+            newBranch: messageObj[previousAnswer]?.branch
         }));
 
     }
@@ -105,10 +87,13 @@ function DialogManager(props){
 
     if(thisEvent?.status == 'dialog'){
         let stepOfEvent = thisEvent.eventStep;
+
         const messageObj = propsCharacterStoryLine[branch][stepOfEvent] ?? {};
 
         if(messageObj.ramification){
-            const previousAnswer = thisEvent.optionsChosen[stepOfEvent - 1];
+
+            const previousAnswer = thisEvent.optionsChosen[Object.keys(thisEvent.optionsChosen)[Object.keys(thisEvent.optionsChosen).length - 1]];
+
             dispatch(playerWorldActions.changeDialog({
                 image: propsCharacImage,
                 title: propsCharacName, 
@@ -117,10 +102,12 @@ function DialogManager(props){
                 options: messageObj[previousAnswer]?.options,
                 status: messageObj[previousAnswer]?.status,
                 proceedStep: messageObj[previousAnswer]?.proceedStep,
-                branch: messageObj[previousAnswer]?.branch
+                newBranch: messageObj[previousAnswer]?.branch
             }));
+
         } else {
             const previousAnswer = 'Ok';
+
             dispatch(playerWorldActions.changeDialog({
                 image: propsCharacImage,
                 title: propsCharacName, 
@@ -129,15 +116,9 @@ function DialogManager(props){
                 options: messageObj[previousAnswer]?.options,
                 status: messageObj[previousAnswer]?.status,
                 proceedStep: messageObj[previousAnswer]?.proceedStep,
+                newBranch: messageObj[previousAnswer]?.branch
             }));
         }
-
-
-
-
-
-        console.log(JSON.stringify(thisEvent));
-        console.log(JSON.stringify(dialogBoxCurrent));
         
     }
   }, [eventStatus, thisEvent])

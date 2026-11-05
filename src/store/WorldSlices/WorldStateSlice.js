@@ -5,9 +5,10 @@ const initialState = {
     worldEvents: { 
         template: {
             status: '',
-            optionsChosen:{step: 'choice'},
+            optionsChosen:{optionsCounter: 'choice'},
             eventStep: 0,
             branch: '',
+            optionsCounter: 1,
         },
     },
     quests: {'QuestTest': 'active',},
@@ -22,7 +23,7 @@ const WorldStateSlice = createSlice({
         },
         addEvent: (state, action) => {
             const eventName = action.payload.eventName;
-            state.worldEvents = {...state.worldEvents, [eventName]: {status: 'started', optionsChosen:{}, eventStep: 0,},}
+            state.worldEvents = {...state.worldEvents, [eventName]: {status: 'started', optionsChosen:{}, eventStep: 0, branch: 'standard', optionsCounter: 1},}
         },
         changeEventStep: (state, action) => {
             const eventName = action.payload.eventName;
@@ -34,14 +35,15 @@ const WorldStateSlice = createSlice({
             if(newStatus){
                 state.worldEvents[eventName].status = newStatus;
             }
-            if(optionChosenNow){
-                const currentEventStep = state.worldEvents[eventName]?.eventStep;
-                state.worldEvents[eventName].optionsChosen = {...state.worldEvents[eventName]?.optionsChosen, [currentEventStep]: optionChosenNow };
+            if(optionChosenNow && action.payload.proceedStep){
+                const currentOptionsCounter = state.worldEvents[eventName].optionsCounter;
+                state.worldEvents[eventName].optionsChosen = {...state.worldEvents[eventName]?.optionsChosen, [currentOptionsCounter]: optionChosenNow };
+                state.worldEvents[eventName].optionsCounter += 1;
             }
 
             if(action.payload.proceedStep){
                 state.worldEvents[eventName].eventStep += 1;
-                if(newBranch != null){
+                if(newBranch != null && newBranch != undefined && newBranch != ''){
                     state.worldEvents[eventName].eventStep = 1;
                     state.worldEvents[eventName].branch = newBranch;
                 } 

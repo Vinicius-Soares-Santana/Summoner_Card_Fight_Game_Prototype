@@ -6,7 +6,7 @@ const initialState = {Health: 50,
                       Items: [],
                       availableCreatures: ['BabyDragon', 'Fluffy', 'Slime'],
                       selectedCreatures:{tier1:[], tier2:[], tier3:[]},
-                      dialogScreen: {image: '', title: '', message:'', eventName:'', options:[], status: '', proceedStep: false, },
+                      dialogScreen: {image: '', title: '', message:'', eventName:'', options:[], status: '', proceedStep: false, branch: '' },
                     };
 
 const PlayerWorldSlice = createSlice({
@@ -121,10 +121,11 @@ const PlayerWorldSlice = createSlice({
           options: optionsArray,
           status: action.payload.status, 
           proceedStep: action.payload.proceedStep,
+          branch: action.payload.newBranch,
         };
 
       } else {
-        state.dialogScreen = { image: '', title: '', message: '', eventName:'', options: [], status: '', proceedStep: false};
+        state.dialogScreen = { image: '', title: '', message: '', eventName:'', options: [], status: '', proceedStep: false, branch: '',};
       }
     }
   },

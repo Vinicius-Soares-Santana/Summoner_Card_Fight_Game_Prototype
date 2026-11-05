@@ -10,12 +10,12 @@ function PlayerUDI(props){
     const messageBoxInfo = playerInfo.dialogScreen;
     const dispatch = useDispatch();
 
-    function showOptionsButtons(eventName, options, nextStatus, proceedStepChoice){
+    function showOptionsButtons(eventName, options, nextStatus, proceedStepChoice, newBranchToAdd = null){
         if(options != '' && options != null){
             return options.map((optionAvailable) => (
                  <button key={optionAvailable} onClick={() => 
                     {
-                        dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable, newStatus: nextStatus, proceedStep: proceedStepChoice, }));
+                        dispatch(worldStateActions.changeEventStep({eventName: eventName, option: optionAvailable, newStatus: nextStatus, proceedStep: proceedStepChoice, newBranch: newBranchToAdd }));
                         dispatch(playerWorldActions.changeDialog(null));
                     }
                 }>
@@ -41,7 +41,7 @@ function PlayerUDI(props){
                         {showProfileImage(playerInfo.dialogScreen.image)}
                         <h4>{playerInfo.dialogScreen.title}</h4>
                         <p>{playerInfo.dialogScreen.message}</p>
-                        {showOptionsButtons(messageBox.eventName, messageBox.options, messageBox.status, messageBox.proceedStep)}
+                        {showOptionsButtons(messageBox.eventName, messageBox.options, messageBox.status, messageBox.proceedStep, messageBox.branch)}
                     </div>
         }
 
