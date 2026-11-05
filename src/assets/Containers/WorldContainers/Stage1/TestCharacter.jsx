@@ -26,7 +26,7 @@ function TestCharacter(props) {
             }, 
             3:{
                 ramification: true, 
-                'Yes': { message: 'NICE!', status: 'dialog', options:[], proceedStep: true, branch: 'Yes' }, 
+                'Yes': { message: 'NICE! can you buy me a potato?', status: 'dialog', options:[], proceedStep: true, branch: 'Yes' }, 
                 'No': { message: 'I mean, that\'s not exactly an option, but ok...', status: 'dialog', options:[], proceedStep: true,  branch: 'No' }
             },
         },
@@ -40,18 +40,33 @@ function TestCharacter(props) {
                 'Ok': { message: 'YOU MADE IT, here\'s a potion as reward', status: 'dialog', options:[], proceedStep: true, branch: 'CONGRATULATIONS'}
             }, 
         },
-        'No':{
-            1:{
-                ramification: true, 
-                'Yes': { message: 'NICE!', status: 'dialog', options:[], proceedStep: true, branch: 'Yes' }, 
-                'No': { message: 'I mean, that\'s not exactly an option, but ok...', status: 'idle', options:[], proceedStep: true,  branch: 'changeYourMind' }
+        No: {
+            1: {
+                ramification: false,
+                Ok: {
+                    message: 'Did you change your mind?',
+                    status: 'dialog',
+                    options: ['Yes', 'No'],
+                    proceedStep: true,
+                },
             },
-        },
-        'changeYourMind': {
-            1:{
-                ramification: false, 
-                'No': { message: 'did you change your mind?', status: 'dialog', options:['Yes', 'No'], proceedStep: false, branch: 'No' }
-            }, 
+            2: {
+                ramification: true,
+                Yes: {
+                    message: 'NICE! can you buy me a potato?',
+                    status: 'dialog',
+                    options: [],
+                    proceedStep: true,
+                    branch: 'Yes',
+                },
+                No: {
+                    message: "I mean, that's not exactly an option, but ok...",
+                    status: 'dialog',
+                    options: [],
+                    proceedStep: true,
+                    branch: 'No',
+                },
+            },
         },
         'CONGRATULATIONS': {
             1:{
