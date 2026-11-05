@@ -71,7 +71,7 @@ function TestCharacter(props) {
         'CONGRATULATIONS': {
             1:{
                 ramification: false, 
-                'Ok': { message: 'did you change your mind?', status: 'idle', options:[], proceedStep: false, }
+                'Ok': { message: 'Thanks for the help!', status: 'idle', options:[], proceedStep: false, }
             }, 
         }
     };
