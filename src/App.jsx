@@ -19,7 +19,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<MainMenu />} />
       <Route path="game" element={<PlayerUDI />}>
-        <Route path="stage1main" element={<Stage1Main />} />
+        <Route path="stage1main" element={<Stage1Main />} >
+          
+        </Route>
       </Route>
       <Route path="arena" element={<Arena />} />
       <Route path="selectcreatures" element={<SelectCreaturesScreen />} />
