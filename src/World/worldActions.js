@@ -72,3 +72,30 @@ export function useItem(item){
         if (resultOfEffect) dispatch(A.playerWorldActions.removeItem(item));
     }
 }
+
+export function gainItemQuest(item) {
+    return function (dispatch, getState) {
+        const state = getState();
+        const itemData = CardsList[item] ?? ItemsList[item];
+
+        if (itemData == null) return;
+
+        const itemType = itemData.type;
+
+        if (itemType === 'item') {
+            dispatch(A.playerWorldActions.gainItem(item));
+        }
+
+        if (itemType === 'creature') {
+            if (state.playerWorld.availableCreatures.includes(item)) {
+                return;
+            }
+
+            dispatch(
+                A.playerWorldActions.addAvailableCreature({
+                    creatureName: item,
+                })
+            );
+        }
+    };
+}

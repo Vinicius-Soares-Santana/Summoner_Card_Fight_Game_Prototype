@@ -124,7 +124,7 @@ function DialogManager(props){
     }
   }, [eventStatus, thisEvent])
 
-  return <button onClick={onClickTest}>Test Dialog Event</button>
+  return <button className={`${propsCharacName} DialogManager`} onClick={onClickTest}>Test Dialog Event</button>
 }
 
 export default DialogManager;
