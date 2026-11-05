@@ -32,12 +32,13 @@ function QuestManager(props) {
                     dispatch(worldStateActions.addQuest({questName: questName, currentObjective: allQuests[questName].initialObjective }));
                 }
             } else {
-                if(allQuests[questName].endCondition && allQuests[questName].questStatus === 'active'){
+                const thisQuest = questsAvailableNow[questName];
+                if(allQuests[questName].endCondition && thisQuest.questStatus === 'active'){
 
                     if(dialogInfo.status == 'idle') dispatch(worldStateActions.changeEventStep({
                                         eventName: eventName,
                                         newStatus: 'continue',
-                                        proceedStep: true,
+                                        proceedStep: false,
                                     }));
 
                     if (dialogInfo?.status !== 'dialog') return;
