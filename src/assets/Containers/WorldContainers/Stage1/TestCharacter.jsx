@@ -27,7 +27,7 @@ function TestCharacter(props) {
             3:{
                 ramification: true, 
                 'Yes': { message: 'NICE! can you buy me a potato?', status: 'dialog', options:[], proceedStep: true, branch: 'Yes' }, 
-                'No': { message: 'I mean, that\'s not exactly an option, but ok...', status: 'dialog', options:[], proceedStep: true,  branch: 'No' }
+                'No': { message: 'I mean, that\'s not exactly an option, but ok...', status: 'idle', options:[], proceedStep: true,  branch: 'No' }
             },
         },
         'Yes':{
@@ -61,7 +61,7 @@ function TestCharacter(props) {
                 },
                 No: {
                     message: "I mean, that's not exactly an option, but ok...",
-                    status: 'dialog',
+                    status: 'idle',
                     options: [],
                     proceedStep: true,
                     branch: 'No',
