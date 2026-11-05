@@ -27,6 +27,7 @@ const WorldStateSlice = createSlice({
         changeEventStep: (state, action) => {
             const eventName = action.payload.eventName;
             const newStatus = action.payload.newStatus;
+            const newBranch = action.payload.newBranch;
             const optionChosenNow = action.payload.option;
 
             if(!state.worldEvents[eventName]) return;
@@ -40,6 +41,10 @@ const WorldStateSlice = createSlice({
 
             if(action.payload.proceedStep){
                 state.worldEvents[eventName].eventStep += 1;
+                if(newBranch != null){
+                    state.worldEvents[eventName].eventStep = 1;
+                    state.worldEvents[eventName].branch = newBranch;
+                } 
             }
             
 
