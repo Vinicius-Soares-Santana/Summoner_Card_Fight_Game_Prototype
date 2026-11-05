@@ -27,6 +27,7 @@ function Stage1Main(props){
             <TestCharacter />
             <button onClick={() => navigate('/shop')}>Shop</button>
             <button onClick={onClickTest}>Test</button>
+            <button onClick={()=>navigate('castlefieldsleft1')}>Castle Fields Left</button>
           </div>
 }
 
