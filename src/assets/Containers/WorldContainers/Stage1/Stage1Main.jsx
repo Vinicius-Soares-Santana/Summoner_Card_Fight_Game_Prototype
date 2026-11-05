@@ -7,6 +7,7 @@ import SelectCreaturesButton from '../../../Presentational/SelectCreaturesButton
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
+import TestCharacter from './TestCharacter';
 import './Stage1Main.css';
 
 function Stage1Main(props){
@@ -23,7 +24,7 @@ function Stage1Main(props){
   return  <div className='Stage1Main'>
             <SelectCreaturesButton />
             <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
-            <DialogManager />
+            <TestCharacter />
             <button onClick={() => navigate('/shop')}>Shop</button>
             <button onClick={onClickTest}>Test</button>
           </div>

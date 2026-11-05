@@ -8,10 +8,12 @@ import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 
 function DialogManager(props){
-    const propsCharacImage = './'
-    const propsCharacName = "Misterious Guy"
-    const propsEventName = 'Test'
-    const propsCharacterStoryLine = {
+    const propsCharacImage = props.characterImage;
+    const propsCharacName = props.characterName;
+    const propsEventName = props.eventName;
+    const propsCharacterStoryLine = props.characterScript;
+    
+    const dialogExample = {
         'standard':{
             1:{
                 ramification: false, 
@@ -124,7 +126,7 @@ function DialogManager(props){
     }
   }, [eventStatus, thisEvent])
 
-  return <button className={`${propsCharacName} DialogManager`} onClick={onClickTest}>Test Dialog Event</button>
+  return <button className={`${propsCharacName} DialogManager`} onClick={onClickTest}>{propsCharacName}</button>
 }
 
 export default DialogManager;

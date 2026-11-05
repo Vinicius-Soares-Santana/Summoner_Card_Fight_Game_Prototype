@@ -4,5 +4,11 @@ export const ItemsList = {
         type: 'item',
         price: 5,
         effect: 'potionHeal',
+    },
+    Potato: {
+        name: 'Potato',
+        type: 'item',
+        price: 5,
+        effect: '',
     }
 }
