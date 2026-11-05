@@ -1,6 +1,6 @@
 import react from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from react;
+import { useEffect } from 'react';
 
 import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
