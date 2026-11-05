@@ -26,18 +26,18 @@ function QuestManager({ eventName, allQuests }) {
         (state) => state.worldState.worldEvents[eventName]
     );
 
-    exampleObjectAllQuests = {
-        TestQuest: {
-            startCondition,
-            endCondition,
-            initialObjective: 'Buy Potatoes',
-            reward: 'Potion',
+    // const exampleObjectAllQuests = {
+    //     TestQuest: {
+    //         startCondition,
+    //         endCondition,
+    //         initialObjective: 'Buy Potatoes',
+    //         reward: 'Potion',
     
-            waitingStep: 'BranchOfTheMessage',
-            waitingBranch: 'StepWhereNPCWaitsForMissionToBeComplete',               
-            completedBranch: 'WinningBranch', 
-        },
-    };
+    //         waitingStep: 'BranchOfTheMessage',
+    //         waitingBranch: 'StepWhereNPCWaitsForMissionToBeComplete',               
+    //         completedBranch: 'WinningBranch', 
+    //     },
+    // };
 
     useEffect(() => {
         if (!event) return;
