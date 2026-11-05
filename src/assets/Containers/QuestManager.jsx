@@ -1,61 +1,93 @@
-import react from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-
-import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 import { gainItemQuest } from '../../World/worldActions';
 
-function QuestManager(props) {
-    const TemplateAllQuests = {
-        questName: {startCondition: true, endCondition: false, initialObjective: 'Buy Potatoes', reward: ''},
-    }
 
-    const characterName = props.characterName;
-    const allQuests = props.allQuests;
-    const eventName = props.eventName;
+export function completeQuest(questName, reward) {
+    return (dispatch, getState) => {
+        const quest = getState().worldState.quests[questName];
 
-        
-    const questsAvailableNow = useSelector((state) => state.worldState.quests);
-    const playerInfo = useSelector((state) => state.playerWorld);
-    const dialogInfo = useSelector((state) => state.worldState.worldEvents[eventName]);
+        if (quest?.questStatus !== 'active') return;
 
+        dispatch(worldStateActions.changeQuestStatus({
+            questName,
+            newQuestStatus: 'complete',
+        }));
 
+        if (reward) dispatch(gainItemQuest(reward));
+    };
+}
+
+function QuestManager({ eventName, allQuests }) {
     const dispatch = useDispatch();
+    const quests = useSelector((state) => state.worldState.quests);
+    const event = useSelector(
+        (state) => state.worldState.worldEvents[eventName]
+    );
 
-    useEffect(()=>{
-        const questsAvailableNames = Object.keys(questsAvailableNow);
+    exampleObjectAllQuests = {
+        TestQuest: {
+            startCondition,
+            endCondition,
+            initialObjective: 'Buy Potatoes',
+            reward: 'Potion',
+    
+            waitingStep: 'BranchOfTheMessage',
+            waitingBranch: 'StepWhereNPCWaitsForMissionToBeComplete',               
+            completedBranch: 'WinningBranch', 
+        },
+    };
 
-        for (const questName of Object.keys(allQuests)){
-            if(!questsAvailableNames.includes(questName)){
-                if(allQuests[questName].startCondition){
-                    dispatch(worldStateActions.addQuest({questName: questName, currentObjective: allQuests[questName].initialObjective }));
+    useEffect(() => {
+        if (!event) return;
+
+        for (const questName of Object.keys(allQuests)) {
+            const config = allQuests[questName];
+            const quest = quests[questName];
+
+            if (!quest) {
+                if (config.startCondition) {
+                    dispatch(worldStateActions.addQuest({
+                        questName,
+                        currentObjective: config.initialObjective,
+                    }));
                 }
-            } else {
-                const thisQuest = questsAvailableNow[questName];
-                if(allQuests[questName].endCondition && thisQuest.questStatus === 'active'){
+                continue;
+            }
 
-                    if(dialogInfo.status == 'idle') dispatch(worldStateActions.changeEventStep({
-                                        eventName: eventName,
-                                        newStatus: 'continue',
-                                        proceedStep: false,
-                                    }));
+            const atWaitingLine =
+                event.branch === config.waitingBranch &&
+                event.eventStep === (config.waitingStep ?? 1);
 
-                    if (dialogInfo?.status !== 'dialog') return;
-                    dispatch(worldStateActions.changeQuestStatus({questName: questName, newQuestStatus: 'complete' }));
-                    if(allQuests[questName].reward != '' && allQuests[questName].reward != null){
-                        dispatch(gainItemQuest(allQuests[questName].reward));
-                    }
+            if (quest.questStatus === 'complete') {
+                if (atWaitingLine && ['idle', 'continue'].includes(event.status)) {
+                    dispatch(worldStateActions.changeEventStep({
+                        eventName,
+                        newStatus: 'idle',
+                        newBranch: config.completedBranch,
+                        proceedStep: true,
+                    }));
                 }
+                continue;
+            }
+
+            if (quest.questStatus !== 'active' || !config.endCondition) continue;
+            if (event.status !== 'idle') continue;
+
+            if (event.branch === config.completedBranch) {
+                dispatch(completeQuest(questName, config.reward));
+            } else if (atWaitingLine) {
+                dispatch(worldStateActions.changeEventStep({
+                    eventName,
+                    newStatus: 'continue',
+                    proceedStep: false,
+                }));
             }
         }
-    },[dialogInfo, playerInfo])
+    }, [allQuests, dispatch, event, eventName, quests]);
 
-
-    return (
-        <div className={`${characterName} QuestManager`}>
-        </div>
-    );
+    return null;
 }
 
 export default QuestManager;
