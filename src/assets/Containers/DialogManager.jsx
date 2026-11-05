@@ -76,6 +76,7 @@ function DialogManager(props){
             message: messageObj[previousAnswer]?.message, 
             eventName: propsEventName, 
             options: messageObj[previousAnswer]?.options,
+            status: messageObj[previousAnswer]?.status,
             proceedStep: messageObj[previousAnswer]?.proceedStep,
             newBranch: messageObj[previousAnswer]?.branch
         }));

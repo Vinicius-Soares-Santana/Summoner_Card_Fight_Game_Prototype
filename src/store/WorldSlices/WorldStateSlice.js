@@ -11,7 +11,7 @@ const initialState = {
             optionsCounter: 1,
         },
     },
-    quests: {'QuestTest': 'active',},
+    quests: {'QuestTest': { name: 'QuestTest', questStatus: 'active', currentObjective: '',},}
 };
 
 const WorldStateSlice = createSlice({
@@ -49,7 +49,24 @@ const WorldStateSlice = createSlice({
                 } 
             }
             
+        },
+        addQuest: (state, action) => {
+            const questName = action.payload.questName;
+            const curentObjective = action.payload.currentObjective;
 
+            state.quests = {...state.quests, [questName]: {name: questName, questStatus: 'active', currentObjective: curentObjective,}, }
+        },
+        changeQuestStatus: (state, action) => {
+            const questName = action.payload.questName;
+            const newStatus = action.payload.newQuestStatus;
+
+            state.quests[questName]?.questStatus = newStatus;
+        },
+        changeQuestObjective: (state, action) => {
+            const questName = action.payload.questName;
+            const newObjective = action.payload.newQuestObjective;
+
+            state.quests[questName]?.currentObjective = newObjective;
         },
     },
 });
