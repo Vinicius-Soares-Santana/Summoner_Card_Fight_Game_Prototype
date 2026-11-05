@@ -60,13 +60,13 @@ const WorldStateSlice = createSlice({
             const questName = action.payload.questName;
             const newStatus = action.payload.newQuestStatus;
 
-            state.quests[questName]?.questStatus = newStatus;
+            state.quests[questName].questStatus = newStatus;
         },
         changeQuestObjective: (state, action) => {
             const questName = action.payload.questName;
             const newObjective = action.payload.newQuestObjective;
 
-            state.quests[questName]?.currentObjective = newObjective;
+            state.quests[questName].currentObjective = newObjective;
         },
     },
 });
