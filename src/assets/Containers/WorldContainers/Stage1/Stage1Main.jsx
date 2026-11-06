@@ -10,6 +10,7 @@ import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
 import TestCharacter from './Characters1/TestCharacter';
 import Guard1 from './Characters1/Guard1';
+import Guard2 from './Characters1/Guard2';
 import './Stage1Main.css';
 
 function Stage1Main(props){
@@ -28,6 +29,7 @@ function Stage1Main(props){
             <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
             <TestCharacter />
             <Guard1 />
+            <Guard2 />
             <button onClick={() => navigate('/shop')}>Shop</button>
             <button onClick={onClickTest}>Test</button>
             <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
+import './Guard1.css';
 
 const characterName = 'Guard';
 const characterImage = './';
