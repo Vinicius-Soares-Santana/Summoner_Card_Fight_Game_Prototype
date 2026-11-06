@@ -255,3 +255,80 @@
       grid-template-columns: minmax(0, 1fr);
   }
 }
+
+#Arena {
+  --arena-table-height: clamp(320px, 48svh, 500px);
+
+  height: 100svh;
+  min-height: 660px;
+  grid-template-columns: minmax(145px, 1fr) minmax(0, 5fr) minmax(145px, 1fr);
+  grid-template-rows: minmax(0, 1fr) var(--arena-table-height) minmax(0, 1fr);
+  grid-template-areas:
+      'summon2 cards2 stats2'
+      'tableArea tableArea tableArea'
+      'stats1 cards1 summon1';
+  align-items: stretch;
+}
+
+/* Mãos e painéis cabem na área reservada para cada jogador. */
+#Arena > :is(.CardHand, .SummonRelic, .PlayerStatsUI) {
+  min-height: 0;
+  align-self: stretch;
+  overflow: auto;
+}
+
+/* A altura da mesa depende da tela e fica igual com ou sem cartas. */
+#Arena #Table {
+  height: var(--arena-table-height);
+  min-height: 0;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  background-size: cover;
+}
+
+#Arena #Table :is(#Player1TableSide, #Player2TableSide) {
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr);
+}
+
+/* Se faltar espaço, o conteúdo rola dentro do slot. */
+#Arena .TableSlot {
+  min-height: 0;
+  overflow: auto;
+}
+
+#Arena #Table .CreatureCard > img {
+  max-height: clamp(36px, calc((var(--arena-table-height) - 240px) / 2), 110px);
+}
+
+#Arena .CreatureCard:not(.Empty) {
+  background-size: cover;
+}
+
+/* A relíquia vira o fundo do painel, atrás dos controles. */
+#Arena .SummonRelic {
+  background:
+      linear-gradient(#1a1222a6, #1a1222ee),
+      url('../Images/Arena/Summon_Relic.png') center / cover no-repeat,
+      #1a1222;
+}
+
+#Arena .SummonRelic::before {
+  content: none;
+}
+
+@media (max-width: 640px) {
+  #Arena {
+      --arena-table-height: 340px;
+
+      height: auto;
+      min-height: 100svh;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: auto auto var(--arena-table-height) auto auto;
+      grid-template-areas:
+          'summon2 stats2'
+          'cards2 cards2'
+          'tableArea tableArea'
+          'cards1 cards1'
+          'stats1 summon1';
+  }
+}
