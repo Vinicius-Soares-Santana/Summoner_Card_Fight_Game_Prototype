@@ -7,7 +7,7 @@ const initialState = {Health: 50,
                       availableCreatures: ['BabyDragon', 'Fluffy', 'Slime'],
                       selectedCreatures:{tier1:[], tier2:[], tier3:[]},
                       dialogScreen: {image: '', title: '', message:'', eventName:'', options:[], status: '', proceedStep: false, branch: '' },
-                      EnemysDefeated: [],
+                      EnemiesDefeated: [],
                     };
 
 const PlayerWorldSlice = createSlice({
@@ -109,8 +109,8 @@ const PlayerWorldSlice = createSlice({
 
       state.MaxHealth += increaseAmount;
     },
-    addEnemyDefeated: (state, action) => {
-      state.EnemysDefeated.push(action.payload);
+    addEnemiesDefeated: (state, action) => {
+      state.EnemiesDefeated.push(action.payload);
     },
     changeDialog: (state, action) => {
       if(action.payload != null){
