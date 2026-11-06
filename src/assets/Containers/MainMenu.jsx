@@ -16,7 +16,7 @@ function MainMenu(props) {
  
 
   const handleClickPlay = () => {
-    navigate('/game/stage1main');
+    navigate('/game/stage1');
   };
 
   return (

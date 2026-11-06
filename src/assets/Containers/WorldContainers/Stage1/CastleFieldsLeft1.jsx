@@ -8,7 +8,7 @@ import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSli
 import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
 import TestCharacter from './TestCharacter';
-import './Stage1Main.css';
+import './CastleFieldsLeft1.css';
 
 function CastleFieldsLeft1(props){
     const worldState = useSelector((state) => state.worldState)
@@ -18,7 +18,7 @@ function CastleFieldsLeft1(props){
 
     return  <div className='CastleFieldsLeft1'>
                 <SelectCreaturesButton />
-                <button onClick={()=>navigate('stage1main')}>Stage1Main</button>
+                <button onClick={()=>navigate('/game/stage1')}>Stage1Main</button>
             </div>
 }
 

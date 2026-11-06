@@ -48,8 +48,6 @@ function DialogManager(props){
     const dialogBoxCurrent = useSelector((state) => state.playerWorld.dialogScreen);
     let eventStatus = thisEvent?.status;
     let branch = thisEvent?.branch;
-
-    console.log(`Event right now: ${JSON.stringify(thisEvent)}`);
     
 
   function onClickTest(e){
@@ -70,7 +68,6 @@ function DialogManager(props){
         const previousAnswer = thisEvent.optionsChosen[Object.keys(thisEvent.optionsChosen)[Object.keys(thisEvent.optionsChosen).length - 1]];
         const messageObj = propsCharacterStoryLine[branch][stepOfEvent] ?? {};
 
-        console.log(`optionsChosen: ${JSON.stringify(thisEvent.optionsChosen)}`);
 
         dispatch(playerWorldActions.changeDialog({
             image: propsCharacImage,
