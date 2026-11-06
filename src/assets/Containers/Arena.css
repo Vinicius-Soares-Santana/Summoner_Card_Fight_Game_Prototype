@@ -1,45 +1,257 @@
 #Arena {
+  --arena-text: #f5e9ed;
+  --arena-muted: #cbb9d0;
+  --arena-panel: #1a1222ef;
+  --arena-border: #76536f;
+  --arena-gold: #f2b784;
+  --arena-purple: #c79bff;
+
   box-sizing: border-box;
-  background-color: rgb(73, 48, 1);
   width: 100%;
-  height: 100vh;
+  min-height: 100svh;
+  padding: clamp(10px, 2vw, 28px);
+  color: var(--arena-text);
+  background:
+      linear-gradient(#0b081125, #0b0811a6),
+      url('../Images/Arena/ArenaBackground.png') center / cover no-repeat,
+      #120d19;
+
   display: grid;
-  grid-template-columns: 1fr 8fr 1fr;
-  grid-template-rows: 2fr 7fr 2fr;
+  grid-template-columns: minmax(175px, 1fr) minmax(0, 2.4fr) minmax(110px, 0.65fr);
   grid-template-areas:
-    'summon2 cards2 stats2'
-    'tableArea tableArea tableArea'
-    'stats1 cards1 summon1';
-  padding: 7vh 5vw;
-  background-image: url('../Images/Arena/ArenaBackground.png');
-  background-size: cover;
-  background-position: center;
+      'summon2 cards2 stats2'
+      'tableArea tableArea tableArea'
+      'summon1 cards1 stats1';
+  gap: clamp(8px, 1.5vw, 20px);
+  align-items: start;
+  align-content: center;
 }
 
-.SummonRelic.player2hand {
-  grid-area: summon2;
+#Arena *,
+#Arena *::before {
+  box-sizing: border-box;
 }
 
-.SummonRelic.player1hand {
-  grid-area: summon1;
-}
+#Arena .SummonRelic.player2hand { grid-area: summon2; }
+#Arena .SummonRelic.player1hand { grid-area: summon1; }
+#Arena .CardHand.player2hand { grid-area: cards2; }
+#Arena .CardHand.player1hand { grid-area: cards1; }
+#Arena .PlayerStatsUI.player2 { grid-area: stats2; }
+#Arena .PlayerStatsUI.player1 { grid-area: stats1; }
 
-.CardHand.player2hand {
-  grid-area: cards2;
-}
-
-.CardHand.player1hand {
-  grid-area: cards1;
-}
-
-.PlayerStatsUI.player1 {
-  grid-area: stats1;
-}
-
-.PlayerStatsUI.player2 {
-  grid-area: stats2;
-}
-
-#Table {
+/* Mesa: duas fileiras de quatro espaços. */
+#Arena #Table {
   grid-area: tableArea;
+  justify-self: center;
+  width: min(100%, 1080px);
+  min-width: 0;
+  padding: clamp(8px, 2vw, 24px);
+  gap: clamp(10px, 2vw, 24px);
+
+  background: url('../Images/Arena/Stone_Battle_Table.png')
+      center / 100% 100% no-repeat #1a1122;
+  border: 1px solid var(--arena-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px #0008;
+}
+
+#Arena #Table :is(#Player1TableSide, #Player2TableSide) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-self: stretch;
+  justify-self: stretch;
+  gap: clamp(4px, 1vw, 12px);
+}
+
+#Arena .TableSlot {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(3px, 0.7vw, 8px);
+  border: 1px solid #af8ab45e;
+  border-radius: 6px;
+  background: #100b18a8;
+}
+
+/* Mantém o feedback visual de ataque e seleção de alvo. */
+#Arena .TableSlot.PotentialTarget {
+  border-color: var(--arena-purple);
+}
+
+#Arena .TableSlot.Attacker {
+  border-color: var(--arena-gold);
+  box-shadow: 0 0 12px #f2b78470;
+}
+
+#Arena .TableSlot.Target {
+  border-color: #fa9caa;
+  box-shadow: 0 0 12px #fa9caa80;
+}
+
+/* Moldura rúnica das cartas. */
+#Arena .CreatureCard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px 5px;
+  min-width: 0;
+  padding: clamp(6px, 1vw, 12px);
+  background: url('../Images/Arena/Rune_Card_Base.png')
+      center / 100% 100% no-repeat #241630;
+  color: var(--arena-text);
+  font-size: clamp(10px, 1.1vw, 13px);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+#Arena .CreatureCard > :is(h4, img, .Status) {
+  grid-column: 1 / -1;
+}
+
+#Arena .CreatureCard h4 {
+  margin: 0;
+  color: var(--arena-gold);
+  font-size: 1.08em;
+}
+
+#Arena .CreatureCard > img {
+  display: block;
+  width: 100%;
+  max-height: 110px;
+  object-fit: contain;
+}
+
+#Arena .CreatureCard p {
+  margin: 0;
+  padding: 2px 3px;
+  border-radius: 3px;
+  background: #100b18d9;
+}
+
+#Arena .CreatureCard.Empty {
+  min-height: 76px;
+  background: #100b184d;
+  border: 1px dashed #ad82b266;
+  border-radius: 4px;
+}
+
+/* Mãos: rolam para o lado se acumularem cartas. */
+#Arena .CardHand {
+  align-self: start;
+  justify-self: stretch;
+  min-width: 0;
+  gap: 8px;
+  padding: 4px;
+  overflow-x: auto;
+}
+
+#Arena .CardHand .HandZone {
+  flex: 0 0 clamp(96px, 12vw, 148px);
+  min-width: 0;
+}
+
+#Arena .CardHand .CreatureCard > img {
+  max-height: 128px;
+}
+
+/* Relíquia e painel de status. */
+#Arena :is(.SummonRelic, .PlayerStatsUI) {
+  min-width: 0;
+  padding: 10px;
+  background: var(--arena-panel);
+  border: 1px solid var(--arena-border);
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+#Arena .SummonRelic::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 56px;
+  margin: 0 auto 4px;
+  background: url('../Images/Arena/Summon_Relic.png')
+      center / contain no-repeat;
+}
+
+#Arena .SummonRelic h2,
+#Arena .PlayerStatsUI :is(h3, h4, h5) {
+  margin: 0 0 4px;
+  color: var(--arena-gold);
+  font-size: 14px;
+}
+
+#Arena .SummonRelic form {
+  display: grid;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+#Arena .SummonRelic input {
+  width: 100%;
+  min-width: 0;
+  padding: 4px 6px;
+  color: var(--arena-text);
+  background: #110c18;
+  border: 1px solid var(--arena-border);
+  border-radius: 4px;
+}
+
+#Arena .selectedSummon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+#Arena button {
+  min-height: 30px;
+  max-width: 100%;
+  margin-top: 3px;
+  padding: 4px 7px;
+  color: var(--arena-text);
+  background: #30203a;
+  border: 1px solid var(--arena-border);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+#Arena button:hover:not(:disabled),
+#Arena button[aria-pressed='true'] {
+  color: var(--arena-gold);
+  border-color: var(--arena-gold);
+}
+
+#Arena button:focus-visible {
+  outline: 2px solid var(--arena-purple);
+  outline-offset: 2px;
+}
+
+#Arena button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  #Arena {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+          'summon2 stats2'
+          'cards2 cards2'
+          'tableArea tableArea'
+          'cards1 cards1'
+          'summon1 stats1';
+  }
+
+  #Arena .CreatureCard {
+      padding: 5px;
+  }
+
+  #Arena #Table .CreatureCard {
+      grid-template-columns: minmax(0, 1fr);
+  }
 }
