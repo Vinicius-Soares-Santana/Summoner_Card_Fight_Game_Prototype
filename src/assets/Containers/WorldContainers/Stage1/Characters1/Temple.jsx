@@ -101,7 +101,7 @@ const characterScript = {
 
 function TestCharacter() {
     const items = useSelector((state) => state.playerWorld.Items);
-    const enemiesDefeated = useSelector((state) => state.playerWorld.enemiesDefeated);
+    const enemiesDefeated = useSelector((state) => state.playerWorld.EnemiesDefeated);
     const creaturesObtained = useSelector((state) => state.playerWorld.selectedCreatures);
     const event = useSelector(
         (state) => state.worldState.worldEvents[eventName]
