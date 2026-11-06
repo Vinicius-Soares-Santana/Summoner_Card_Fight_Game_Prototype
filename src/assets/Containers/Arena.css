@@ -10,7 +10,7 @@
   background-position: center;
 
   display: grid;
-  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-columns: minmax(150px, 1fr) minmax(0, 8fr) minmax(150px, 1fr);
   grid-template-rows: 2fr 7fr 2fr;
   grid-template-areas:
       'summon2 cards2 stats2'
