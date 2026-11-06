@@ -8,7 +8,8 @@ import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
-import TestCharacter from './TestCharacter';
+import TestCharacter from './Characters1/TestCharacter';
+import Guard1 from './Characters1/Guard1';
 import './Stage1Main.css';
 
 function Stage1Main(props){
@@ -26,6 +27,7 @@ function Stage1Main(props){
             <SelectCreaturesButton />
             <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
             <TestCharacter />
+            <Guard1 />
             <button onClick={() => navigate('/shop')}>Shop</button>
             <button onClick={onClickTest}>Test</button>
             <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />

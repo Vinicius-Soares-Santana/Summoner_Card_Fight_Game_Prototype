@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import QuestManager from '../../QuestManager';
-import DialogManager from '../../DialogManager';
+import QuestManager from '../../../QuestManager';
+import DialogManager from '../../../DialogManager';
 
 const characterName = 'James';
 const characterImage = './';

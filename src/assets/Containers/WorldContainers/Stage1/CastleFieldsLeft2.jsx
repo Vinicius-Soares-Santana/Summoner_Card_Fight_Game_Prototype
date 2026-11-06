@@ -6,7 +6,6 @@ import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
-import TestCharacter from './TestCharacter';
 import './CastleFieldsLeft2.css';
 
 function CastleFieldsLeft2(props){
