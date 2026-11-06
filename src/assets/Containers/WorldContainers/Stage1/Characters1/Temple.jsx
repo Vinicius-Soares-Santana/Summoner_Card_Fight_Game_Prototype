@@ -9,21 +9,6 @@ const characterName = 'MainCharacter';
 const characterImage = './';
 const eventName = 'EnterTheTemple';
 
-const accepted = {
-    message: 'NICE! Can you buy me a potato?',
-    status: 'dialog',
-    options: [],
-    proceedStep: true,
-    branch: 'Yes',
-};
-
-const refused = {
-    message: "I mean, that's not exactly an option, but ok...",
-    status: 'idle',
-    options: [],
-    proceedStep: true,
-    branch: 'No',
-};
 
 const characterScript = {
     standard: {
@@ -46,8 +31,34 @@ const characterScript = {
                 branch: 'standard',
             },
         },
+        3: {
+            ramification: false,
+            Ok: {
+                message: 'I should make sure I\'m ready',
+                status: 'dialog',
+                options: ['Proceed', 'Stay'],
+                proceedStep: true,
+                branch: 'EnterOrNot',
+            },
+        },
     },
     EnterOrNot: {
+        1: {
+            ramification: true,
+            Proceed: { message: '...',
+                        status: 'dialog',
+                        options: ['continue'],
+                        proceedStep: true,
+                    },
+            Stay:   { message: 'I shall prepare first',
+                        status: 'idle',
+                        options: [],
+                        proceedStep: true,
+                        branch: 'ReEnterOrNot',
+                    },
+        },
+    },
+    ReEnterOrNot: {
         1: {
             ramification: false,
             Ok: {
@@ -59,10 +70,19 @@ const characterScript = {
         },
         2: {
             ramification: true,
-            Proceed: {},
-            Stay: refused,
+            Proceed: { message: 'I think I can proceed now, I should make sure I\'m ready',
+                        status: 'dialog',
+                        options: ['continue'],
+                        proceedStep: true,
+                    },
+            Stay:   { message: 'Right, let\'s prepare ourselfs first',
+                        status: 'idle',
+                        options: [],
+                        proceedStep: true,
+                        branch: 'ReEnterOrNot',
+                    },
         },
-    },
+    }
 };
 
 function TestCharacter() {
