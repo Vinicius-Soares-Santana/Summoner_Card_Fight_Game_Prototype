@@ -102,7 +102,7 @@ function finishIfNeeded(dispatch, getState) {
     const enemyId = battle.participants.player2.controller.enemyId;
     const enemyData = EnemiesList[enemyId];
 
-    dispatch(A.playerWorldActions.addEnemyDefeated(enemyData.name));
+    dispatch(A.playerWorldActions.addEnemyDefeated(enemyData.enemyId));
     dispatch(A.playerWorldActions.gainGold(enemyData.goldLoot));
 
     for (const item of enemyData.itemLoot) {

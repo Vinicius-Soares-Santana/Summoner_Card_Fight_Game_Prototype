@@ -2,13 +2,13 @@ export const EnemiesList = {
   Acolite1: {
     id: 'Acolite1',
     name: 'Acolite',
-    health: 100,
+    health: 50,
     difficulty: 'stupid',
     preferredGroups: ['Swarm', 'Scaling'],
     team: {
       tier1: ['Goblin', 'Slime', 'Gnome', 'Fluffy'],
       tier2: ['Fairy', 'Basilisk', 'Troll'],
-      tier3: ['DragonKing', 'SoulEater'],
+      tier3: [],
     },
     goldLoot: 10,
     itemLoot: [],
@@ -16,13 +16,13 @@ export const EnemiesList = {
   goblinCaptain: {
     id: 'goblinCaptain',
     name: 'Goblin Captain',
-    health: 100,
+    health: 70,
     difficulty: 'normal',
     preferredGroups: ['Swarm', 'Scaling', 'Aggressive'],
     team: {
       tier1: ['Goblin', 'Slime', 'Minion', 'Gnome'],
       tier2: ['Dragon', 'Fairy', 'Troll'],
-      tier3: ['Hydra', 'DragonKing'],
+      tier3: [],
     },
     goldLoot: 30,
     itemLoot: [],
@@ -39,6 +39,20 @@ export const EnemiesList = {
       tier3: ['Fenrir', 'HolyKnight'],
     },
     goldLoot: 50,
+    itemLoot: [],
+  },
+  TempleGuardian: {
+    id: 'TempleGuardian',
+    name: 'Temple Guardian',
+    health: 100,
+    difficulty: 'hard',
+    preferredGroups: ['Graveyard', 'ManaEngine', 'Aggressive'],
+    team: {
+      tier1: ['Fluffy', 'Traitor', 'Lich', 'BabyDragon'],
+      tier2: ['Fairy', 'Gashadokuro', 'Dragon'],
+      tier3: ['SoulEater', 'DragonKing'],
+    },
+    goldLoot: 100,
     itemLoot: [],
   },
 }

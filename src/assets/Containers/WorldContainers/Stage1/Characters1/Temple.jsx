@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
+import NextSceneButton from '../../../Containers/NextSceneButton';
 
 const characterName = 'MainCharacter';
 const characterImage = './';
@@ -28,7 +30,7 @@ const characterScript = {
         1: {
             ramification: false,
             Ok: {
-                message: 'Hi Stranger',
+                message: 'I need at least 4 creatures of the 1st tier and 1 of the 2nd tier to enter the temple...',
                 status: 'dialog',
                 options: [],
                 proceedStep: true,
@@ -37,69 +39,34 @@ const characterScript = {
         2: {
             ramification: false,
             Ok: {
-                message: 'Can you help me test a quest real quick?',
-                status: 'dialog',
-                options: ['Yes', 'No'],
+                message: 'I should start by checking the shop.',
+                status: 'idle',
+                options: [],
                 proceedStep: true,
+                branch: 'standard',
             },
         },
-        3: {
-            ramification: true,
-            Yes: accepted,
-            No: refused,
-        },
     },
-    No: {
+    EnterOrNot: {
         1: {
             ramification: false,
             Ok: {
-                message: 'Did you change your mind?',
+                message: 'I think I can proceed now, I should make sure I\'m ready',
                 status: 'dialog',
-                options: ['Yes', 'No'],
+                options: ['Proceed', 'Stay'],
                 proceedStep: true,
             },
         },
         2: {
             ramification: true,
-            Yes: accepted,
-            No: refused,
-        },
-    },
-    Yes: {
-        1: {
-            ramification: false,
-            Ok: {
-                message: 'Still waiting for that potato.',
-                status: 'idle',
-                options: [],
-                proceedStep: false,
-            },
-        },
-        2: {
-            ramification: false,
-            Ok: {
-                message: "YOU MADE IT! Here's a potion as a reward.",
-                status: 'idle',
-                options: [],
-                proceedStep: true,
-                branch: 'CONGRATULATIONS',
-            },
-        },
-    },
-    CONGRATULATIONS: {
-        1: {
-            ramification: false,
-            Ok: {
-                message: 'Thanks for bringing the potato!',
-                status: 'idle',
-                options: [],
-                proceedStep: false,
-            },
+            Proceed: {},
+            Stay: refused,
         },
     },
 };
 
 function TestCharacter() {
+    const navigate = useNavigate();
     const items = useSelector((state) => state.playerWorld.Items);
     const enemiesDefeated = useSelector((state) => state.playerWorld.EnemiesDefeated);
     const creaturesObtained = useSelector((state) => state.playerWorld.selectedCreatures);
@@ -120,27 +87,51 @@ function TestCharacter() {
             initialObjective: 'Equip 4 Tier 1 creatures and 1 Tier 2 creature to enter the temple',
             reward: '',
             waitingBranch: 'standard',
+            completedBranch: 'EnterOrNot',
         },
         DefeatTempleGuardian: {
             startCondition: WorldCurrentQuests.EnterTheTemple?.status === 'complete',
             endCondition: enemiesDefeated.includes('TempleGuardian'),
             initialObjective: 'Defeat the Temple Guardian',
             reward: '',
+            completedBranch: 'GuardianDefeated',
         },
     };
 
+    useEffect(() => {
+        if(event?.optionsChosen.includes('Proceed') && 
+            event?.optionsChosen.includes('Continue')&&
+            WorldCurrentQuests.DefeatTempleGuardian?.status != 'complete'
+            ){
+                navigate('/game/stage2');
+        }
+    }, [event, WorldCurrentQuests])
+
+
+    function testTempleStatus(WorldCurrentQuestsVar){
+        if(WorldCurrentQuestsVar){
+            if(WorldCurrentQuestsVar.DefeatTempleGuardian?.status != 'complete'){
+                return <>
+                            <DialogManager
+                                characterName={characterName}
+                                characterImage={characterImage}
+                                eventName={eventName}
+                                characterScript={characterScript}
+                            />
+                            <QuestManager
+                                eventName={eventName}
+                                allQuests={allQuests}
+                            />
+                        </>
+            } else {
+                return <button className="TempleButton" onClick={() => navigate('/game/stage2')} ></button>
+            }
+        }
+    }
+
     return (
         <div id="Temple">
-            <DialogManager
-                characterName={characterName}
-                characterImage={characterImage}
-                eventName={eventName}
-                characterScript={characterScript}
-            />
-            <QuestManager
-                eventName={eventName}
-                allQuests={allQuests}
-            />
+            {testTempleStatus(WorldCurrentQuests)}
         </div>
     );
 }
