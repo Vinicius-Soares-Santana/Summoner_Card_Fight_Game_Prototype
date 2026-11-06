@@ -14,7 +14,8 @@
     padding: 20px;
     text-align: center;
     color: #ec29ec;
-    text-shadow: 0 1px 3px #1a0925;
+    text-shadow: 0 0 1px #8d018d,
+                 0 0 3px #520052;
 }
 
 .PlayerStatsUI > :is(h3, h4, h5, p) {
@@ -23,6 +24,27 @@
 }
 
 .PlayerStatsUI > p:empty {
+    display: none;
+}
+
+#Arena .PlayerStatsUI {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: 10px;
+    text-align: center;
+}
+
+#Arena .PlayerStatsUI > :is(h3, h4, h5, p) {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1.0;
+}
+
+#Arena .PlayerStatsUI > p:empty {
     display: none;
 }
 
