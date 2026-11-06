@@ -1,0 +1,11 @@
+.SummonRelic{
+    background-image: url('../Images/Arena/SummonRelicInterface.png');
+}
+
+.SummonRelic.player1hand{
+
+}
+
+.SummonRelic.player2hand{
+    transform: rotate(180deg);
+}
