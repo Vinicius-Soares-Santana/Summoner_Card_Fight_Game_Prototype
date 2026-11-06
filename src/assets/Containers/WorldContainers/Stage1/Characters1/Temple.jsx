@@ -15,23 +15,13 @@ const characterScript = {
         1: {
             ramification: false,
             Ok: {
-                message: 'I need at least 4 creatures of the 1st tier and 1 of the 2nd tier to enter the temple...',
+                message: 'I need at least 4 creatures of the 1st tier and 1 of the 2nd tier to enter the temple... \n I should start by checking the shop.',
                 status: 'dialog',
                 options: [],
                 proceedStep: true,
             },
         },
         2: {
-            ramification: false,
-            Ok: {
-                message: 'I should start by checking the shop.',
-                status: 'idle',
-                options: [],
-                proceedStep: true,
-                branch: 'standard',
-            },
-        },
-        3: {
             ramification: false,
             Ok: {
                 message: 'I should make sure I\'m ready',
@@ -119,9 +109,9 @@ function TestCharacter() {
     };
 
     useEffect(() => {
-        if(event?.optionsChosen.includes('Proceed') && 
-            event?.optionsChosen.includes('Continue')&&
-            WorldCurrentQuests.DefeatTempleGuardian?.status != 'complete'
+        if(Object.values(event?.optionsChosen).includes('Proceed') && 
+            Object.values(event?.optionsChosen).includes('Continue')&&
+            WorldCurrentQuests.DefeatTempleGuardian?.questStatus != 'complete'
             ){
                 navigate('/game/stage2');
         }
@@ -130,7 +120,7 @@ function TestCharacter() {
 
     function testTempleStatus(WorldCurrentQuestsVar){
         if(WorldCurrentQuestsVar){
-            if(WorldCurrentQuestsVar.DefeatTempleGuardian?.status != 'complete'){
+            if(WorldCurrentQuestsVar.DefeatTempleGuardian?.questStatus != 'complete'){
                 return <>
                             <DialogManager
                                 characterName={characterName}
