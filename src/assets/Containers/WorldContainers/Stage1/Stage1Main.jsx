@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CardsList } from '../../../CardsList';
 import ArenaButton from '../../ArenaButton';
 import SelectCreaturesButton from '../../../Presentational/SelectCreaturesButton';
+import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
@@ -27,7 +28,7 @@ function Stage1Main(props){
             <TestCharacter />
             <button onClick={() => navigate('/shop')}>Shop</button>
             <button onClick={onClickTest}>Test</button>
-            <button onClick={()=>navigate('castlefieldsleft1')}>Castle Fields Left</button>
+            <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
           </div>
 }
 

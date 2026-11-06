@@ -1,0 +1,10 @@
+.CastleFieldsLeft2 {
+    background-color: rgb(0, 128, 100);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  

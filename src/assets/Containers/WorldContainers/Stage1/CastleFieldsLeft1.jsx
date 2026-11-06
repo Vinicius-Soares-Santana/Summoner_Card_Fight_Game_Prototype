@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CardsList } from '../../../CardsList';
 import ArenaButton from '../../ArenaButton';
 import SelectCreaturesButton from '../../../Presentational/SelectCreaturesButton';
+import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
@@ -17,8 +18,9 @@ function CastleFieldsLeft1(props){
 
 
     return  <div className='CastleFieldsLeft1'>
+                <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
                 <SelectCreaturesButton />
-                <button onClick={()=>navigate('/game/stage1')}>Stage1Main</button>
+                <NextSceneButton destination='/game/stage1' buttonText='Stage1Main' />
             </div>
 }
 

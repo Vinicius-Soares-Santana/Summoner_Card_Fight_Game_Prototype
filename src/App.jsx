@@ -10,6 +10,7 @@ import MainMenu from './assets/Containers/MainMenu';
 import Arena from './assets/Containers/Arena';
 import Stage1Main from './assets/Containers/WorldContainers/Stage1/Stage1Main';
 import CastleFieldsLeft1 from './assets/Containers/WorldContainers/Stage1/CastleFieldsLeft1';
+import CastleFieldsLeft2 from './assets/Containers/WorldContainers/Stage1/CastleFieldsLeft2';
 import Stage1 from './assets/Containers/WorldContainers/Stage1/Stage1';
 import SelectCreaturesScreen from './assets/Containers/SelectCreaturesScreen';
 import Shop from './assets/Containers/Shop';
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         <Route path="stage1" element={<Stage1 />} >
           <Route index element={<Stage1Main />} />
           <Route path="castlefieldsleft1" element={<CastleFieldsLeft1 />} />
+          <Route path="castlefieldsleft2" element={<CastleFieldsLeft2 />} />
         </Route>
 
       </Route>
