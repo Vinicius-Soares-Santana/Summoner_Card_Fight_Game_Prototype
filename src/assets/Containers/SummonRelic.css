@@ -1,5 +1,8 @@
 .SummonRelic{
     background-image: url('../Images/Arena/SummonRelicInterface.png');
+    background-size: 100% 100%;
+    background-position: center;
+    padding: 20%;
 }
 
 .SummonRelic.player1hand{
