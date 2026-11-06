@@ -83,6 +83,7 @@ export function chooseAIAction(state, playerId, rng = Math.random) {
   if(controller?.type !== 'ai') return null;
   const enemy = EnemiesList[controller.enemyId];
   const profile = DifficultyPresets[controller.difficulty];
+  const myTable = state.table[sideOf(playerId)];
   const actions = getLegalActions(state, playerId);
   if (actions.length === 0) return null;
 
