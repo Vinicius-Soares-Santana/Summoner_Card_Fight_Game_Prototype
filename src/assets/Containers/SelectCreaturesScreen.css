@@ -38,6 +38,13 @@
   color-scheme: dark;
 }
 
+.SelectCreatureScreen .CreaturePreviewImage {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, 220px);
+  height: auto;
+}
+
 .SelectCreatureScreen *,
 .SelectCreatureScreen *::before,
 .SelectCreatureScreen *::after {

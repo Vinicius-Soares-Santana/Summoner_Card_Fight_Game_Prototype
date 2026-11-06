@@ -11,6 +11,9 @@
     'tableArea tableArea tableArea'
     'stats1 cards1 summon1';
   padding: 7vh 5vw;
+  background-image: url('../Images/Arena/ArenaBackground.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .SummonRelic.player2hand {

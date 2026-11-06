@@ -7,11 +7,13 @@ import { CardsList } from '../CardsList';
 import { EffectsList } from '../EffectsList';
 import { ItemsList } from '../ItemsList';
 import { useItem } from '../../World/worldActions';
+import { getCreatureImage } from '../CreatureImages';
 import './SelectCreaturesScreen.css';
 
 function SelectCreaturesScreen(props){
   const [creatureInDisplay, setCreatureInDisplay] = useState('');
   const creatureToDisplayData = CardsList[creatureInDisplay];
+  const creatureImage = getCreatureImage(creatureInDisplay);
 
   const currentSelection = useSelector((state) => state.playerWorld.selectedCreatures);
   const availableCreatures = useSelector((state) => state.playerWorld.availableCreatures);
@@ -69,6 +71,13 @@ function SelectCreaturesScreen(props){
 
               <div className='CreatureDetailsDisplay' >
                 <h3 className='Title'>{creatureToDisplayData?.name}</h3>
+                {creatureImage && (
+                    <img
+                        className="CreaturePreviewImage"
+                        src={creatureImage}
+                        alt={creatureInDisplay}
+                    />
+                )}
                 <p className='groupes' >Groupes: {creatureToDisplayData?.group?.join(', ')|| 'None'}</p>
                 <p className='ManaCost' >Mana Cost: {creatureToDisplayData?.manaCost}</p>
                 <p className='Tier' >Tier: {creatureToDisplayData?.tier}</p>
