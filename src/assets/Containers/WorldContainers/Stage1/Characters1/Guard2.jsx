@@ -6,7 +6,7 @@ import './Guard2.css';
 
 const characterName = 'Guard';
 const characterImage = './';
-const eventName = 'TalkToGuard1';
+const eventName = 'TalkToGuard2';
 
 
 const characterScript = {
