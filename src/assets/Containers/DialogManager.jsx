@@ -65,8 +65,8 @@ function DialogManager(props){
     } else if (dialogBoxCurrent.message == '' && eventStatus == 'idle') {
 
         let stepOfEvent = thisEvent.eventStep;
-        const previousAnswer = thisEvent.optionsChosen[Object.keys(thisEvent.optionsChosen)[Object.keys(thisEvent.optionsChosen).length - 1]] ?? 'Ok';
         const messageObj = propsCharacterStoryLine[branch][stepOfEvent] ?? {};
+        const previousAnswer = messageObj.ramification ?  thisEvent.optionsChosen[Object.keys(thisEvent.optionsChosen)[Object.keys(thisEvent.optionsChosen).length - 1]] : 'Ok';
 
 
         dispatch(playerWorldActions.changeDialog({
