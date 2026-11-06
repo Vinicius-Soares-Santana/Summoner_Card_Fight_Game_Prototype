@@ -10,12 +10,12 @@
   background-position: center;
 
   display: grid;
-  grid-template-columns: minmax(150px, 1fr) minmax(0, 8fr) minmax(150px, 1fr);
   grid-template-rows: 2fr 7fr 2fr;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-areas:
-      'summon2 cards2 stats2'
-      'tableArea tableArea tableArea'
-      'stats1 cards1 summon1';
+      'summon2 summon2 summon2 summon2 cards2 cards2 cards2 cards2 cards2 stats2 stats2 stats2'
+      'tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea'
+      'stats1 stats1 stats1 cards1 cards1 cards1 cards1 cards1 summon1 summon1 summon1 summon1';
 }
 
 .SummonRelic.player2hand { grid-area: summon2; }
