@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
-import NextSceneButton from '../../../Containers/NextSceneButton';
+import NextSceneButton from '../../../NextSceneButton';
 
 const characterName = 'MainCharacter';
 const characterImage = './';

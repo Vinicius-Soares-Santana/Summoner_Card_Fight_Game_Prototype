@@ -26,6 +26,7 @@ function Stage1Main(props){
   }
 
   return  <div className='Stage1Main'>
+            <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
             <SelectCreaturesButton />
             <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
             <TestCharacter />
@@ -34,7 +35,6 @@ function Stage1Main(props){
             <Temple />
             <button onClick={() => navigate('/shop')}>Shop</button>
             <button onClick={onClickTest}>Test</button>
-            <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
           </div>
 }
 

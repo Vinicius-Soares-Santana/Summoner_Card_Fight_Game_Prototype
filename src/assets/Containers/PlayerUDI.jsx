@@ -51,7 +51,7 @@ function PlayerUDI(props){
         <div className="PlayerUDILayer">
             <Outlet />
             <div className="PlayerUDIBar" >
-                <img src="/" alt="PlayerImage" />
+                <img src="../Images/WorldStatsBar/Summoner_Idle.gif" alt="PlayerImage" />
                 <div id="UDIBasicStats">
                     <h4 id="UDIHealth">HP: {playerInfo.Health}</h4>
                     <h4 id="UDIGold">Gold: {playerInfo.Gold}</h4>
