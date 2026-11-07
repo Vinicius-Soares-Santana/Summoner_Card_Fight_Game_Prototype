@@ -109,8 +109,9 @@ function TestCharacter() {
     };
 
     useEffect(() => {
-        if(Object.values(event?.optionsChosen).includes('Proceed') && 
-            Object.values(event?.optionsChosen).includes('Continue')&&
+        const answers = Object.values(event?.optionsChosen ?? {});
+        if(answers.includes('Proceed') && 
+            answers.includes('continue')&&
             WorldCurrentQuests.DefeatTempleGuardian?.questStatus != 'complete'
             ){
                 navigate('/game/stage2');
