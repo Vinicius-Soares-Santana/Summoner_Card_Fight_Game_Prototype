@@ -17,6 +17,7 @@ import SelectCreaturesScreen from './assets/Containers/SelectCreaturesScreen';
 import Shop from './assets/Containers/Shop';
 import PlayerUDI from './assets/Containers/PlayerUDI';
 import './App.css';
+import './assets/Containers/WorldContainers/SceneGrid.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

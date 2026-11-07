@@ -1,0 +1,22 @@
+.SceneGrid {
+    --cell: minmax(0, 1fr);
+  
+    display: grid;
+    grid-template-columns:
+      [A] var(--cell) [B] var(--cell) [C] var(--cell) [D] var(--cell)
+      [E] var(--cell) [F] var(--cell) [G] var(--cell) [H] var(--cell)
+      [I] var(--cell) [J] var(--cell) [K] var(--cell) [L] var(--cell)
+      [M] var(--cell) [N] var(--cell) [O] var(--cell) [P] var(--cell);
+    grid-template-rows: repeat(9, var(--cell));
+  
+    width: min(100%, 177.78svh);
+    aspect-ratio: 16 / 9;
+    margin-inline: auto;
+  }
+  
+  .scene-piece {
+    display: grid;
+    place-items: end center;
+    min-width: 0;
+    min-height: 0;
+  }

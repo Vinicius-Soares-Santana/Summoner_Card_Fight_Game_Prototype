@@ -12,6 +12,7 @@ import TestCharacter from './Characters1/TestCharacter';
 import Guard1 from './Characters1/Guard1';
 import Guard2 from './Characters1/Guard2';
 import Temple from './Characters1/Temple';
+import ScenePiece from '../ScenePiece';
 import './Stage1Main.css';
 
 function Stage1Main(props){
@@ -25,16 +26,30 @@ function Stage1Main(props){
     dispatch(upgradeShop(1));
   }
 
-  return  <div className='Stage1Main'>
+  return  <div className='SceneGrid Stage1Main'>
+
             <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
+
             <SelectCreaturesButton />
+
             <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
             <TestCharacter />
-            <Guard1 />
-            <Guard2 />
+
+            <ScenePiece at="E5" cols={2} rows={3}>
+              <Guard1 />
+            </ScenePiece>
+
+            <ScenePiece at="E5" cols={2} rows={3}>
+              <Guard2 />
+            </ScenePiece>
+            
+
             <Temple />
+
             <button onClick={() => navigate('/shop')}>Shop</button>
+
             <button onClick={onClickTest}>Test</button>
+            
           </div>
 }
 
