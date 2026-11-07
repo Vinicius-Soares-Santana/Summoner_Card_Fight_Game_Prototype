@@ -11,6 +11,7 @@ import DialogManager from '../../DialogManager';
 import TestCharacter from './Characters1/TestCharacter';
 import Guard1 from './Characters1/Guard1';
 import Guard2 from './Characters1/Guard2';
+import Temple from './Characters1/Temple';
 import './Stage1Main.css';
 
 function Stage1Main(props){
@@ -30,6 +31,7 @@ function Stage1Main(props){
             <TestCharacter />
             <Guard1 />
             <Guard2 />
+            <Temple />
             <button onClick={() => navigate('/shop')}>Shop</button>
             <button onClick={onClickTest}>Test</button>
             <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />

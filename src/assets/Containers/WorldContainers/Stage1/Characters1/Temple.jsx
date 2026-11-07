@@ -75,7 +75,7 @@ const characterScript = {
     }
 };
 
-function TestCharacter() {
+function Temple() {
     const navigate = useNavigate();
     const items = useSelector((state) => state.playerWorld.Items);
     const enemiesDefeated = useSelector((state) => state.playerWorld.EnemiesDefeated);
@@ -147,4 +147,4 @@ function TestCharacter() {
     );
 }
 
-export default TestCharacter;
+export default Temple;
