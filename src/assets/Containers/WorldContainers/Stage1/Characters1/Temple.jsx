@@ -25,7 +25,7 @@ const characterScript = {
             ramification: false,
             Ok: {
                 message: 'I should make sure I\'m ready',
-                status: 'dialog',
+                status: 'idle',
                 options: ['Proceed', 'Stay'],
                 proceedStep: true,
                 branch: 'EnterOrNot',
