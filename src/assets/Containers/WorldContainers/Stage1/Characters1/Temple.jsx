@@ -5,7 +5,7 @@ import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
 import NextSceneButton from '../../../NextSceneButton';
 
-const characterName = 'MainCharacter';
+const characterName = 'Temple';
 const characterImage = './';
 const eventName = 'EnterTheTemple';
 
