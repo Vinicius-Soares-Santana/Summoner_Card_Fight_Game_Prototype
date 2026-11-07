@@ -16,9 +16,9 @@ const characterScript = {
             ramification: false,
             Ok: {
                 message: 'I need at least 4 creatures of the 1st tier and 1 of the 2nd tier to enter the temple... \n I should start by checking the shop.',
-                status: 'dialog',
+                status: 'idle',
                 options: [],
-                proceedStep: true,
+                proceedStep: false,
             },
         },
         2: {
