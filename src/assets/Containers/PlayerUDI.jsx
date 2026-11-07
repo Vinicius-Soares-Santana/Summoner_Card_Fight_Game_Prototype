@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
+import summonerIdle from '../Images/WorldStatsBar/Summoner_Idle.gif';
 import './PlayerUDI.css';
 
 function PlayerUDI(props){
@@ -51,7 +52,7 @@ function PlayerUDI(props){
         <div className="PlayerUDILayer">
             <Outlet />
             <div className="PlayerUDIBar" >
-                <img src="../Images/WorldStatsBar/Summoner_Idle.gif" alt="PlayerImage" />
+                <img src={summonerIdle} alt="PlayerImage" />
                 <div id="UDIBasicStats">
                     <h4 id="UDIHealth">HP: {playerInfo.Health}</h4>
                     <h4 id="UDIGold">Gold: {playerInfo.Gold}</h4>
