@@ -10,11 +10,13 @@
   background-position: center;
 
   display: grid;
-  grid-template-rows: 2fr 7fr 2fr;
+  grid-template-rows: 2fr 3fr 3fr 3fr 2fr;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-areas:
       'summon2 summon2 summon2 summon2 cards2 cards2 cards2 cards2 cards2 stats2 stats2 stats2'
+      'summon2 summon2 summon2 summon2 tableArea tableArea tableArea tableArea tableArea stats2 stats2 stats2'
       'tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea tableArea'
+      'stats1 stats1 stats1 tableArea tableArea tableArea tableArea tableArea summon1 summon1 summon1 summon1'
       'stats1 stats1 stats1 cards1 cards1 cards1 cards1 cards1 summon1 summon1 summon1 summon1';
 }
 
