@@ -28,7 +28,7 @@ function Stage1Main(props){
 
   return  <div className='SceneGrid Stage1Main'>
 
-            <ScenePiece at="A5" cols={1} rows={1}>
+            <ScenePiece at="A9" cols={1} rows={1}>
               <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
             </ScenePiece>
             
