@@ -35,16 +35,18 @@ function Stage1Main(props){
             <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
             <TestCharacter />
 
-            <ScenePiece at="E5" cols={2} rows={3}>
+            <ScenePiece at="H3" cols={2} rows={3}>
               <Guard1 />
             </ScenePiece>
 
-            <ScenePiece at="E5" cols={2} rows={3}>
+            <ScenePiece at="I4" cols={2} rows={3}>
               <Guard2 />
             </ScenePiece>
             
-
-            <Temple />
+            <ScenePiece at="D1" cols={10} rows={3}>
+              <Temple />
+            </ScenePiece>
+            
 
             <button onClick={() => navigate('/shop')}>Shop</button>
 
