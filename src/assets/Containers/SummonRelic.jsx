@@ -47,7 +47,7 @@ function SummonRelic(props) {
         <form className="summonForm" onSubmit={handleSubmit}>
           <p>Summon Creature</p>
 
-          <button className="SelectCreatureMenuShow" aria-expanded={showCreaturesSummon} onClick={() => setShowCreaturesSummon(true)}>{creatureName != '' ? creatureName : 'Select Creature'}</button>
+          <button type="button" className="SelectCreatureMenuShow" aria-expanded={showCreaturesSummon} onClick={() => setShowCreaturesSummon(true)}>{creatureName != '' ? creatureName : 'Select Creature'}</button>
           {showCreaturesSummon && 
             <div className='SelectedTeamSummon' >
               {Object.keys(currentSelection ?? {}).map(
@@ -58,7 +58,7 @@ function SummonRelic(props) {
                           {creatureNameMap}
                         </button>})}
                       </div>)}
-              <button className="SelectCreatureMenuBack" onClick={() => setShowCreaturesSummon(false)}>Back</button>
+              <button type="button" className="SelectCreatureMenuBack" onClick={() => setShowCreaturesSummon(false)}>Back</button>
             </div>
             }
           
