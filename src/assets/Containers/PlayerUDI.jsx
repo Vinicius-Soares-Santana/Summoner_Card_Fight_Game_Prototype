@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
+import SelectCreaturesButton from '../Presentational/SelectCreaturesButton';
 import summonerIdle from '../Images/WorldStatsBar/Summoner_Idle.gif';
 import './PlayerUDI.css';
 
@@ -71,6 +72,7 @@ function PlayerUDI(props){
                                 </div>
                     })}
                 </div>
+                <SelectCreaturesButton />
             </div>
         </div>
     )

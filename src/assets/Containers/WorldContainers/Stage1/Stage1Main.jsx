@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CardsList } from '../../../CardsList';
 import ArenaButton from '../../ArenaButton';
-import SelectCreaturesButton from '../../../Presentational/SelectCreaturesButton';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
@@ -30,11 +29,6 @@ function Stage1Main(props){
 
             <ScenePiece at="A9" cols={1} rows={1}>
               <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
-            </ScenePiece>
-            
-
-            <ScenePiece at="M6" cols={2} rows={1}>
-              <SelectCreaturesButton />
             </ScenePiece>
             
 
