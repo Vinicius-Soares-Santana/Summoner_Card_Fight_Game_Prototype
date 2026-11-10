@@ -22,7 +22,7 @@ function CastleFieldsLeft1(props){
                     <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
                 </ScenePiece>
 
-                <ScenePiece at="P9" cols={1} rows={1}>
+                <ScenePiece at="O9" cols={1} rows={1}>
                     <NextSceneButton destination='/game/stage1' buttonText='Stage1Main' />
                 </ScenePiece>
                 
