@@ -12,6 +12,7 @@ import './SummonRelic.css';
 
 function SummonRelic(props) {
   const dispatch = useDispatch();
+  const [showCreaturesSummon, setShowCreaturesSummon] = useState(false);
   const [creatureName, setCreatureName] = useState('');
   const [manaAmount, setManaAmount] = useState(0);
   const health = useSelector((state) => state.player[props.playerId].health);
@@ -41,7 +42,7 @@ function SummonRelic(props) {
 
   if(canControl){
     return (
-      <div className={`SummonRelic ${props.handToShow}`}>
+      <div className={`SummonRelic ${props.handToShow} ${creatureName}`}>
         <h2>{`${props.handToShow}`}</h2>
         <form className="summonForm" onSubmit={handleSubmit}>
           <p>Summon Creature</p>
