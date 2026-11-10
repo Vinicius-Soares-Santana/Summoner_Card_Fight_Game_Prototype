@@ -47,7 +47,9 @@ function SummonRelic(props) {
         <form className="summonForm" onSubmit={handleSubmit}>
           <p>Summon Creature</p>
 
-          <div className='SelectedTeamSummon' >
+          <button className="SelectCreatureMenuShow" aria-expanded={showCreaturesSummon} onClick={() => setShowCreaturesSummon(true)}>{creatureName != '' ? creatureName : 'Select Creature'}</button>
+          {showCreaturesSummon && 
+            <div className='SelectedTeamSummon' >
               {Object.keys(currentSelection ?? {}).map(
                 (tier) => <div className={`selectedSummon ${tier}`} key={tier} >
                   {currentSelection[tier].map(
@@ -56,7 +58,10 @@ function SummonRelic(props) {
                           {creatureNameMap}
                         </button>})}
                       </div>)}
+              <button className="SelectCreatureMenuBack" onClick={() => setShowCreaturesSummon(false)}>Back</button>
             </div>
+            }
+          
           <button type="submit" disabled={!canControl || !creatureName}>Summon</button>
         </form>
   
