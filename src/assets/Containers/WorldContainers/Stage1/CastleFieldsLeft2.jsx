@@ -14,7 +14,7 @@ function CastleFieldsLeft2(props){
     const dispatch = useDispatch();
 
 
-    return  <div className='CastleFieldsLeft2'>
+    return  <div className='SceneGrid CastleFieldsLeft2'>
                 <NextSceneButton destination='/game/stage1/castlefieldsleft1' buttonText='Castle Fields L 1' />
             </div>
 }
