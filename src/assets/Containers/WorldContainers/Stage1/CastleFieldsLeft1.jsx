@@ -8,6 +8,7 @@ import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
 import DialogManager from '../../DialogManager';
+import ScenePiece from '../ScenePiece';
 import './CastleFieldsLeft1.css';
 
 function CastleFieldsLeft1(props){
@@ -17,9 +18,19 @@ function CastleFieldsLeft1(props){
 
 
     return  <div className='SceneGrid CastleFieldsLeft1'>
-                <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
-                <SelectCreaturesButton />
-                <NextSceneButton destination='/game/stage1' buttonText='Stage1Main' />
+
+                <ScenePiece at="A9" cols={1} rows={1}>
+                    <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
+                </ScenePiece>
+                
+                <ScenePiece at="F9" cols={1} rows={1}>
+                    <SelectCreaturesButton />
+                </ScenePiece>
+
+                <ScenePiece at="P9" cols={1} rows={1}>
+                    <NextSceneButton destination='/game/stage1' buttonText='Stage1Main' />
+                </ScenePiece>
+                
             </div>
 }
 
