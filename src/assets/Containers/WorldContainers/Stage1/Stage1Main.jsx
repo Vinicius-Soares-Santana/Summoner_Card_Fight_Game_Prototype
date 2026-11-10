@@ -28,12 +28,27 @@ function Stage1Main(props){
 
   return  <div className='SceneGrid Stage1Main'>
 
-            <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
+            <ScenePiece at="A5" cols={1} rows={1}>
+              <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
+            </ScenePiece>
+            
 
-            <SelectCreaturesButton />
+            <ScenePiece at="M6" cols={2} rows={1}>
+              <SelectCreaturesButton />
+            </ScenePiece>
+            
 
-            <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
-            <TestCharacter />
+
+            <ScenePiece at="M2" cols={5} rows={2}>
+              <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
+            </ScenePiece>
+            
+
+
+            <ScenePiece at="A6" cols={2} rows={2}>
+              <TestCharacter />
+            </ScenePiece>
+            
 
             <ScenePiece at="H3" cols={2} rows={3}>
               <Guard1 />
@@ -48,9 +63,13 @@ function Stage1Main(props){
             </ScenePiece>
             
 
-            <button onClick={() => navigate('/shop')}>Shop</button>
-
-            <button onClick={onClickTest}>Test</button>
+            <ScenePiece at="D5" cols={2} rows={3}>
+              <button onClick={() => navigate('/shop')}>Shop</button>
+            </ScenePiece>
+            
+            <ScenePiece at="F5" cols={1} rows={1}>
+              <button onClick={onClickTest}>Test</button>
+            </ScenePiece>
             
           </div>
 }
