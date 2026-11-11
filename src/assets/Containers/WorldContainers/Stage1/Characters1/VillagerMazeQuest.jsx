@@ -113,7 +113,7 @@ const characterScript = {
     ThankYouSoMuch: {
         1: {
             ramification: false,
-            Accept: {
+            Ok: {
                 message: 'Thank you and good luck in your journey.',
                 status: 'idle',
                 options: [],
@@ -135,7 +135,7 @@ function VillagerMazeQuest() {
     const allQuests = {
         MazeQuest: {
             startCondition: Object.values(event?.optionsChosen ?? {}).includes('Yes'),
-            endCondition: (WorldEvents?.includes('ElizabethsChildEvent') && Object.values(event?.optionsChosen ?? {}).includes('Accept')),
+            endCondition: (Object.keys(WorldEvents ?? {}).includes('ElizabethsChildEvent') && Object.values(event?.optionsChosen ?? {}).includes('Accept')),
             initialObjective: 'Rescue Elizabeth\'s Son',
             reward: 'Basilisk',
             waitingBranch: 'Yes',
