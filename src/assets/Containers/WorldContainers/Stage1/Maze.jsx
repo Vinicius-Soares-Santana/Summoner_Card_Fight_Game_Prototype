@@ -3,7 +3,7 @@ import ScenePiece from '../ScenePiece';
 
 
 function Maze(props){
-    const [mazePosition, setMazePosition] = useState({x:14, y:1});
+    const [mazePosition, setMazePosition] = useState({x:7, y:15});
     const leftPath = ['left'];
     const upPath = ['up'];
     const rightPath = ['right'];
@@ -24,7 +24,7 @@ function Maze(props){
     const leftUpRightDownPath = ['left', 'up', 'right', 'down'];
 
 
-    
+
     const mazeImages = import.meta.glob('../../../Images/Stage1/Maze/*.png', {
         eager: true,
         query: '?url',
