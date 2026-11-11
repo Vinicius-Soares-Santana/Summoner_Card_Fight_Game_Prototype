@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import ScenePiece from '../ScenePiece';
 
 
@@ -32,11 +31,13 @@ function Maze(props){
 
     function moveInMaze(addInX = 0, addInY = 0){
         const {x, y} = mazePosition
-        if(x > 0 && x < 15){
-            setMazePosition({x:(x+addInX), y: y})
+        const nextX = x + addInX;
+        const nextY = y + addInY;
+        if(nextX >= 0 && nextX < 15){
+            setMazePosition({x: nextX, y: y})
         }
-        if(x > 0 && y < 15){
-            setMazePosition({x:x, y: (y+addInY)})
+        if(nextY > 0 && nextY < 16){
+            setMazePosition({x:x, y: nextY})
         }
     }
 
