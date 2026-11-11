@@ -11,6 +11,7 @@ import Arena from './assets/Containers/Arena';
 import Stage1Main from './assets/Containers/WorldContainers/Stage1/Stage1Main';
 import CastleFieldsLeft1 from './assets/Containers/WorldContainers/Stage1/CastleFieldsLeft1';
 import CastleFieldsLeft2 from './assets/Containers/WorldContainers/Stage1/CastleFieldsLeft2';
+import Maze from './assets/Containers/WorldContainers/Stage1/Maze';
 import Stage1 from './assets/Containers/WorldContainers/Stage1/Stage1';
 import Stage2 from './assets/Containers/WorldContainers/Stage2/Stage2';
 import SelectCreaturesScreen from './assets/Containers/SelectCreaturesScreen';
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
           <Route index element={<Stage1Main />} />
           <Route path="castlefieldsleft1" element={<CastleFieldsLeft1 />} />
           <Route path="castlefieldsleft2" element={<CastleFieldsLeft2 />} />
+          <Route path="maze" element={<Maze />} />
         </Route>
 
         <Route path="stage2" element={<Stage2 />} >

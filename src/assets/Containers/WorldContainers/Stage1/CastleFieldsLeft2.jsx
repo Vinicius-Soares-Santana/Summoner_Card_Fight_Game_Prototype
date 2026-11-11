@@ -18,6 +18,10 @@ function CastleFieldsLeft2(props){
 
     return  <div className='SceneGrid CastleFieldsLeft2'>
 
+                <ScenePiece at="A9" cols={1} rows={1}>
+                    <NextSceneButton destination='/game/stage1/maze' buttonText='Maze' />
+                </ScenePiece>
+
                 <ScenePiece at="F13" cols={1} rows={1}>
                     <VillagerMazeQuest />
                 </ScenePiece>
