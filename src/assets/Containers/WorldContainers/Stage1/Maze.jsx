@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import ScenePiece from '../ScenePiece';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import './Maze.css';
 
 
 function Maze(props){
+    const previousMazePosition = useSelector((state) => state.playerWorld.mazePosition);
+    const dispatch = useDispatch();
+
     const Entrance = {x:7, y:15};
     const ElizabethSonPosition = {x:13, y:3};
-    const [mazePosition, setMazePosition] = useState(Entrance);
+    const [mazePosition, setMazePosition] = useState(previousMazePosition ? previousMazePosition : Entrance);
 
 
     const leftPath = ['left'];
@@ -187,6 +192,7 @@ function Maze(props){
         if(addInX != 0){
             if(nextX >= 0 && nextX < 15){
                 setMazePosition({x: nextX, y: y})
+                dispatch(playerWorldActions.setMazePositionWorld({x: nextX, y: y}))
                 return
             }
         }
@@ -194,6 +200,7 @@ function Maze(props){
         if(addInY != 0){
             if(nextY > 0 && nextY < 16){
                 setMazePosition({x:x, y: nextY})
+                dispatch(playerWorldActions.setMazePositionWorld({x:x, y: nextY}))
                 return
             }
         }
