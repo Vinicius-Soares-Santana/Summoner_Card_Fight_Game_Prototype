@@ -197,7 +197,7 @@ function Maze(props){
     const showRightButton = currentPositionDisplayer.includes('right');
     const showDownButton = currentPositionDisplayer.includes('down');
 
-    return  <div className="Maze" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
+    return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
                                         <button className="upButton" onClick={() => moveInMaze(0, -1)}>Up</button>
                                     </ScenePiece>)
