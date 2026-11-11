@@ -199,22 +199,22 @@ function Maze(props){
 
     return  <div className="Maze" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
-                                        <button className="upButton" onClick={() => moveInMaze(0, -1)}></button>
+                                        <button className="upButton" onClick={() => moveInMaze(0, -1)}>Up</button>
                                     </ScenePiece>)
                 }
 
                 {showDownButton && (<ScenePiece at="G15" cols={3} rows={3} >
-                                        <button className="downButton" onClick={() => moveInMaze(0, 1)}></button>
+                                        <button className="downButton" onClick={() => moveInMaze(0, 1)}>Down</button>
                                     </ScenePiece>)
                 }
 
                 {showLeftButton && (<ScenePiece at="A9" cols={3} rows={3} >
-                                        <button className="leftButton" onClick={() => moveInMaze(-1, 0)}></button>
+                                        <button className="leftButton" onClick={() => moveInMaze(-1, 0)}>Left</button>
                                     </ScenePiece>)
                 }
 
                 {showRightButton && (<ScenePiece at="P9" cols={3} rows={3} >
-                                        <button className="rightButton" onClick={() => moveInMaze(1, 0)}></button>
+                                        <button className="rightButton" onClick={() => moveInMaze(1, 0)}>Right</button>
                                     </ScenePiece>)
                 }
 
