@@ -25,7 +25,7 @@ function Maze(props){
     const leftUpRightDownPath = ['left', 'up', 'right', 'down'];
 
     const MazeMap = {
-        1: []
+        15: []
     }
 
     const currentPositionDisplayer = MazeMap[mazePosition.x][mazePosition.y];
@@ -40,7 +40,33 @@ function Maze(props){
         }
     }
 
+    const showUpButton = currentPositionDisplayer.includes('up');
+    const showLeftButton = currentPositionDisplayer.includes('left');
+    const showRightButton = currentPositionDisplayer.includes('right');
+    const showDownButton = currentPositionDisplayer.includes('down');
+
     return  <div className="Maze">
+                {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
+                                        <button className="upButton" onClick={() => moveInMaze(0, 1)}></button>
+                                    </ScenePiece>)
+                }
+
+                {showDownButton && (<ScenePiece at="G15" cols={3} rows={3} >
+                                        <button className="downButton" onClick={() => moveInMaze(0, -1)}></button>
+                                    </ScenePiece>)
+                }
+
+                {showLeftButton && (<ScenePiece at="A9" cols={3} rows={3} >
+                                        <button className="leftButton" onClick={() => moveInMaze(-1, 0)}></button>
+                                    </ScenePiece>)
+                }
+
+                {showRightButton && (<ScenePiece at="P9" cols={3} rows={3} >
+                                        <button className="rightButton" onClick={() => moveInMaze(1, 0)}></button>
+                                    </ScenePiece>)
+                }
+
+
             </div>
 }
 
