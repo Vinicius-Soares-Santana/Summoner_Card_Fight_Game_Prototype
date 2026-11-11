@@ -5,7 +5,7 @@ import DialogManager from '../../../DialogManager';
 
 const characterName = 'Elizabeth';
 const characterImage = './';
-const eventName = 'TestEvent';
+const eventName = 'ElizabethMazeEvent';
 
 const accepted = {
     message: 'Thank you so much!',
@@ -133,7 +133,7 @@ function VillagerMazeQuest() {
     );
 
     const allQuests = {
-        TestQuest: {
+        MazeQuest: {
             startCondition: Object.values(event?.optionsChosen ?? {}).includes('Yes'),
             endCondition: (WorldEvents?.includes('ElizabethsChildEvent') && Object.values(event?.optionsChosen ?? {}).includes('Accept')),
             initialObjective: 'Rescue Elizabeth\'s Son',

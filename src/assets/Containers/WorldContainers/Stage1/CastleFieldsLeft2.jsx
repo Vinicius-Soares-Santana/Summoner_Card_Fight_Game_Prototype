@@ -18,7 +18,7 @@ function CastleFieldsLeft2(props){
 
     return  <div className='SceneGrid CastleFieldsLeft2'>
 
-                <ScenePiece at="P9" cols={1} rows={1}>
+                <ScenePiece at="F13" cols={1} rows={1}>
                     <VillagerMazeQuest />
                 </ScenePiece>
 
