@@ -135,7 +135,7 @@ function VillagerMazeQuest() {
     const allQuests = {
         MazeQuest: {
             startCondition: Object.values(event?.optionsChosen ?? {}).includes('Yes'),
-            endCondition: (Object.keys(WorldEvents ?? {}).includes('ElizabethsChildEvent') && Object.values(event?.optionsChosen ?? {}).includes('Accept')),
+            endCondition: (Object.keys(WorldEvents ?? {}).includes('ElizabethsChildEvent')),
             initialObjective: 'Rescue Elizabeth\'s Son',
             reward: 'Basilisk',
             waitingBranch: 'Yes',
