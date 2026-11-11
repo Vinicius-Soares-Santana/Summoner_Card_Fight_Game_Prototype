@@ -1063,7 +1063,7 @@ export const EffectsList = {
           })
         );
 
-        if(creatureLeftTarget.includes('Fluffy')) dispatch(AllActions.worldStateActions.changeFluffySacrificed());
+        if(creatureRightTarget.includes('Fluffy')) dispatch(AllActions.worldStateActions.changeFluffySacrificed());
 
         const effectToAdd = {
           ...cardsInGame[creatureRightTarget].cardEffectEnd,
