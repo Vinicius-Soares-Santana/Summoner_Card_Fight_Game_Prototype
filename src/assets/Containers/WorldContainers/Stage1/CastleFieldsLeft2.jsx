@@ -5,6 +5,7 @@ import { CardsList } from '../../../CardsList';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { upgradeShop } from '../../../../World/worldActions';
+import VillagerMazeQuest from './Characters1/VillagerMazeQuest';
 import DialogManager from '../../DialogManager';
 import ScenePiece from '../ScenePiece';
 import './CastleFieldsLeft2.css';
@@ -16,6 +17,10 @@ function CastleFieldsLeft2(props){
 
 
     return  <div className='SceneGrid CastleFieldsLeft2'>
+
+                <ScenePiece at="P9" cols={1} rows={1}>
+                    <VillagerMazeQuest />
+                </ScenePiece>
 
                 <ScenePiece at="P9" cols={1} rows={1}>
                     <NextSceneButton destination='/game/stage1/castlefieldsleft1' buttonText='Castle Fields L 1' />
