@@ -33,7 +33,7 @@ function Maze(props){
         9: [],
     }
 
-    const positionBackground = MazeMap[mazePosition.y]?.[mazePosition.x]?.background ?? [];
+    const positionBackground = MazeMap[mazePosition.y]?.[mazePosition.x]?.background ?? '';
 
     const currentPositionDisplayer = MazeMap[mazePosition.y]?.[mazePosition.x]?.directions ?? [];
 
@@ -62,7 +62,7 @@ function Maze(props){
     const showRightButton = currentPositionDisplayer.includes('right');
     const showDownButton = currentPositionDisplayer.includes('down');
 
-    return  <div className="Maze" style={{background: URL(positionBackground)}} >
+    return  <div className="Maze" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
                                         <button className="upButton" onClick={() => moveInMaze(0, 1)}></button>
                                     </ScenePiece>)
