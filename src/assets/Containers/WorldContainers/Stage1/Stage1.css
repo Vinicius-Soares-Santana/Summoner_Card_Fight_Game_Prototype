@@ -1,3 +1,8 @@
+.Stage1 {
+  width: 100vw;
+  height: 100vh;
+}
+
 .Stage1 > * {
     animation: screen-in 600ms ease-out;
   }
