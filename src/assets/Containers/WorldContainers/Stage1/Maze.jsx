@@ -217,12 +217,12 @@ function Maze(props){
                                     </ScenePiece>)
                 }
 
-                {showDownButton && (<ScenePiece at="G11" cols={3} rows={3} >
+                {showDownButton && (<ScenePiece at="G13" cols={3} rows={3} >
                                         <button className="downButton" onClick={() => moveInMaze(0, 1)}>Down</button>
                                     </ScenePiece>)
                 }
 
-                {entrancePosition && (<ScenePiece at="G5" cols={3} rows={3} >
+                {entrancePosition && (<ScenePiece at="G13" cols={3} rows={3} >
                                         <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
                                     </ScenePiece>)
                 }
