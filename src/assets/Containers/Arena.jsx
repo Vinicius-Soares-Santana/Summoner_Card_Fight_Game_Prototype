@@ -44,7 +44,7 @@ function Arena(props) {
     dispatch(cemeteryActions.resetCemetery());
     dispatch(effectsActions.resetEffects());
     dispatch(stopBattle());
-    navigate('/');
+    navigate(-1);
   };
 
   if (battleResultWinner === 'player2') {
