@@ -23,6 +23,14 @@ function Maze(props){
 
     const leftUpRightDownPath = ['left', 'up', 'right', 'down'];
 
+
+    
+    const mazeImages = import.meta.glob('../../../Images/Stage1/Maze/*.png', {
+        eager: true,
+        query: '?url',
+        import: 'default',
+    });
+
     const bg = (fileName) =>
     mazeImages[`../../../Images/Stage1/Maze/${fileName}`] ?? '';
 
