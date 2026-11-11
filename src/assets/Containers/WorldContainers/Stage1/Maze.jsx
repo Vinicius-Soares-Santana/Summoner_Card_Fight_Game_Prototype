@@ -203,7 +203,7 @@ function Maze(props){
                                     </ScenePiece>)
                 }
 
-                {showDownButton && (<ScenePiece at="G15" cols={3} rows={3} >
+                {showDownButton && (<ScenePiece at="G12" cols={3} rows={3} >
                                         <button className="downButton" onClick={() => moveInMaze(0, 1)}>Down</button>
                                     </ScenePiece>)
                 }
