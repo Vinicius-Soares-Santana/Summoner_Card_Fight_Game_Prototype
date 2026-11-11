@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ScenePiece from '../ScenePiece';
+import './Maze.css';
 
 
 function Maze(props){
@@ -203,7 +204,7 @@ function Maze(props){
                                     </ScenePiece>)
                 }
 
-                {showDownButton && (<ScenePiece at="G12" cols={3} rows={3} >
+                {showDownButton && (<ScenePiece at="G13" cols={3} rows={3} >
                                         <button className="downButton" onClick={() => moveInMaze(0, 1)}>Down</button>
                                     </ScenePiece>)
                 }
