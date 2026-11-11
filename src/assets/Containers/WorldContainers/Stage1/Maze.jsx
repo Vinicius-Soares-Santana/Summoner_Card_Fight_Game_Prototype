@@ -5,7 +5,8 @@ import './Maze.css';
 
 
 function Maze(props){
-    const [mazePosition, setMazePosition] = useState({x:7, y:15});
+    const Entrance = {x:7, y:15};
+    const [mazePosition, setMazePosition] = useState(Entrance);
     const leftPath = ['left'];
     const upPath = ['up'];
     const rightPath = ['right'];
@@ -174,7 +175,7 @@ function Maze(props){
 
     const currentPositionDisplayer = MazeMap[mazePosition.y]?.[mazePosition.x]?.directions ?? [];
 
-    const entrancePosition = Boolean(mazePosition.x == 7 && mazePosition.y == 15);
+    const entrancePosition = Boolean(mazePosition.x == Entrance.x && mazePosition.y == Entrance.y);
 
     function moveInMaze(addInX = 0, addInY = 0){
         const {x, y} = mazePosition
