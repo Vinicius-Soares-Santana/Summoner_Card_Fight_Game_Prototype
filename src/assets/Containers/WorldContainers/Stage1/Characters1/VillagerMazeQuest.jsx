@@ -106,11 +106,11 @@ const characterScript = {
                 status: 'idle',
                 options: ['Accept'],
                 proceedStep: true,
-                branch: 'CONGRATULATIONS',
+                branch: 'ThankYouSoMuch',
             },
         },
     },
-    CONGRATULATIONS: {
+    ThankYouSoMuch: {
         1: {
             ramification: false,
             Accept: {
@@ -144,7 +144,7 @@ function VillagerMazeQuest() {
     };
 
     return (
-        <div id="TestCharacter">
+        <div id="VillagerMazeQuest">
             <DialogManager
                 characterName={characterName}
                 characterImage={characterImage}
