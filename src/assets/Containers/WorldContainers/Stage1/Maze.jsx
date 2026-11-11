@@ -33,14 +33,20 @@ function Maze(props){
         const {x, y} = mazePosition
         const nextX = x + addInX;
         const nextY = y + addInY;
-        if(nextX >= 0 && nextX < 15){
-            setMazePosition({x: nextX, y: y})
-            return
+        if(addInX != 0){
+            if(nextX >= 0 && nextX < 15){
+                setMazePosition({x: nextX, y: y})
+                return
+            }
         }
-        if(nextY > 0 && nextY < 16){
-            setMazePosition({x:x, y: nextY})
-            return
+        
+        if(addInY != 0){
+            if(nextY > 0 && nextY < 16){
+                setMazePosition({x:x, y: nextY})
+                return
+            }
         }
+        
     }
 
     const showUpButton = currentPositionDisplayer.includes('up');
