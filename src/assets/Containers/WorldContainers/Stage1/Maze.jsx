@@ -23,15 +23,142 @@ function Maze(props){
 
     const leftUpRightDownPath = ['left', 'up', 'right', 'down'];
 
+    const bg = (fileName) =>
+    mazeImages[`../../../Images/Stage1/Maze/${fileName}`] ?? '';
+
     const MazeMap = {
-        15: {0:{background:'', directions:[]}},
-        14:[],
-        13:[],
-        12:[],
-        11:[],
-        10:[],
-        9: [],
-    }
+        1: {},
+        2: {
+            1: { background: bg('path-right-down.png'), directions: rightDownPath },
+            2: { background: bg('path-right-left.png'), directions: leftRightPath },
+            3: { background: bg('path-right-left.png'), directions: leftRightPath },
+            4: { background: bg('path-right-left.png'), directions: leftRightPath },
+            5: { background: bg('path-right-left.png'), directions: leftRightPath },
+            6: { background: bg('path-right-left.png'), directions: leftRightPath },
+            7: { background: bg('path-right-left.png'), directions: leftRightPath },
+            8: { background: bg('path-right-left.png'), directions: leftRightPath },
+            9: { background: bg('path-right-down-left.png'), directions: leftRightDownPath },
+            10: { background: bg('path-right-left.png'), directions: leftRightPath },
+            11: { background: bg('path-right-left.png'), directions: leftRightPath },
+            12: { background: bg('path-right-left.png'), directions: leftRightPath },
+            13: { background: bg('path-down-left.png'), directions: leftDownPath },
+        },
+        3: {
+            1: { background: bg('path-up-down.png'), directions: upDownPath },
+            9: { background: bg('path-up-down.png'), directions: upDownPath },
+            13: { background: bg('elizabeth-child.png') || bg('path-up-down.png'), directions: upDownPath },
+        },
+        4: {
+            1: { background: bg('path-up-down.png'), directions: upDownPath },
+            3: { background: bg('path-down.png'), directions: downPath },
+            5: { background: bg('path-right-down.png'), directions: rightDownPath },
+            6: { background: bg('path-right-left.png'), directions: leftRightPath },
+            7: { background: bg('path-right-left.png'), directions: leftRightPath },
+            8: { background: bg('path-right-left.png'), directions: leftRightPath },
+            9: { background: bg('path-up-right-left.png'), directions: leftUpRightPath },
+            10: { background: bg('path-right-left.png'), directions: leftRightPath },
+            11: { background: bg('path-right-left.png'), directions: leftRightPath },
+            12: { background: bg('path-right-left.png'), directions: leftRightPath },
+            13: { background: bg('path-up-down-left.png'), directions: leftUpDownPath },
+        },
+        5: {
+            1: { background: bg('path-up-down.png'), directions: upDownPath },
+            3: { background: bg('path-up-down.png'), directions: upDownPath },
+            5: { background: bg('path-up-down.png'), directions: upDownPath },
+            13: { background: bg('path-up-down.png'), directions: upDownPath },
+        },
+        6: {
+            1: { background: bg('path-up-right.png'), directions: upRightPath },
+            2: { background: bg('path-right-left.png'), directions: leftRightPath },
+            3: { background: bg('path-up-down-left.png'), directions: leftUpDownPath },
+            5: { background: bg('path-up-down.png'), directions: upDownPath },
+            7: { background: bg('path-right-down.png'), directions: rightDownPath },
+            8: { background: bg('path-right-left.png'), directions: leftRightPath },
+            9: { background: bg('path-right-left.png'), directions: leftRightPath },
+            10: { background: bg('path-right-left.png'), directions: leftRightPath },
+            11: { background: bg('path-right-left.png'), directions: leftRightPath },
+            12: { background: bg('path-right-left.png'), directions: leftRightPath },
+            13: { background: bg('path-up-down-left.png'), directions: leftUpDownPath },
+        },
+        7: {
+            3: { background: bg('path-up-down.png'), directions: upDownPath },
+            5: { background: bg('path-up-down.png'), directions: upDownPath },
+            7: { background: bg('path-up-down.png'), directions: upDownPath },
+            13: { background: bg('path-up-down.png'), directions: upDownPath },
+        },
+        8: {
+            1: { background: bg('path-down.png'), directions: downPath },
+            3: { background: bg('path-up-down.png'), directions: upDownPath },
+            5: { background: bg('path-up-down.png'), directions: upDownPath },
+            7: { background: bg('path-up-down.png'), directions: upDownPath },
+            9: { background: bg('path-right-down.png'), directions: rightDownPath },
+            10: { background: bg('path-right-left.png'), directions: leftRightPath },
+            11: { background: bg('path-down-left.png'), directions: leftDownPath },
+            13: { background: bg('path-up.png'), directions: upPath },
+        },
+        9: {
+            1: { background: bg('path-up-down.png'), directions: upDownPath },
+            3: { background: bg('path-up-down.png'), directions: upDownPath },
+            5: { background: bg('path-up-down.png'), directions: upDownPath },
+            7: { background: bg('path-up-down.png'), directions: upDownPath },
+            9: { background: bg('path-up-down.png'), directions: upDownPath },
+            11: { background: bg('path-up-down.png'), directions: upDownPath },
+        },
+        10: {
+            1: { background: bg('path-up-right-down.png'), directions: upRightDownPath },
+            2: { background: bg('path-right-left.png'), directions: leftRightPath },
+            3: { background: bg('path-up-left.png'), directions: leftUpPath },
+            5: { background: bg('path-up-right.png'), directions: upRightPath },
+            6: { background: bg('path-right-left.png'), directions: leftRightPath },
+            7: { background: bg('path-up-right-left.png'), directions: leftUpRightPath },
+            8: { background: bg('path-right-left.png'), directions: leftRightPath },
+            9: { background: bg('path-up-right-left.png'), directions: leftUpRightPath },
+            10: { background: bg('path-right-left.png'), directions: leftRightPath },
+            11: { background: bg('path-up-right-left.png'), directions: leftUpRightPath },
+            12: { background: bg('path-right-left.png'), directions: leftRightPath },
+            13: { background: bg('path-down-left.png'), directions: leftDownPath },
+        },
+        11: {
+            1: { background: bg('path-up-down.png'), directions: upDownPath },
+            13: { background: bg('path-up-down.png'), directions: upDownPath },
+        },
+        12: {
+            1: { background: bg('path-up-right.png'), directions: upRightPath },
+            2: { background: bg('path-right-left.png'), directions: leftRightPath },
+            3: { background: bg('path-down-left.png'), directions: leftDownPath },
+            5: { background: bg('path-right-down.png'), directions: rightDownPath },
+            6: { background: bg('path-right-left.png'), directions: leftRightPath },
+            7: { background: bg('path-right-down-left.png'), directions: leftRightDownPath },
+            8: { background: bg('path-right-left.png'), directions: leftRightPath },
+            9: { background: bg('path-right-left.png'), directions: leftRightPath },
+            10: { background: bg('path-right-left.png'), directions: leftRightPath },
+            11: { background: bg('path-down-left.png'), directions: leftDownPath },
+            13: { background: bg('path-up-down.png'), directions: upDownPath },
+        },
+        13: {
+            3: { background: bg('path-up-down.png'), directions: upDownPath },
+            5: { background: bg('path-up-down.png'), directions: upDownPath },
+            7: { background: bg('path-up-down.png'), directions: upDownPath },
+            11: { background: bg('path-up-down.png'), directions: upDownPath },
+            13: { background: bg('path-up-down.png'), directions: upDownPath },
+        },
+        14: {
+            1: { background: bg('path-right.png'), directions: rightPath },
+            2: { background: bg('path-right-left.png'), directions: leftRightPath },
+            3: { background: bg('path-up-right-left.png'), directions: leftUpRightPath },
+            4: { background: bg('path-right-left.png'), directions: leftRightPath },
+            5: { background: bg('path-up-left.png'), directions: leftUpPath },
+            7: { background: bg('path-up-down.png'), directions: upDownPath },
+            9: { background: bg('path-right.png'), directions: rightPath },
+            10: { background: bg('path-right-left.png'), directions: leftRightPath },
+            11: { background: bg('path-up-right-left.png'), directions: leftUpRightPath },
+            12: { background: bg('path-right-left.png'), directions: leftRightPath },
+            13: { background: bg('path-up-left.png'), directions: leftUpPath },
+        },
+        15: {
+            7: { background: bg('entrance.png') || bg('path-up.png'), directions: upPath },
+        },
+    };
 
     const positionBackground = MazeMap[mazePosition.y]?.[mazePosition.x]?.background ?? '';
 
@@ -64,12 +191,12 @@ function Maze(props){
 
     return  <div className="Maze" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
-                                        <button className="upButton" onClick={() => moveInMaze(0, 1)}></button>
+                                        <button className="upButton" onClick={() => moveInMaze(0, -1)}></button>
                                     </ScenePiece>)
                 }
 
                 {showDownButton && (<ScenePiece at="G15" cols={3} rows={3} >
-                                        <button className="downButton" onClick={() => moveInMaze(0, -1)}></button>
+                                        <button className="downButton" onClick={() => moveInMaze(0, 1)}></button>
                                     </ScenePiece>)
                 }
 
