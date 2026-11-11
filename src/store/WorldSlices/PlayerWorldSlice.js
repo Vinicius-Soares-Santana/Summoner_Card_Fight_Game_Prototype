@@ -8,7 +8,7 @@ const initialState = {Health: 50,
                       selectedCreatures:{tier1:[], tier2:[], tier3:[]},
                       dialogScreen: {image: '', title: '', message:'', eventName:'', options:[], status: '', proceedStep: false, branch: '' },
                       EnemiesDefeated: [],
-                      MazePosition: {},
+                      MazePosition: null,
                     };
 
 const PlayerWorldSlice = createSlice({

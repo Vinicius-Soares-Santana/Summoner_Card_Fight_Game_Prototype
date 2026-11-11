@@ -7,7 +7,7 @@ import './Maze.css';
 
 
 function Maze(props){
-    const previousMazePosition = useSelector((state) => state.playerWorld.mazePosition);
+    const previousMazePosition = useSelector((state) => state.playerWorld.MazePosition);
     const dispatch = useDispatch();
 
     const Entrance = {x:7, y:15};
