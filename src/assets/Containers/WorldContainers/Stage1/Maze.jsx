@@ -24,7 +24,13 @@ function Maze(props){
     const leftUpRightDownPath = ['left', 'up', 'right', 'down'];
 
     const MazeMap = {
-        15: []
+        15: [],
+        14:[],
+        13:[],
+        12:[],
+        11:[],
+        10:[],
+        9: [],
     }
 
     const currentPositionDisplayer = MazeMap[mazePosition.x][mazePosition.y];
