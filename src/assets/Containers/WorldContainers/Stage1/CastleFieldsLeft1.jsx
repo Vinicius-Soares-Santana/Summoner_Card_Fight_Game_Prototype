@@ -5,7 +5,7 @@ import { CardsList } from '../../../CardsList';
 import ArenaButton from '../../ArenaButton';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
-import { upgradeShop } from '../../../../World/worldActions';
+import Villager1 from './Characters1/Villager1';
 import DialogManager from '../../DialogManager';
 import ScenePiece from '../ScenePiece';
 import './CastleFieldsLeft1.css';
@@ -20,6 +20,10 @@ function CastleFieldsLeft1(props){
 
                 <ScenePiece at="A9" cols={1} rows={1}>
                     <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
+                </ScenePiece>
+
+                <ScenePiece at="D6" cols={2} rows={2}>
+                    <Villager1 />
                 </ScenePiece>
 
                 <ScenePiece at="O9" cols={1} rows={1}>
