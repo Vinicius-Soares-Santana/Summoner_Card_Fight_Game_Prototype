@@ -33,7 +33,7 @@ function Maze(props){
         9: [],
     }
 
-    const currentPositionDisplayer = MazeMap[mazePosition.x][mazePosition.y];
+    const currentPositionDisplayer = MazeMap[mazePosition.y]?.[mazePosition.x] ?? [];
 
     function moveInMaze(addInX = 0, addInY = 0){
         const {x, y} = mazePosition
