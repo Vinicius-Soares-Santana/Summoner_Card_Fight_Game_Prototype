@@ -3,7 +3,7 @@ import ScenePiece from '../ScenePiece';
 
 
 function Maze(props){
-    const [mazePosition, setMazePosition] = useState({x:1, y:15});
+    const [mazePosition, setMazePosition] = useState({x:14, y:1});
     const leftPath = ['left'];
     const upPath = ['up'];
     const rightPath = ['right'];
