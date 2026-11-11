@@ -6,7 +6,10 @@ import './Maze.css';
 
 function Maze(props){
     const Entrance = {x:7, y:15};
+    const ElizabethSonPosition = {x:13, y:3};
     const [mazePosition, setMazePosition] = useState(Entrance);
+
+
     const leftPath = ['left'];
     const upPath = ['up'];
     const rightPath = ['right'];
