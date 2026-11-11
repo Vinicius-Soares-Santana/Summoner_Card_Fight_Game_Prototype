@@ -35,9 +35,11 @@ function Maze(props){
         const nextY = y + addInY;
         if(nextX >= 0 && nextX < 15){
             setMazePosition({x: nextX, y: y})
+            return
         }
         if(nextY > 0 && nextY < 16){
             setMazePosition({x:x, y: nextY})
+            return
         }
     }
 
