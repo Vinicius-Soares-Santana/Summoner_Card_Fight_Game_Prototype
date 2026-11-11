@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     currentWorldStage: 'beggining',
+    fluffySacrificed: false,
     worldEvents: { 
         template: {
             status: '',
@@ -69,6 +70,9 @@ const WorldStateSlice = createSlice({
             const newObjective = action.payload.newQuestObjective;
 
             state.quests[questName].currentObjective = newObjective;
+        },
+        changeFluffySacrificed: (state, action) => {
+            state.fluffySacrificed = true;
         },
     },
 });

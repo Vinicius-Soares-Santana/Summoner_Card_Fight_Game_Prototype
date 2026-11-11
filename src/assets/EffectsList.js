@@ -1013,6 +1013,8 @@ export const EffectsList = {
           })
         );
 
+        if(creatureLeftTarget.includes('Fluffy')) dispatch(AllActions.worldStateActions.changeFluffySacrificed());
+
         const effectToAdd = {
           ...cardsInGame[creatureLeftTarget].cardEffectEnd,
           OwnerPositionID: leftPosition,
@@ -1060,6 +1062,8 @@ export const EffectsList = {
             damage: Number(((affectedCreature.manaCost / 3) * 2).toFixed(2)),
           })
         );
+
+        if(creatureLeftTarget.includes('Fluffy')) dispatch(AllActions.worldStateActions.changeFluffySacrificed());
 
         const effectToAdd = {
           ...cardsInGame[creatureRightTarget].cardEffectEnd,
