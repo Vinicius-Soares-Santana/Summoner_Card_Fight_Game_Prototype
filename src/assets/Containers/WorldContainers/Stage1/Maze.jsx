@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ScenePiece from '../ScenePiece';
+import NextSceneButton from '../../../Containers/NextSceneButton';
 import './Maze.css';
 
 
@@ -173,6 +174,8 @@ function Maze(props){
 
     const currentPositionDisplayer = MazeMap[mazePosition.y]?.[mazePosition.x]?.directions ?? [];
 
+    const entrancePosition = Boolean(mazePosition.x == 7 && mazePosition.y == 15);
+
     function moveInMaze(addInX = 0, addInY = 0){
         const {x, y} = mazePosition
         const nextX = x + addInX;
@@ -204,11 +207,6 @@ function Maze(props){
                                     </ScenePiece>)
                 }
 
-                {showDownButton && (<ScenePiece at="G13" cols={3} rows={3} >
-                                        <button className="downButton" onClick={() => moveInMaze(0, 1)}>Down</button>
-                                    </ScenePiece>)
-                }
-
                 {showLeftButton && (<ScenePiece at="A9" cols={3} rows={3} >
                                         <button className="leftButton" onClick={() => moveInMaze(-1, 0)}>Left</button>
                                     </ScenePiece>)
@@ -219,6 +217,15 @@ function Maze(props){
                                     </ScenePiece>)
                 }
 
+                {showDownButton && (<ScenePiece at="G11" cols={3} rows={3} >
+                                        <button className="downButton" onClick={() => moveInMaze(0, 1)}>Down</button>
+                                    </ScenePiece>)
+                }
+
+                {entrancePosition && (<ScenePiece at="G5" cols={3} rows={3} >
+                                        <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
+                                    </ScenePiece>)
+                }
 
             </div>
 }
