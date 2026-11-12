@@ -428,8 +428,7 @@ function Maze(props){
                             : undefined,
                         '--monster-intensity': intensity,
                     }
-                } 
-            >
+                } >
 
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
                                         <button className="upButton" onClick={() => { 
