@@ -149,6 +149,7 @@ function VillagerMazeQuest() {
             reward: 'Basilisk',
             waitingBranch: 'Yes',
             completedBranch: 'ThankYouSoMuch',
+            waitingStep: 2,
         },
     };
 
