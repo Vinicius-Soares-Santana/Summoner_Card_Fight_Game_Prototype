@@ -305,7 +305,7 @@ function Maze(props){
     //Monster Section
 
     function MoveMonster(currentMonsterPositionParam){
-        if(currentMonsterPositionParam = null) return
+        if(currentMonsterPositionParam == null) return
         const moveOrNot = Math.random();
         if(moveOrNot>0.5){
             const directionOptions = 
