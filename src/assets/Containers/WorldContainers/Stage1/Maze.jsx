@@ -296,7 +296,8 @@ function Maze(props){
 
 
 
-    return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
+    return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined, }} >
+
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
                                         <button className="upButton" onClick={() => { 
                                                 const {x, y} = directionToMove[facingDirection]
