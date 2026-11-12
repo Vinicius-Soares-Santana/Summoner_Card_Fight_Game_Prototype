@@ -1,5 +1,35 @@
 .Maze {
     width: 100vw;
     height: 100vh;
+    position: relative;
   }
   
+.Maze::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--monster-intensity, 0);
+  transition: opacity 180ms ease;
+}
+
+/* Na frente: verde por toda a área do labirinto. */
+.Maze[data-monster-direction='up']::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgb(60 255 110 / 0.16),
+    rgb(60 255 110 / 0.48)
+  );
+}
+
+.Maze[data-monster-direction='right']::after {
+  background: linear-gradient(
+    to right, transparent 60%, rgb(60 255 110 / 0.55)
+  );
+}
+
+.Maze[data-monster-direction='left']::after {
+  background: linear-gradient(
+    to left, transparent 60%, rgb(60 255 110 / 0.55)
+  );
+}

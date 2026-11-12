@@ -331,6 +331,67 @@ function Maze(props){
         }
     }
 
+    function getMonsterProximity(mazeMap, playerPosition, monsterPosition) {
+        const noSignal = { distance: null, intensity: 0, direction: null };
+        if (!monsterPosition) return noSignal;
+      
+        const detectionRange = 5;
+        const offsets = {
+          up: { x: 0, y: -1 },
+          right: { x: 1, y: 0 },
+          down: { x: 0, y: 1 },
+          left: { x: -1, y: 0 },
+        };
+      
+        const queue = [{ ...playerPosition, distance: 0, firstDirection: null }];
+        const visited = new Set([`${playerPosition.x},${playerPosition.y}`]);
+      
+        for (let i = 0; i < queue.length; i++) {
+          const { x, y, distance, firstDirection } = queue[i];
+      
+          if (x === monsterPosition.x && y === monsterPosition.y) {
+            return {
+              distance,
+              intensity: Math.max(0, 1 - distance / detectionRange),
+              direction: firstDirection,
+            };
+          }
+      
+          const exits = mazeMap[y]?.[x]?.directions ?? [];
+      
+          for (const direction of exits) {
+            const offset = offsets[direction];
+            const nextX = x + offset.x;
+            const nextY = y + offset.y;
+            const key = `${nextX},${nextY}`;
+      
+            if (visited.has(key) || !mazeMap[nextY]?.[nextX]) continue;
+      
+            visited.add(key);
+            queue.push({
+              x: nextX,
+              y: nextY,
+              distance: distance + 1,
+              firstDirection: firstDirection ?? direction,
+            });
+          }
+        }
+      
+        return noSignal;
+      }
+
+      const { distance, intensity, direction } = getMonsterProximity(
+        MazeMap,
+        mazePosition,
+        currentMonsterposition
+      );
+
+      const monsterDirectionOnScreen = direction
+                ? updatePositionDisplay(facingDirection, [direction])[0]
+                : undefined;
+
+
+
 
     if (
         mazePosition.x === monsterPosition.x &&
@@ -340,7 +401,15 @@ function Maze(props){
       }
 
 
-    return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined, }} >
+    return  <div className="Maze SceneGrid" data-monster-direction={monsterDirectionOnScreen} style={
+                    {
+                        backgroundImage: positionBackground
+                            ? `url("${positionBackground}")`
+                            : undefined,
+                        '--monster-intensity': intensity,
+                    }
+                } 
+            >
 
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
                                         <button className="upButton" onClick={() => { 
