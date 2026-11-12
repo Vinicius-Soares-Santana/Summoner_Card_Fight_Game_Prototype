@@ -5,6 +5,7 @@ import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSli
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice'
 import ScenePiece from '../ScenePiece';
 import NextSceneButton from '../../../Containers/NextSceneButton';
+import ElizabethSon from './Characters1/ElizabethSon';
 import './Maze.css';
 
 
@@ -12,6 +13,8 @@ function Maze(props){
     const previousMazePosition = useSelector((state) => state.playerWorld.MazePosition);
     const currentMonsterposition = useSelector((state) => state.worldState.mazeMonsterPosition);
     const playerInventoryCreatures = useSelector((state) => state.playerWorld.availableCreatures);
+    const ElisabethQuest = useSelector((state) => state.worldState.quests['MazeQuest']);
+    const JasonEvent = useSelector((state) => state.worldState.worldEvents['ElizabethsChildEvent']);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -300,7 +303,11 @@ function Maze(props){
 
     const showUpButton = currentPositionDisplayer.includes('up');
     const showMonsterRune = !playerInventoryCreatures.includes('Gashadokuro');
-    const isInRunePosition = (mazePosition.x === monsterRelicPosition.x && mazePosition.y === monsterRelicPosition.y)
+    const isInRunePosition = (mazePosition.x === monsterRelicPosition.x && mazePosition.y === monsterRelicPosition.y);
+
+    const isElizabethSonPosition = (mazePosition.x === ElizabethSonPosition.x && mazePosition.y === ElizabethSonPosition.y);
+    const elizabethQuestAccepted = (ElisabethQuest != null && ElisabethQuest != undefined);
+    const jsonEventFinished = (JasonEvent?.eventStep ? JasonEvent?.eventStep > 2 : true);
  
     function onClickGashadokuro(event){
         dispatch(playerWorldActions.addAvailableCreature({creatureName: 'Gashadokuro'}));
@@ -418,7 +425,7 @@ function Maze(props){
         
     }, [mazePosition, playerInventoryCreatures, currentMonsterposition])
     
-    
+    //==============================================================================================================================================
 
 
     return  <div className="Maze SceneGrid" data-monster-direction={monsterDirectionOnScreen} style={
@@ -460,6 +467,13 @@ function Maze(props){
                                     <ScenePiece at="G5" cols={3} rows={3} >
                                         <button className="MazeRelic" onClick={onClickGashadokuro} >
                                         </button>
+                                    </ScenePiece>
+                                )
+                }
+
+                {(isElizabethSonPosition && elizabethQuestAccepted && jsonEventFinished) && (
+                                    <ScenePiece at="I5" cols={4} rows={4} >
+                                        <ElizabethSon />
                                     </ScenePiece>
                                 )
                 }

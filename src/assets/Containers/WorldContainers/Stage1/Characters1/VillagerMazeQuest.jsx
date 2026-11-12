@@ -69,13 +69,22 @@ const characterScript = {
         1: {
             ramification: false,
             Ok: {
+                message: 'Thank you so much. Here, wear this, he will know you are there to help when he sees it.',
+                status: 'dialog',
+                options: [],
+                proceedStep: true,
+            },
+        },
+        2: {
+            ramification: false,
+            Ok: {
                 message: 'I hope he\'s safe.',
                 status: 'idle',
                 options: [],
                 proceedStep: false,
             },
         },
-        2: {ramification: false,
+        3: {ramification: false,
             Ok: {
                 message: 'YOU FOUND HIM, Why would you do that, why go into that maze??? ',
                 status: 'dialog',
@@ -83,7 +92,7 @@ const characterScript = {
                 proceedStep: true,
             },
         },
-        3: {ramification: false,
+        4: {ramification: false,
             Ok: {
                 message: 'Thank you so much for saving him!',
                 status: 'dialog',
@@ -91,7 +100,7 @@ const characterScript = {
                 proceedStep: true,
             },
         },
-        4: {ramification: false,
+        5: {ramification: false,
             Ok: {
                 message: 'Here, my husband used to be a mage too, He gave me his runes long ago, but they are of little use for me but for memory.',
                 status: 'dialog',
@@ -99,7 +108,7 @@ const characterScript = {
                 proceedStep: true,
             },
         },
-        5: {
+        6: {
             ramification: false,
             Ok: {
                 message: "Take this one, I hope it helps you in your journey.",
