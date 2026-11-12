@@ -246,7 +246,7 @@ function Maze(props){
     function retrieveBackground(updatedPositionArray, backgroundsByDirectionObject){
         const directionsConsultOrder = ['left', 'up', 'right', 'down'];
 
-        const backgroundKey = directionsConsultOrder.filter((direction) => directionsConsultOrder.includes(direction)).join('');
+        const backgroundKey = directionsConsultOrder.filter((direction) => updatedPositionArray.includes(direction)).join('');
 
         return backgroundsByDirectionObject[backgroundKey] ?? '';
     }
