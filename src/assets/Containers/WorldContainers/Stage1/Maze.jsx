@@ -51,6 +51,33 @@ function Maze(props){
     const bg = (fileName) =>
     mazeImages[`../../../Images/Stage1/Maze/${fileName}`] ?? '';
 
+
+
+
+    const backgroundsByDirection = {
+        left: bg('path-left.png'),
+        up: bg('path-up.png'),
+        right: bg('path-right.png'),
+        down: bg('path-down.png'),
+    
+        leftup: bg('path-up-left.png'),
+        leftright: bg('path-right-left.png'),
+        leftdown: bg('path-down-left.png'),
+        upright: bg('path-up-right.png'),
+        updown: bg('path-up-down.png'),
+        rightdown: bg('path-right-down.png'),
+    
+        leftupright: bg('path-up-right-left.png'),
+        leftupdown: bg('path-up-down-left.png'),
+        leftrightdown: bg('path-right-down-left.png'),
+        uprightdown: bg('path-up-right-down.png'),
+    
+        leftuprightdown: bg('path-up-right-down-left.png'),
+    };
+
+
+
+
     const MazeMap = {
         1: {},
         2: {
@@ -200,6 +227,8 @@ function Maze(props){
         return newPathDirections;
     }
 
+
+
     function changeFacingDirection(currentFacingDirection, howMuchToMove){
         const possibleCardinalDirections = ['north', 'east', 'south', 'west'];
 
@@ -213,11 +242,23 @@ function Maze(props){
     }
 
 
-    const positionBackground = MazeMap[mazePosition.y]?.[mazePosition.x]?.background ?? '';
+
+    function retrieveBackground(updatedPositionArray, backgroundsByDirectionObject){
+        const directionsConsultOrder = ['left', 'up', 'right', 'down'];
+
+        const backgroundKey = directionsConsultOrder.filter((direction) => directionsConsultOrder.includes(direction)).join('');
+
+        return backgroundsByDirectionObject[backgroundKey] ?? '';
+    }
+
+
+    
 
     const MazeAvailableDirectionsFixed = MazeMap[mazePosition.y]?.[mazePosition.x]?.directions ?? []
 
     const currentPositionDisplayer = updatePositionDisplay(facingDirection, MazeAvailableDirectionsFixed);
+
+    const positionBackground = retrieveBackground(currentPositionDisplayer, backgroundsByDirection);
 
     const entrancePosition = Boolean(mazePosition.x == Entrance.x && mazePosition.y == Entrance.y);
 
