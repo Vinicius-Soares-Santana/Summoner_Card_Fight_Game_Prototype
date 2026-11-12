@@ -447,7 +447,7 @@ function Maze(props){
                 }
 
                 {(showMonsterRune && isInRunePosition) && (
-                                    <ScenePiece at="G13" cols={3} rows={3} >
+                                    <ScenePiece at="G5" cols={3} rows={3} >
                                         <button className="MazeRelic" onClick={onClickGashadokuro} >
                                         </button>
                                     </ScenePiece>
