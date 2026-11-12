@@ -222,7 +222,9 @@ function Maze(props){
 
         const cardinalDirectionIndex = cardinalDirections.indexOf(currentFacingDirection);
 
-        const newPathDirections = availableDirections.map((directionFound, dirIndex) => mazeFixedDirection[mazeFixedDirection.indexOf(directionFound) - cardinalDirectionIndex]);
+        
+
+        const newPathDirections = availableDirections.map((directionFound, dirIndex) => mazeFixedDirection.at(mazeFixedDirection.indexOf(directionFound) - cardinalDirectionIndex));
 
         return newPathDirections;
     }
@@ -237,7 +239,7 @@ function Maze(props){
         let nextCardinalIndex = indexOfCurrentFacing + howMuchToMove
 
         if(nextCardinalIndex > possibleCardinalDirections.length) nextCardinalIndex=0;
-        if(nextCardinalIndex < 0) nextCardinalIndex=3;
+        if(nextCardinalIndex < 0) nextCardinalIndex=possibleCardinalDirections.length-1;
 
         const newFacingDirection = possibleCardinalDirections[nextCardinalIndex];
 
