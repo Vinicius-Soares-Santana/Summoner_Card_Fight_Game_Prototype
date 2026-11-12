@@ -244,9 +244,7 @@ function Maze(props){
     }
 
     const showUpButton = currentPositionDisplayer.includes('up');
-    const showLeftButton = currentPositionDisplayer.includes('left');
-    const showRightButton = currentPositionDisplayer.includes('right');
-    const showDownButton = currentPositionDisplayer.includes('down');
+ 
 
 
 
