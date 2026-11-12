@@ -406,15 +406,17 @@ function Maze(props){
                 : undefined;
 
 
-
-    if(!currentMonsterposition){
-        if (
-            mazePosition.x === monsterPosition.x &&
-            mazePosition.y === monsterPosition.y
-          ) {
-            navigate('/');
-          }
-    }
+    useEffect(() => {
+        if(!currentMonsterposition){
+            if (
+                mazePosition.x === monsterPosition.x &&
+                mazePosition.y === monsterPosition.y
+              ) {
+                navigate('/');
+              }
+        }
+    }, [playerInventoryCreatures, currentMonsterposition])
+    
     
 
 
