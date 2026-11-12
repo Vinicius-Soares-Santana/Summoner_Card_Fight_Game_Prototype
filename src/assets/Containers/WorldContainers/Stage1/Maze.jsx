@@ -305,6 +305,14 @@ function Maze(props){
     function onClickGashadokuro(event){
         dispatch(playerWorldActions.addAvailableCreature({creatureName: 'Gashadokuro'}));
         dispatch(worldStateActions.setMazeMonsterPositionWorld(null));
+        dispatch(playerWorldActions.changeDialog({
+            image: '',
+            title: 'Rune acquired',
+            message: 'Gashadokuro has been added to your collection. The maze feels strangely quiet now.',
+            eventName: '',
+            options: ['Ok'],
+            proceedStep: false,
+          }));
     }
 
     
