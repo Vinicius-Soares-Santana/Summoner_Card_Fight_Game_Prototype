@@ -399,7 +399,7 @@ function Maze(props){
 
 
 
-    if(!currentMonsterposition || showMonsterRune){
+    if(!currentMonsterposition){
         if (
             mazePosition.x === monsterPosition.x &&
             mazePosition.y === monsterPosition.y
