@@ -13,7 +13,7 @@ const initialState = {
         },
     },
     quests: {'QuestTest': { name: 'QuestTest', questStatus: 'active', currentObjective: '',},},
-    mazeMonsterPosition: null,
+    mazeMonsterPosition: {x: 3, y:4},
 };
 
 const WorldStateSlice = createSlice({

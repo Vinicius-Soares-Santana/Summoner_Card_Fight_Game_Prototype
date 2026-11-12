@@ -16,6 +16,7 @@ function Maze(props){
 
     const Entrance = {x:7, y:15};
     const ElizabethSonPosition = {x:13, y:3};
+    const monsterRelicPosition = {x:3, y:4};
     const facingDirectionInitial = 'north';
 
     const [mazePosition, setMazePosition] = useState(previousMazePosition?.position ? previousMazePosition.position : Entrance);
@@ -299,6 +300,35 @@ function Maze(props){
     const showUpButton = currentPositionDisplayer.includes('up');
  
 
+    
+
+    //Monster Section
+
+    function MoveMonster(currentMonsterPositionParam){
+        const moveOrNot = Math.random();
+        if(moveOrNot>5){
+            directionOptions = 
+                    MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions ? 
+                                MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions : [];
+            randomDirectionIndex = Math.floor(Math.random()*directionOptions.length);
+            randomDirectionChosen = directionOptions[randomDirectionIndex];
+
+            const cardinalDirections = ['north', 'east', 'south', 'west'];
+            const mazeFixedDirection = ['up', 'right', 'down', 'left'];
+
+            const mazeFixedDirectionIndex = mazeFixedDirection.indexOf(randomDirectionChosen);
+            const cardinalResult = cardinalDirections[mazeFixedDirectionIndex];
+
+            moveSet = directionToMove[cardinalResult];
+
+            afterMovePosition = {x: currentMonsterPositionParam.x + moveSet.x, y: currentMonsterPositionParam.y + moveSet.y};
+
+            if((afterMovePosition.x > 0 && afterMovePosition.x < 16) && (afterMovePosition.y > 0 && afterMovePosition.y < 15)){
+                setMonsterPosition(afterMovePosition);
+                dispatch(worldStateActions.setMazeMonsterPositionWorld);
+            }
+        }
+    }
 
 
     return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined, }} >
