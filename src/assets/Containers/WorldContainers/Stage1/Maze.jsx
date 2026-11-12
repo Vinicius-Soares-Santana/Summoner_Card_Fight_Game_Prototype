@@ -307,11 +307,11 @@ function Maze(props){
     function MoveMonster(currentMonsterPositionParam){
         const moveOrNot = Math.random();
         if(moveOrNot>0.5){
-            directionOptions = 
+            const directionOptions = 
                     MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions ? 
                                 MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions : [];
-            randomDirectionIndex = Math.floor(Math.random()*directionOptions.length);
-            randomDirectionChosen = directionOptions[randomDirectionIndex];
+            const randomDirectionIndex = Math.floor(Math.random()*directionOptions.length);
+            const randomDirectionChosen = directionOptions[randomDirectionIndex];
 
             const cardinalDirections = ['north', 'east', 'south', 'west'];
             const mazeFixedDirection = ['up', 'right', 'down', 'left'];
@@ -319,9 +319,9 @@ function Maze(props){
             const mazeFixedDirectionIndex = mazeFixedDirection.indexOf(randomDirectionChosen);
             const cardinalResult = cardinalDirections[mazeFixedDirectionIndex];
 
-            moveSet = directionToMove[cardinalResult];
+            const moveSet = directionToMove[cardinalResult];
 
-            afterMovePosition = {x: currentMonsterPositionParam.x + moveSet.x, y: currentMonsterPositionParam.y + moveSet.y};
+            const afterMovePosition = {x: currentMonsterPositionParam.x + moveSet.x, y: currentMonsterPositionParam.y + moveSet.y};
 
             if((afterMovePosition.x > 0 && afterMovePosition.x < 16) && (afterMovePosition.y > 0 && afterMovePosition.y < 15)){
                 setMonsterPosition(afterMovePosition);
