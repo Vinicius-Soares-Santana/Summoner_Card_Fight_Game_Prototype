@@ -261,14 +261,14 @@ function Maze(props){
                                     </ScenePiece>)
                 }
 
-                {showLeftButton && (<ScenePiece at="A9" cols={3} rows={3} >
-                                        <button className="leftButton" onClick={() => changeFacingDirection(facingDirection, -1)}>Left</button>
-                                    </ScenePiece>)
+                {(<ScenePiece at="A9" cols={3} rows={3} >
+                    <button className="leftButton" onClick={() => changeFacingDirection(facingDirection, -1)}>Left</button>
+                </ScenePiece>)
                 }
 
-                {showRightButton && (<ScenePiece at="N9" cols={3} rows={3} >
-                                        <button className="rightButton" onClick={() => changeFacingDirection(facingDirection, 1)}>Right</button>
-                                    </ScenePiece>)
+                {(<ScenePiece at="N9" cols={3} rows={3} >
+                    <button className="rightButton" onClick={() => changeFacingDirection(facingDirection, 1)}>Right</button>
+                </ScenePiece>)
                 }
 
                 {entrancePosition && (<ScenePiece at="G13" cols={3} rows={3} >
