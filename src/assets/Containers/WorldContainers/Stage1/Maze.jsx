@@ -416,7 +416,7 @@ function Maze(props){
             navigate('/');
             }
         
-    }, [playerInventoryCreatures, currentMonsterposition, navigate])
+    }, [mazePosition, playerInventoryCreatures, currentMonsterposition])
     
     
 
