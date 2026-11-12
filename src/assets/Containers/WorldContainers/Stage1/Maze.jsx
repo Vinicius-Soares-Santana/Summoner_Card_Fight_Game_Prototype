@@ -392,13 +392,15 @@ function Maze(props){
 
 
 
-
-    if (
-        mazePosition.x === monsterPosition.x &&
-        mazePosition.y === monsterPosition.y
-      ) {
-        navigate('/');
-      }
+    if(currentMonsterposition){
+        if (
+            mazePosition.x === monsterPosition.x &&
+            mazePosition.y === monsterPosition.y
+          ) {
+            navigate('/');
+          }
+    }
+    
 
 
     return  <div className="Maze SceneGrid" data-monster-direction={monsterDirectionOnScreen} style={
