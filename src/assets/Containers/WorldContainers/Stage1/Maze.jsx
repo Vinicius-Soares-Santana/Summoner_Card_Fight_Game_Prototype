@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
+import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice'
 import ScenePiece from '../ScenePiece';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import './Maze.css';
@@ -8,7 +10,9 @@ import './Maze.css';
 
 function Maze(props){
     const previousMazePosition = useSelector((state) => state.playerWorld.MazePosition);
+    const currentMonsterposition = useSelector((state) => state.worldState.mazeMonsterPosition);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const Entrance = {x:7, y:15};
     const ElizabethSonPosition = {x:13, y:3};
@@ -16,6 +20,7 @@ function Maze(props){
 
     const [mazePosition, setMazePosition] = useState(previousMazePosition?.position ? previousMazePosition.position : Entrance);
     const [facingDirection, setFacingDirection] = useState(previousMazePosition?.facing ? previousMazePosition.facing : facingDirectionInitial);
+    const [monsterPosition, setMonsterPosition] = useState(currentMonsterposition ? currentMonsterposition : {});
 
     const directionToMove = {'north': {x: 0, y: -1}, 'east': {x: 1, y: 0}, 'south': {x: 0, y: 1}, 'west': {x: -1, y: 0}, }
     

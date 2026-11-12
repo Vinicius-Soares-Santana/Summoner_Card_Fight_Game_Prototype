@@ -12,7 +12,8 @@ const initialState = {
             optionsCounter: 1,
         },
     },
-    quests: {'QuestTest': { name: 'QuestTest', questStatus: 'active', currentObjective: '',},}
+    quests: {'QuestTest': { name: 'QuestTest', questStatus: 'active', currentObjective: '',},},
+    mazeMonsterPosition: null,
 };
 
 const WorldStateSlice = createSlice({
@@ -73,6 +74,10 @@ const WorldStateSlice = createSlice({
         },
         changeFluffySacrificed: (state, action) => {
             state.fluffySacrificed = true;
+        },
+        setMazeMonsterPositionWorld: (state, action) => {
+            if(action.payload == null) return state.mazeMonsterPosition = null;
+            state.mazeMonsterPosition = {x: action.payload.x, y: action.payload.y};
         },
     },
 });
