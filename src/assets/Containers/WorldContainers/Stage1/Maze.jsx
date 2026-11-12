@@ -331,6 +331,14 @@ function Maze(props){
     }
 
 
+    if (
+        playerPosition.x === monsterPosition.x &&
+        playerPosition.y === monsterPosition.y
+      ) {
+        navigate('/');
+      }
+
+
     return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined, }} >
 
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
