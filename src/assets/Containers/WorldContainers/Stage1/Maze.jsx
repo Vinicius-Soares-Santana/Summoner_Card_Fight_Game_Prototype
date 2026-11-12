@@ -300,6 +300,7 @@ function Maze(props){
 
     const showUpButton = currentPositionDisplayer.includes('up');
     const showMonsterRune = !playerInventoryCreatures.includes('Gashadokuro');
+    const isInRunePosition = (mazePosition.x === monsterRelicPosition.x && mazePosition.y === monsterRelicPosition.y)
  
     function onClickGashadokuro(event){
         dispatch(playerWorldActions.addAvailableCreature({creatureName: 'Gashadokuro'}));
@@ -308,7 +309,7 @@ function Maze(props){
 
     
 
-    //Monster Section
+    //Monster Section ------------------------------------------------------------------------------------------------------------
 
     function MoveMonster(currentMonsterPositionParam){
         if(currentMonsterPositionParam == null) return
@@ -443,6 +444,14 @@ function Maze(props){
                 {entrancePosition && (<ScenePiece at="G13" cols={3} rows={3} >
                                         <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
                                     </ScenePiece>)
+                }
+
+                {(showMonsterRune && isInRunePosition) && (
+                                    <ScenePiece at="G13" cols={3} rows={3} >
+                                        <button className="MazeRelic" onClick={onClickGashadokuro} >
+                                        </button>
+                                    </ScenePiece>
+                                )
                 }
 
             </div>
