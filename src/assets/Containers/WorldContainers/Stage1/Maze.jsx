@@ -12,7 +12,11 @@ function Maze(props){
 
     const Entrance = {x:7, y:15};
     const ElizabethSonPosition = {x:13, y:3};
-    const [mazePosition, setMazePosition] = useState(previousMazePosition ? previousMazePosition : Entrance);
+    const facingDirectionInitial = 'north';
+
+    const [mazePosition, setMazePosition] = useState(previousMazePosition?.position ? previousMazePosition.position : Entrance);
+    const [facingDirection, setFacingDirection] = useState(previousMazePosition?.facing ? previousMazePosition.facing : facingDirectionInitial);
+    
 
 
     const leftPath = ['left'];
@@ -211,6 +215,15 @@ function Maze(props){
     const showLeftButton = currentPositionDisplayer.includes('left');
     const showRightButton = currentPositionDisplayer.includes('right');
     const showDownButton = currentPositionDisplayer.includes('down');
+
+
+
+    
+    const cardinalDirections = ['north', 'east', 'south', 'west'];
+
+    function get
+
+
 
     return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >

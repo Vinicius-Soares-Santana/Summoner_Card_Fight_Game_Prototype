@@ -8,7 +8,7 @@ const initialState = {Health: 50,
                       selectedCreatures:{tier1:[], tier2:[], tier3:[]},
                       dialogScreen: {image: '', title: '', message:'', eventName:'', options:[], status: '', proceedStep: false, branch: '' },
                       EnemiesDefeated: [],
-                      MazePosition: null,
+                      MazePosition: {facing: null, position: null},
                     };
 
 const PlayerWorldSlice = createSlice({
@@ -134,7 +134,10 @@ const PlayerWorldSlice = createSlice({
       }
     },
     setMazePositionWorld: (state, action) => {
-      state.MazePosition = {x: action.payload.x, y: action.payload.y};
+      state.MazePosition.position = {x: action.payload.x, y: action.payload.y};
+    },
+    setMazeFacingWorld: (state, action) => {
+      state.MazePosition.facing = action.payload;
     },
   },
 });
