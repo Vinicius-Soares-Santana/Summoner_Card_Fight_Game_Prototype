@@ -76,7 +76,10 @@ const WorldStateSlice = createSlice({
             state.fluffySacrificed = true;
         },
         setMazeMonsterPositionWorld: (state, action) => {
-            if(action.payload == null) return state.mazeMonsterPosition = null;
+            if(action.payload == null) {
+                state.mazeMonsterPosition = null
+                return
+            };
             state.mazeMonsterPosition = {x: action.payload.x, y: action.payload.y};
         },
     },
