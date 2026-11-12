@@ -234,11 +234,16 @@ function Maze(props){
 
         const indexOfCurrentFacing = possibleCardinalDirections.indexOf(currentFacingDirection);
 
-        const newFacingDirection = possibleCardinalDirections[indexOfCurrentFacing + howMuchToMove];
+        const nextCardinalIndex = indexOfCurrentFacing + howMuchToMove
+
+        if(nextCardinalIndex > possibleCardinalDirections.length) nextCardinalIndex=0;
+        if(nextCardinalIndex < 0) nextCardinalIndex=3;
+
+        const newFacingDirection = possibleCardinalDirections[nextCardinalIndex];
 
         setFacingDirection(newFacingDirection);
 
-        playerWorldActions.setMazeFacingWorld(newFacingDirection);
+        dispatch(playerWorldActions.setMazeFacingWorld(newFacingDirection));
     }
 
 
