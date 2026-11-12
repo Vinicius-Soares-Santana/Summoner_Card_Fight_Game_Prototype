@@ -16,6 +16,8 @@ function Maze(props){
 
     const [mazePosition, setMazePosition] = useState(previousMazePosition?.position ? previousMazePosition.position : Entrance);
     const [facingDirection, setFacingDirection] = useState(previousMazePosition?.facing ? previousMazePosition.facing : facingDirectionInitial);
+
+    const directionToMove = {'north': {x: 0, y: -1}, 'east': {x: 1, y: 0}, 'south': {x: 0, y: 1}, 'west': {x: -1, y: 0}, }
     
 
 
@@ -183,9 +185,39 @@ function Maze(props){
         },
     };
 
+
+
+    
+
+    function updatePositionDisplay(currentFacingDirection, availableDirections, updateAmount){
+        const cardinalDirections = ['north', 'east', 'south', 'west'];
+        const mazeFixedDirection = ['up', 'right', 'down', 'left'];
+
+        const cardinalDirectionIndex = cardinalDirections.indexOf(currentFacingDirection);
+
+        const newPathDirections = availableDirections.map((directionFound, dirIndex) => mazeFixedDirection[mazeFixedDirection.indexOf(directionFound) - cardinalDirectionIndex]);
+
+        return newPathDirections;
+    }
+
+    function changeFacingDirection(currentFacingDirection, howMuchToMove){
+        const possibleCardinalDirections = ['north', 'east', 'south', 'west'];
+
+        const indexOfCurrentFacing = possibleCardinalDirections.indexOf(currentFacingDirection);
+
+        const newFacingDirection = possibleCardinalDirections[indexOfCurrentFacing + howMuchToMove];
+
+        setFacingDirection(newFacingDirection);
+
+        playerWorldActions.setMazeFacingWorld(newFacingDirection);
+    }
+
+
     const positionBackground = MazeMap[mazePosition.y]?.[mazePosition.x]?.background ?? '';
 
-    const currentPositionDisplayer = MazeMap[mazePosition.y]?.[mazePosition.x]?.directions ?? [];
+    const MazeAvailableDirectionsFixed = MazeMap[mazePosition.y]?.[mazePosition.x]?.directions ?? []
+
+    const currentPositionDisplayer = updatePositionDisplay(facingDirection, MazeAvailableDirectionsFixed);
 
     const entrancePosition = Boolean(mazePosition.x == Entrance.x && mazePosition.y == Entrance.y);
 
@@ -218,31 +250,24 @@ function Maze(props){
 
 
 
-    
-    const cardinalDirections = ['north', 'east', 'south', 'west'];
-
-    function get
-
-
-
     return  <div className="Maze SceneGrid" style={{backgroundImage: positionBackground ? `url("${positionBackground}")` : undefined,}} >
                 {showUpButton && (<ScenePiece at="G1" cols={3} rows={3} >
-                                        <button className="upButton" onClick={() => moveInMaze(0, -1)}>Up</button>
+                                        <button className="upButton" onClick={() => { 
+                                                const {x, y} = directionToMove[facingDirection]
+                                                moveInMaze(x, y)
+                                                }
+                                            }>
+                                        Up</button>
                                     </ScenePiece>)
                 }
 
                 {showLeftButton && (<ScenePiece at="A9" cols={3} rows={3} >
-                                        <button className="leftButton" onClick={() => moveInMaze(-1, 0)}>Left</button>
+                                        <button className="leftButton" onClick={() => changeFacingDirection(facingDirection, -1)}>Left</button>
                                     </ScenePiece>)
                 }
 
                 {showRightButton && (<ScenePiece at="N9" cols={3} rows={3} >
-                                        <button className="rightButton" onClick={() => moveInMaze(1, 0)}>Right</button>
-                                    </ScenePiece>)
-                }
-
-                {showDownButton && (<ScenePiece at="G13" cols={3} rows={3} >
-                                        <button className="downButton" onClick={() => moveInMaze(0, 1)}>Down</button>
+                                        <button className="rightButton" onClick={() => changeFacingDirection(facingDirection, 1)}>Right</button>
                                     </ScenePiece>)
                 }
 
