@@ -345,6 +345,7 @@ function Maze(props){
                                         <button className="upButton" onClick={() => { 
                                                 const {x, y} = directionToMove[facingDirection]
                                                 moveInMaze(x, y)
+                                                MoveMonster(currentMonsterposition)
                                                 }
                                             }>
                                         Up</button>
@@ -352,12 +353,12 @@ function Maze(props){
                 }
 
                 {(<ScenePiece at="A9" cols={3} rows={3} >
-                    <button className="leftButton" onClick={() => changeFacingDirection(facingDirection, -1)}>Left</button>
+                    <button className="leftButton" onClick={() => {changeFacingDirection(facingDirection, -1); MoveMonster(currentMonsterposition);}}>Left</button>
                 </ScenePiece>)
                 }
 
                 {(<ScenePiece at="N9" cols={3} rows={3} >
-                    <button className="rightButton" onClick={() => changeFacingDirection(facingDirection, 1)}>Right</button>
+                    <button className="rightButton" onClick={() => {changeFacingDirection(facingDirection, 1); MoveMonster(currentMonsterposition)}}>Right</button>
                 </ScenePiece>)
                 }
 
