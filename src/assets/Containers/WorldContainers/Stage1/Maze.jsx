@@ -250,7 +250,7 @@ function Maze(props){
 
 
 
-    function retrieveBackground(updatedPositionArray, backgroundsByDirectionObject){
+    function retrieveBackground(updatedPositionArray, backgroundsByDirectionObject, positionInMaze){
         const directionsConsultOrder = ['left', 'up', 'right', 'down'];
 
         const backgroundKey = directionsConsultOrder.filter((direction) => updatedPositionArray.includes(direction)).join('');
@@ -265,7 +265,7 @@ function Maze(props){
 
     const currentPositionDisplayer = updatePositionDisplay(facingDirection, MazeAvailableDirectionsFixed);
 
-    const positionBackground = retrieveBackground(currentPositionDisplayer, backgroundsByDirection);
+    const positionBackground = retrieveBackground(currentPositionDisplayer, backgroundsByDirection, mazePosition);
 
     const entrancePosition = Boolean(mazePosition.x == Entrance.x && mazePosition.y == Entrance.y);
 
