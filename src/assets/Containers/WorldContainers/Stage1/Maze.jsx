@@ -307,7 +307,7 @@ function Maze(props){
 
     const isElizabethSonPosition = (mazePosition.x === ElizabethSonPosition.x && mazePosition.y === ElizabethSonPosition.y);
     const elizabethQuestAccepted = (ElisabethQuest != null && ElisabethQuest != undefined);
-    const jsonEventFinished = (JasonEvent?.eventStep ? JasonEvent?.eventStep < 3 : true);
+    const jsonEventFinished = (JasonEvent?.status ? JasonEvent?.status != 'complete' : true);
  
     function onClickGashadokuro(event){
         dispatch(playerWorldActions.addAvailableCreature({creatureName: 'Gashadokuro'}));
