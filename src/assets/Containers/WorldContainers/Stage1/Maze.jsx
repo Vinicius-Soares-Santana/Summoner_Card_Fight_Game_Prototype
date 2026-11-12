@@ -234,7 +234,7 @@ function Maze(props){
 
         const indexOfCurrentFacing = possibleCardinalDirections.indexOf(currentFacingDirection);
 
-        const nextCardinalIndex = indexOfCurrentFacing + howMuchToMove
+        let nextCardinalIndex = indexOfCurrentFacing + howMuchToMove
 
         if(nextCardinalIndex > possibleCardinalDirections.length) nextCardinalIndex=0;
         if(nextCardinalIndex < 0) nextCardinalIndex=3;
