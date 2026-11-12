@@ -11,6 +11,7 @@ import './Maze.css';
 function Maze(props){
     const previousMazePosition = useSelector((state) => state.playerWorld.MazePosition);
     const currentMonsterposition = useSelector((state) => state.worldState.mazeMonsterPosition);
+    const playerInventoryCreatures = useSelector((state) => state.playerWorld.availableCreatures);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -298,7 +299,12 @@ function Maze(props){
     }
 
     const showUpButton = currentPositionDisplayer.includes('up');
+    const showMonsterRune = !playerInventoryCreatures.includes('Gashadokuro');
  
+    function onClickGashadokuro(event){
+        dispatch(playerWorldActions.addAvailableCreature({creatureName: 'Gashadokuro'}));
+        dispatch(worldStateActions.setMazeMonsterPositionWorld(null));
+    }
 
     
 
@@ -392,7 +398,7 @@ function Maze(props){
 
 
 
-    if(currentMonsterposition){
+    if(!currentMonsterposition || showMonsterRune){
         if (
             mazePosition.x === monsterPosition.x &&
             mazePosition.y === monsterPosition.y
