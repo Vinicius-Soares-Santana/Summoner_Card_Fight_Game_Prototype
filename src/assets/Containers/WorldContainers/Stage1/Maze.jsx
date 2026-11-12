@@ -332,8 +332,8 @@ function Maze(props){
 
 
     if (
-        playerPosition.x === monsterPosition.x &&
-        playerPosition.y === monsterPosition.y
+        mazePosition.x === monsterPosition.x &&
+        mazePosition.y === monsterPosition.y
       ) {
         navigate('/');
       }
