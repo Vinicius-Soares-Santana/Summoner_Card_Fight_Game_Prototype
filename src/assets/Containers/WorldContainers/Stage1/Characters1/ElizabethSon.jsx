@@ -33,10 +33,9 @@ const characterScript = {
             ramification: false,
             Ok: {
                 message: 'Thank you very much, I hide hear when I heard that noise coming.',
-                status: 'idle',
+                status: 'complete',
                 options: [],
                 proceedStep: true,
-                branch: 'standard',
             },
         
         },
