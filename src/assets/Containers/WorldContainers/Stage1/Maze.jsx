@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
-import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice'
+import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
 import ScenePiece from '../ScenePiece';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import ElizabethSon from './Characters1/ElizabethSon';
