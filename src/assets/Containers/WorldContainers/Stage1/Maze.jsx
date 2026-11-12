@@ -306,7 +306,7 @@ function Maze(props){
 
     function MoveMonster(currentMonsterPositionParam){
         const moveOrNot = Math.random();
-        if(moveOrNot>5){
+        if(moveOrNot>0.5){
             directionOptions = 
                     MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions ? 
                                 MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions : [];
