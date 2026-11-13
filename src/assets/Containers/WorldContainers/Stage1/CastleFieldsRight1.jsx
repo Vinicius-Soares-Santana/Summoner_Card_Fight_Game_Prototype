@@ -36,7 +36,7 @@ function CastleFieldsRight1(props){
     
 
 
-    return  <div className='SceneGrid CastleFieldsLeft1'>
+    return  <div className='SceneGrid CastleFieldsRight1'>
 
                 <ScenePiece at="A9" cols={1} rows={1}>
                     <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
