@@ -466,7 +466,7 @@ function Maze(props){
                 }
 
                 {(showMonsterRune && isInRunePosition) && (
-                                    <ScenePiece at="G5" cols={3} rows={3} >
+                                    <ScenePiece at="G15" cols={3} rows={3} >
                                         <button 
                                             className="MazeRelic" 
                                             onClick={onClickGashadokuro}
@@ -481,7 +481,7 @@ function Maze(props){
                 }
 
                 {(isElizabethSonPosition && elizabethQuestAccepted && jsonEventFinished) && (
-                                    <ScenePiece at="I5" cols={4} rows={4} >
+                                    <ScenePiece at="B5" cols={3} rows={5} >
                                         <ElizabethSon />
                                     </ScenePiece>
                                 )
