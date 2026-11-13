@@ -39,8 +39,9 @@ function CastleFieldsRight1(props){
     return  <div className='SceneGrid CastleFieldsRight1'>
 
                 <ScenePiece at="A9" cols={1} rows={1}>
-                    <NextSceneButton destination='/game/stage1' buttonText='Temple' />
+                    <NextSceneButton destination='/game/stage1' buttonText='Stage1Main' />
                 </ScenePiece>
+                
 
                 <ScenePiece at="E2" cols={5} rows={2}>
                     <ArenaButton enemyId={randomEnemy(stage1EnemyIds)} difficulty='normal' />
@@ -54,9 +55,6 @@ function CastleFieldsRight1(props){
                     <button onClick={() => navigate('/shop')}>Shop</button>
                 </ScenePiece>
 
-                <ScenePiece at="O9" cols={1} rows={1}>
-                    <NextSceneButton destination='/game/stage1' buttonText='Stage1Main' />
-                </ScenePiece>
                 
             </div>
 }
