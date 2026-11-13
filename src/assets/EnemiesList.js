@@ -41,7 +41,7 @@ export const EnemiesList = {
       tier3: [],
     },
     goldLoot: 10,
-    itemLoot: ['potion'],
+    itemLoot: ['Potion'],
   },
 
   fairyWarden: {
@@ -56,7 +56,7 @@ export const EnemiesList = {
       tier3: [],
     },
     goldLoot: 20,
-    itemLoot: ['Fairy', 'potion'],
+    itemLoot: ['Fairy', 'Potion'],
   },
 
   basiliskHandler: {
@@ -71,7 +71,7 @@ export const EnemiesList = {
       tier3: [],
     },
     goldLoot: 15,
-    itemLoot: ['potion'],
+    itemLoot: ['Potion'],
   },
 
   cryptKeeper: {
