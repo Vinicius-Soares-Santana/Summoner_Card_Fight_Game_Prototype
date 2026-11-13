@@ -372,7 +372,9 @@ function Maze(props){
                     MoveMonster(afterMovePosition);
                 }
             } else {
-                lastMonsterDirection.current = null;
+                if(moveOrNot>0.1){
+                    lastMonsterDirection.current = null;
+                }
             }
         }
     }
