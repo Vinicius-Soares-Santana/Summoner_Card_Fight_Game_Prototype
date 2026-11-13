@@ -366,6 +366,7 @@ function Maze(props){
             if((afterMovePosition.x > 0 && afterMovePosition.x < 16) && (afterMovePosition.y > 0 && afterMovePosition.y < 15)){
                 setMonsterPosition(afterMovePosition);
                 dispatch(worldStateActions.setMazeMonsterPositionWorld(afterMovePosition));
+                lastMonsterDirection.current = randomDirectionChosen;
             }
         }
     }
