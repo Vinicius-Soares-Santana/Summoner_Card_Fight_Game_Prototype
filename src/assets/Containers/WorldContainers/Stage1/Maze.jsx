@@ -330,7 +330,7 @@ function Maze(props){
     function MoveMonster(currentMonsterPositionParam){
         if(currentMonsterPositionParam == null) return
         const moveOrNot = Math.random();
-        if(moveOrNot>0.2){
+        if(moveOrNot>0.1){
             let directionOptions = 
                     MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions ? 
                                 MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions : [];
