@@ -25,6 +25,19 @@ function Stage1Main(props){
     dispatch(upgradeShop(1));
   }
 
+  const stage1EnemyIds = [
+    'fieldScout',
+    'goblinRecruiter',
+    'Acolite1',
+    'basiliskHandler',
+    'cryptKeeper',
+  ];
+
+  function randomEnemy(listOfEnemys){
+    const index = Math.floor(Math.random() * stage1EnemyIds.length);
+    return listOfEnemys[index];
+  }
+
   return  <div className='SceneGrid Stage1Main'>
 
             <ScenePiece at="A9" cols={1} rows={1}>
@@ -34,7 +47,7 @@ function Stage1Main(props){
 
 
             <ScenePiece at="M2" cols={5} rows={2}>
-              <ArenaButton enemyId='ragnarokKeeper' difficulty='normal' />
+              <ArenaButton enemyId={randomEnemy(stage1EnemyIds)} difficulty='normal' />
             </ScenePiece>
             
 
