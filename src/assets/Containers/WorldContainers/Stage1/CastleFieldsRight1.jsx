@@ -42,7 +42,7 @@ function CastleFieldsRight1(props){
                     <NextSceneButton destination='/game/stage1/castlefieldsleft2' buttonText='Castle Fields 2' />
                 </ScenePiece>
 
-                <ScenePiece at="M2" cols={5} rows={2}>
+                <ScenePiece at="E2" cols={5} rows={2}>
                     <ArenaButton enemyId={randomEnemy(stage1EnemyIds)} difficulty='normal' />
                 </ScenePiece>
 
@@ -50,7 +50,7 @@ function CastleFieldsRight1(props){
                     <Villager1 />
                 </ScenePiece>
 
-                <ScenePiece at="G12" cols={2} rows={3}>
+                <ScenePiece at="L12" cols={2} rows={3}>
                     <button onClick={() => navigate('/shop')}>Shop</button>
                 </ScenePiece>
 
