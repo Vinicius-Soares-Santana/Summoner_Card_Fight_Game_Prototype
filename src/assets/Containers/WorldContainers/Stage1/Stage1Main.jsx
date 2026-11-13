@@ -17,7 +17,7 @@ import './Stage1Main.css';
 
 
 function randomEnemy(listOfEnemys){
-  const index = Math.floor(Math.random() * stage1EnemyIds.length);
+  const index = Math.floor(Math.random() * listOfEnemys.length);
   return listOfEnemys[index];
 }
 
