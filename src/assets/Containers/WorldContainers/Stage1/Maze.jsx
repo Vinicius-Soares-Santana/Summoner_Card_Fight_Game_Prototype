@@ -6,7 +6,7 @@ import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice
 import ScenePiece from '../ScenePiece';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import ElizabethSon from './Characters1/ElizabethSon';
-import gashadokuroCaught from '../../../Images/Stage1/Maze/GashadokuroCaught.png';
+import gashadokuroCaught from '../../../Images/Stage1/Maze/Green-Eyed-Gashadokuro-Maze-2.png';
 import './Maze.css';
 
 
