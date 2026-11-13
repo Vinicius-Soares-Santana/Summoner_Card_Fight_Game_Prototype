@@ -467,17 +467,19 @@ function Maze(props){
 
     const showMonsterInTheDark = (distance == 1 && direction == 'up');
 
-    if(playerFoundByMonster) return (
-        <div
-          className="Maze"
-          role="img"
-          aria-label="Player Captured"
-          style={{
-            background: `black url("${gashadokuroCaught}") center / cover no-repeat`,
-          }}
-        />
-      );
+    if(playerFoundByMonster) {
+        return (
+                <div
+                className="Maze"
+                role="img"
+                aria-label="Player Captured"
+                style={{
+                    background: `black url("${gashadokuroCaught}") center / cover no-repeat`,
+                }}
+                />
+            );
     }
+
 
     return  <div className="Maze SceneGrid" data-monster-direction={monsterDirectionOnScreen} style={
                     {
