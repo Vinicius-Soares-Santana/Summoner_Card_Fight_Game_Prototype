@@ -433,7 +433,9 @@ function Maze(props){
 
 
     useEffect(() => {
-        console.log(JSON.stringify(monsterPosition));
+        console.log(`Monster: ${JSON.stringify(monsterPosition)}`);
+        console.log(`Player: ${JSON.stringify(mazePosition)}`);
+
 
         if(!currentMonsterposition) return
         
