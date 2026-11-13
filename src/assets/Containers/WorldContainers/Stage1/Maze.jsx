@@ -6,6 +6,7 @@ import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice
 import ScenePiece from '../ScenePiece';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import ElizabethSon from './Characters1/ElizabethSon';
+import gashadokuroCaught from '../../../Images/Stage1/Maze/GashadokuroCaught.png';
 import './Maze.css';
 
 
@@ -439,6 +440,9 @@ function Maze(props){
                 : undefined;
 
 
+
+    const playerFoundByMonster = (currentMonsterposition != null && mazePosition.x === monsterPosition.x && mazePosition.y === monsterPosition.y);
+
     useEffect(() => {
         console.log(`Monster: ${JSON.stringify(monsterPosition)}`);
         console.log(`Player: ${JSON.stringify(mazePosition)}`);
@@ -446,11 +450,14 @@ function Maze(props){
 
         if(!currentMonsterposition) return
         
-        if (
-            mazePosition.x === monsterPosition.x &&
-            mazePosition.y === monsterPosition.y
-            ) {
-            navigate('/');
+        if (playerFoundByMonster) {
+
+                const timer = setTimeout(() => {
+                    navigate('/', { replace: true });
+                }, 2000);
+
+                return () => clearTimeout(timer);
+
             }
         
     }, [mazePosition, playerInventoryCreatures, currentMonsterposition])
@@ -459,6 +466,18 @@ function Maze(props){
 
 
     const showMonsterInTheDark = (distance == 1 && direction == 'up');
+
+    if(playerFoundByMonster) return (
+        <div
+          className="Maze"
+          role="img"
+          aria-label="Player Captured"
+          style={{
+            background: `black url("${gashadokuroCaught}") center / cover no-repeat`,
+          }}
+        />
+      );
+    }
 
     return  <div className="Maze SceneGrid" data-monster-direction={monsterDirectionOnScreen} style={
                     {
