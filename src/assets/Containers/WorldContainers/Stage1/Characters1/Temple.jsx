@@ -15,7 +15,7 @@ const characterScript = {
         1: {
             ramification: false,
             Ok: {
-                message: 'I need at least 4 creatures of the 1st tier and 1 of the 2nd tier to enter the temple... \n I should start by checking the shop.',
+                message: 'I need at least 4 creatures of the 1st tier and 2 of the 2nd tier to enter the temple... \n I should start by checking the shop.',
                 status: 'idle',
                 options: [],
                 proceedStep: false,
@@ -93,8 +93,8 @@ function Temple() {
     const allQuests = {
         EnterTheTemple: {
             startCondition: !Object.keys(WorldCurrentQuests ?? {}).includes('EnterTheTemple'),
-            endCondition: (creaturesObtained.tier1.length > 3 && creaturesObtained.tier2.length > 0),
-            initialObjective: 'Equip 4 Tier 1 creatures and 1 Tier 2 creature to enter the temple',
+            endCondition: (creaturesObtained.tier1.length > 3 && creaturesObtained.tier2.length > 1),
+            initialObjective: 'Equip 4 Tier 1 creatures and 2 Tier 2 creature to enter the temple',
             reward: '',
             waitingBranch: 'standard',
             completedBranch: 'EnterOrNot',
