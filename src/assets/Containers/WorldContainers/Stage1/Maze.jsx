@@ -428,6 +428,8 @@ function Maze(props){
     //==============================================================================================================================================
 
 
+    const showMonsterInTheDark = (distance == 1 && direction == 'up');
+
     return  <div className="Maze SceneGrid" data-monster-direction={monsterDirectionOnScreen} style={
                     {
                         backgroundImage: positionBackground
@@ -465,7 +467,14 @@ function Maze(props){
 
                 {(showMonsterRune && isInRunePosition) && (
                                     <ScenePiece at="G5" cols={3} rows={3} >
-                                        <button className="MazeRelic" onClick={onClickGashadokuro} >
+                                        <button 
+                                            className="MazeRelic" 
+                                            onClick={onClickGashadokuro}
+                                            style={{
+                                                backgroundImage: 'url()',
+                                            }}
+                                         >
+                                            Relic
                                         </button>
                                     </ScenePiece>
                                 )
@@ -474,6 +483,13 @@ function Maze(props){
                 {(isElizabethSonPosition && elizabethQuestAccepted && jsonEventFinished) && (
                                     <ScenePiece at="I5" cols={4} rows={4} >
                                         <ElizabethSon />
+                                    </ScenePiece>
+                                )
+                }
+
+                { showMonsterInTheDark && (
+                                    <ScenePiece at="B5" cols={4} rows={8} >
+                                        <img src='../../../Images/Stage1/Maze/Moss-eyed-Gashadokuro-1.png' alt='Monsters' ></img>
                                     </ScenePiece>
                                 )
                 }
