@@ -16,12 +16,6 @@ import './Stage1Main.css';
 
 
 
-function randomEnemy(listOfEnemys){
-  const index = Math.floor(Math.random() * listOfEnemys.length);
-  return listOfEnemys[index];
-}
-
-
 
 function Stage1Main(props){
   const navigate = useNavigate();
@@ -33,15 +27,6 @@ function Stage1Main(props){
     dispatch(upgradeShop(2));
     dispatch(upgradeShop(1));
   }
-
-  const stage1EnemyIds = [
-    'fieldScout',
-    'goblinRecruiter',
-    'Acolite1',
-    'basiliskHandler',
-    'cryptKeeper',
-  ];
-
   
 
   return  <div className='SceneGrid Stage1Main'>
@@ -49,14 +34,6 @@ function Stage1Main(props){
             <ScenePiece at="A9" cols={1} rows={1}>
               <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
             </ScenePiece>
-            
-
-
-            <ScenePiece at="M2" cols={5} rows={2}>
-              <ArenaButton enemyId={randomEnemy(stage1EnemyIds)} difficulty='normal' />
-            </ScenePiece>
-            
-
 
             <ScenePiece at="A6" cols={2} rows={2}>
               <TestCharacter />
@@ -75,13 +52,12 @@ function Stage1Main(props){
               <Temple />
             </ScenePiece>
             
-
-            <ScenePiece at="D5" cols={2} rows={3}>
-              <button onClick={() => navigate('/shop')}>Shop</button>
-            </ScenePiece>
-            
             <ScenePiece at="F5" cols={1} rows={1}>
               <button onClick={onClickTest}>Test</button>
+            </ScenePiece>
+
+            <ScenePiece at="P9" cols={1} rows={1}>
+              <NextSceneButton destination='castlefieldsright1' buttonText='Castle Fields Right' />
             </ScenePiece>
             
           </div>
