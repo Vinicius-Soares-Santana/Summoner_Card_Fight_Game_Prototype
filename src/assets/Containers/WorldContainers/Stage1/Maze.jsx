@@ -414,6 +414,8 @@ function Maze(props){
 
 
     useEffect(() => {
+        console.log(JSON.stringify(monsterPosition));
+        
         if(!currentMonsterposition) return
         
         if (
@@ -435,6 +437,7 @@ function Maze(props){
                         backgroundImage: positionBackground
                             ? `url("${positionBackground}")`
                             : undefined,
+                        backgroundSize: 'Cover',
                         '--monster-intensity': intensity,
                     }
                 } >
