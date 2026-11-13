@@ -14,6 +14,15 @@ import Temple from './Characters1/Temple';
 import ScenePiece from '../ScenePiece';
 import './Stage1Main.css';
 
+
+
+function randomEnemy(listOfEnemys){
+  const index = Math.floor(Math.random() * stage1EnemyIds.length);
+  return listOfEnemys[index];
+}
+
+
+
 function Stage1Main(props){
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,10 +42,7 @@ function Stage1Main(props){
     'cryptKeeper',
   ];
 
-  function randomEnemy(listOfEnemys){
-    const index = Math.floor(Math.random() * stage1EnemyIds.length);
-    return listOfEnemys[index];
-  }
+  
 
   return  <div className='SceneGrid Stage1Main'>
 
