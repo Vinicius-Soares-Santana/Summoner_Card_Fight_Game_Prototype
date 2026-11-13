@@ -347,6 +347,7 @@ function Maze(props){
                 const forwardOptions = directionOptions.filter(direction => direction !== backwards);
                 directionOptions = forwardOptions;
             }
+            if (directionOptions.length === 0) return;
             
 
             
