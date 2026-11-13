@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
@@ -15,6 +15,7 @@ function Maze(props){
     const playerInventoryCreatures = useSelector((state) => state.playerWorld.availableCreatures);
     const ElisabethQuest = useSelector((state) => state.worldState.quests['MazeQuest']);
     const JasonEvent = useSelector((state) => state.worldState.worldEvents['ElizabethsChildEvent']);
+    const lastMonsterDirection = useRef(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -330,9 +331,25 @@ function Maze(props){
         if(currentMonsterPositionParam == null) return
         const moveOrNot = Math.random();
         if(moveOrNot>0.2){
-            const directionOptions = 
+            let directionOptions = 
                     MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions ? 
                                 MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions : [];
+
+            if(directionOptions?.length > 1){
+                const oppositeDirection = {
+                    up: 'down',
+                    down: 'up',
+                    left: 'right',
+                    right: 'left',
+                };
+    
+                const backwards = oppositeDirection[lastMonsterDirection.current];
+                const forwardOptions = directionOptions.filter(direction => direction !== backwards);
+                directionOptions = forwardOptions;
+            }
+            
+
+            
             const randomDirectionIndex = Math.floor(Math.random()*directionOptions.length);
             const randomDirectionChosen = directionOptions[randomDirectionIndex];
 
