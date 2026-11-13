@@ -112,7 +112,7 @@ export const CardsList = {
   Minion: {
     name: 'Minion',
     type: 'creature',
-    price: 5,
+    price: 15,
     group: ['Aggressive'],
     tier: 1,
     status: 'normal',
@@ -168,7 +168,7 @@ export const CardsList = {
   Goblin: {
     name: 'Goblin',
     type: 'creature',
-    price: 5,
+    price: 20,
     group: ['Swarm', 'Scaling', 'Fortress'],
     tier: 1,
     status: 'normal',
@@ -224,7 +224,7 @@ export const CardsList = {
   Lich: {
     name: 'Lich',
     type: 'creature',
-    price: 5,
+    price: 15,
     group: ['Graveyard', 'DeathValue', 'Swarm'],
     tier: 1,
     status: 'normal',
@@ -252,7 +252,7 @@ export const CardsList = {
   Traitor: {
     name: 'Traitor',
     type: 'creature',
-    price: 5,
+    price: 10,
     group: ['Graveyard', 'ManaEngine', 'DeathValue'],
     tier: 1,
     status: 'normal',
