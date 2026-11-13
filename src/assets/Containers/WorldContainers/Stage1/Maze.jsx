@@ -329,7 +329,7 @@ function Maze(props){
     function MoveMonster(currentMonsterPositionParam){
         if(currentMonsterPositionParam == null) return
         const moveOrNot = Math.random();
-        if(moveOrNot>0.5){
+        if(moveOrNot>0.2){
             const directionOptions = 
                     MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions ? 
                                 MazeMap[currentMonsterPositionParam.y]?.[currentMonsterPositionParam.x]?.directions : [];
@@ -415,7 +415,7 @@ function Maze(props){
 
     useEffect(() => {
         console.log(JSON.stringify(monsterPosition));
-        
+
         if(!currentMonsterposition) return
         
         if (
