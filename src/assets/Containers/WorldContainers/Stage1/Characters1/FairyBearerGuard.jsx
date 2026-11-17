@@ -100,7 +100,8 @@ function FairyBearerGuard() {
     useEffect(() => {
         const thisEvent = event ?? {};
 
-        if(answers.includes('Defend yourself') && thisEvent.status != 'complete' && thisEvent.status != 'waitingResult' 
+        if(answers.includes('Defend yourself') && !answers.includes('I won\'t') && thisEvent.status != 'complete' 
+                && thisEvent.status != 'waitingResult' 
                 && !creaturesAvailable.includes('Fairy') && fairyQuest.status != 'complete'
                 && ArenaStatus == 'idle'){
             const result = dispatch(startCampaignBattle('fairyWarden', 'normal'));
@@ -113,6 +114,14 @@ function FairyBearerGuard() {
               }));
 
             navigate('/arena');
+        }
+
+        if(answers.includes('I won\'t') && thisEvent.status != 'complete' && EnemiesDefeated.includes('fairyWarden')){
+            dispatch(worldStateActions.changeEventStep({
+                eventName,
+                newStatus: 'idle',
+                proceedStep: false,
+              }));
         }
     }, [event, creaturesAvailable, fairyQuest, ArenaStatus])
 
