@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
 import { startCampaignBattle } from '../../Battle/battleActions';
+import './FairyBearerGuard.css'
 
 const characterName = 'Guard';
 const characterImage = './';
