@@ -84,6 +84,21 @@ function QuestManager({ eventName, allQuests }) {
                     proceedStep: false,
                 }));
             }
+
+            if (event.status === 'waitingResult') {
+                dispatch(completeQuest(questName, config.reward));
+              
+                if (config.completedBranch) {
+                  dispatch(worldStateActions.changeEventStep({
+                    eventName,
+                    newStatus: 'dialog',
+                    newBranch: config.completedBranch,
+                    proceedStep: true,
+                  }));
+                }
+              
+                continue;
+              }
         }
     }, [allQuests, dispatch, event, eventName, quests]);
 

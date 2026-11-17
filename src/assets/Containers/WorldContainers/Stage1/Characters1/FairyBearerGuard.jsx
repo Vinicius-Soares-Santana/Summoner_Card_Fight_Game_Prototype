@@ -115,14 +115,6 @@ function FairyBearerGuard() {
 
             navigate('/arena');
         }
-
-        if(answers.includes('I won\'t') && thisEvent.status == 'waitingResult' && EnemiesDefeated.includes('fairyWarden')){
-            dispatch(worldStateActions.changeEventStep({
-                eventName,
-                newStatus: 'idle',
-                proceedStep: false,
-              }));
-        }
     }, [event, creaturesAvailable, fairyQuest, ArenaStatus])
 
 
