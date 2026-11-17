@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { startCampaignBattle } from '../../Battle/battleActions';
 import './ArenaButton.css';
 
-function ArenaButton({ enemyId = 'goblinCaptain', difficulty }){
+function ArenaButton({ enemyId = 'Acolite1', difficulty }){
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState('');
