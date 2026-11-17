@@ -10,21 +10,6 @@ const characterName = 'Guard';
 const characterImage = './';
 const eventName = 'FairyGuardBattle';
 
-const accepted = {
-    message: 'NICE! Can you buy me a potato?',
-    status: 'dialog',
-    options: [],
-    proceedStep: true,
-    branch: 'Yes',
-};
-
-const refused = {
-    message: "I mean, that's not exactly an option, but ok...",
-    status: 'idle',
-    options: [],
-    proceedStep: true,
-    branch: 'No',
-};
 
 const characterScript = {
     standard: {
@@ -59,7 +44,7 @@ const characterScript = {
             ramification: false,
             Ok: {
                 message: 'You will regret not giving up your life to the king.',
-                status: 'dialog',
+                status: 'idle',
                 options: ['Defend yourself'],
                 proceedStep: true,
             },

@@ -6,6 +6,7 @@ import ArenaButton from '../../ArenaButton';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import Villager1 from './Characters1/Villager1';
+import FairyBearerGuard from './Characters1/FairyBearerGuard';
 import DialogManager from '../../DialogManager';
 import ScenePiece from '../ScenePiece';
 import './CastleFieldsRight1.css';
@@ -21,9 +22,17 @@ function randomEnemy(listOfEnemys){
 
 
 function CastleFieldsRight1(props){
-    const worldState = useSelector((state) => state.worldState)
+    const worldState = useSelector((state) => state.worldState);
+    const creatureSelection = useSelector((state) => state.playerWorld.selectedCreatures);
+    const FairyBearerEvent = useSelector(
+        (state) => state.worldState.worldEvents['FairyGuardBattle']
+    );
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+
+    const showFairyBearer = (creatureSelection?.tier1.length > 3 && !FairyBearerEvent?.optionsChosen.includes('I won\'t'));
 
 
     const stage1EnemyIds = [
@@ -54,6 +63,12 @@ function CastleFieldsRight1(props){
                 <ScenePiece at="L12" cols={2} rows={3}>
                     <button onClick={() => navigate('/shop')}>Shop</button>
                 </ScenePiece>
+
+                {showFairyBearer &&
+                    <ScenePiece at="N14" cols={2} rows={3}>
+                        <FairyBearerGuard />
+                    </ScenePiece>
+                }
 
                 
             </div>
