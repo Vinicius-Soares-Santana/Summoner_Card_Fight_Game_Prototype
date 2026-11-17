@@ -37,7 +37,7 @@ const characterScript = {
         2: {
             ramification: false,
             Ok: {
-                message: 'Do you think you can find him? I can give anything to you',
+                message: 'Do you think you can find him? I can pay you back',
                 status: 'dialog',
                 options: ['Yes', 'No'],
                 proceedStep: true,
