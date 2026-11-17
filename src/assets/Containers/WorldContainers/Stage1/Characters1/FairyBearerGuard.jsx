@@ -31,7 +31,7 @@ const characterScript = {
         1: {
             ramification: false,
             Ok: {
-                message: 'Hi Stranger',
+                message: 'If you came looking for the vizyr, you\'re wating your time.',
                 status: 'dialog',
                 options: [],
                 proceedStep: true,
@@ -40,52 +40,28 @@ const characterScript = {
         2: {
             ramification: false,
             Ok: {
-                message: 'Can you help me test a quest real quick?',
+                message: 'Wait a minute...',
                 status: 'dialog',
-                options: ['Yes', 'No'],
+                options: [],
                 proceedStep: true,
             },
         },
         3: {
-            ramification: true,
-            Yes: accepted,
-            No: refused,
-        },
-    },
-    No: {
-        1: {
             ramification: false,
             Ok: {
-                message: 'Did you change your mind?',
+                message: 'I know you!',
                 status: 'dialog',
-                options: ['Yes', 'No'],
+                options: [],
                 proceedStep: true,
             },
         },
-        2: {
-            ramification: true,
-            Yes: accepted,
-            No: refused,
-        },
-    },
-    Yes: {
-        1: {
+        4: {
             ramification: false,
             Ok: {
-                message: 'Still waiting for that potato.',
-                status: 'idle',
-                options: [],
-                proceedStep: false,
-            },
-        },
-        2: {
-            ramification: false,
-            Ok: {
-                message: "YOU MADE IT! Here's a potion as a reward.",
-                status: 'idle',
-                options: [],
+                message: 'You will regret not giving up your life to the king.',
+                status: 'dialog',
+                options: ['Defend yourself'],
                 proceedStep: true,
-                branch: 'CONGRATULATIONS',
             },
         },
     },
@@ -93,9 +69,9 @@ const characterScript = {
         1: {
             ramification: false,
             Ok: {
-                message: 'Thanks for bringing the potato!',
+                message: 'Run while you can, he will go after all of them if he sees you...',
                 status: 'idle',
-                options: [],
+                options: ['I won\'t'],
                 proceedStep: false,
             },
         },
@@ -106,25 +82,43 @@ function FairyBearerGuard() {
     const items = useSelector((state) => state.playerWorld.Items);
     const creatureSelection = useSelector((state) => state.playerWorld.selectedCreatures);
     const creaturesAvailable = useSelector((state) => state.playerWorld.availableCreatures);
+    const EnemiesDefeated = useSelector((state) => state.playerWorld.EnemiesDefeated);
+    const fairyQuest = useSelector((state) => state.worldState.quests['FairyBattle'] ?? {});
     const currentEventsList = useSelector(
         (state) => state.worldState.worldEvents
     );
     const event = useSelector(
         (state) => state.worldState.worldEvents[eventName]
     );
+    const ArenaStatus = useSelector(
+        (state) => state.battle.status
+    );
+
 
     const navigate = useNavigate();
 
     const allQuests = {
         'FairyBattle': {
-            startCondition: Object.values(event?.optionsChosen ?? {}).includes('Yes'),
-            endCondition: items.includes('Potato'),
-            initialObjective: 'Buy Potatoes',
+            startCondition: currentEventsList?.optionsChosen.includes('Defend yourself'),
+            endCondition: EnemiesDefeated?.includes('fairyWarden'),
+            initialObjective: 'Defeat the Fairy Bearer',
             reward: 'Potion',
-            waitingBranch: 'Yes',
             completedBranch: 'CONGRATULATIONS',
         },
     };
+
+    useEffect(() => {
+        const thisEvent = event ?? {};
+
+        if(thisEvent.optionsChosen?.includes('Defend yourself') && thisEvent.status != 'complete' 
+                && !creaturesAvailable.includes('Fairy') && fairyQuest.status != 'complete'
+                && ArenaStatus == 'idle'){
+            const result = dispatch(startCampaignBattle('fairyWarden', 'normal'));
+            if (!result.ok) { return; }
+            navigate('/arena');
+        }
+    }, [event, creaturesAvailable, fairyQuest, ArenaStatus])
+
 
     return (
         <div id="FairyBearerGuard">
