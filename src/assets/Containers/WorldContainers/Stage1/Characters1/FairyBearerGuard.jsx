@@ -17,7 +17,7 @@ const characterScript = {
         1: {
             ramification: false,
             Ok: {
-                message: 'If you came looking for the vizyr, you\'re wating your time.',
+                message: 'If you came looking for the vizyr, you\'re wasting your time.',
                 status: 'dialog',
                 options: [],
                 proceedStep: true,
