@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import QuestManager from '../../../QuestManager';
@@ -85,6 +85,8 @@ function FairyBearerGuard() {
 
     const answers = Object.values(event?.optionsChosen ?? {});
 
+    const hasBeenABattle = useRef(false);
+
     const allQuests = {
         'FairyBattle': {
             startCondition: answers.includes('Defend yourself'),
@@ -100,9 +102,10 @@ function FairyBearerGuard() {
 
         if(answers.includes('Defend yourself') && thisEvent.status != 'complete' 
                 && !creaturesAvailable.includes('Fairy') && fairyQuest.status != 'complete'
-                && ArenaStatus == 'idle'){
+                && ArenaStatus == 'idle' && !hasBeenABattle.current){
             const result = dispatch(startCampaignBattle('fairyWarden', 'normal'));
             if (!result.ok) { return; }
+            hasBeenABattle.current = true;
             navigate('/arena');
         }
     }, [event, creaturesAvailable, fairyQuest, ArenaStatus])
