@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
-import { startCampaignBattle } from '../../Battle/battleActions';
+import { startCampaignBattle } from '../../../../../Battle/battleActions';
 import './FairyBearerGuard.css';
 
 const characterName = 'Guard';
@@ -55,9 +55,9 @@ const characterScript = {
             ramification: false,
             Ok: {
                 message: 'Run while you can, he will go after all of them if he sees you...',
-                status: 'idle',
+                status: 'complete',
                 options: ['I won\'t'],
-                proceedStep: false,
+                proceedStep: true,
             },
         },
     },
@@ -81,13 +81,16 @@ function FairyBearerGuard() {
 
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const answers = Object.values(event?.optionsChosen ?? {});
 
     const allQuests = {
         'FairyBattle': {
-            startCondition: currentEventsList?.optionsChosen.includes('Defend yourself'),
+            startCondition: answers.includes('Defend yourself'),
             endCondition: EnemiesDefeated?.includes('fairyWarden'),
             initialObjective: 'Defeat the Fairy Bearer',
-            reward: 'Potion',
+            reward: 'Fairy',
             completedBranch: 'CONGRATULATIONS',
         },
     };
@@ -95,7 +98,7 @@ function FairyBearerGuard() {
     useEffect(() => {
         const thisEvent = event ?? {};
 
-        if(thisEvent.optionsChosen?.includes('Defend yourself') && thisEvent.status != 'complete' 
+        if(answers.includes('Defend yourself') && thisEvent.status != 'complete' 
                 && !creaturesAvailable.includes('Fairy') && fairyQuest.status != 'complete'
                 && ArenaStatus == 'idle'){
             const result = dispatch(startCampaignBattle('fairyWarden', 'normal'));

@@ -56,7 +56,7 @@ export const EnemiesList = {
       tier3: [],
     },
     goldLoot: 20,
-    itemLoot: ['Fairy', 'Potion'],
+    itemLoot: ['Potion'],
   },
 
   basiliskHandler: {

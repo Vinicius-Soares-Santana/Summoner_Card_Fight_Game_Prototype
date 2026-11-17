@@ -32,7 +32,7 @@ function CastleFieldsRight1(props){
     const dispatch = useDispatch();
 
 
-    const showFairyBearer = (creatureSelection?.tier1.length > 3 && !FairyBearerEvent?.optionsChosen.includes('I won\'t'));
+    const showFairyBearer = (creatureSelection?.tier1.length > 3 && !Object.values(FairyBearerEvent?.optionsChosen ?? {}).includes('I won\'t'));
 
 
     const stage1EnemyIds = [
