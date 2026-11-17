@@ -44,8 +44,17 @@ const characterScript = {
             ramification: false,
             Ok: {
                 message: 'You will regret not giving up your life to the king.',
-                status: 'battle',
+                status: 'dialog',
                 options: ['Defend yourself'],
+                proceedStep: true,
+            },
+        },
+        5: {
+            ramification: false,
+            Ok: {
+                message: '*Guard energizes his runes*',
+                status: 'battle',
+                options: [],
                 proceedStep: true,
             },
         },
