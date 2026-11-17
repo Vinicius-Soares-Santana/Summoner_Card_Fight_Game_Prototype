@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
 import { startCampaignBattle } from '../../../../../Battle/battleActions';
+import { worldStateActions } from '../../../../../store/WorldSlices/WorldStateSlice';
 import './FairyBearerGuard.css';
 
 const characterName = 'Guard';
@@ -46,15 +47,6 @@ const characterScript = {
                 message: 'You will regret not giving up your life to the king.',
                 status: 'dialog',
                 options: ['Defend yourself'],
-                proceedStep: true,
-            },
-        },
-        5: {
-            ramification: false,
-            Ok: {
-                message: '*Guard energizes his runes*',
-                status: 'battle',
-                options: [],
                 proceedStep: true,
             },
         },
@@ -108,11 +100,18 @@ function FairyBearerGuard() {
     useEffect(() => {
         const thisEvent = event ?? {};
 
-        if(answers.includes('Defend yourself') && thisEvent.status != 'complete' 
+        if(answers.includes('Defend yourself') && thisEvent.status != 'complete' && thisEvent.status != 'waitingResult' 
                 && !creaturesAvailable.includes('Fairy') && fairyQuest.status != 'complete'
-                && ArenaStatus == 'idle' && event?.status != 'battle'){
+                && ArenaStatus == 'idle'){
             const result = dispatch(startCampaignBattle('fairyWarden', 'normal'));
             if (!result.ok) { return; }
+
+            dispatch(worldStateActions.changeEventStep({
+                eventName,
+                newStatus: 'waitingResult',
+                proceedStep: false,
+              }));
+
             navigate('/arena');
         }
     }, [event, creaturesAvailable, fairyQuest, ArenaStatus])
