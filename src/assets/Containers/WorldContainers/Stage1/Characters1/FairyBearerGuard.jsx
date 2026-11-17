@@ -102,7 +102,7 @@ function FairyBearerGuard() {
 
         if(answers.includes('Defend yourself') && !answers.includes('I won\'t') && thisEvent.status != 'complete' 
                 && thisEvent.status != 'waitingResult' 
-                && !creaturesAvailable.includes('Fairy') && fairyQuest.status != 'complete'
+                && !creaturesAvailable.includes('Fairy') && fairyQuest.questStatus !== 'complete'
                 && ArenaStatus == 'idle'){
             const result = dispatch(startCampaignBattle('fairyWarden', 'normal'));
             if (!result.ok) { return; }
