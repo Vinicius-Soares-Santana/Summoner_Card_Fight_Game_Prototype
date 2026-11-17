@@ -73,7 +73,7 @@ function QuestManager({ eventName, allQuests }) {
             }
 
             if (quest.questStatus !== 'active' || !config.endCondition) continue;
-            if (event.status !== 'idle') continue;
+            if (event.status !== 'idle' && event.status !== 'waitingResult') continue;
 
             if (event.branch === config.completedBranch) {
                 dispatch(completeQuest(questName, config.reward));
