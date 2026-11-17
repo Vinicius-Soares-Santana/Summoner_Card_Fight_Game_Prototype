@@ -44,7 +44,7 @@ const characterScript = {
             ramification: false,
             Ok: {
                 message: 'You will regret not giving up your life to the king.',
-                status: 'idle',
+                status: 'battle',
                 options: ['Defend yourself'],
                 proceedStep: true,
             },
@@ -85,7 +85,6 @@ function FairyBearerGuard() {
 
     const answers = Object.values(event?.optionsChosen ?? {});
 
-    const hasBeenABattle = useRef(false);
 
     const allQuests = {
         'FairyBattle': {
@@ -102,10 +101,9 @@ function FairyBearerGuard() {
 
         if(answers.includes('Defend yourself') && thisEvent.status != 'complete' 
                 && !creaturesAvailable.includes('Fairy') && fairyQuest.status != 'complete'
-                && ArenaStatus == 'idle' && !hasBeenABattle.current){
+                && ArenaStatus == 'idle' && event?.status != 'battle'){
             const result = dispatch(startCampaignBattle('fairyWarden', 'normal'));
             if (!result.ok) { return; }
-            hasBeenABattle.current = true;
             navigate('/arena');
         }
     }, [event, creaturesAvailable, fairyQuest, ArenaStatus])
