@@ -40,8 +40,7 @@ function TempleCorridor(props){
         (canFight || guardianOfTheTempleDefeated);
 
     
-    if(!canFight && !guardianOfTheTempleDefeated && !guardianOfTheTempleDefeated){
-        <p>You need HP, 4 Tier 1 creatures, and 2 Tier 2 creatures equipped.</p>
+    if(!canFight && !guardianOfTheTempleDefeated){
         return  
             <div className='SceneGrid PreparationBlockScreen'>
 
