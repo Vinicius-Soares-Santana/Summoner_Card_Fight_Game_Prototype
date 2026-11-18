@@ -34,7 +34,7 @@ const characterScript = {
         },
         3: {
             ramification: false,
-            ok: {
+            Ok: {
                 message: 'If you don\'t leave by your own will, you shall be removed.',
                 status: 'dialog',
                 options: ['I can\'t leave without seeing him.'],
@@ -43,7 +43,7 @@ const characterScript = {
         },
         4: {
             ramification: false,
-            ok: {
+            Ok: {
                 message: 'Then you will face the consequences.',
                 status: 'dialog',
                 options: ['...'],
@@ -54,7 +54,7 @@ const characterScript = {
     CONGRATULATIONS: {
         1: {
             ramification: false,
-            ok: {
+            Ok: {
                 message: 'I... failed...my...duty...',
                 status: 'dialog',
                 options: ['...'],
