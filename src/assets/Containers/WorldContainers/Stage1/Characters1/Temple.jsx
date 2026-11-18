@@ -135,7 +135,7 @@ function Temple() {
                             />
                         </>
             } else {
-                return <button className="TempleButton" onClick={() => navigate('/game/stage2')} ></button>
+                return <button className="TempleButton" onClick={() => navigate('/game/stage1/templecorridor')} ></button>
             }
         }
     }

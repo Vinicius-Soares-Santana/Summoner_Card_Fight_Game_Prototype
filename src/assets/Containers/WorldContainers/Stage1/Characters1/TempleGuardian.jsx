@@ -34,7 +34,7 @@ const characterScript = {
         },
         3: {
             ramification: false,
-            Ok: {
+            'I\'m here to see the king': {
                 message: 'If you don\'t leave by your own will, you shall be removed.',
                 status: 'dialog',
                 options: ['I can\'t leave without seeing him.'],
@@ -43,7 +43,7 @@ const characterScript = {
         },
         4: {
             ramification: false,
-            Ok: {
+            'I can\'t leave without seeing him.': {
                 message: 'Then you will face the consequences.',
                 status: 'dialog',
                 options: ['...'],
@@ -54,16 +54,16 @@ const characterScript = {
     CONGRATULATIONS: {
         1: {
             ramification: false,
-            Ok: {
+            '...': {
                 message: 'I... failed...my...duty...',
                 status: 'dialog',
-                options: ['I won\'t'],
+                options: ['...'],
                 proceedStep: true,
             },
         },
         2: {
             ramification: true,
-            Ok: {
+            '...': {
                 message: '...',
                 status: 'complete',
                 options: ['Claim SoulEater Rune', 'Claim DragonKing Rune'],
@@ -99,7 +99,7 @@ function TempleGuardian() {
     const allQuests = {
         'TempleGuardianBossBattle': {
             startCondition: answers.includes('...'),
-            endCondition: EnemiesDefeated?.includes('TempleGuardian') && answers.includes('Defend yourself'),
+            endCondition: EnemiesDefeated?.includes('TempleGuardian') && (answers.includes('Claim SoulEater Rune') || answers.includes('Claim DragonKing Rune')),
             initialObjective: 'Defeat the Temple Guardian',
             reward: (answers.includes('Claim SoulEater Rune') ? 'SoulEater' : 'DragonKing'),
             completedBranch: 'CONGRATULATIONS',
