@@ -17,14 +17,16 @@ function TempleCorridor(props){
     const creatureSelection = useSelector((state) => state.playerWorld.selectedCreatures);
     const worldEvents = useSelector((state) => state.worldState.worldEvents);
     const EnemiesDefeated = useSelector((state) => state.playerWorld.EnemiesDefeated);
+    const templeGuardianComplete = useSelector(
+        (state) =>
+            state.worldState.quests.TempleGuardianBossBattle?.questStatus === 'complete'
+    );
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
 
     const guardianOfTheTempleDefeated = EnemiesDefeated.includes('TempleGuardian');
-
-    const templeGuardianComplete = worldEvents['TempleGuardianBattle']?.questStatus == 'complete';
 
 
     return  <div className='SceneGrid TempleCorridor'>

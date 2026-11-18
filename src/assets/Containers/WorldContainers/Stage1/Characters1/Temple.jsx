@@ -61,7 +61,7 @@ const characterScript = {
         2: {
             ramification: true,
             Proceed: { message: 'I think I can proceed now, I should make sure I\'m ready',
-                        status: 'dialog',
+                        status: 'complete',
                         options: ['continue'],
                         proceedStep: true,
                     },
