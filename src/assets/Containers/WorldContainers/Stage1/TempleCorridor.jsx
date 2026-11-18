@@ -41,14 +41,16 @@ function TempleCorridor(props){
 
     
     if(!canFight && !guardianOfTheTempleDefeated){
-        return  
+        return ( 
             <div className='SceneGrid PreparationBlockScreen'>
 
                 <p>You need HP, 4 Tier 1 creatures, and 2 Tier 2 creatures equipped.</p>
 
             </div>
+            )
     }
-    return  <div className='SceneGrid TempleCorridor'>
+    return  (
+            <div className='SceneGrid TempleCorridor'>
 
                 {!templeGuardianComplete && 
                     <ScenePiece at="G9" cols={2} rows={3}>
@@ -67,6 +69,7 @@ function TempleCorridor(props){
                 </ScenePiece>
 
             </div>
+            )
 }
 
 export default TempleCorridor;
