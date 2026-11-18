@@ -24,7 +24,7 @@ function TempleCorridor(props){
 
     const guardianOfTheTempleDefeated = EnemiesDefeated.includes('TempleGuardian');
 
-    const templeGuardianComplete = worldEvents['TempleGuardianBattle']?.status == 'complete';
+    const templeGuardianComplete = worldEvents['TempleGuardianBattle']?.questStatus == 'complete';
 
 
     return  <div className='SceneGrid TempleCorridor'>

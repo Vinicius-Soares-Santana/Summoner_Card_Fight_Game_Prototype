@@ -102,6 +102,7 @@ function TempleGuardian() {
             endCondition: EnemiesDefeated?.includes('TempleGuardian') && (answers.includes('Claim SoulEater Rune') || answers.includes('Claim DragonKing Rune')),
             initialObjective: 'Defeat the Temple Guardian',
             reward: (answers.includes('Claim SoulEater Rune') ? 'SoulEater' : answers.includes('Claim DragonKing Rune') ? 'DragonKing' : ''),
+            completedBranch: 'CONGRATULATIONS',
         },
     };
 
