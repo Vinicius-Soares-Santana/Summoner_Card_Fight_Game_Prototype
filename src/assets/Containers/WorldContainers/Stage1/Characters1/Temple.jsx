@@ -36,7 +36,7 @@ const characterScript = {
         1: {
             ramification: true,
             Proceed: { message: '...',
-                        status: 'dialog',
+                        status: 'complete',
                         options: ['continue'],
                         proceedStep: true,
                     },
