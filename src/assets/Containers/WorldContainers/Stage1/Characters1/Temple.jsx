@@ -90,6 +90,14 @@ function Temple() {
         (state) => state.worldState.quests
     );
 
+    const health = useSelector((state) => state.playerWorld.Health);
+
+    const canFight =
+        health > 0 &&
+        creaturesObtained.tier1.length >= 4 &&
+        creaturesObtained.tier2.length >= 2;
+
+
     const allQuests = {
         EnterTheTemple: {
             startCondition: !Object.keys(WorldCurrentQuests ?? {}).includes('EnterTheTemple'),
@@ -113,6 +121,7 @@ function Temple() {
         if(answers.includes('Proceed') && 
             answers.includes('continue')&&
             WorldCurrentQuests.DefeatTempleGuardian?.questStatus != 'complete'
+            && canFight
             ){
                 navigate('/game/stage1/templecorridor');
         }

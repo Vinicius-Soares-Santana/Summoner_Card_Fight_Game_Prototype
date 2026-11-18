@@ -46,11 +46,6 @@ function TempleCorridor(props){
 
                 <p>You need HP, 4 Tier 1 creatures, and 2 Tier 2 creatures equipped.</p>
 
-
-                <ScenePiece at="H12" cols={1} rows={1}>
-                    <NextSceneButton destination='/game/stage1' buttonText='Return' />
-                </ScenePiece>
-
             </div>
     }
     return  <div className='SceneGrid TempleCorridor'>
