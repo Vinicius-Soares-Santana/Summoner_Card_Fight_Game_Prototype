@@ -28,16 +28,49 @@ function TempleCorridor(props){
 
     const guardianOfTheTempleDefeated = EnemiesDefeated.includes('TempleGuardian');
 
+    const health = useSelector((state) => state.playerWorld.Health);
 
+    const canFight =
+        health > 0 &&
+        creatureSelection.tier1.length >= 4 &&
+        creatureSelection.tier2.length >= 2;
+
+    const showGuardian =
+        !templeGuardianComplete &&
+        (canFight || guardianOfTheTempleDefeated);
+
+    
+    if(!canFight && !guardianOfTheTempleDefeated && !guardianOfTheTempleDefeated){
+        <p>You need HP, 4 Tier 1 creatures, and 2 Tier 2 creatures equipped.</p>
+        return  
+            <div className='SceneGrid PreparationBlockScreen'>
+
+                <p>You need HP, 4 Tier 1 creatures, and 2 Tier 2 creatures equipped.</p>
+
+
+                <ScenePiece at="H12" cols={1} rows={1}>
+                    <NextSceneButton destination='/game/stage1' buttonText='Return' />
+                </ScenePiece>
+
+            </div>
+    }
     return  <div className='SceneGrid TempleCorridor'>
 
-                {!templeGuardianComplete && <TempleGuardian />}
+                {!templeGuardianComplete && 
+                    <ScenePiece at="G9" cols={2} rows={3}>
+                        <TempleGuardian />
+                    </ScenePiece>
+                }
 
                 {guardianOfTheTempleDefeated && 
-                    <ScenePiece at="A9" cols={1} rows={1}>
+                    <ScenePiece at="H2" cols={1} rows={1}>
                         <NextSceneButton destination='/game/stage2' buttonText='Temple Hall' />
                     </ScenePiece>
                 }
+
+                <ScenePiece at="H12" cols={1} rows={1}>
+                    <NextSceneButton destination='/game/stage1' buttonText='Return' />
+                </ScenePiece>
 
             </div>
 }
