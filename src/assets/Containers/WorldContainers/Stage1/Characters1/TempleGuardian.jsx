@@ -65,7 +65,7 @@ const characterScript = {
             ramification: true,
             '...': {
                 message: '...',
-                status: 'complete',
+                status: 'idle',
                 options: ['Claim SoulEater Rune', 'Claim DragonKing Rune'],
                 proceedStep: true,
             },
