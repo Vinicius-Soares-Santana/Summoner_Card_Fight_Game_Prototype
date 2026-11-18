@@ -5,7 +5,6 @@ import QuestManager from '../../../QuestManager';
 import DialogManager from '../../../DialogManager';
 import { startCampaignBattle } from '../../../../../Battle/battleActions';
 import { worldStateActions } from '../../../../../store/WorldSlices/WorldStateSlice';
-import { playerWorldActions } from '../../../../../store/WorldSlices/playerWorldSlice';
 import './TempleGuardian.css';
 
 const characterName = 'Temple Guardian';
