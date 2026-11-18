@@ -5,8 +5,7 @@ import { CardsList } from '../../../CardsList';
 import ArenaButton from '../../ArenaButton';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
-import Villager1 from './Characters1/Villager1';
-import FairyBearerGuard from './Characters1/FairyBearerGuard';
+import TempleGuardian from './Characters1/TempleGuardian';
 import DialogManager from '../../DialogManager';
 import ScenePiece from '../ScenePiece';
 import './TempleCorridor.css';
@@ -25,10 +24,12 @@ function TempleCorridor(props){
 
     const guardianOfTheTempleDefeated = EnemiesDefeated.includes('TempleGuardian');
 
+    const templeGuardianComplete = worldEvents['TempleGuardianBattle']?.eventStatus == 'complete';
+
 
     return  <div className='SceneGrid TempleCorridor'>
 
-                
+                {templeGuardianComplete && <TempleGuardian />}
 
                 {guardianOfTheTempleDefeated && 
                     <ScenePiece at="A9" cols={1} rows={1}>
