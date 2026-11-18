@@ -12,6 +12,7 @@ import Stage1Main from './assets/Containers/WorldContainers/Stage1/Stage1Main';
 import CastleFieldsLeft1 from './assets/Containers/WorldContainers/Stage1/CastleFieldsLeft1';
 import CastleFieldsLeft2 from './assets/Containers/WorldContainers/Stage1/CastleFieldsLeft2';
 import CastleFieldsRight1 from './assets/Containers/WorldContainers/Stage1/CastleFieldsRight1';
+import TempleCorridor from './assets/Containers/WorldContainers/Stage1/TempleCorridor';
 import Maze from './assets/Containers/WorldContainers/Stage1/Maze';
 import Stage1 from './assets/Containers/WorldContainers/Stage1/Stage1';
 import Stage2 from './assets/Containers/WorldContainers/Stage2/Stage2';
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
           <Route path="castlefieldsright1" element={<CastleFieldsRight1 />} />
           <Route path="castlefieldsleft1" element={<CastleFieldsLeft1 />} />
           <Route path="castlefieldsleft2" element={<CastleFieldsLeft2 />} />
+          <Route path="templecorridor" element={<TempleCorridor />} />
           <Route path="maze" element={<Maze />} />
         </Route>
 
