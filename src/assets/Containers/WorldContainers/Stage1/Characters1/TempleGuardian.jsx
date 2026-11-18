@@ -34,7 +34,7 @@ const characterScript = {
         },
         3: {
             ramification: false,
-            'I\'m here to see the king': {
+            ok: {
                 message: 'If you don\'t leave by your own will, you shall be removed.',
                 status: 'dialog',
                 options: ['I can\'t leave without seeing him.'],
@@ -43,7 +43,7 @@ const characterScript = {
         },
         4: {
             ramification: false,
-            'I can\'t leave without seeing him.': {
+            ok: {
                 message: 'Then you will face the consequences.',
                 status: 'dialog',
                 options: ['...'],
@@ -54,7 +54,7 @@ const characterScript = {
     CONGRATULATIONS: {
         1: {
             ramification: false,
-            '...': {
+            ok: {
                 message: 'I... failed...my...duty...',
                 status: 'dialog',
                 options: ['...'],
@@ -101,13 +101,25 @@ function TempleGuardian() {
             startCondition: answers.includes('...'),
             endCondition: EnemiesDefeated?.includes('TempleGuardian') && (answers.includes('Claim SoulEater Rune') || answers.includes('Claim DragonKing Rune')),
             initialObjective: 'Defeat the Temple Guardian',
-            reward: (answers.includes('Claim SoulEater Rune') ? 'SoulEater' : 'DragonKing'),
-            completedBranch: 'CONGRATULATIONS',
+            reward: (answers.includes('Claim SoulEater Rune') ? 'SoulEater' : answers.includes('Claim DragonKing Rune') ? 'DragonKing' : ''),
         },
     };
 
     useEffect(() => {
         const thisEvent = event ?? {};
+
+        if (
+            thisEvent.status === 'waitingResult' &&
+            EnemiesDefeated.includes('TempleGuardian')
+        ) {
+            dispatch(worldStateActions.changeEventStep({
+                eventName,
+                newStatus: 'dialog',
+                newBranch: 'CONGRATULATIONS',
+                proceedStep: true,
+            }));
+            return;
+        }
 
         if(answers.includes('...') && !answers.includes('I won\'t') && thisEvent.status != 'complete' 
                 && thisEvent.status != 'waitingResult' 

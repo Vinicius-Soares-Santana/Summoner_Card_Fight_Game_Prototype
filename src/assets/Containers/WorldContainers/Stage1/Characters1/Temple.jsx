@@ -114,7 +114,7 @@ function Temple() {
             answers.includes('continue')&&
             WorldCurrentQuests.DefeatTempleGuardian?.questStatus != 'complete'
             ){
-                navigate('/game/stage2');
+                navigate('/game/stage1/templecorridor');
         }
     }, [event, WorldCurrentQuests])
 
