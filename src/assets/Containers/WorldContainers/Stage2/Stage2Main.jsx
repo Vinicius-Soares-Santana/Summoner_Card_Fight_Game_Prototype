@@ -26,7 +26,7 @@ function Stage2Main(props){
 
   useEffect(() => {
     if(currentWorldStage != 'Stage2Start' && currentWorldLevel < 2){
-      dispatch(worldStateActions.nextStage(Stage2Start));
+      dispatch(worldStateActions.nextStage({StageName:'Stage2Start', StageNumber: 2}));
       if(currentShopLevel < 2){
         dispatch(upgradeShop(2));
       }

@@ -22,7 +22,7 @@ const WorldStateSlice = createSlice({
     initialState,
     reducers: {
         nextStage: (state, action) => {
-            return {...state, currentWorldStage: action.payload, worldCurrentLevel: state.worldCurrentLevel + 1};
+            return {...state, currentWorldStage: action.payload.StageName, worldCurrentLevel: action.payload.StageNumber};
 
         },
         addEvent: (state, action) => {
