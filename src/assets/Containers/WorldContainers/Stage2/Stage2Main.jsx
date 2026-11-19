@@ -31,9 +31,7 @@ function Stage2Main(props){
               <NextSceneButton destination='castlefieldsleft1' buttonText='Castle Fields Left' />
             </ScenePiece>
             
-            <ScenePiece at="F5" cols={1} rows={1}>
-              <button onClick={onClickTest}>Test</button>
-            </ScenePiece>
+
 
             <ScenePiece at="P9" cols={1} rows={1}>
               <NextSceneButton destination='castlefieldsright1' buttonText='Castle Fields Right' />
