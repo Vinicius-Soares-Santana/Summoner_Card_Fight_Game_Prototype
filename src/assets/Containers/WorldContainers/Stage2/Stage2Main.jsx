@@ -43,7 +43,7 @@ function Stage2Main(props){
 
 
             <ScenePiece at="P9" cols={1} rows={1}>
-              <NextSceneButton destination='stage2' buttonText='Castle Fields Right' />
+              <NextSceneButton destination='' buttonText='Castle Fields Right' />
             </ScenePiece>
             
           </div>
