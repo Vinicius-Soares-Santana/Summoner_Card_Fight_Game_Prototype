@@ -18,9 +18,12 @@ function Stage2Main(props){
   const currentWorldStage = useSelector((state) => state.worldState.currentWorldStage);
   const currentWorldLevel = useSelector((state) => state.worldState.worldCurrentLevel);
   const currentShopLevel = useSelector((state) => state.shop.ShopLevel);
+  
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  
 
  
 
@@ -40,6 +43,16 @@ function Stage2Main(props){
       }
     }
   }, [dispatch]);
+
+
+  useEffect(() => {
+    if(randonEncounterSetter < 0.2 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
+      const result = dispatch(startCampaignBattle('TempleGuardian', 'hard'));
+          if (!result.ok) { return; }
+
+          navigate('/arena');
+    }
+  }, []);
   
 
   return  <div className='SceneGrid Stage2Main'>
@@ -47,8 +60,11 @@ function Stage2Main(props){
             <ScenePiece at="A9" cols={1} rows={1}>
               <NextSceneButton destination='roomleft1' buttonText='Room' />
             </ScenePiece>
-            
 
+            <ScenePiece at="A9" cols={1} rows={1}>
+              <NextSceneButton destination='roomleft1' buttonText='Room' />
+            </ScenePiece>
+            
 
             <ScenePiece at="P9" cols={1} rows={1}>
               <NextSceneButton destination='' buttonText='Castle Fields Right' />

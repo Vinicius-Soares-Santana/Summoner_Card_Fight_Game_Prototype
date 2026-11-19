@@ -118,6 +118,79 @@ export const EnemiesList = {
     goldLoot: 100,
     itemLoot: [],
   },
+
+
+  templeLookout: {
+    id: 'templeLookout', name: 'Temple Lookout',
+    health: 55, difficulty: 'easy',
+    preferredGroups: ['Aggressive'],
+    team: { tier1: ['Minion', 'BabyDragon'], tier2: ['Fairy'], tier3: [] },
+    goldLoot: 9, itemLoot: [],
+  },
+  templeBroodkeeper: {
+    id: 'templeBroodkeeper', name: 'Temple Broodkeeper',
+    health: 60, difficulty: 'normal',
+    preferredGroups: ['Swarm', 'Scaling'],
+    team: { tier1: ['Goblin', 'Slime', 'BabyDragon'], tier2: ['Fairy'], tier3: [] },
+    goldLoot: 12, itemLoot: [],
+  },
+  templeBulwark: {
+    id: 'templeBulwark', name: 'Temple Bulwark',
+    health: 66, difficulty: 'normal',
+    preferredGroups: ['Sustain', 'Fortress'],
+    team: { tier1: ['Paladin', 'Minion', 'Goblin'], tier2: ['Fairy'], tier3: [] },
+    goldLoot: 14, itemLoot: [],
+  },
+  templeStoneEye: {
+    id: 'templeStoneEye', name: 'Stone-Eye Guard',
+    health: 68, difficulty: 'normal',
+    preferredGroups: ['Control', 'Positioning', 'Aggressive'],
+    team: { tier1: ['Minion', 'Slime', 'BabyDragon'], tier2: ['Basilisk'], tier3: [] },
+    goldLoot: 15, itemLoot: [],
+  },
+  templeMirrorGuard: {
+    id: 'templeMirrorGuard', name: 'Mirror Guard',
+    health: 62, difficulty: 'normal',
+    preferredGroups: ['Adaptive', 'Positioning', 'Control'],
+    team: { tier1: ['Mimic', 'BabyDragon'], tier2: ['Basilisk', 'Fairy'], tier3: [] },
+    goldLoot: 15, itemLoot: [],
+  },
+  templeLanternKeeper: {
+    id: 'templeLanternKeeper', name: 'Lantern Keeper',
+    health: 70, difficulty: 'normal',
+    preferredGroups: ['Scaling', 'Sustain', 'Fortress'],
+    team: { tier1: ['Fluffy', 'Paladin', 'BabyDragon'], tier2: ['Fairy'], tier3: [] },
+    goldLoot: 16, itemLoot: ['Potion'],
+  },
+  templeGraveKeeper: {
+    id: 'templeGraveKeeper', name: 'Temple Gravekeeper',
+    health: 74, difficulty: 'normal',
+    preferredGroups: ['Graveyard', 'DeathValue', 'Swarm'],
+    team: { tier1: ['Lich', 'Slime', 'BabyDragon'], tier2: ['Gashadokuro'], tier3: [] },
+    goldLoot: 18, itemLoot: [],
+  },
+  templeBloodTithe: {
+    id: 'templeBloodTithe', name: 'Blood Tithe Guard',
+    health: 78, difficulty: 'hard',
+    preferredGroups: ['ManaEngine', 'DeathValue', 'Graveyard'],
+    team: { tier1: ['Traitor', 'Minion', 'Slime'], tier2: ['Gashadokuro', 'Basilisk'], tier3: [] },
+    goldLoot: 20, itemLoot: [],
+  },
+  templeSoulJailer: {
+    id: 'templeSoulJailer', name: 'Soul Jailer',
+    health: 84, difficulty: 'hard',
+    preferredGroups: ['Graveyard', 'DeathValue', 'ManaEngine'],
+    team: { tier1: ['Slime', 'Lich', 'Minion'], tier2: ['Gashadokuro', 'Basilisk'], tier3: ['SoulEater'] },
+    goldLoot: 26, itemLoot: [],
+  },
+  templeRoyalCollector: {
+    id: 'templeRoyalCollector', name: 'Royal Collector',
+    health: 90, difficulty: 'hard',
+    preferredGroups: ['ResourceDisruption', 'Fortress', 'Scaling'],
+    team: { tier1: ['Goblin', 'Paladin', 'Minion'], tier2: ['Fairy', 'Basilisk'], tier3: ['DragonKing'] },
+    goldLoot: 28, itemLoot: [],
+  },
+  
 }
 
 export const DifficultyPresets = {
