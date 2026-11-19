@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     currentWorldStage: 'beggining',
+    worldCurrentLevel: 1,
     fluffySacrificed: false,
     worldEvents: { 
         template: {
@@ -21,7 +22,8 @@ const WorldStateSlice = createSlice({
     initialState,
     reducers: {
         nextStage: (state, action) => {
-            return {...state, currentWorldStage: action.payload};
+            return {...state, currentWorldStage: action.payload, worldCurrentLevel: state.worldCurrentLevel + 1};
+
         },
         addEvent: (state, action) => {
             const eventName = action.payload.eventName;
