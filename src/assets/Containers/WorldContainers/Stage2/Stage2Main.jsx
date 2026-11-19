@@ -29,6 +29,14 @@ function Stage2Main(props){
       dispatch(worldStateActions.nextStage({StageName:'Stage2Start', StageNumber: 2}));
       if(currentShopLevel < 2){
         dispatch(upgradeShop(2));
+        dispatch(playerWorldActions.changeDialog({
+          image: '',
+          title: 'Shop Updated',
+          message: 'The shop was updated with new items.',
+          eventName: '',
+          options: ['Ok'],
+          proceedStep: false,
+        }));
       }
     }
   }, [dispatch]);
