@@ -31,7 +31,7 @@ function Stage2Main(props){
         dispatch(upgradeShop(2));
       }
     }
-  }, []);
+  }, [dispatch]);
   
 
   return  <div className='SceneGrid Stage2Main'>
