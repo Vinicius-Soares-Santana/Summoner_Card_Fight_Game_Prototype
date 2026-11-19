@@ -17,7 +17,8 @@ import './Stage2.css';
 function Stage2(props) {
   const currentWorldStage = useSelector((state) => state.worldState.currentWorldStage);
   const currentWorldLevel = useSelector((state) => state.worldState.worldCurrentLevel);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const ArenaStatus = useSelector(
     (state) => state.battle.status
@@ -25,22 +26,23 @@ function Stage2(props) {
 
   const randonEncounterSetter = Math.random();
 
-  const listOfGuards = ['Temple Lookout',
-  'Temple Broodkeeper',
-  'Temple Bulwark',
-  'Stone-Eye Guard',
-  'Mirror Guard',
-  'Lantern Keeper',
-  'Temple Gravekeeper',
-  'Blood Tithe Guard',
-  'Soul Jailer',
-  'Royal Collector']
+  const listOfGuards = [
+    'templeLookout',
+    'templeBroodkeeper',
+    'templeBulwark',
+    'templeStoneEye',
+    'templeMirrorGuard',
+    'templeLanternKeeper',
+    'templeGraveKeeper',
+    'templeBloodTithe',
+    'templeSoulJailer',
+    'templeRoyalCollector',]
 
   const selectedGuard = listOfGuards[(Math.floor(Math.random()*listOfGuards.length))]
 
   useEffect(() => {
     if(randonEncounterSetter < 0.2 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
-      const result = dispatch(startCampaignBattle('selectedGuard'));
+      const result = dispatch(startCampaignBattle(selectedGuard));
           if (!result.ok) { return; }
 
           navigate('/arena');

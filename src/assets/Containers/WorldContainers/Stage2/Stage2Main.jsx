@@ -43,16 +43,6 @@ function Stage2Main(props){
       }
     }
   }, [dispatch]);
-
-
-  useEffect(() => {
-    if(randonEncounterSetter < 0.2 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
-      const result = dispatch(startCampaignBattle('TempleGuardian', 'hard'));
-          if (!result.ok) { return; }
-
-          navigate('/arena');
-    }
-  }, []);
   
 
   return  <div className='SceneGrid Stage2Main'>
