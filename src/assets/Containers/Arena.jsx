@@ -1,4 +1,4 @@
-import react from 'react';
+import react, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PlayerStatsUI from './PlayerStatsUI';
@@ -23,15 +23,29 @@ function Arena(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const battleType = useSelector((state) => state.battle.mode);
+  const battleStatus = useSelector((state) => state.battle.status);
   const battleResultWinner = useSelector(
     (state) => state.battle.winner
   );
   const PlayersState = useSelector((state) => state.player);
 
+  const leavingArena = useRef(false);
+
   const { mana: player1Mana, health: player1Health } = PlayersState.player1;
   const { mana: player2Mana, health: player2Health } = PlayersState.player2;
 
+
+
+  useEffect(() => {
+    if(battleStatus == 'idle' && !leavingArena.current){
+      leavingArena.current = true;
+      navigate('/', { replace: true });
+    }
+  }, [battleStatus])
+
   const onClick = (e) => {
+    if (leavingArena.current) return;
+    leavingArena.current = true;
     dispatch(cardSlotCursorActions.resetCardSlotCursor());
     dispatch(tableActions.resetTable());
     dispatch(creatureCardActions.resetCreatureCardSlice());
