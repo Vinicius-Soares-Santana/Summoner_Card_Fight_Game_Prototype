@@ -2006,4 +2006,41 @@ export const EffectsList = {
     },
     description: 'Heals 10 HP',
   },
+
+  vitalSigns: {
+    effect(
+      AllActions,
+      dispatch,
+      currentState
+    ) {
+      const healAmount = 20;
+
+      dispatch(AllActions.playerWorldActions.increaseMaxHealth(healAmount))
+      return true;
+      
+    },
+    description: 'Increase the Max HP in 20',
+  },
+
+  superiorPotionHeal: {
+    effect(
+      AllActions,
+      dispatch,
+      currentState
+    ) {
+      const maxHealth = currentState.playerWorld.MaxHealth;
+      const currentHealth = currentState.playerWorld.Health;
+      const healAmount = 30;
+      const newHealth = currentHealth + healAmount;
+
+      if(newHealth <= maxHealth){
+        dispatch(AllActions.playerWorldActions.heal(healAmount))
+        return true;
+      } else if (maxHealth - currentHealth > 0 && maxHealth - currentHealth < healAmount) {
+        dispatch(AllActions.playerWorldActions.heal(maxHealth - currentHealth))
+        return true;
+      }
+    },
+    description: 'Heals 30 HP',
+  },
 };

@@ -2,7 +2,7 @@ export const ItemsList = {
     Potion: {
         name: 'Potion',
         type: 'item',
-        price: 5,
+        price: 10,
         effect: 'potionHeal',
     },
     Potato: {
@@ -10,5 +10,17 @@ export const ItemsList = {
         type: 'item',
         price: 5,
         effect: '',
-    }
+    },
+    Elixir: {
+        name: 'Elixir',
+        type: 'item',
+        price: 100,
+        effect: 'vitalSigns',
+    },
+    SuperiorPotion: {
+        name: 'Superior Potion',
+        type: 'item',
+        price: 20,
+        effect: 'superiorPotionHeal',
+    },
 }

@@ -116,7 +116,7 @@ export const EnemiesList = {
       tier3: ['SoulEater', 'DragonKing'],
     },
     goldLoot: 100,
-    itemLoot: [],
+    itemLoot: ['Elixir'],
   },
 
 
@@ -189,6 +189,14 @@ export const EnemiesList = {
     preferredGroups: ['ResourceDisruption', 'Fortress', 'Scaling'],
     team: { tier1: ['Goblin', 'Paladin', 'Minion'], tier2: ['Fairy', 'Basilisk'], tier3: ['DragonKing'] },
     goldLoot: 28, itemLoot: [],
+  },
+
+  GuardCapitainRed: {
+    id: 'GuardCapitainRed', name: 'Guard Capitain Red',
+    health: 120, difficulty: 'hard',
+    preferredGroups: ['Aggressive', 'Fortress'],
+    team: { tier1: ['BabyDragon', 'Paladin', 'Archer', 'Goblin'], tier2: ['Fairy', 'Dragon', 'AncientDragon'], tier3: [] },
+    goldLoot: 30, itemLoot: ['Elixir'],
   },
   
 }

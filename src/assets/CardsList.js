@@ -112,7 +112,7 @@ export const CardsList = {
   Minion: {
     name: 'Minion',
     type: 'creature',
-    price: 15,
+    price: 20,
     group: ['Aggressive'],
     tier: 1,
     status: 'normal',
@@ -280,7 +280,7 @@ export const CardsList = {
   Paladin: {
     name: 'Paladin',
     type: 'creature',
-    price: 5,
+    price: 25,
     group: ['Sustain', 'Fortress', 'Positioning'],
     tier: 1,
     status: 'normal',
@@ -364,7 +364,7 @@ export const CardsList = {
   Mimic: {
     name: 'Mimic',
     type: 'creature',
-    price: 5,
+    price: 25,
     group: ['Adaptive', 'Positioning', 'Scaling'],
     tier: 1,
     status: 'normal',
