@@ -57,7 +57,7 @@ function Stage2Main(props){
               <NextSceneButton destination='roomleft1' buttonText='Room' />
             </ScenePiece>
 
-            <ScenePiece at="I10" col={2} rows={3} >
+            <ScenePiece at="I10" cols={2} rows={3} >
               <RandomEncounterManager />
             </ScenePiece>
             
