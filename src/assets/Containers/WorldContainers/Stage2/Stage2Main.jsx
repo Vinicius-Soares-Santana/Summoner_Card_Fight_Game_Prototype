@@ -7,6 +7,8 @@ import NextSceneButton from '../../../Containers/NextSceneButton';
 import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
 import { upgradeShop } from '../../../../World/worldActions';
+
+import RandomEncounterManager from '../../../Containers/RandomEncounterManager';
 import DialogManager from '../../DialogManager';
 import ScenePiece from '../ScenePiece';
 import './Stage2Main.css';
@@ -53,6 +55,10 @@ function Stage2Main(props){
 
             <ScenePiece at="A9" cols={1} rows={1}>
               <NextSceneButton destination='roomleft1' buttonText='Room' />
+            </ScenePiece>
+
+            <ScenePiece at="I10" col={2} rows={3} >
+              <RandomEncounterManager />
             </ScenePiece>
             
 
