@@ -19,7 +19,7 @@ function RandomEncounterManager(props){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const RandomGuardImages = import.meta.glob('./Images/RandomGuards/*.png', {
+    const RandomGuardImages = import.meta.glob('../Images/RandomGuards/*.png', {
         eager: true,
         query: '?url',
         import: 'default',
@@ -45,7 +45,7 @@ function RandomEncounterManager(props){
 
     const selectedGuard = listOfGuards[(Math.floor(Math.random()*listOfGuards.length))]
 
-    const guardImgLink = RandomGuardImages[`./Images/Runes/${selectedGuard}.png`]
+    const guardImgLink = RandomGuardImages[`./Images/Runes/${selectedGuard}.png`] ?? '';
 
     useEffect(() => {
         if(randonEncounterSetter < 0.2 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
