@@ -76,3 +76,108 @@
     font-size: 10px;
 }
 
+.SummonRelic[data-picker-open="true"] {
+    z-index: 20;
+}
+
+.SummonRelic .SelectedTeamSummon {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    width: auto;
+    max-height: none;
+    overflow: auto;
+
+    padding: 8px;
+    gap: 6px;
+    font-size: 11px;
+    transform-origin: center;
+
+    /* Mantém aqui o grid, as cores e a animação do painel. */
+}
+
+.SummonRelic.player2hand .SelectedTeamSummon {
+    right: auto;
+    bottom: auto;
+    left: 0;
+    top: calc(100% + 8px);
+    transform-origin: top left;
+}
+
+.SummonRelic .RitualTitle,
+.SummonRelic .SelectCreatureMenuBack {
+    grid-column: 1 / -1;
+}
+
+.SummonRelic .RitualTitle {
+    margin: 0;
+    font: 600 17px Georgia, serif;
+    color: #edd3a1;
+}
+
+.SummonRelic .selectedSummon { gap: 6px; }
+
+.SummonRelic .RitualTierLabel {
+    color: #c8a5d9;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.SummonRelic .SelectedTeamSummon button {
+    min-height: 34px;
+    padding: 5px 8px;
+    border: 1px solid #62486f;
+    border-radius: 6px;
+    background: #261a30;
+    color: inherit;
+    cursor: pointer;
+}
+
+.SummonRelic .SelectedTeamSummon button:hover,
+.SummonRelic .creatureSelectedSummonButton[aria-pressed="true"] {
+    border-color: #e2be76;
+    background: #3c2948;
+    box-shadow: inset 0 0 10px #c087e240;
+}
+
+@keyframes relic-unseal {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+    .SummonRelic .SelectedTeamSummon { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .SummonRelic .SelectedTeamSummon { animation: none; }
+}
+
+.SummonRelic .SelectedTeamSummon button {
+    min-height: 24px; /* Antes era 34px */
+    padding: 3px 5px;
+    font-size: 10px;
+    line-height: 1.15;
+}
+
+.SummonRelic .selectedSummon {
+    gap: 3px;
+}
+
+.SummonRelic .RitualTitle {
+    font-size: 14px;
+}
+
+.SummonRelic > .SummonRune {
+    grid-area: 4 / 3;
+    place-self: center;
+    width: 78%;
+    max-width: 86px;
+    height: 78%;
+    min-height: 0;
+    object-fit: contain;
+    pointer-events: none;
+    filter: drop-shadow(0 0 7px #aa62ed80);
+}

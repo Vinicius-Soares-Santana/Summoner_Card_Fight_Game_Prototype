@@ -8,6 +8,7 @@ import { playerActions } from '../../store/PlayerSlice';
 import { CardsList } from '../CardsList';
 import { canHumanControl } from '../../Battle/battleRules';
 import { playAction } from '../../Battle/battleActions';
+import { getRuneImage } from '../RuneImages';
 import './SummonRelic.css';
 
 function SummonRelic(props) {
@@ -20,6 +21,8 @@ function SummonRelic(props) {
   const playerTier = useSelector((state) => state.player[props.playerId].manaTier);
   const Turn = useSelector((state) => state.turn);
   const canControl = useSelector((state) => canHumanControl(state, props.playerId));
+
+  const runeImage = getRuneImage(creatureName);
 
   const currentSelection = useSelector(
     (state) => state.battle.participants[props.playerId]?.team
@@ -44,6 +47,11 @@ function SummonRelic(props) {
     return (
       <div className={`SummonRelic ${props.handToShow} ${creatureName}`}>
         <h2>{`${props.handToShow}`}</h2>
+
+        {!showCreaturesSummon && runeImage && (
+              <img className="SummonRune" src={runeImage} alt="" />
+          )}
+          
         <form className="summonForm" onSubmit={handleSubmit}>
           <p>Summon Creature</p>
 

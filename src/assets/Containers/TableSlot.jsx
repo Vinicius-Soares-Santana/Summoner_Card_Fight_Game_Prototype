@@ -134,7 +134,7 @@ function TableSlot(props) {
 
   return (
     <div className={`TableSlot ${props.className} ${mutableClass} ${cardsInGame[creature]?.status ?? ''}`}>
-      {<CreatureCard Creature={creature} orientation="Horizontal" />}
+      {<CreatureCard Creature={creature} />}
       {buttonCreatorAttack(creature)}
       {buttonCreatorTarget(creature)}
     </div>

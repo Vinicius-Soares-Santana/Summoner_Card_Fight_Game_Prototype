@@ -1,6 +1,78 @@
+.CreatureCard{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: "image name"
+                         "image life"
+                         "image defense"
+                         "image attack"
+                         "image cost"
+                         "image status";
+    max-height: 120px;
+}
+
 .CreatureCard > img {
     display: block;
     width: 100%;
     max-height: 120px;
     object-fit: contain;
+    grid-area: image;
 }
+
+
+
+.CreatureCard > h4,
+.CreatureCard > p {
+    align-self: center;
+    min-width: 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.CreatureCard > h4 {
+    grid-area: name;
+    font-size: 1.1em;
+}
+
+.CreatureCard > .cardLife    { grid-area: life; }
+.CreatureCard > .cardDefense { grid-area: defense; }
+.CreatureCard > .cardAttack  { grid-area: attack; }
+.CreatureCard > .manaCost    { grid-area: cost; }
+.CreatureCard > .Status      { grid-area: status; }
+
+.CreatureCard:not(.Empty) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-rows: minmax(0, 1.5fr) repeat(5, minmax(0, 1fr));
+    column-gap: 9px;
+    text-align: left;
+    background: #19121e url('../Images/Arena/CreatureCardBackground.png')
+        center / 100% 100% no-repeat;
+    max-width:fit-content;
+    padding:2%;
+}
+
+.CreatureCard > img {
+    box-sizing: border-box;
+    padding-right: 6px;
+    border-right: 1px solid rgba(213, 174, 109, 0.25);
+}
+
+.CreatureCard > h4 {
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(213, 174, 109, 0.35);
+    color: #f0cf8a;
+    font: 700 clamp(12px, 1.9dvh, 16px) Georgia, serif;
+}
+
+.CreatureCard > p {
+    color: #e8d9c6;
+    font-size: clamp(10px, 1.5dvh, 12px);
+    font-variant-numeric: tabular-nums;
+}
+
+.CreatureCard > .Status {
+    color: #cfb5dd;
+}
+
