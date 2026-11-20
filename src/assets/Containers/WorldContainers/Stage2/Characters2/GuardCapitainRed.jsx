@@ -20,15 +20,15 @@ const red = {
     CONGRATULATIONS: [
       {
         text: 'Impossible, how have you obtained such power...',
-        options: ["I won't"],
+        options: ["Your incompetence"],
         status: 'complete',
       },
     ],
   },
 
   battle: {
-    enemyId: 'guardCaptainRed',
-    difficulty: 'normal',
+    enemyId: 'GuardCapitainRed',
+    difficulty: 'hard',
   },
 
   quest: {
