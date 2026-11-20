@@ -39,6 +39,6 @@ const blue = {
   },
 };
 
-export default function GuardCapitainRed() {
+export default function GuardCapitainBlue() {
   return <NPC character={blue} />;
 }
