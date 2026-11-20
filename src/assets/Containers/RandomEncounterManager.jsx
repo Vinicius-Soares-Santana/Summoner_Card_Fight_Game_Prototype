@@ -6,6 +6,7 @@ import { CardsList } from '../CardsList';
 import { playerWorldActions } from '../../store/WorldSlices/PlayerWorldSlice';
 import { worldStateActions } from '../../store/WorldSlices/WorldStateSlice';
 import { upgradeShop } from '../../World/worldActions';
+import { startCampaignBattle } from '../../Battle/battleActions';
 import DialogManager from './DialogManager';
 
 import './RandomEncounterManager.css';
