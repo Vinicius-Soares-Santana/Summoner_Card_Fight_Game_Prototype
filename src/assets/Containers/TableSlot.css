@@ -2,14 +2,24 @@
   margin: 2px 10px;
 }
 
-.Attacker {
-  background-color: violet;
+.TableSlot.Attacker {
+  --action-color: 188 136 255;
+  --action-glow: 0.45;
 }
 
-.PotentialTarget {
-  background-color: lightcoral;
+.TableSlot.PotentialTarget {
+  --action-color: 255 194 101;
+  --action-glow: 0.24;
 }
 
-.Target {
-  background-color: red;
+.TableSlot.Target {
+  --action-color: 255 91 112;
+  --action-glow: 0.60;
+}
+
+.TableSlot:is(.Attacker, .PotentialTarget, .Target) > .CreatureCard:not(.Empty) {
+  border-radius: 6px;
+  box-shadow:
+      0 0 0 3px rgb(var(--action-color) / 0.75),
+      0 0 8px 2px rgb(var(--action-color) / var(--action-glow));
 }
