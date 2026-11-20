@@ -196,7 +196,14 @@ export const EnemiesList = {
     health: 120, difficulty: 'hard',
     preferredGroups: ['Aggressive', 'Fortress'],
     team: { tier1: ['BabyDragon', 'Paladin', 'Archer', 'Goblin'], tier2: ['Fairy', 'Dragon', 'AncientDragon'], tier3: [] },
-    goldLoot: 30, itemLoot: ['Elixir'],
+    goldLoot: 35, itemLoot: ['Elixir'],
+  },
+  GuardCapitainBlue: {
+    id: 'GuardCapitainBlue', name: 'Guard Capitain Blue',
+    health: 120, difficulty: 'hard',
+    preferredGroups: ['Fortress', 'Scaling', 'Graveyard'],
+    team: { tier1: ['Traitor', 'Paladin', 'Fluffy', 'Goblin'], tier2: ['Troll', 'Fairy', 'Gashadokuro'], tier3: [] },
+    goldLoot: 35, itemLoot: ['Elixir'],
   },
   
 }
