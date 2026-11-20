@@ -15,40 +15,6 @@ import { Outlet } from 'react-router-dom';
 import './Stage2.css';
 
 function Stage2(props) {
-  const currentWorldStage = useSelector((state) => state.worldState.currentWorldStage);
-  const currentWorldLevel = useSelector((state) => state.worldState.worldCurrentLevel);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const ArenaStatus = useSelector(
-    (state) => state.battle.status
-  );
-
-  const randonEncounterSetter = Math.random();
-
-  const listOfGuards = [
-    'templeLookout',
-    'templeBroodkeeper',
-    'templeBulwark',
-    'templeStoneEye',
-    'templeMirrorGuard',
-    'templeLanternKeeper',
-    'templeGraveKeeper',
-    'templeBloodTithe',
-    'templeSoulJailer',
-    'templeRoyalCollector',]
-
-  const selectedGuard = listOfGuards[(Math.floor(Math.random()*listOfGuards.length))]
-
-  useEffect(() => {
-    if(randonEncounterSetter < 0.2 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
-      const result = dispatch(startCampaignBattle(selectedGuard));
-          if (!result.ok) { return; }
-
-          navigate('/arena');
-    }
-  }, [navigate]);
-
 
   return <div className="Stage2"><Outlet /></div>;
 }
