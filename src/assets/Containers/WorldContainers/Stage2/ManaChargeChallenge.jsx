@@ -60,7 +60,7 @@ function ManaChargeChallenge(props){
 
             if(sum >= 13){
                 setPlayerOneScore((playerOneScore + platformTwo.length));
-                setPlatformOne([]);
+                setPlatformTwo([]);
             } else {
                 setPlatformTwo(newValues);
             }
