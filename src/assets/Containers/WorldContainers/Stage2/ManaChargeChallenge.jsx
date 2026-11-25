@@ -75,6 +75,7 @@ function ManaChargeChallenge(props){
         }
 
         setSelectedValue(null);
+        setTurn('ai');
     }
 
 
