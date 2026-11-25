@@ -23,8 +23,8 @@ function ManaChargeChallenge(props){
 
 
     function showResult(results){
-        if(victory != false){
-            return <h2>{result}</h2>
+        if(results != false){
+            return <h2>{results}</h2>
         }
     }
 
