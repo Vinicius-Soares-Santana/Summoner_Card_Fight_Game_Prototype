@@ -205,7 +205,7 @@ function ManaChargeChallenge(props){
 
 
     return (
-        <div className={`ManaChargeChallenge ${props.challengeId}`}>
+        <div className={`ManaChargeChallenge ${props.challengeId} ${challengeName}`}>
 
             <div className="PlatformOne">
                 {platformOne.map((num, numIndex) => <h3 className="PlatOneNumDisplayed" key={`PlatformOne ${num} index${numIndex}`}>{num}</h3>)}
