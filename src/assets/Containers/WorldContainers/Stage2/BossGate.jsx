@@ -34,6 +34,14 @@ function BossGate(props){
 
     const AllDone = mandatoryChallenges.every((name) => currentChallengesComplete.includes(name));
 
+    function handleClickOpenDoor(){
+        if(!AllDone) return;
+
+        dispatch(worldStateActions.changeQuestStatus({questName: 'GateOpenQuest', newQuestStatus: 'complete'}));
+
+        
+    }
+
 
     useEffect(() => {
         if (openTheDoorQuestData == null) {
@@ -61,6 +69,10 @@ function BossGate(props){
 
             <ScenePiece at="C6" cols={2} rows={2}>
                 <img className="blueMarker" alt=""></img>
+            </ScenePiece>
+
+            <ScenePiece at="C6" cols={2} rows={2}>
+                <img className="purpleMarker" alt=""></img>
             </ScenePiece>
 
             { 
