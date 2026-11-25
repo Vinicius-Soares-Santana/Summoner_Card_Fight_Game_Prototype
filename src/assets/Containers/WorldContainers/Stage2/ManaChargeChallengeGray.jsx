@@ -77,8 +77,8 @@ export default function ManaChargeChallengeGray() {
     const [selectedValue, setSelectedValue] = useState(null);
     const isPlayerTurn = game.turn === 0;
     const finished = game.turn === null;
-    const [playerScore, firstAiScore, secondAiScore] = game.scores;
-    const victory = finished && playerScore < firstAiScore && playerScore < secondAiScore;
+    const [playerScore, firstAiScore] = game.scores;
+    const victory = finished && playerScore < firstAiScore;
 
     useEffect(() => {
         if (isPlayerTurn || finished) return;
