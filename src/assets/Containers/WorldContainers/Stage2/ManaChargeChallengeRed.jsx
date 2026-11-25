@@ -5,7 +5,8 @@ import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice
 import './ManaChargeChallengeRed.css';
 
 const challengeName = 'red';
-const limit = 12;
+const limitsAvailable = [12, 13, 14]
+const limit = limitsAvailable[Math.floor(Math.random()*limitsAvailable.length)];
 const startingValues = [0, 1, 2, 3, 4, 5, 6];
 const participantNames = ['You', 'AI 1', 'AI 2'];
 
