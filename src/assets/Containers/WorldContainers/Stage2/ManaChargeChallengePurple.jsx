@@ -78,8 +78,8 @@ export default function ManaChargeChallengePurple() {
     const [selectedValue, setSelectedValue] = useState(null);
     const isPlayerTurn = game.turn === 0;
     const finished = game.turn === null;
-    const [playerScore, firstAiScore, secondAiScore] = game.scores;
-    const victory = finished && playerScore < firstAiScore && playerScore < secondAiScore;
+    const [playerScore, ...aiScores] = game.scores;
+    const victory = finished && aiScores.every((score) => playerScore < score);
 
     useEffect(() => {
         if (isPlayerTurn || finished) return;
