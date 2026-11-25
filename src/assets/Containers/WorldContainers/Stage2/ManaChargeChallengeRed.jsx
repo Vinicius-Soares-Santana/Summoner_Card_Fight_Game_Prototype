@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NextSceneButton from '../../NextSceneButton';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
-import './ManaChargeChallenge.css';
+import './ManaChargeChallengeRed.css';
 
 const challengeName = 'red';
 const limit = 12;
