@@ -18,6 +18,7 @@ import Stage1 from './assets/Containers/WorldContainers/Stage1/Stage1';
 import Stage2 from './assets/Containers/WorldContainers/Stage2/Stage2';
 import RoomLeft1 from './assets/Containers/WorldContainers/Stage2/RoomLeft1';
 import Stage2Main from './assets/Containers/WorldContainers/Stage2/Stage2Main';
+import ManaChargeChallenge from './assets/Containers/WorldContainers/Stage2/ManaChargeChallenge';
 import SelectCreaturesScreen from './assets/Containers/SelectCreaturesScreen';
 import Shop from './assets/Containers/Shop';
 import PlayerUDI from './assets/Containers/PlayerUDI';
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
         <Route path="stage2" element={<Stage2 />} >
           <Route index element={<Stage2Main />} />
           <Route path="roomleft1" element={<RoomLeft1 />} />
+          <Route path="manachallenge" element={<ManaChargeChallenge />} />
         </Route>
 
       </Route>
