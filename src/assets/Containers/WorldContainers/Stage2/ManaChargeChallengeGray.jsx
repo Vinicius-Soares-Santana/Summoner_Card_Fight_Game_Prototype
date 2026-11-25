@@ -4,7 +4,7 @@ import NextSceneButton from '../../NextSceneButton';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
 import './ManaChargeChallenge.css';
 
-const challengeName = 'red';
+const challengeName = 'gray';
 const limit = 10;
 const startingValues = [0, 1, 2, 3, 4, 5, 6];
 const participantNames = ['You', 'AI 1'];
