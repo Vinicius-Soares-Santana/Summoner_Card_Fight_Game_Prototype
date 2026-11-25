@@ -7,9 +7,10 @@ function NextSceneButton({ destination, buttonText }){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    dispatch(worldStateActions.setPreviousScenarioPath(destination));
-
-    return <button className={`nextSceneButton ${destination}`} onClick={() => navigate(destination)}>{buttonText}</button>;
+    return <button className={`nextSceneButton ${destination}`} onClick={() => {
+            dispatch(worldStateActions.setPreviousScenarioPath(destination));
+                navigate(destination)
+            }}>{buttonText}</button>;
 }
 
 export default NextSceneButton;
