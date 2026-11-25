@@ -15,6 +15,7 @@ const initialState = {
     },
     quests: {'QuestTest': { name: 'QuestTest', questStatus: 'active', currentObjective: '',},},
     mazeMonsterPosition: {x: 3, y:4},
+    stage2ManaPuzzlesSolved: [],
 };
 
 const WorldStateSlice = createSlice({
@@ -84,6 +85,11 @@ const WorldStateSlice = createSlice({
             };
             state.mazeMonsterPosition = {x: action.payload.x, y: action.payload.y};
         },
+        addManaPuzzle: (state, action) => {
+            if(!state.stage2ManaPuzzlesSolved.includes(action.payload)){
+                state.stage2ManaPuzzlesSolved.push(action.payload);
+            }
+        }
     },
 });
 

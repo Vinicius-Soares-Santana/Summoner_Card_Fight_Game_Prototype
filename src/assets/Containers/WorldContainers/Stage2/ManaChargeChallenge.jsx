@@ -1,9 +1,15 @@
 import react, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NextSceneButton from '../../../Containers/NextSceneButton';
+import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
 import './ManaChargeChallenge.css';
 
 function ManaChargeChallenge(props){
+
+    const dispatch = useDispatch();
+
+    const challengeName = 'blue';
+
     const [platformOne, setPlatformOne] = useState([]);
     const [platformTwo, setPlatformTwo] = useState([]);
 
@@ -24,6 +30,9 @@ function ManaChargeChallenge(props){
 
     function showResult(results){
         if(results != false){
+            if(results == 'victory'){
+                dispatch(worldStateActions.addManaPuzzle(challengeName));
+            }
             return <h2>{results}</h2>
         }
     }
