@@ -231,6 +231,8 @@ function ManaChargeChallenge(props){
 
             {showResult(result)}
 
+            <NextSceneButton destination="/game/stage2" buttonText="Return" />
+
         </div>
     )
 }
