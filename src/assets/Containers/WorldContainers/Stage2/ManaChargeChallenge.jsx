@@ -181,12 +181,12 @@ function ManaChargeChallenge(props){
         <div className={`ManaChargeChallenge ${props.challengeId}`}>
 
             <div className="PlatformOne">
-                {platformOne.map((num) => <h3 className="PlatOneNumDisplayed" key={`PlatformOne ${num}`}>{num}</h3>)}
+                {platformOne.map((num, numIndex) => <h3 className="PlatOneNumDisplayed" key={`PlatformOne ${num} index${numIndex}`}>{num}</h3>)}
                 <button className="PlatOneButton" onClick={() => {addValuePlatform(selectedValue, "one", turn)}} >Platform 1</button>
             </div>
 
             <div className="PlatformTwo">
-                {platformTwo.map((num) => <h3 className="PlatTwoNumDisplayed" key={`PlatformTwo ${num}`}>{num}</h3>)}
+                {platformTwo.map((num, numIndex) => <h3 className="PlatTwoNumDisplayed" key={`PlatformTwo ${num} index${numIndex}`}>{num}</h3>)}
                 <button className="PlatTwoButton" onClick={() => {addValuePlatform(selectedValue, "two", turn)}} >Platform 2</button>
             </div>
 
