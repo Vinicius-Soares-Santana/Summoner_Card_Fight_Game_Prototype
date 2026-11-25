@@ -80,12 +80,6 @@ function ManaChargeChallenge(props){
         }
     }
 
-    function buttonsCreator (list) {
-        for (const value of list) {
-            return <button aria-pressed={value == selectedValue} className={`valueButton ${value}`} key={value} 
-                    onClick={() => turn === 'player' ? selectedValue ? setSelectedValue(null) : setSelectedValue(value) : setSelectedValue(null)} >{value}</button>
-        }
-    }
 
 
     useEffect(() => {
@@ -93,6 +87,8 @@ function ManaChargeChallenge(props){
             setTurn('player');
             return
         }
+
+        let randomIndex;
 
         if(turn == 'ai'){
             let sum1 = 0;
@@ -123,15 +119,19 @@ function ManaChargeChallenge(props){
                         randomIndex = Math.floor(Math.random()*listOfPossibilities.length)
                         chosenValue = listOfPossibilities[randomIndex];
                     } else {
-                        chosenValue = Math.max(listOfPossibilities);
+                        chosenValue = Math.max(...listOfPossibilities);
                     }
+                    setPlatformTwo([...platformTwo, chosenValue]);
                     
                 } else {
                     randomIndex = Math.floor(Math.random()*availableValuesAI.length)
-                    chosenValue = listOfPossibilities[randomIndex];
+                    chosenValue = availableValuesAI[randomIndex];
+
+                    setAiScore((aiScore + platformTwo.length));
+                    setPlatformTwo([]);
                 }
 
-                setPlatformTwo([...platformTwo, chosenValue]);
+                
 
             } else {
 
@@ -148,15 +148,20 @@ function ManaChargeChallenge(props){
                         randomIndex = Math.floor(Math.random()*listOfPossibilities.length)
                         chosenValue = listOfPossibilities[randomIndex];
                     } else {
-                        chosenValue = Math.max(listOfPossibilities);
+                        chosenValue = Math.max(...listOfPossibilities);
                     }
+
+                    setPlatformOne([...platformOne, chosenValue]);
                     
                 } else {
                     randomIndex = Math.floor(Math.random()*availableValuesAI.length)
-                    chosenValue = listOfPossibilities[randomIndex];
+                    chosenValue = availableValuesAI[randomIndex];
+
+                    setAiScore((aiScore + platformOne.length));
+                    setPlatformOne([]);
                 }
 
-                setPlatformOne([...platformTwo, chosenValue]);
+                
 
             }
 
@@ -173,7 +178,27 @@ function ManaChargeChallenge(props){
 
     return (
         <div className={`ManaChargeChallenge ${props.challengeId}`}>
-            { buttonsCreator(availableValuesPlayer) }
+
+            <div className="PlatformOne">
+                {platformOne.map((num) => <h3 className="PlatOneNumDisplayed" key={`PlatformOne ${num}`}>{num}</h3>)}
+            </div>
+
+            <div className="PlatformTwo">
+                {platformTwo.map((num) => <h3 className="PlatTwoNumDisplayed" key={`PlatformTwo ${num}`}>{num}</h3>)}
+            </div>
+
+            <div className="PlayerOptions">
+                { availableValuesPlayer.map((value) => {
+                return <button aria-pressed={value == selectedValue} className={`valueButton ${value}`} key={value} 
+                        onClick={() => turn === 'player' ? selectedValue ? setSelectedValue(null) : setSelectedValue(value) : setSelectedValue(null)} >{value}</button>
+                }) }
+            </div>
+
+            <div className="Score">
+                <h3>{`Player Score: ${playerOneScore}`}</h3>
+                <h3>{`Ai Score: ${playerOneScore}`}</h3>
+            </div>
+
         </div>
     )
 }
