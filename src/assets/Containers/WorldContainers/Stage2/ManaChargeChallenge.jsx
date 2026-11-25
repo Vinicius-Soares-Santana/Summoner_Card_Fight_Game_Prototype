@@ -69,16 +69,6 @@ function ManaChargeChallenge(props){
         }
 
         setSelectedValue(null);
-
-        if(newAvailableValuesPlayer.length < 1){
-            if(playerOneScore < aiScore){
-                setResult('victory');
-            } else if (aiScore <= playerOneScore){
-                setResult('defeat');
-            }
-        } else {
-            setTurn('ai');
-        }
     }
 
 
@@ -87,6 +77,14 @@ function ManaChargeChallenge(props){
         if(availableValuesAI.length < 1){
             setTurn('player');
             return
+        }
+
+        if(availableValuesPlayer.length < 1 && availableValuesAI.length < 1 && turn == 'player'){
+            if(playerOneScore < aiScore){
+                setResult('victory');
+            } else if (aiScore <= playerOneScore){
+                setResult('defeat');
+            }
         }
 
         let randomIndex;
