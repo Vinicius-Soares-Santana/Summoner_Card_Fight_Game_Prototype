@@ -6,7 +6,7 @@ import './ManaChargeChallenge.css';
 
 const challengeName = 'red';
 const limit = 12;
-const startingValues = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const startingValues = [0, 1, 2, 3, 4, 5, 6];
 const participantNames = ['You', 'AI 1', 'AI 2'];
 
 function createGame() {
