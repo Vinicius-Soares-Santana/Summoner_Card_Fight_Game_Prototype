@@ -17,6 +17,7 @@ function SelectCreaturesScreen(props){
 
   const currentSelection = useSelector((state) => state.playerWorld.selectedCreatures);
   const availableCreatures = useSelector((state) => state.playerWorld.availableCreatures);
+  const previousScene = useSelector((state) => state.worldState.worldPreviousScenarioPath);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -145,7 +146,7 @@ function SelectCreaturesScreen(props){
                 )}
             </section>
 
-            <button className="returnSelect" onClick={() => {navigate(-1)}}>Return</button>
+            <button className="returnSelect" onClick={() => {navigate(previousScene)}}>Return</button>
 
           </div>);
 }

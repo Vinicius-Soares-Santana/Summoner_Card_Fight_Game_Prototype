@@ -4,6 +4,7 @@ const initialState = {
     currentWorldStage: 'beggining',
     worldCurrentLevel: 1,
     fluffySacrificed: false,
+    worldPreviousScenarioPath: '',
     worldEvents: { 
         template: {
             status: '',
@@ -89,7 +90,12 @@ const WorldStateSlice = createSlice({
             if(!state.stage2ManaPuzzlesSolved.includes(action.payload)){
                 state.stage2ManaPuzzlesSolved.push(action.payload);
             }
-        }
+        },
+        setPreviousScenarioPath: (state, action) => {
+
+            state.worldPreviousScenarioPath = action.payload;
+
+        },
     },
 });
 
