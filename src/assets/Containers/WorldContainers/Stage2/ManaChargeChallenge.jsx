@@ -179,9 +179,10 @@ function ManaChargeChallenge(props){
                     setAvailableValuesAI(updatedOptionsAi);
                 }
 
+                setTurn('player');
+
             }, 500);
 
-            setTurn('player');
 
             return () => clearTimeout(timer);
 
