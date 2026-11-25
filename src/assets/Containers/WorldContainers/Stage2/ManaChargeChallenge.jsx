@@ -81,10 +81,6 @@ function ManaChargeChallenge(props){
 
 
     useEffect(() => {
-        if(availableValuesAI.length < 1){
-            setTurn('player');
-            return
-        }
 
         if(availableValuesPlayer.length < 1 && availableValuesAI.length < 1 && turn == 'player'){
             if(playerOneScore < aiScore){
@@ -92,6 +88,11 @@ function ManaChargeChallenge(props){
             } else if (aiScore <= playerOneScore){
                 setResult('defeat');
             }
+        }
+
+        if(availableValuesAI.length < 1){
+            setTurn('player');
+            return
         }
 
         let randomIndex;
@@ -102,79 +103,87 @@ function ManaChargeChallenge(props){
 
             let chosenValue = null;
 
-            for (const value1 of platformOne) {
-                sum1 += value1;
-            }
+            const timer = setTimeout(() => {
 
-            for (const value2 of platformTwo) {
-                sum2 += value2;
-            }
-
-            if(sum1 > sum2){
-
-                let listOfPossibilities = [];
-
-                for (const possibleValue of availableValuesAI){
-                    if((possibleValue + sum2) < 13){
-                        listOfPossibilities.push(possibleValue);
-                    }
+                for (const value1 of platformOne) {
+                    sum1 += value1;
                 }
-
-                if(listOfPossibilities.length > 0){
-                    if(Math.random() > 0.5){
-                        randomIndex = Math.floor(Math.random()*listOfPossibilities.length)
-                        chosenValue = listOfPossibilities[randomIndex];
+    
+                for (const value2 of platformTwo) {
+                    sum2 += value2;
+                }
+    
+                if(sum1 > sum2){
+    
+                    let listOfPossibilities = [];
+    
+                    for (const possibleValue of availableValuesAI){
+                        if((possibleValue + sum2) < 13){
+                            listOfPossibilities.push(possibleValue);
+                        }
+                    }
+    
+                    if(listOfPossibilities.length > 0){
+                        if(Math.random() > 0.5){
+                            randomIndex = Math.floor(Math.random()*listOfPossibilities.length)
+                            chosenValue = listOfPossibilities[randomIndex];
+                        } else {
+                            chosenValue = Math.max(...listOfPossibilities);
+                        }
+                        setPlatformTwo([...platformTwo, chosenValue]);
+                        
                     } else {
-                        chosenValue = Math.max(...listOfPossibilities);
+                        randomIndex = Math.floor(Math.random()*availableValuesAI.length)
+                        chosenValue = availableValuesAI[randomIndex];
+    
+                        setAiScore((aiScore + platformTwo.length));
+                        setPlatformTwo([]);
                     }
-                    setPlatformTwo([...platformTwo, chosenValue]);
+    
                     
+    
                 } else {
-                    randomIndex = Math.floor(Math.random()*availableValuesAI.length)
-                    chosenValue = availableValuesAI[randomIndex];
-
-                    setAiScore((aiScore + platformTwo.length));
-                    setPlatformTwo([]);
-                }
-
-                
-
-            } else {
-
-                let listOfPossibilities = [];
-
-                for (const possibleValue of availableValuesAI){
-                    if((possibleValue + sum1) < 13){
-                        listOfPossibilities.push(possibleValue);
+    
+                    let listOfPossibilities = [];
+    
+                    for (const possibleValue of availableValuesAI){
+                        if((possibleValue + sum1) < 13){
+                            listOfPossibilities.push(possibleValue);
+                        }
                     }
-                }
-
-                if(listOfPossibilities.length > 0){
-                    if(Math.random() > 0.5){
-                        randomIndex = Math.floor(Math.random()*listOfPossibilities.length)
-                        chosenValue = listOfPossibilities[randomIndex];
+    
+                    if(listOfPossibilities.length > 0){
+                        if(Math.random() > 0.5){
+                            randomIndex = Math.floor(Math.random()*listOfPossibilities.length)
+                            chosenValue = listOfPossibilities[randomIndex];
+                        } else {
+                            chosenValue = Math.max(...listOfPossibilities);
+                        }
+    
+                        setPlatformOne([...platformOne, chosenValue]);
+                        
                     } else {
-                        chosenValue = Math.max(...listOfPossibilities);
+                        randomIndex = Math.floor(Math.random()*availableValuesAI.length)
+                        chosenValue = availableValuesAI[randomIndex];
+    
+                        setAiScore((aiScore + platformOne.length));
+                        setPlatformOne([]);
                     }
-
-                    setPlatformOne([...platformOne, chosenValue]);
+    
                     
-                } else {
-                    randomIndex = Math.floor(Math.random()*availableValuesAI.length)
-                    chosenValue = availableValuesAI[randomIndex];
-
-                    setAiScore((aiScore + platformOne.length));
-                    setPlatformOne([]);
+    
+                }
+    
+                if(chosenValue != null){
+                    const updatedOptionsAi = availableValuesAI.filter((existing) => existing != chosenValue);
+                    setAvailableValuesAI(updatedOptionsAi);
                 }
 
-                
+            }, 500);
 
-            }
+            setTurn('player');
 
-            if(chosenValue != null){
-                const updatedOptionsAi = availableValuesAI.filter((existing) => existing != chosenValue);
-                setAvailableValuesAI(updatedOptionsAi);
-            }
+            return () => clearTimeout(timer);
 
         }
 
