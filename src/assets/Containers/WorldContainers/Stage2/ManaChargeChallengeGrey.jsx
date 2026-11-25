@@ -122,7 +122,7 @@ export default function ManaChargeChallengeGray() {
 
                 return (
                     <div className={`Platform${name}`} key={name}>
-                        <h3>Platform {index + 1} · {getSum(platform)} / {limit}</h3>
+                        <h3>Platform {index + 1} · {platform.map((numPlaced, ind) => <h3 key={`${platform} ${numPlaced} ${ind}`}>{numPlaced}</h3>)} / {limit}</h3>
 
                         {platform.map((value, position) => (
                             <span className={`Plat${name}NumDisplayed`} key={position}>
