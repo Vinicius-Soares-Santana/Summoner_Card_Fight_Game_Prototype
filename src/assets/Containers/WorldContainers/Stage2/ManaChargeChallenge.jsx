@@ -26,6 +26,7 @@ function ManaChargeChallenge(props){
 
     function addValuePlatform (value, platform, turn){
         if(turn != 'player') return;
+        if(value == null) return;
 
         let newAvailableValuesPlayer = availableValuesPlayer.filter((valueExistent) => valueExistent != value);
         setAvailableValuesPlayer(newAvailableValuesPlayer);
@@ -181,10 +182,12 @@ function ManaChargeChallenge(props){
 
             <div className="PlatformOne">
                 {platformOne.map((num) => <h3 className="PlatOneNumDisplayed" key={`PlatformOne ${num}`}>{num}</h3>)}
+                <button className="PlatOneButton" onClick={() => {addValuePlatform(selectedValue, "one", turn)}} >Platform 1</button>
             </div>
 
             <div className="PlatformTwo">
                 {platformTwo.map((num) => <h3 className="PlatTwoNumDisplayed" key={`PlatformTwo ${num}`}>{num}</h3>)}
+                <button className="PlatTwoButton" onClick={() => {addValuePlatform(selectedValue, "two", turn)}} >Platform 2</button>
             </div>
 
             <div className="PlayerOptions">
