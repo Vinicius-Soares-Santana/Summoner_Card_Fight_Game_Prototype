@@ -34,7 +34,7 @@ function ManaChargeChallenge(props){
 
         if(platform == "one"){
 
-            let newValues = platformOne;
+            let newValues = [...platformOne];
             newValues.push(value);
 
             let sum = 0;
@@ -51,7 +51,7 @@ function ManaChargeChallenge(props){
 
         } else if (platform == "two"){
 
-            let newValues = platformTwo;
+            let newValues = [...platformTwo];
             newValues.push(value);
 
             let sum = 0;
