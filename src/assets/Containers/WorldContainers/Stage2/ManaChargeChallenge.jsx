@@ -181,10 +181,11 @@ function ManaChargeChallenge(props){
 
                 setTurn('player');
 
+                return () => clearTimeout(timer);
+
             }, 500);
 
 
-            return () => clearTimeout(timer);
 
         }
 
