@@ -30,9 +30,6 @@ function ManaChargeChallenge(props){
 
     function showResult(results){
         if(results != false){
-            if(results == 'victory'){
-                dispatch(worldStateActions.addManaPuzzle(challengeName));
-            }
             return <h2>{results}</h2>
         }
     }
@@ -90,6 +87,10 @@ function ManaChargeChallenge(props){
 
 
     useEffect(() => {
+
+        if(result == 'victory'){
+            dispatch(worldStateActions.addManaPuzzle(challengeName));
+        }
 
         if(availableValuesPlayer.length < 1 && availableValuesAI.length < 1 && turn == 'player'){
             if(playerOneScore < aiScore){
@@ -200,7 +201,7 @@ function ManaChargeChallenge(props){
 
         setTurn('player');
 
-    }, [turn])
+    }, [turn, result])
 
 
     return (
