@@ -199,7 +199,7 @@ function ManaChargeChallenge(props){
 
             <div className="Score">
                 <h3>{`Player Score: ${playerOneScore}`}</h3>
-                <h3>{`Ai Score: ${playerOneScore}`}</h3>
+                <h3>{`Ai Score: ${aiScore}`}</h3>
             </div>
 
         </div>
