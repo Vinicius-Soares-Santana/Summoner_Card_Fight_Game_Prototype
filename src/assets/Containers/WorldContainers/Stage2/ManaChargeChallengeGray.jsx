@@ -55,8 +55,8 @@ function playMove(game, participant, value, platformIndex) {
 function chooseAiMove(game) {
     const [firstPlatform, secondPlatform] = game.platforms;
     const firstSum = getSum(firstPlatform);
-    const secondSum = getSum(secondPlatform);
-    const platformIndex = firstSum <= secondSum ? 0 : 1;
+    const secondSum = 1000;
+    const platformIndex = 0
     const platformSum = Math.min(firstSum, secondSum);
     const hand = game.hands[game.turn];
     const safeValues = hand.filter((value) => platformSum + value <= limit);
@@ -122,7 +122,7 @@ export default function ManaChargeChallengeGray() {
 
                 return (
                     <div className={`Platform${name}`} key={name}>
-                        <h3>Platform {index + 1} · {platform.map((numPlaced, ind) => <h3 key={`${platform} ${numPlaced} ${ind}`}>{numPlaced}</h3>)} / {limit}</h3>
+                        {platform.map((numPlaced, ind) => <h3 key={`${platform} ${numPlaced} ${ind}`}>{numPlaced}</h3>)}
 
                         {platform.map((value, position) => (
                             <span className={`Plat${name}NumDisplayed`} key={position}>
