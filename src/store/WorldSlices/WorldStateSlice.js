@@ -4,7 +4,7 @@ const initialState = {
     currentWorldStage: 'beggining',
     worldCurrentLevel: 1,
     fluffySacrificed: false,
-    worldPreviousScenarioPath: '',
+    worldPreviousScenarioPath: '/',
     worldEvents: { 
         template: {
             status: '',
