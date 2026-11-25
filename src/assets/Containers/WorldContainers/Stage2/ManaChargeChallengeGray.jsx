@@ -124,12 +124,6 @@ export default function ManaChargeChallengeGray() {
                     <div className={`Platform${name}`} key={name}>
                         {platform.map((numPlaced, ind) => <h3 key={`${platform} ${numPlaced} ${ind}`}>{numPlaced}</h3>)}
 
-                        {platform.map((value, position) => (
-                            <span className={`Plat${name}NumDisplayed`} key={position}>
-                                {value}{' '}
-                            </span>
-                        ))}
-
                         <button
                             type="button"
                             className={`Plat${name}Button`}

@@ -122,13 +122,7 @@ export default function ManaChargeChallengeRed() {
 
                 return (
                     <div className={`Platform${name}`} key={name}>
-                        <h3>Platform {index + 1} · {getSum(platform)} / {limit}</h3>
-
-                        {platform.map((value, position) => (
-                            <span className={`Plat${name}NumDisplayed`} key={position}>
-                                {value}{' '}
-                            </span>
-                        ))}
+                        {platform.map((numPlaced, ind) => <h3 key={`${platform} ${numPlaced} ${ind}`}>{numPlaced}</h3>)}
 
                         <button
                             type="button"
