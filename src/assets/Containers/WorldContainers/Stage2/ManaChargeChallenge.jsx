@@ -22,6 +22,12 @@ function ManaChargeChallenge(props){
     const [result, setResult] = useState(false);
 
 
+    function showResult(results){
+        if(victory != false){
+            return <h2>{result}</h2>
+        }
+    }
+
 
 
     function addValuePlatform (value, platform, turn){
@@ -175,6 +181,7 @@ function ManaChargeChallenge(props){
 
     }, [turn])
 
+
     return (
         <div className={`ManaChargeChallenge ${props.challengeId}`}>
 
@@ -199,6 +206,8 @@ function ManaChargeChallenge(props){
                 <h3>{`Player Score: ${playerOneScore}`}</h3>
                 <h3>{`Ai Score: ${aiScore}`}</h3>
             </div>
+
+            {showResult(result)}
 
         </div>
     )
