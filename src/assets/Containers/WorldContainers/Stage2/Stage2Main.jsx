@@ -49,12 +49,16 @@ function Stage2Main(props){
 
   return  <div className='SceneGrid Stage2Main'>
 
-            <ScenePiece at="A9" cols={1} rows={1}>
-              <NextSceneButton destination='roomleft1' buttonText='Room' />
+            <ScenePiece at="A5" cols={1} rows={1}>
+              <NextSceneButton destination='west-courtyard' buttonText='' />
             </ScenePiece>
 
-            <ScenePiece at="A9" cols={1} rows={1}>
-              <NextSceneButton destination='roomleft1' buttonText='Room' />
+            <ScenePiece at="A12" cols={1} rows={1}>
+              <NextSceneButton destination='chapels' buttonText='' />
+            </ScenePiece>
+
+            <ScenePiece at="N9" cols={1} rows={1}>
+              <NextSceneButton destination='armory' buttonText='' />
             </ScenePiece>
 
             <ScenePiece at="I10" cols={2} rows={3} >
@@ -63,7 +67,7 @@ function Stage2Main(props){
             
 
             <ScenePiece at="P9" cols={1} rows={1}>
-              <NextSceneButton destination='' buttonText='Castle Fields Right' />
+              <NextSceneButton destination='templecorridor' buttonText='Temple Entrance' />
             </ScenePiece>
             
           </div>
