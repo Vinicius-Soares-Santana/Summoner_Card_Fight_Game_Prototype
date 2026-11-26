@@ -5,6 +5,20 @@ import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice
 import { gainItemQuest } from '../../../../World/worldActions';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import ScenePiece from '../ScenePiece';
+
+import bossGateClosed from '../../../Images/Stage2/BossGate/boss-gate-background.png';
+import bossGateOpen from '../../../Images/Stage2/BossGate/BossGate_Open.png';
+import gateMechanism from '../../../Images/Stage2/BossGate/gate-open-mechanism.png';
+
+import redOn from '../../../Images/Stage2/BossGate/gate-red-on.png';
+import redOff from '../../../Images/Stage2/BossGate/gate-red-off.png';
+import grayOn from '../../../Images/Stage2/BossGate/gate-gray-on.png';
+import grayOff from '../../../Images/Stage2/BossGate/gate-gray-off.png';
+import blueOn from '../../../Images/Stage2/BossGate/gate-blue-on.png';
+import blueOff from '../../../Images/Stage2/BossGate/gate-blue-off.png';
+import purpleOn from '../../../Images/Stage2/BossGate/gate-purple-on.png';
+import purpleOff from '../../../Images/Stage2/BossGate/gate-purple-off.png';
+
 import './BossGate.css'
 
 function BossGate(props){
@@ -68,26 +82,26 @@ function BossGate(props){
     
     if(openTheDoorQuestData?.questStatus !== 'complete'){
         return (
-            <div className="BossGate SceneGrid">
+            <div className="BossGate SceneGrid" style={{ backgroundImage: `url(${bossGateClosed})` }} >
     
                 <ScenePiece at="C6" cols={2} rows={2}>
-                    <img className="redMarker" src={redDone ? '../../../Images/Stage2/BossGate/gate-red-on.png' : '../../../Images/Stage2/BossGate/gate-red-off.png'} alt=""></img>
+                    <img className="redMarker" src={redDone ? redOn : redOff} alt=""></img>
                 </ScenePiece>
     
                 <ScenePiece at="F8" cols={2} rows={2}>
-                    <img className="grayMarker" src={greyDone ? '../../../Images/Stage2/BossGate/gate-gray-on.png' : '../../../Images/Stage2/BossGate/gate-gray-off.png'} alt=""></img>
+                    <img className="grayMarker" src={greyDone ? grayOn : grayOff} alt=""></img>
                 </ScenePiece>
     
                 <ScenePiece at="C6" cols={2} rows={2}>
-                    <img className="blueMarker" src={blueDone ? '../../../Images/Stage2/BossGate/gate-blue-on.png' : '../../../Images/Stage2/BossGate/gate-blue-off.png'} alt=""></img>
+                    <img className="blueMarker" src={blueDone ? blueOn : blueOff} alt=""></img>
                 </ScenePiece>
     
                 <ScenePiece at="C6" cols={2} rows={2}>
-                    <img className="purpleMarker" src={purpleDone ? '../../../Images/Stage2/BossGate/gate-purple-on.png' : '../../../Images/Stage2/BossGate/gate-purple-off.png'} alt=""></img>
+                    <img className="purpleMarker" src={purpleDone ? purpleOn : purpleOff} alt=""></img>
                 </ScenePiece>
     
                 <ScenePiece at="M6" cols={2} rows={2}>
-                    <button className="openGateButton" style={{backgroundImage: '../../../Images/Stage2/BossGate/gate-open-mechanism.png'}} onClick={handleClickOpenDoor} ></button>
+                    <button className="openGateButton" style={{ backgroundImage: `url(${gateMechanism})` }} onClick={handleClickOpenDoor} ></button>
                 </ScenePiece>
     
     
@@ -95,7 +109,7 @@ function BossGate(props){
         )
     } else {
         return (
-            <button className="BossGate open" style={{backgroundImage: '../../../Images/Stage2/BossGate/gate-open-mechanism.png'}}
+            <button className="BossGate open" style={{ backgroundImage: `url(${bossGateOpen})` }}
                 onClick={() => {
                     const scenePath = `${pathname}${search}${hash}`
                     dispatch(worldStateActions.setPreviousScenarioPath(scenePath));
