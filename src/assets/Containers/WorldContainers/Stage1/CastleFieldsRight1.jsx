@@ -28,6 +28,8 @@ function CastleFieldsRight1(props){
         (state) => state.worldState.worldEvents['FairyGuardBattle']
     );
 
+    const [randomEnemyChosen, setRandomEnemyChosen] = useState('');
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -42,6 +44,24 @@ function CastleFieldsRight1(props){
         'basiliskHandler',
         'cryptKeeper',
       ];
+
+    if (worldState.worldCurrentLevel > 1){
+
+        const listOfGuards = [
+            'templeLookout',
+            'templeBroodkeeper',
+            'templeBulwark',
+            'templeStoneEye',
+            'templeMirrorGuard',
+            'templeLanternKeeper',
+            'templeGraveKeeper',
+            'templeBloodTithe',
+            'templeSoulJailer',
+            'templeRoyalCollector',]
+
+        listOfGuards.forEach((enemy) => stage1EnemyIds.push(enemy))
+
+    }
     
 
 
@@ -53,7 +73,9 @@ function CastleFieldsRight1(props){
                 
 
                 <ScenePiece at="E2" cols={5} rows={2}>
-                    <ArenaButton enemyId={randomEnemy(stage1EnemyIds)} difficulty='normal' />
+                    <div className="ArenaDivRandomEnemy" onClick={() => setRandomEnemyChosen(randomEnemy(stage1EnemyIds))} >
+                        <ArenaButton enemyId={randomEnemyChosen} difficulty='normal' />
+                    </div>
                 </ScenePiece>
 
                 <ScenePiece at="D6" cols={2} rows={2}>
