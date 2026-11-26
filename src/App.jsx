@@ -22,6 +22,7 @@ import ManaChargeChallenge from './assets/Containers/WorldContainers/Stage2/Mana
 import ManaChargeChallengeRed from './assets/Containers/WorldContainers/Stage2/ManaChargeChallengeRed';
 import ManaChargeChallengeGray from './assets/Containers/WorldContainers/Stage2/ManaChargeChallengeGray';
 import ManaChargeChallengePurple from './assets/Containers/WorldContainers/Stage2/ManaChargeChallengePurple';
+import BossGate from './assets/Containers/WorldContainers/Stage2/BossGate';
 import SelectCreaturesScreen from './assets/Containers/SelectCreaturesScreen';
 import Shop from './assets/Containers/Shop';
 import PlayerUDI from './assets/Containers/PlayerUDI';
@@ -50,6 +51,7 @@ const router = createBrowserRouter(
           <Route path="manachallengered" element={<ManaChargeChallengeRed />} />
           <Route path="manachallengegray" element={<ManaChargeChallengeGray />} />
           <Route path="manachallengepurple" element={<ManaChargeChallengePurple />} />
+          <Route path="bossgate" element={<BossGate />} />
         </Route>
 
       </Route>
