@@ -17,7 +17,7 @@
 }
 
 /* As coordenadas acompanham o fundo da porta, mesmo em telas menores. */
-.BossGate :is(.redMarker, .grayMarker, .blueMarker, .purpleMarker) {
+.BossGate :is(.redMarker, .grayMarker, .blueMarker) {
     position: absolute;
     top: var(--rune-y);
     left: var(--rune-x);
@@ -28,6 +28,17 @@
     pointer-events: none;
 }
 
+
+.purpleMarker{
+    position: absolute;
+    top: var(--rune-y);
+    left: var(--rune-x);
+    display: block;
+    width: 7%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
 
 .BossGate .redMarker    { --rune-x: 35%; --rune-y: 43%; }
 .BossGate .grayMarker   { --rune-x: 50%; --rune-y: 75%; }
