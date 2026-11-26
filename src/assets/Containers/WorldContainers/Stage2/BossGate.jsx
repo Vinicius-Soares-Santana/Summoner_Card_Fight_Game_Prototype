@@ -1,5 +1,6 @@
 import react, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useResolvedPath } from 'react-router-dom';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
 import { gainItemQuest } from '../../../../World/worldActions';
 import NextSceneButton from '../../../Containers/NextSceneButton';
@@ -7,6 +8,10 @@ import ScenePiece from '../ScenePiece';
 import './BossGate.css'
 
 function BossGate(props){
+    const destination = '/'
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const {pathname, search, hash } = useResolvedPath(destination);
 
     const dispatch = useDispatch();
 
@@ -91,7 +96,12 @@ function BossGate(props){
         )
     } else {
         return (
-            <button className="BossGate open">
+            <button className="BossGate open" style={{backgroundImage: '../../../Images/Stage2/BossGate/gate-open-mechanism.png'}}
+                onClick={() => {
+                    const scenePath = `${pathname}${search}${hash}`
+                    dispatch(worldStateActions.setPreviousScenarioPath(scenePath));
+                    navigate(destination);
+                }} >
             </button>
         )
     }
