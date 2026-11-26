@@ -19,6 +19,8 @@ function RandomEncounterManager(props){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const ChanceAjuster = 0.3;
+
     const RandomGuardImages = import.meta.glob('../Images/RandomGuards/*.png', {
         eager: true,
         query: '?url',
@@ -48,7 +50,7 @@ function RandomEncounterManager(props){
     const guardImgLink = RandomGuardImages[`./Images/Runes/${selectedGuard}.png`] ?? '';
 
     useEffect(() => {
-        if(randonEncounterSetter < 0.3 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
+        if(randonEncounterSetter < ChanceAjuster && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
 
             dispatch(playerWorldActions.changeDialog({
                 image: '',
@@ -67,14 +69,14 @@ function RandomEncounterManager(props){
             
                 navigate('/arena');
     
-            }, 500);
+            }, 1000);
 
             return () => clearTimeout(timerEncounter);
             
         }
     }, [navigate]);
 
-    if(randonEncounterSetter < 0.2){
+    if(randonEncounterSetter < ChanceAjuster){
         return (
             <div className="RandomEncounterManager" >
                 <img src={guardImgLink} alt={selectedGuard} />
