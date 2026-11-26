@@ -125,6 +125,10 @@ function BossGate(props){
                 <ScenePiece at="M6" cols={2} rows={2}>
                     <button className="openGateButton" style={{ backgroundImage: `url(${gateMechanism})` }} onClick={handleClickOpenDoor} ></button>
                 </ScenePiece>
+
+                <ScenePiece at="D15" cols={1} rows={1}>
+                    <NextSceneButton destination='/game/stage2' buttonText='' />
+                </ScenePiece>
     
     
             </div>
