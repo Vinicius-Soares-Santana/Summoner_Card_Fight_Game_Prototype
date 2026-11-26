@@ -62,12 +62,12 @@ function BossGate(props){
         dispatch(gainItemQuest('Amphisbaena'));
 
         if(currentChallengesComplete.includes('purple')){
-            
+
             dispatch(gainItemQuest('Elixir'));
 
             dispatch(playerWorldActions.changeDialog({
                 image: '',
-                title: 'Shop Updated',
+                title: 'Inventory Updated',
                 message: 'Elixir and Amphisbaena where added to your inventory',
                 eventName: '',
                 options: ['Ok'],
@@ -78,7 +78,7 @@ function BossGate(props){
 
             dispatch(playerWorldActions.changeDialog({
                 image: '',
-                title: 'Shop Updated',
+                title: 'Inventory Updated',
                 message: 'Amphisbaena was added to your inventory',
                 eventName: '',
                 options: ['Ok'],
