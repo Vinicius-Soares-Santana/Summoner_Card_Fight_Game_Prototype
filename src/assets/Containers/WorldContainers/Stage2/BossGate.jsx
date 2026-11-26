@@ -62,6 +62,7 @@ function BossGate(props){
         dispatch(gainItemQuest('Amphisbaena'));
 
         if(currentChallengesComplete.includes('purple')){
+            
             dispatch(gainItemQuest('Elixir'));
 
             dispatch(playerWorldActions.changeDialog({
@@ -72,6 +73,7 @@ function BossGate(props){
                 options: ['Ok'],
                 proceedStep: false,
               }));
+
         } else {
 
             dispatch(playerWorldActions.changeDialog({
