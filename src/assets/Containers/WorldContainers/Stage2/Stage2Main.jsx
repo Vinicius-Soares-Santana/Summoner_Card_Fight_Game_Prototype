@@ -101,7 +101,7 @@ function Stage2Main(props){
             
 
             <ScenePiece at="G12" cols={1} rows={1}>
-              <NextSceneButton destination='templecorridor' buttonText='Temple Entrance' />
+              <NextSceneButton destination='/game/stage1/templecorridor' buttonText='Temple Entrance' />
             </ScenePiece>
             
           </div>
