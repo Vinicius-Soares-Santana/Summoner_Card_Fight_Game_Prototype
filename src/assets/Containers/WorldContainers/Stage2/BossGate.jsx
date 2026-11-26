@@ -2,6 +2,7 @@ import react, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useResolvedPath } from 'react-router-dom';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
+import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import { gainItemQuest } from '../../../../World/worldActions';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import ScenePiece from '../ScenePiece';
@@ -58,12 +59,31 @@ function BossGate(props){
 
         dispatch(worldStateActions.changeQuestStatus({questName: 'GateOpenQuest', newQuestStatus: 'complete'}));
 
-        if(currentChallengesComplete.includes('purple')){
-            dispatch(gainItemQuest('Elixir'));
-        }
-
         dispatch(gainItemQuest('Amphisbaena'));
 
+        if(currentChallengesComplete.includes('purple')){
+            dispatch(gainItemQuest('Elixir'));
+
+            dispatch(playerWorldActions.changeDialog({
+                image: '',
+                title: 'Shop Updated',
+                message: 'Elixir and Amphisbaena where added to your inventory',
+                eventName: '',
+                options: ['Ok'],
+                proceedStep: false,
+              }));
+        } else {
+
+            dispatch(playerWorldActions.changeDialog({
+                image: '',
+                title: 'Shop Updated',
+                message: 'Amphisbaena was added to your inventory',
+                eventName: '',
+                options: ['Ok'],
+                proceedStep: false,
+              }));
+
+        }
         
     }
 
