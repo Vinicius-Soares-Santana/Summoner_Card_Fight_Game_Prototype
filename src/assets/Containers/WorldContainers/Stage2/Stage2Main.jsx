@@ -73,10 +73,6 @@ function Stage2Main(props){
               <NextSceneButton destination='guard-corridor' buttonText='' />
             </ScenePiece>
 
-            <ScenePiece at="I10" cols={2} rows={3} >
-              <RandomEncounterManager />
-            </ScenePiece>
-
             <ScenePiece at="F5" cols={1} rows={1}>
               <button onClick={onClickTest}>Test</button>
             </ScenePiece>
