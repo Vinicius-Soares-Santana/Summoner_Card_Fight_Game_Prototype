@@ -58,7 +58,7 @@ function Stage2Main(props){
             </ScenePiece>
 
             <ScenePiece at="P9" cols={1} rows={1}>
-              <NextSceneButton destination='armory' buttonText='' />
+              <NextSceneButton destination='guard-corridor' buttonText='' />
             </ScenePiece>
 
             <ScenePiece at="I10" cols={2} rows={3} >
