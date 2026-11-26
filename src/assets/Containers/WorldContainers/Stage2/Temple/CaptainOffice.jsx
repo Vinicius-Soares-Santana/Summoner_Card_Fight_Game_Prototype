@@ -1,5 +1,6 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import GuardCapitainRed from '../Characters2/GuardCapitainRed';
 import './CaptainOffice.css'
 
 export default function CaptainOffice() {
@@ -7,6 +8,10 @@ export default function CaptainOffice() {
     <div className="SceneGrid TempleRoom CaptainOffice">
       <ScenePiece at="E8" cols={8} rows={3}>
         <h1>Captain’s Office</h1>
+      </ScenePiece>
+
+      <ScenePiece at="E4" cols={8} rows={3}>
+        {GuardCapitainRed()}
       </ScenePiece>
 
       <ScenePiece at="G15" cols={4} rows={2}>
