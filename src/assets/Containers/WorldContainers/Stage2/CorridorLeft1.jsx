@@ -2,7 +2,7 @@ import react from 'react';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import './CorridorLeft1.css'
 
-function RoomLeft1(props){
+function CorridorLeft1(props){
     
 
     return (
