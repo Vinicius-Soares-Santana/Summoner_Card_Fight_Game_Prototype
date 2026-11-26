@@ -68,7 +68,7 @@ function BossGate(props){
             dispatch(playerWorldActions.changeDialog({
                 image: '',
                 title: 'Inventory Updated',
-                message: 'Elixir and Amphisbaena where added to your inventory',
+                message: 'Elixir and Amphisbaena were added to your inventory',
                 eventName: '',
                 options: ['Ok'],
                 proceedStep: false,
