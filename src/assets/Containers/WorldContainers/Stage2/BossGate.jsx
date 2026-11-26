@@ -1,6 +1,7 @@
 import react, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
+import { gainItemQuest } from '../../../../World/worldActions';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import ScenePiece from '../ScenePiece';
 import './BossGate.css'
@@ -39,6 +40,12 @@ function BossGate(props){
 
         dispatch(worldStateActions.changeQuestStatus({questName: 'GateOpenQuest', newQuestStatus: 'complete'}));
 
+        if(PurpleChallengeQuest.questStatus === 'complete'){
+            gainItemQuest('Elixir');
+        }
+
+        gainItemQuest('Amphisbaena');
+
         
     }
 
@@ -55,35 +62,40 @@ function BossGate(props){
 
     }, [openTheDoorQuestData, purpleChallengeData])
     
-
-    return (
-        <div className="BossGate SceneGrid">
-
-            <ScenePiece at="C6" cols={2} rows={2}>
-                <img className="redMarker" alt=""></img>
-            </ScenePiece>
-
-            <ScenePiece at="F8" cols={2} rows={2}>
-                <img className="grayMarker" alt=""></img>
-            </ScenePiece>
-
-            <ScenePiece at="C6" cols={2} rows={2}>
-                <img className="blueMarker" alt=""></img>
-            </ScenePiece>
-
-            <ScenePiece at="C6" cols={2} rows={2}>
-                <img className="purpleMarker" alt=""></img>
-            </ScenePiece>
-
-            { 
-                AllDone && <ScenePiece at="M6" cols={2} rows={2}>
-                                <button className="openGateButton"></button>
-                            </ScenePiece>
-            }
-
-
-        </div>
-    )
+    if(!openTheDoorQuestData.questStatus === 'complete'){
+        return (
+            <div className="BossGate SceneGrid">
+    
+                <ScenePiece at="C6" cols={2} rows={2}>
+                    <img className="redMarker" src={redDone ? '../../../Images/Stage2/BossGate/gate-red-on.png' : '../../../Images/Stage2/BossGate/gate-red-off.png'} alt=""></img>
+                </ScenePiece>
+    
+                <ScenePiece at="F8" cols={2} rows={2}>
+                    <img className="grayMarker" src={greyDone ? '../../../Images/Stage2/BossGate/gate-gray-on.png' : '../../../Images/Stage2/BossGate/gate-gray-off.png'} alt=""></img>
+                </ScenePiece>
+    
+                <ScenePiece at="C6" cols={2} rows={2}>
+                    <img className="blueMarker" src={blueDone ? '../../../Images/Stage2/BossGate/gate-blue-on.png' : '../../../Images/Stage2/BossGate/gate-blue-off.png'} alt=""></img>
+                </ScenePiece>
+    
+                <ScenePiece at="C6" cols={2} rows={2}>
+                    <img className="purpleMarker" src={purpleDone ? '../../../Images/Stage2/BossGate/gate-purple-on.png' : '../../../Images/Stage2/BossGate/gate-purple-off.png'} alt=""></img>
+                </ScenePiece>
+    
+                <ScenePiece at="M6" cols={2} rows={2}>
+                    <button className="openGateButton" style={{backgroundImage: '../../../Images/Stage2/BossGate/gate-open-mechanism.png'}} onClick={handleClickOpenDoor} ></button>
+                </ScenePiece>
+    
+    
+            </div>
+        )
+    } else {
+        return (
+            <button className="BossGate open">
+            </button>
+        )
+    }
+    
 }
 
 export default BossGate;
