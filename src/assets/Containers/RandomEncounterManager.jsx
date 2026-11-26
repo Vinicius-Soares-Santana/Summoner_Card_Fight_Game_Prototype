@@ -49,10 +49,28 @@ function RandomEncounterManager(props){
 
     useEffect(() => {
         if(randonEncounterSetter < 0.2 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
-        const result = dispatch(startCampaignBattle(selectedGuard));
-            if (!result.ok) { return; }
 
-            navigate('/arena');
+            dispatch(playerWorldActions.changeDialog({
+                image: '',
+                title: 'Encounter',
+                message: 'You were spoted by a guard.',
+                eventName: '',
+                options: ['Ok'],
+                proceedStep: false,
+                }));
+
+            const timerEncounter = setTimeOut(()=>{
+                
+                const result = dispatch(startCampaignBattle(selectedGuard));
+                if (!result.ok) { return; }
+
+            
+                navigate('/arena');
+    
+            }, 100);
+
+            return () => clearTimeout(timerEncounter);
+            
         }
     }, [navigate]);
 
