@@ -10,7 +10,6 @@ import './BossGate.css'
 function BossGate(props){
     const destination = '/'
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const {pathname, search, hash } = useResolvedPath(destination);
 
     const dispatch = useDispatch();
@@ -45,11 +44,11 @@ function BossGate(props){
 
         dispatch(worldStateActions.changeQuestStatus({questName: 'GateOpenQuest', newQuestStatus: 'complete'}));
 
-        if(PurpleChallengeQuest.questStatus === 'complete'){
-            gainItemQuest('Elixir');
+        if(purpleChallengeData?.questStatus === 'complete'){
+            dispatch(gainItemQuest('Elixir'));
         }
 
-        gainItemQuest('Amphisbaena');
+        dispatch(gainItemQuest('Amphisbaena'));
 
         
     }
@@ -67,7 +66,7 @@ function BossGate(props){
 
     }, [openTheDoorQuestData, purpleChallengeData])
     
-    if(!openTheDoorQuestData.questStatus === 'complete'){
+    if(openTheDoorQuestData?.questStatus !== 'complete'){
         return (
             <div className="BossGate SceneGrid">
     
