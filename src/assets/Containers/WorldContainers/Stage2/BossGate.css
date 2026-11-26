@@ -1,0 +1,78 @@
+
+
+.BossGate.SceneGrid,
+.BossGate.open {
+    box-sizing: border-box;
+    width: min(100%, 177.78svh);
+    aspect-ratio: 16 / 9;
+    margin-inline: auto;
+    background-color: #090b10;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.BossGate.SceneGrid {
+    position: relative;
+}
+
+/* As coordenadas acompanham o fundo da porta, mesmo em telas menores. */
+.BossGate :is(.redMarker, .grayMarker, .blueMarker, .purpleMarker) {
+    position: absolute;
+    top: var(--rune-y);
+    left: var(--rune-x);
+    display: block;
+    width: 15%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.BossGate .redMarker    { --rune-x: 28%; --rune-y: 33%; }
+.BossGate .grayMarker   { --rune-x: 28%; --rune-y: 66%; }
+.BossGate .blueMarker   { --rune-x: 72%; --rune-y: 33%; }
+.BossGate .purpleMarker { --rune-x: 72%; --rune-y: 66%; }
+
+.BossGate .openGateButton,
+.BossGate.open {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.BossGate .openGateButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(44px, 13%, 180px);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: filter 150ms ease;
+}
+
+.BossGate .openGateButton:hover {
+    filter: brightness(1.15);
+}
+
+.BossGate.open {
+    display: block;
+}
+
+.BossGate .openGateButton:focus-visible,
+.BossGate.open:focus-visible {
+    outline: 2px solid #d8bb83;
+    outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .BossGate .openGateButton {
+        transition: none;
+    }
+}
+
