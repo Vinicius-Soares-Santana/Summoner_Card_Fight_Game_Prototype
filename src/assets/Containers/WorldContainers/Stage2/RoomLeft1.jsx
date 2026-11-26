@@ -1,6 +1,6 @@
 import react from 'react';
 import NextSceneButton from '../../../Containers/NextSceneButton';
-import './RoomLeft1.css'
+import './RoomLeft1.css';
 
 function RoomLeft1(props){
     
