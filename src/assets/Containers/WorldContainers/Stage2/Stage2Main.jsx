@@ -57,7 +57,7 @@ function Stage2Main(props){
               <NextSceneButton destination='chapels' buttonText='' />
             </ScenePiece>
 
-            <ScenePiece at="N9" cols={1} rows={1}>
+            <ScenePiece at="P9" cols={1} rows={1}>
               <NextSceneButton destination='armory' buttonText='' />
             </ScenePiece>
 
@@ -66,7 +66,7 @@ function Stage2Main(props){
             </ScenePiece>
             
 
-            <ScenePiece at="P9" cols={1} rows={1}>
+            <ScenePiece at="G12" cols={1} rows={1}>
               <NextSceneButton destination='templecorridor' buttonText='Temple Entrance' />
             </ScenePiece>
             
