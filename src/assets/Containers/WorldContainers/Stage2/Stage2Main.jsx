@@ -76,6 +76,10 @@ function Stage2Main(props){
             <ScenePiece at="F5" cols={1} rows={1}>
               <button onClick={onClickTest}>Test</button>
             </ScenePiece>
+
+            <ScenePiece at="L12" cols={2} rows={3}>
+                <button onClick={() => navigate('/shop')}>Shop</button>
+            </ScenePiece>
             
 
             <ScenePiece at="G12" cols={1} rows={1}>
