@@ -48,7 +48,7 @@ function RandomEncounterManager(props){
     const guardImgLink = RandomGuardImages[`./Images/Runes/${selectedGuard}.png`] ?? '';
 
     useEffect(() => {
-        if(randonEncounterSetter < 0.2 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
+        if(randonEncounterSetter < 0.3 && currentWorldStage == 'Stage2Start' && ArenaStatus == 'idle'){
 
             dispatch(playerWorldActions.changeDialog({
                 image: '',
