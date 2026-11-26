@@ -80,6 +80,24 @@ function Stage2Main(props){
             <ScenePiece at="L12" cols={2} rows={3}>
                 <button onClick={() => navigate('/shop')}>Shop</button>
             </ScenePiece>
+
+            <ScenePiece at="G1" cols={2} rows={2}>
+              <div className="BossGateButton" >
+                <NextSceneButton
+                  destination="/game/stage2/bossgate"
+                  buttonText=""
+                />
+              </div>
+            </ScenePiece>
+
+            <ScenePiece at="I3" cols={4} rows={2}>
+              <div className="ManaChallengeGrayTotem" >
+                <NextSceneButton
+                  destination="/game/stage2/manachallengegray"
+                  buttonText=""
+                />
+              </div>
+            </ScenePiece>
             
 
             <ScenePiece at="G12" cols={1} rows={1}>

@@ -14,6 +14,15 @@ export default function WarOfferingRoom() {
         <RandomEncounterManager />
       </ScenePiece>
 
+      <ScenePiece at="G9" cols={4} rows={2}>
+        <div className="ManaChallengeRedTotem" >
+          <NextSceneButton
+            destination="/game/stage2/manachallengered"
+            buttonText=""
+          />
+        </div>
+      </ScenePiece>
+
       <ScenePiece at="A8" cols={4} rows={2}>
         <NextSceneButton
           destination="/game/stage2/east-courtyard"

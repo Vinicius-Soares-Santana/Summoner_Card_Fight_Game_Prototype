@@ -14,6 +14,15 @@ export default function ProtectionOfferingRoom() {
         <RandomEncounterManager />
       </ScenePiece>
 
+      <ScenePiece at="G9" cols={4} rows={2}>
+        <div className="ManaChallengeBlueTotem" >
+          <NextSceneButton
+            destination="/game/stage2/manachallenge"
+            buttonText=""
+          />
+        </div>
+      </ScenePiece>
+
       <ScenePiece at="G15" cols={4} rows={2}>
         <NextSceneButton
           destination="/game/stage2/west-courtyard"
