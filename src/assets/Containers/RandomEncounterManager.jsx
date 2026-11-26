@@ -55,11 +55,11 @@ function RandomEncounterManager(props){
                 title: 'Encounter',
                 message: 'You were spoted by a guard.',
                 eventName: '',
-                options: ['Ok'],
+                options: [],
                 proceedStep: false,
                 }));
 
-            const timerEncounter = setTimeOut(()=>{
+            const timerEncounter = setTimeout(()=>{
                 
                 const result = dispatch(startCampaignBattle(selectedGuard));
                 if (!result.ok) { return; }
@@ -67,7 +67,7 @@ function RandomEncounterManager(props){
             
                 navigate('/arena');
     
-            }, 100);
+            }, 500);
 
             return () => clearTimeout(timerEncounter);
             
