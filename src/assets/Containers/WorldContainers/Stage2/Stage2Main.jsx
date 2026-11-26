@@ -25,6 +25,14 @@ function Stage2Main(props){
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+
+  function onClickTest(event){
+    dispatch(playerWorldActions.gainGold(100));
+    dispatch(upgradeShop(3));
+    dispatch(upgradeShop(2));
+    dispatch(upgradeShop(1));
+  }
+
   
 
  
@@ -63,6 +71,10 @@ function Stage2Main(props){
 
             <ScenePiece at="I10" cols={2} rows={3} >
               <RandomEncounterManager />
+            </ScenePiece>
+
+            <ScenePiece at="F5" cols={1} rows={1}>
+              <button onClick={onClickTest}>Test</button>
             </ScenePiece>
             
 
