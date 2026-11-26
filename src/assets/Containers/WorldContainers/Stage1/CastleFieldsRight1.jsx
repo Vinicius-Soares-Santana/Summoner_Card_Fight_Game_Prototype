@@ -74,7 +74,7 @@ function CastleFieldsRight1(props){
 
                 <ScenePiece at="E2" cols={5} rows={2}>
                     <div className="ArenaDivRandomEnemy" onClick={() => setRandomEnemyChosen(randomEnemy(stage1EnemyIds))} >
-                        <ArenaButton enemyId={randomEnemyChosen} difficulty='normal' />
+                        <ArenaButton enemyId={randomEnemyChosen != '' ? randomEnemyChosen : randomEnemy(stage1EnemyIds)} difficulty='normal' />
                     </div>
                 </ScenePiece>
 
