@@ -28,10 +28,11 @@
     pointer-events: none;
 }
 
-.BossGate .redMarker    { --rune-x: 28%; --rune-y: 33%; }
-.BossGate .grayMarker   { --rune-x: 28%; --rune-y: 66%; }
-.BossGate .blueMarker   { --rune-x: 72%; --rune-y: 33%; }
-.BossGate .purpleMarker { --rune-x: 72%; --rune-y: 66%; }
+
+.BossGate .redMarker    { --rune-x: 35%; --rune-y: 43%; }
+.BossGate .grayMarker   { --rune-x: 50%; --rune-y: 75%; }
+.BossGate .blueMarker   { --rune-x: 65%; --rune-y: 43%; }
+.BossGate .purpleMarker { --rune-x: 78%; --rune-y: 70%; }
 
 .BossGate .openGateButton,
 .BossGate.open {
