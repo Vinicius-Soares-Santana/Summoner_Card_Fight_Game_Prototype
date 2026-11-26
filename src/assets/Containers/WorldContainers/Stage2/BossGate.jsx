@@ -44,7 +44,7 @@ function BossGate(props){
 
         dispatch(worldStateActions.changeQuestStatus({questName: 'GateOpenQuest', newQuestStatus: 'complete'}));
 
-        if(purpleChallengeData?.questStatus === 'complete'){
+        if(currentChallengesComplete.includes('purple')){
             dispatch(gainItemQuest('Elixir'));
         }
 
