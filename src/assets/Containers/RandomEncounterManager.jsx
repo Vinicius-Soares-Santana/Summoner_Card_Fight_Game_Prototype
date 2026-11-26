@@ -66,6 +66,7 @@ function RandomEncounterManager(props){
                 const result = dispatch(startCampaignBattle(selectedGuard));
                 if (!result.ok) { return; }
 
+                dispatch(playerWorldActions.changeDialog(null));
             
                 navigate('/arena');
     
