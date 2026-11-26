@@ -70,7 +70,7 @@ function RandomEncounterManager(props){
             
                 navigate('/arena');
     
-            }, 1000);
+            }, 5000);
 
             return () => clearTimeout(timerEncounter);
             
