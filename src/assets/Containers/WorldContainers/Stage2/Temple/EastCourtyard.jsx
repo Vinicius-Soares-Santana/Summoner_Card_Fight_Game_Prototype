@@ -1,5 +1,6 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import RandomEncounterManager from '../../../../Containers/RandomEncounterManager';
 import './EastCourtyard.css';
 
 export default function EastCourtyard() {
@@ -14,6 +15,10 @@ export default function EastCourtyard() {
           destination="/game/stage2"
           buttonText="Main Hall"
         />
+      </ScenePiece>
+
+      <ScenePiece at="I10" cols={2} rows={3} >
+        <RandomEncounterManager />
       </ScenePiece>
 
       <ScenePiece at="M8" cols={4} rows={2}>

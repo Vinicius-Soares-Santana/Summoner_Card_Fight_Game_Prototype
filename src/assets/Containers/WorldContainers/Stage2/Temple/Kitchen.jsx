@@ -1,5 +1,6 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import RandomEncounterManager from '../../../../Containers/RandomEncounterManager';
 import './Kitchen.css';
 
 export default function Kitchen() {
@@ -14,6 +15,10 @@ export default function Kitchen() {
           destination="/game/stage2/east-courtyard"
           buttonText="East Courtyard"
         />
+      </ScenePiece>
+
+      <ScenePiece at="I10" cols={2} rows={3} >
+        <RandomEncounterManager />
       </ScenePiece>
 
       <ScenePiece at="G15" cols={4} rows={2}>

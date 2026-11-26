@@ -1,5 +1,6 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import RandomEncounterManager from '../../../../Containers/RandomEncounterManager';
 import './ChapelWing.css';
 
 export default function ChapelWing() {
@@ -14,6 +15,10 @@ export default function ChapelWing() {
           destination="/game/stage2/chapel-1"
           buttonText="Chapel I"
         />
+      </ScenePiece>
+
+      <ScenePiece at="I10" cols={2} rows={3} >
+        <RandomEncounterManager />
       </ScenePiece>
 
       <ScenePiece at="A8" cols={4} rows={2}>

@@ -1,5 +1,6 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import RandomEncounterManager from '../../../../Containers/RandomEncounterManager';
 import './Antechamber.css';
 
 export default function Antechamber() {
@@ -14,6 +15,10 @@ export default function Antechamber() {
           destination="/game/stage2/guard-corridor"
           buttonText="Guard Corridor"
         />
+      </ScenePiece>
+
+      <ScenePiece at="I10" cols={2} rows={3} >
+              <RandomEncounterManager />
       </ScenePiece>
 
       <ScenePiece at="G15" cols={4} rows={2}>

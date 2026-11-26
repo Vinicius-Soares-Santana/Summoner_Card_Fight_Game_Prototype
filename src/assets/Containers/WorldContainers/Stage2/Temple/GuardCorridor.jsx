@@ -1,5 +1,6 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import RandomEncounterManager from '../../../../Containers/RandomEncounterManager';
 import './GuardCorridor.css';
 
 export default function GuardCorridor() {
@@ -14,6 +15,10 @@ export default function GuardCorridor() {
           destination="/game/stage2/captain-office"
           buttonText="Captain’s Office"
         />
+      </ScenePiece>
+
+      <ScenePiece at="I10" cols={2} rows={3} >
+        <RandomEncounterManager />
       </ScenePiece>
 
       <ScenePiece at="A8" cols={4} rows={2}>

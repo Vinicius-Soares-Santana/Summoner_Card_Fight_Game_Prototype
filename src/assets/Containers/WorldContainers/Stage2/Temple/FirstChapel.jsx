@@ -1,5 +1,6 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import RandomEncounterManager from '../../../../Containers/RandomEncounterManager';
 import './FirstChapel.css';
 
 export default function FirstChapel() {
@@ -7,6 +8,10 @@ export default function FirstChapel() {
     <div className="SceneGrid TempleRoom FirstChapel">
       <ScenePiece at="E8" cols={8} rows={3}>
         <h1>Chapel I</h1>
+      </ScenePiece>
+
+      <ScenePiece at="I10" cols={2} rows={3} >
+        <RandomEncounterManager />
       </ScenePiece>
 
       <ScenePiece at="M8" cols={4} rows={2}>
