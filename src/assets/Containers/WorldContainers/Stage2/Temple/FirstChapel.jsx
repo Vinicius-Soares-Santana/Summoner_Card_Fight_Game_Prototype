@@ -7,7 +7,7 @@ export default function FirstChapel() {
   return (
     <div className="SceneGrid TempleRoom FirstChapel">
       <ScenePiece at="E8" cols={8} rows={3}>
-        <h1>Chapel I</h1>
+        <h1>Chapel I </h1>
       </ScenePiece>
 
       <ScenePiece at="I10" cols={2} rows={3} >
