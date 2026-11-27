@@ -91,7 +91,7 @@ function Stage2Main(props){
             </ScenePiece>
 
             <ScenePiece at="H7" cols={1} rows={1}>
-              <button onClick={instruction1Challenge}>Clue</button>
+              <button onClick={clue1Challenge}>Clue</button>
             </ScenePiece>
 
             <ScenePiece at="L12" cols={2} rows={3}>
