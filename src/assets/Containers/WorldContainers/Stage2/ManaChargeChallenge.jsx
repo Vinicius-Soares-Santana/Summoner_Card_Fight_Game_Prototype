@@ -2,6 +2,7 @@ import react, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NextSceneButton from '../../../Containers/NextSceneButton';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
+import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import './ManaChargeChallenge.css';
 
 function ManaChargeChallenge(props){
@@ -90,6 +91,8 @@ function ManaChargeChallenge(props){
 
         if(result == 'victory'){
             dispatch(worldStateActions.addManaPuzzle(challengeName));
+        } else if ('defeat'){
+            dispatch(playerWorldActions.takeDamage(Math.min(playerOneScore, 5)));
         }
 
         if(availableValuesPlayer.length < 1 && availableValuesAI.length < 1 && turn == 'player'){

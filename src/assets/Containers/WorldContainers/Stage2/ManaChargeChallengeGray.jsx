@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NextSceneButton from '../../NextSceneButton';
 import { worldStateActions } from '../../../../store/WorldSlices/WorldStateSlice';
+import { playerWorldActions } from '../../../../store/WorldSlices/PlayerWorldSlice';
 import './ManaChargeChallengeGray.css';
 
 const challengeName = 'gray';
@@ -98,8 +99,10 @@ export default function ManaChargeChallengeGray() {
     useEffect(() => {
         if (victory) {
             dispatch(worldStateActions.addManaPuzzle(challengeName));
+        } else if(finished && !victory){
+            dispatch(playerWorldActions.takeDamage(Math.min(playerScore, 5)));
         }
-    }, [dispatch, victory]);
+    }, [dispatch, finished, victory, playerScore]);
 
     function playSelectedValue(platformIndex) {
         if (!isPlayerTurn || selectedValue === null) return;
