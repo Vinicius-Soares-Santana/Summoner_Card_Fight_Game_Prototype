@@ -39,7 +39,7 @@ function Stage2Main(props){
     dispatch(playerWorldActions.changeDialog({
       image: '',
       title: 'Piece of a Ripped Letter',
-      message: 'I was caught before balancing the seal, I failed, I\'m sorry...',
+      message: 'I was caught before finding all the sigils, I failed, I\'m sorry...',
       eventName: '',
       options: ['Ok'],
       proceedStep: false,
