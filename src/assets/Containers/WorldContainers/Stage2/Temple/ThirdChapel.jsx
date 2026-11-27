@@ -7,7 +7,7 @@ export default function ThirdChapel() {
   return (
     <div className="SceneGrid TempleRoom ThirdChapel">
       <ScenePiece at="E8" cols={8} rows={3}>
-        <h1>Chapel III</h1>
+        <h1>Chapel III - Fidelis</h1>
       </ScenePiece>
 
       <ScenePiece at="I10" cols={2} rows={3} >

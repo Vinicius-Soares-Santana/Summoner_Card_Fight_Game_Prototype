@@ -11,8 +11,8 @@ export default function SecondChapel() {
 
   return (
     <div className="SceneGrid TempleRoom SecondChapel">
-      <ScenePiece at="E8" cols={8} rows={3}>
-        <h1>Chapel II - Protection</h1>
+      <ScenePiece at="E8" cols={8} rows={3} >
+        <h1>Chapel II - Scutum</h1>
       </ScenePiece>
 
       <ScenePiece at="I10" cols={2} rows={3} >
