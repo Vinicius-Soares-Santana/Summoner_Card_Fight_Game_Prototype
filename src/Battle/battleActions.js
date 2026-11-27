@@ -5,9 +5,9 @@ import { otherPlayer, sideOf, handOf, validateAction, teamNames } from './battle
 const patchBattle = (payload) => ({ type: 'battle/patch', payload });
 const copy = (value) => structuredClone(value);
 
-function validTeam(team) {
+function validTeam(team, tier3Limit = 2) {
   if (!team || Object.keys(team).length !== 3) return false;
-  for (const [index, limit] of [4, 3, 2].entries()) {
+  for (const [index, limit] of [4, 3, tier3Limit].entries()) {
     const tier = index + 1;
     const names = team[`tier${tier}`];
     if(!Array.isArray(names) || names.length > limit || new Set(names).size !== names.length
@@ -24,8 +24,18 @@ export const startBattle = (config) => (dispatch) => {
 
   for (const id of ['player1', 'player2']) {
     const p = config.participants?.[id];
-    if (!p || !Number.isFinite(p.health) || p.health <= 0 || !validTeam(p.team)) {
-      return { ok: false, error: `verify the life and team of ${id}. Limits: 4 /3/ 2; And the minimum of 1 T1.` };
+    const canBreakLimit =
+          config.mode === 'campaign' &&
+          id === 'player2' &&
+          p?.controller?.type === 'ai' &&
+          p.controller.enemyId === 'finalKing' &&
+          EnemiesList[p.controller.enemyId]?.breakLimit === true;
+
+    const tier3Limit = canBreakLimit ? 6 : 2;
+
+
+    if (!p || !Number.isFinite(p.health) || p.health <= 0 || !validTeam(p.team, tier3Limit)) {
+      return { ok: false, error: `verify the life and team of ${id}. Limits: 4 /3/ ${tier3Limit}; And the minimum of 1 T1.` };
     }
     if(!['human', 'ai'].includes(p.controller?.type) || 
         (p.controller.type === 'ai' && (!EnemiesList[p.controller.enemyId] || !DifficultyPresets[p.controller.difficulty]))) {

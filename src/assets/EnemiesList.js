@@ -206,6 +206,21 @@ export const EnemiesList = {
     goldLoot: 35, itemLoot: ['Elixir'],
   },
   
+  King: {
+    id: 'King',
+    name: 'Temple Guardian',
+    health: 250,
+    difficulty: 'nightmare',
+    preferredGroups: ['Graveyard', 'ManaEngine', 'Aggressive'],
+    team: {
+      tier1: [],
+      tier2: [],
+      tier3: ['SoulEater', 'DragonKing', 'Hydra', 'HolyKnight', 'Fenrir', 'KingOfSpades'],
+    },
+    goldLoot: 100,
+    breakLimit: true,
+    itemLoot: [],
+  },
 }
 
 export const DifficultyPresets = {
