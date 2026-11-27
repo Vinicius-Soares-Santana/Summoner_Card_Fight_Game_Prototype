@@ -777,7 +777,7 @@ export const CardsList = {
     tier: 3,
     status: 'normal',
     cardLife: 30,
-    cardDefense: 3,
+    cardDefense: 2,
     cardAttack: 1,
     aim: 3,
     simultaneousAttackMax: 1,
