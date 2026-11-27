@@ -38,8 +38,8 @@ function Stage2Main(props){
     dispatch(playerWorldActions.changeDialog(null));
     dispatch(playerWorldActions.changeDialog({
       image: '',
-      title: 'Letter',
-      message: '',
+      title: 'Ripped Letter',
+      message: 'I was caught before balancing the seal, I failed, I\'m sorry',
       eventName: '',
       options: ['Ok'],
       proceedStep: false,
