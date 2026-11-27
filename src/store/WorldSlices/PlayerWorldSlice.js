@@ -103,7 +103,12 @@ const PlayerWorldSlice = createSlice({
     takeDamage: (state, action) => {
       const damageAmount = action.payload;
 
-      state.Health -= damageAmount;
+      if(state.Health - damageAmount >= 0){
+        state.Health -= damageAmount;
+      } else {
+        state.Health = 0;
+      }
+      
     },
     increaseMaxHealth: (state, action) => {
       const increaseAmount = action.payload;
