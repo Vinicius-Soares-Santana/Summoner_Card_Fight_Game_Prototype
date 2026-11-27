@@ -91,7 +91,7 @@ function ManaChargeChallenge(props){
 
         if(result == 'victory'){
             dispatch(worldStateActions.addManaPuzzle(challengeName));
-        } else if ('defeat'){
+        } else if (result == 'defeat'){
             dispatch(playerWorldActions.takeDamage(Math.min(playerOneScore, 5)));
         }
 
