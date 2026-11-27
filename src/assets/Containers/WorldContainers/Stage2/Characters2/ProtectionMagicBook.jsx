@@ -9,7 +9,8 @@ const ProtectionMagicBook = {
         "Protection Spells",
       "Protection spells can be split in different layers, using stasis magic to prevent something to pass through",
       'They can be broken by finding the base sigils and embedding them with entropy magic...',
-      'But be carefull to not alloc too much energy in each sigil to avoid it being repelled and embodied into you.',
+      'If a sigil takes more than it can hold, it casts out every stone.',
+      'The backlash falls on the one who placed the last stone, and grows stronger with every stone already there.',
       {
         text: 'Dealing with entropy magic not to summon life can be dificult, erratic and oftenly, dangerous.',
         status: 'idle',
