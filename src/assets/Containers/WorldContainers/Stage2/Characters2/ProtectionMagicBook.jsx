@@ -1,7 +1,7 @@
 import NPC from '../../../NPC';
 import './ProtectionMagicBook.css';
 
-const ProtectionMagicBook = {
+const ProtectionMagicBookChar = {
   id: 'ProtectionMagicBook',
   name: 'Protection Magic Book',
 
@@ -20,5 +20,5 @@ const ProtectionMagicBook = {
 };
 
 export default function ProtectionMagicBook() {
-  return <NPC character={red} />;
+  return <NPC character={ProtectionMagicBookChar} />;
 }
