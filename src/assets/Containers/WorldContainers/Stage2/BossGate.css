@@ -34,7 +34,7 @@
     top: var(--rune-y);
     left: var(--rune-x);
     display: block;
-    width: 7%;
+    width: 10%;
     height: auto;
     transform: translate(-50%, -50%);
     pointer-events: none;
