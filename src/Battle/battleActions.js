@@ -28,7 +28,6 @@ export const startBattle = (config) => (dispatch) => {
           config.mode === 'campaign' &&
           id === 'player2' &&
           p?.controller?.type === 'ai' &&
-          p.controller.enemyId === 'finalKing' &&
           EnemiesList[p.controller.enemyId]?.breakLimit === true;
 
     const tier3Limit = canBreakLimit ? 6 : 2;
