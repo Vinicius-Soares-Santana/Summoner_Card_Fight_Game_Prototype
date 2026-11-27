@@ -206,6 +206,9 @@ export const EnemiesList = {
     goldLoot: 35, itemLoot: ['Elixir'],
   },
   
+
+
+  
   King: {
     id: 'King',
     name: 'King',
