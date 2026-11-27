@@ -1,11 +1,13 @@
 import ScenePiece from '../../ScenePiece';
 import NextSceneButton from '../../../NextSceneButton';
+import ProtectionMagicBook from '../Characters2/ProtectionMagicBook';
 import RandomEncounterManager from '../../../../Containers/RandomEncounterManager';
+
 import './SecondChapel.css';
 
 export default function SecondChapel() {
 
-  
+
 
   return (
     <div className="SceneGrid TempleRoom SecondChapel">
@@ -15,6 +17,10 @@ export default function SecondChapel() {
 
       <ScenePiece at="I10" cols={2} rows={3} >
         <RandomEncounterManager />
+      </ScenePiece>
+
+      <ScenePiece at="K10" cols={2} rows={3} >
+        {ProtectionMagicBook()}
       </ScenePiece>
 
       <ScenePiece at="M8" cols={4} rows={2}>
