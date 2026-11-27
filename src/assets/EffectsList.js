@@ -1825,7 +1825,7 @@ export const EffectsList = {
       dispatch(
         AllActions.playerActions.healPlayer({
           player: ownerOfCreaturePlayer,
-          healAmount: 10,
+          healAmount: 40,
         })
       );
     },
