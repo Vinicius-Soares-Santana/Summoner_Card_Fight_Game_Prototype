@@ -7,7 +7,7 @@ import './ManaChargeChallengeGray.css';
 const challengeName = 'gray';
 const limit = 10;
 const startingValues = [0, 1, 2, 3, 4, 5, 6];
-const participantNames = ['You', 'AI 1'];
+const participantNames = ['Player', 'Sigil'];
 
 function createGame() {
     return {
@@ -152,7 +152,7 @@ export default function ManaChargeChallengeGray() {
             </div>
 
             <div className="Score">
-                <h3>Penalty points</h3>
+                <h3>Entropy Charge:</h3>
 
                 {game.scores.map((score, index) => (
                     <p key={participantNames[index]}>{participantNames[index]}: {score}</p>

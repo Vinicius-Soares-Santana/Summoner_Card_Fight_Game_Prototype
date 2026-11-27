@@ -8,7 +8,7 @@ const challengeName = 'purple';
 const limitsAvailable = [12, 13, 14];
 const limit = limitsAvailable[Math.floor(Math.random()*limitsAvailable.length)];
 const startingValues = [0, 1, 2, 3, 4, 5, 6];
-const participantNames = ['You', 'AI 1', 'AI 2', 'AI 3'];
+const participantNames = ['Player', 'Sigil I', 'Sigil II', 'Sigil III'];
 
 function createGame() {
     return {
@@ -153,7 +153,7 @@ export default function ManaChargeChallengePurple() {
             </div>
 
             <div className="Score">
-                <h3>Penalty points</h3>
+                <h3>Entropy Charge:</h3>
 
                 {game.scores.map((score, index) => (
                     <p key={participantNames[index]}>{participantNames[index]}: {score}</p>
