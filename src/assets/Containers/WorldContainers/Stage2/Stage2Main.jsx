@@ -33,6 +33,19 @@ function Stage2Main(props){
     dispatch(upgradeShop(1));
   }
 
+
+  function clue1Challenge(){
+    dispatch(playerWorldActions.changeDialog(null));
+    dispatch(playerWorldActions.changeDialog({
+      image: '',
+      title: 'Letter',
+      message: '',
+      eventName: '',
+      options: ['Ok'],
+      proceedStep: false,
+    }));
+  }
+
   
 
  
@@ -75,6 +88,10 @@ function Stage2Main(props){
 
             <ScenePiece at="F5" cols={1} rows={1}>
               <button onClick={onClickTest}>Test</button>
+            </ScenePiece>
+
+            <ScenePiece at="H7" cols={1} rows={1}>
+              <button onClick={instruction1Challenge}>Clue</button>
             </ScenePiece>
 
             <ScenePiece at="L12" cols={2} rows={3}>
